@@ -10,7 +10,7 @@ namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
     /// Mike Koenig
-    /// Mustafa Abuthuraya
+    /// Mustafa "Moose" Abuthuraya
     /// </summary>
     public class IndexModel : PageModel
     {
