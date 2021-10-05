@@ -11,6 +11,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// <summary>
     /// Mike Koenig
     /// Mustafa "Moose" Abuthuraya
+    /// Fangsheng "Jason" Xu
     /// </summary>
     public class IndexModel : PageModel
     {
