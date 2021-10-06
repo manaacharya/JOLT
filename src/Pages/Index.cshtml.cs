@@ -13,6 +13,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// Mustafa "Moose" Abuthuraya
     /// Fangsheng "Jason" Xu
     /// Manasa Acharya
+    /// Edwin Kaburu
     /// </summary>
     public class IndexModel : PageModel
     {
