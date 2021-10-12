@@ -15,6 +15,9 @@ namespace ContosoCrafts.WebSite.Pages
     /// Manasa Acharya
     /// Edwin Kaburu
     /// </summary>
+    /// 
+
+    // I love Seattle 
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
