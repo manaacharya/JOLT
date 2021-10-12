@@ -112,12 +112,10 @@ html {
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-
-    background-image: url('file:///C:\Users\xfs67\Source\Repos\EdwinKaburu\JOLT\src\background_Picture1.jpg');
+    background-image: url('../images/background_Picture1.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    
     /* Margin bottom by auto height */
     margin: auto
 }
