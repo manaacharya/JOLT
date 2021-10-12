@@ -15,8 +15,6 @@ namespace ContosoCrafts.WebSite.Pages
     /// Manasa Acharya
     /// Edwin Kaburu
     /// </summary>
-    /// 
-     // Add a comment for Edwin Kaburu that will be synced
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
