@@ -18,7 +18,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// </summary>
     /// 
 
-    // I love Seattle Summer
+    // I love Seattle Winter
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
