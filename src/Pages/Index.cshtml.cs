@@ -11,6 +11,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// <summary>
     /// Mike Koenig
     /// Mustafa "Moose" Abuthuraya
+    /// Moose was here again
     /// Fangsheng "Jason" Xu
     /// Manasa Acharya
     /// Edwin Kaburu
