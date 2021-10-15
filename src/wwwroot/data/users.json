@@ -1,31 +1,78 @@
+//userID created when user logs in
+//username must be unique, no symbols or special characters
+//password min length is 6 characters, upper and lowercase
+//email must be unique
+//location is country 
 [
-    {
-        "userID": 947498
-        "username": "michiel123"
-        "password": "HzxTOc"
-        "email": "michiel@aol.com",
-        "location": "India"
-  
-},
-    {
-        "userID": 343386
-        "username": "craigs34"
-        "password": "FGTLep"
-        "email": "cgcra@mac.com",
-        "location": "Puerto Rico"
-    },
-    {
-        "userID": 036948
-        "username": "giagia12"
-        "password": "naNwsp"
-        "email": "giafly@me.com",
-        "location": "Nauru"
-    },
-    {
-        "userID": 553961
-        "username": "jen12gg"
-        "password": "NlNLxq"
-        "email": "jmcnamara@gmail.com",
-        "location": "Cyprus"
-    }
+  {
+    "userID": 947498,
+    "username": "michiel123",
+    "password": "HzxTOc",
+    "email": "michiel@aol.com",
+    "location": "India"
+
+  },
+  {
+    "userID": 343386,
+    "username": "craigs34",
+    "password": "FGTLep",
+    "email": "cgcra@mac.com",
+    "location": "Puerto Rico"
+  },
+  {
+    "userID": 862765,
+    "username": "giagia12",
+    "password": "naNwsp",
+    "email": "giafly@me.com",
+    "location": "Nauru"
+  },
+  {
+    "userID": 553961,
+    "username": "jen12gg",
+    "password": "NlNLxq",
+    "email": "jmcnamara@gmail.com",
+    "location": "Cyprus"
+  },
+  {
+    "userID": 667140,
+    "username": "jen12gg",
+    "password": "danny65",
+    "email": "danneng@msn.com",
+    "location": "Brazil"
+  },
+  {
+    "userID": 885641,
+    "username": "melina23",
+    "password": "ZGvNRf",
+    "email": "mleary@yahoo.com",
+    "location": "Yemen"
+  },
+  {
+    "userID": 157465,
+    "username": "lakers34",
+    "password": "dscWTr",
+    "email": "parents@yahoo.ca",
+    "location": "Bahrain"
+  },
+  {
+    "userID": 341292,
+    "username": "viner765",
+    "password": "AiIPyr",
+    "email": "pmint@yahoo.com",
+    "location": "Argentina"
+  },
+  {
+    "userID": 355500,
+    "username": "grotun34",
+    "password": "yZVHdd",
+    "email": "adhere@sbcglobal.net",
+    "location": "United States of America"
+  },
+  {
+    "userID": 491376,
+    "username": "calif32",
+    "password": "vDEkwE",
+    "email": "eminence@msn.com",
+    "location": "United States of America"
+  }
 ]
