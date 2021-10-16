@@ -35,59 +35,32 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-        /// <summary>
-        /// Add Rating
-        /// 
-        /// Take in the product ID and the rating
-        /// If the rating does not exist, add it
-        /// Save the update
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="rating"></param>
-        public bool AddRating(string productId, int rating)
+        public void AddRating(string productId, int rating)
         {
-            // If the ProductID is invalid, return
-            if (string.IsNullOrEmpty(productId))
+            var products = GetProducts();
+
+            if(products.First(x => x.Id == productId).Ratings == null)
             {
-                return false;
+                products.First(x => x.Id == productId).Ratings = new int[] { rating };
+            }
+            else
+            {
+                var ratings = products.First(x => x.Id == productId).Ratings.ToList();
+                ratings.Add(rating);
+                products.First(x => x.Id == productId).Ratings = ratings.ToArray();
             }
 
-            var products = GetAllData();
-
-            // Look up the product, if it does not exist, return
-            var data = products.FirstOrDefault(x => x.Id.Equals(productId));
-            if (data == null)
+            using(var outputStream = File.OpenWrite(JsonFileName))
             {
-                return false;
+                JsonSerializer.Serialize<IEnumerable<ProductModel>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = true,
+                        Indented = true
+                    }), 
+                    products
+                );
             }
-
-            // Check Rating for boundries, do not allow ratings below 0
-            if (rating < 0)
-            {
-                return false;
-            }
-
-            // Check Rating for boundries, do not allow ratings above 5
-            if (rating > 5)
-            {
-                return false;
-            }
-
-            // Check to see if the rating exist, if there are none, then create the array
-            if (data.Ratings == null)
-            {
-                data.Ratings = new int[] { };
-            }
-
-            // Add the Rating to the Array
-            var ratings = data.Ratings.ToList();
-            ratings.Add(rating);
-            data.Ratings = ratings.ToArray();
-
-            // Save the data back to the data store
-            SaveData(products);
-
-            return true;
         }
 
         /// <summary>
