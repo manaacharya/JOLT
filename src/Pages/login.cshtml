@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Login";
 }
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -12,7 +13,7 @@
 <body>
 
     <h3>Login Form</h3>
-    
+    @Model.Msg
     <form method="post" asp-page="Index">
         <table>
             <tr>
