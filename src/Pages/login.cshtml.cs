@@ -23,11 +23,8 @@ namespace ContosoCrafts.WebSite.Pages
 
         public JsonFileUserService UserService { get; }
         public IEnumerable<UserModel> UserList { get; private set; }
-        // public void OnGet() => UserList = UserService.GetUsers();
-        public void OnGet()
-        {
-
-        }
+        public void OnGet() => UserList = UserService.GetUsers();
+        // public void OnGet() {}
         public string CurrentUsername { get; set; }
         public string CurrentPassword { get; set; }
 
