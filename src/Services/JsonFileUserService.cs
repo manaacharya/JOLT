@@ -61,7 +61,12 @@ namespace ContosoCrafts.WebSite.Services
             return GetUsers().First(x => x.username == name);
         }
 
-
+        /// FX: Get the password of a user(given an user entry is found)
+        
+        public string GetPassWord(string name)
+        {
+            return GetUser(name).password;
+        }
         /// <summary>
         /// Save All users data to storage
         /// </summary>
