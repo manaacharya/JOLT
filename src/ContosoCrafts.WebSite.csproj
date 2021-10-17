@@ -20,4 +20,8 @@
     <None Include="wwwroot\images\background_Picture1.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
 </Project>
