@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ContosoCrafts.WebSite.Pages
 {
-    public class loginModel : PageModel
+    public class LoginModel : PageModel
     {
         public void OnGet()
         {
