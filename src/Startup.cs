@@ -23,8 +23,9 @@ namespace ContosoCrafts.WebSite
             services.AddServerSideBlazor();
             services.AddHttpClient();
             services.AddControllers();
+
             services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
-            services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService
+            services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
