@@ -38,6 +38,29 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
+        /// <summary>
+        /// Get A Specific User using the ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserModel GetUser(int id)
+        {
+            // Return A Specific User using ID
+            return GetUsers().First(x => x.userID == id);
+        }
+
+        /// <summary>
+        /// Get A Specific User using A Name. 
+        /// Caution for Duplicate Name, the first duplicate is returned.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public UserModel GetUser(string name)
+        {
+            // Return A Specific User using Name
+            return GetUsers().First(x => x.username == name);
+        }
+
 
         /// <summary>
         /// Save All users data to storage
