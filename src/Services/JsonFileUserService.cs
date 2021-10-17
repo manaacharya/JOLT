@@ -17,7 +17,7 @@ namespace ContosoCrafts.WebSite.Services
             WebHostEnvironment = webHostEnvironment;
         }
 
-        // WebHostEnvironment knows where the  
+        // WebHostEnvironment knows where the  data file is stored at
         public IWebHostEnvironment WebHostEnvironment { get; }
 
         // specify file path to retrieve from
