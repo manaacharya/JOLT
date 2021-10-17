@@ -17,8 +17,10 @@ namespace ContosoCrafts.WebSite.Services
             WebHostEnvironment = webHostEnvironment;
         }
 
+        // WebHostEnvironment knows where the  
         public IWebHostEnvironment WebHostEnvironment { get; }
 
+        // specify file path to retrieve from
         private string JsonFileName
         {
             get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "users.json"); }
