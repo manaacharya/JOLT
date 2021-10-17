@@ -1,0 +1,134 @@
+﻿@page
+@using ContosoCrafts.WebSite.Models
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileUserService UserService
+@model ContosoCrafts.WebSite.Pages.ProfilePageModel
+
+
+
+@{
+    int id = 947498;
+    UserModel user = UserService.GetUser(id);
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <h3> Welcome @user.username </h3>
+            </div>
+            <div class="col-12">
+                <hr />
+            </div>
+            <div class="col">
+
+                <div class="container-fluid">
+                    <div>
+                        <h5> Profile Information </h5>
+                        <hr />
+                    </div>
+                    <div class="row" style="font-size:20px">
+                        <div class="col-6"> User ID:   </div>
+                        <div class="col-6"> @user.userID  </div>
+
+                        <div class="col-6"> User Name:  </div>
+                        <div class="col-6"> @user.username  </div>
+
+                        <div class="col-6"> User Email:  </div>
+                        <div class="col-6"> @user.email  </div>
+
+                        <div class="col-6"> User Password:  </div>
+                        <div class="col-6"> @user.password  </div>
+
+                        <div class="col-6"> User Location:  </div>
+                        <div class="col-6"> @user.location  </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col">
+
+                <form method="post" >
+                    <h5> Update Information </h5><hr />
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">User Name</label>
+                            <input type="text"  class="form-control" placeholder="Update UserName">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">User Password</label>
+                            <input type="text"  class="form-control"  placeholder="Upate Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">User Email</label>
+                            <input type="text"  class="form-control" placeholder="Update Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">User Location</label>
+                            <input type="text"   class="form-control"  placeholder="Update Location">
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Delete Profile</button>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Create Polls Profile</button>
+            </div>
+        </div>
+
+        <hr />
+        <br />
+        <h3> Other Users </h3>
+        <div class="row">
+
+            <div class="col-auto">
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col" style="color: #ffffff">User Name</th>
+                            <th scope="col" style="color: #ffffff">Email</th>
+                            <th scope="col" style="color: #ffffff">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color: #ffffff">
+
+                        @{
+                            foreach (UserModel people in UserService.GetUsers())
+                            {
+                                <tr>
+                                    <th> @people.username </th>
+                                    <th> @people.email </th>
+                                    <th> @people.location </th>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <br />
+
+    </div>
+}
