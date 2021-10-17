@@ -1,4 +1,33 @@
 ﻿@page
 @model ContosoCrafts.WebSite.Pages.LoginModel
 @{
+    ViewData["Title"] = "Login";
 }
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Login Form</h3>
+    
+    <form method="post" asp-page="Index">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" asp-for="@Model.CurrentUsername" /></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" asp-for="@Model.CurrentPassword" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Login" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
