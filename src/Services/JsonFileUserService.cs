@@ -71,9 +71,10 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// FX: Get the password of a user(given an user entry is found)
-        
+
         public string GetPassWord(string name)
         {
+            if (GetUser(name) == null) return "BAD_PASSWORD";
             return GetUser(name).password;
         }
         /// <summary>
