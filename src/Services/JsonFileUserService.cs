@@ -111,5 +111,45 @@ namespace ContosoCrafts.WebSite.Services
 
             return data;
         }
+        /// <summary>
+        /// Find the data record
+        /// Update the fields
+        /// Save to the data store
+        /// </summary>
+        /// <param name="data"></param>
+        public UserModel UpdateData(UserModel data)
+        {
+            var users = GetUsers();
+            var userData = users.FirstOrDefault(x => x.userID.Equals(data.userID));
+            if (userData == null)
+            {
+                return null;
+            }
+
+            userData.username = data.username;
+            userData.email = data.email;
+            userData.password = data.password;
+            userData.location = data.location;
+
+            SaveData(users);
+
+            return userData;
+        }
+        /// <summary>
+        /// Remove the item from the system
+        /// </summary>
+        /// <returns></returns>
+        public UserModel DeleteData(string id)
+        {
+            // Get the current set, and append the new record to it
+            var dataSet = GetUsers();
+            var data = dataSet.FirstOrDefault(m => m.userID.Equals(id));
+
+            var newDataSet = GetUsers().Where(m => m.userID.Equals(id) == false);
+
+            SaveData(newDataSet);
+
+            return data;
+        }
     }
 }

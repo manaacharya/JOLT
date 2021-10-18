@@ -1,7 +1,8 @@
-﻿@page
+﻿@page "{id}"
 @using ContosoCrafts.WebSite.Services
 @inject JsonFileUserService UserService
-@model RegisterModel
+@model ContosoCrafts.WebSite.Pages.RegisterModel
+@*@model RegisterModel*@
 
 @{
     ViewData["Title"] = "Register";
@@ -16,28 +17,36 @@
                     <div class="card">
                         <div class="card-body">
                             <form method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                @Html.HiddenFor(x => x.User.userID)
+
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Username</label>
-                                    <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+                                    <label asp-for="User.username">Username</label>
+                                    <input asp-for="User.username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+                                    <span asp-validation-for="User.username" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <label asp-for="User.email">Email</label>
+                                    <input asp-for="User.email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <span asp-validation-for="User.email" class="text-danger"></span>
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                                    <label asp-for="User.password">Password</label>
+                                    <input asp-for="User.password" type="password" class="form-control" id="password" placeholder="Enter Password">
+                                    <span asp-validation-for="User.password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                    <label asp-for="User.confirmPassword">Confirm Password</label>
+                                    <input asp-for="User.confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                    <span asp-validation-for="User.confirmPassword" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Location</label>
-                                    <input type="password" class="form-control" id="location" placeholder="Enter your country">
+                                    <label asp-for="User.location">Location</label>
+                                    <input asp-for="User.location" type="text" class="form-control" id="location" placeholder="Enter your country">
+                                    <span asp-validation-for="User.location" class="text-danger"></span>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" value="save" class="btn btn-primary">Register</button>
                             </form>
                         </div>
                     </div>

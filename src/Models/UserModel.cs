@@ -6,6 +6,7 @@ namespace ContosoCrafts.WebSite.Models
 {
     public class UserModel
     {
+        //This class contains data validation above each attribute
         public int userID { get; set; }
 
 
@@ -17,6 +18,11 @@ namespace ContosoCrafts.WebSite.Models
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "* Must be at least 6 characters long")]
         public string password { get; set; }
+
+        [Required(ErrorMessage = "* This field is required")]
+        [Compare("password")]
+        public string confirmPassword { get; set; }
+
 
         [EmailAddress(ErrorMessage = "* Enter a valid email")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "* Must be an email address")]
