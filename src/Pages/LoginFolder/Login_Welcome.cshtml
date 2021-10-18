@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model ContosoCrafts.WebSite.Pages.Login_WelcomeModel
 @{
     ViewData["Title"] = "Login_Welcome";
@@ -11,8 +11,11 @@
 </head>
 <body>
 
-    <h1>Welcome @Model.Username</h1>
-    <a asp-page="Login_Welcome" asp-page-handler="Logout">Go Back to HomePage</a>
-
+    <h1>Welcome </h1>
+    <a asp-page="Login_Welcome" asp-page-handler="Logout">Dummy Link</a>
+    <div class="row">
+        <a asp-page="Pages/lndex" class="btn btn-primary">back to home page</a> &nbsp; &nbsp;
+        <a asp-page="login" class="btn btn-danger">back to login</a>
+    </div>
 </body>
 </html>

@@ -52,13 +52,22 @@ namespace ContosoCrafts.WebSite.Services
         /// <summary>
         /// Get A Specific User using A Name. 
         /// Caution for Duplicate Name, the first duplicate is returned.
+        /// FX: added try catch structure
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         public UserModel GetUser(string name)
         {
             // Return A Specific User using Name
-            return GetUsers().First(x => x.username == name);
+            try
+            {
+                return GetUsers().First(x => x.username == name);
+            } catch
+            {
+                //FX: NOT very usful so far
+                return null; 
+            }
+            
         }
 
         /// FX: Get the password of a user(given an user entry is found)
