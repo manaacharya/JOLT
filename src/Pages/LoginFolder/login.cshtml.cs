@@ -42,21 +42,23 @@ namespace ContosoCrafts.WebSite.Pages
         public IActionResult OnPost(string id)
         {
             string correct_password = UserService.GetPassWord(UserInput_test.username);
-            if (UserInput_test.password.Equals(correct_password)) {
-                
-                // HttpContext.Session.SetString("Username", UserInput_test.username);
-                return RedirectToPage("Login_Welcome");
-            }
-            else if (correct_password == "BAD_PASSWORD")
+            if (UserInput_test.username != null && UserInput_test.password != null) { 
+               if (UserInput_test.password.Equals(correct_password)) {
+                    // HttpContext.Session.SetString("Username", UserInput_test.username);
+                    return RedirectToPage("Login_Welcome");
+                }
+                else 
+                {
+                    Msg = "Invalid Username or Password";
+                    return Page();
+                }
+            } else
             {
-                Msg = "Username Invalid";
+                Msg = "No Empty Entry";
                 return Page();
             }
-            else 
-            {
-                Msg = "Invalid Password";
-                return Page();
-            }
+
+
         }
 
         public Boolean isValidUser()
