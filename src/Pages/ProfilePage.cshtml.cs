@@ -25,6 +25,8 @@ namespace ContosoCrafts.WebSite.Pages
         // A User, Can be Modified
        // public UserModel UserModel { get; set; }
 
+        public UserModel UserModel { get; set; }
+
         [BindProperty]
         public UpdateUserModel UpdateUser { get; set; }
 
@@ -35,22 +37,39 @@ namespace ContosoCrafts.WebSite.Pages
             _logger = logger;
             UserServices = userService;
         }
+        
+        //public void OnGet()
+
         public void OnGet()
         {
-          
             Users = UserServices.GetUsers();
         }
+        public IActionResult OnPost()
+        {
+            UserServices.UpdateProfile(UpdateUser);
 
-        public void OnPostUpdateUser()
+            // Updated Cookie To User Name
+            Response.Cookies.Delete("nameCookie");
+
+            Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
+
+            Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
+
+            return RedirectToPage("ProfilePage");
+        }
+
+
+       /* public void OnPostUpdateUser()
         {
             // Message = $"Update {UpdateUser.UpdateID}, {UpdateUser.UpdateName}, Location: {UpdateUser.UpdateLocation} ";
             // Message = $"Update {Request.QueryString["name"]} to {updateUser.location}";
             UserServices.UpdateProfile(UpdateUser);// updates
 
             // Updated Cookie To User Name
+            Response.Cookies.Delete("nameCookie");
             Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
             Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
-        }
+        }*/
 
 
     }
