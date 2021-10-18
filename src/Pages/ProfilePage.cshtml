@@ -7,8 +7,14 @@
 
 
 @{
-    int id = 947498;
-    UserModel user = UserService.GetUser(id);
+    var cookieValue = Request.Cookies["nameCookie"];
+    //int id = 947498;
+
+    UserModel user = UserService.GetUser(cookieValue.ToString());
+
+    //Model.UpdateUser.UpdateID = user.userID;
+
+    <h3 class="clearfix">@Model.Message</h3>
 
     <div class="container">
 
@@ -48,27 +54,32 @@
             </div>
             <div class="col">
 
-                <form method="post" >
+                <form method="post" asp-page-handler="UpdateUser">
                     <h5> Update Information </h5><hr />
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">User Name</label>
-                            <input type="text"  class="form-control" placeholder="Update UserName">
+                            <input type="hidden" asp-for="UpdateUser.UpdateID" name="UpdateID" value="@user.userID" class="form-control" placeholder="@user.userID" />
+
+                            <input type="text" asp-for="UpdateUser.UpdateName" name="UpdateName" value="@user.username" class="form-control" placeholder="@user.username">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">User Password</label>
-                            <input type="text"  class="form-control"  placeholder="Upate Password">
+                            <label for="inputEmail4">User Email</label>
+                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateEmail" value="@user.email" class="form-control" placeholder="@user.email">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">User Email</label>
-                            <input type="text"  class="form-control" placeholder="Update Email">
+                            <label for="inputPassword4">User Password</label>
+                            <input type="text" asp-for="UpdateUser.UpdatePassword" name="UpdatePassword" value="@user.password" class="form-control" placeholder="@user.password">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">User Location</label>
-                            <input type="text"   class="form-control"  placeholder="Update Location">
+                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateLocation" value="@user.location" class="form-control" placeholder="@user.location">
                         </div>
 
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </div>
                     </div>
 
                 </form>
@@ -81,10 +92,6 @@
         <div class="row">
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Delete Profile</button>
-            </div>
-
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Update Profile</button>
             </div>
 
             <div class="col-auto">

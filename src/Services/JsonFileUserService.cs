@@ -37,6 +37,36 @@ namespace ContosoCrafts.WebSite.Services
                     });
             }
         }
+             
+
+        /// <summary>
+        ///  Service an Update To User Account
+        /// </summary>
+        /// <param name="updateuser"></param>
+        public void UpdateProfile(UpdateUserModel updateuser)
+        {
+            List<UserModel> update_users_list = GetUsers().ToList();
+
+            // Get the Old User, By searching for The ID
+            UserModel get_storedUser = update_users_list.Find(x => x.userID == updateuser.UpdateID); // GetUsers().First(x => x.userID == updateuser.UpdateID);
+
+            // Remove Old Data From List
+            update_users_list.Remove(get_storedUser);
+
+            // Update/OverWrite the Previously Stored User
+            get_storedUser.userID = updateuser.UpdateID;
+            get_storedUser.username = updateuser.UpdateName;
+            get_storedUser.email = updateuser.UpdateEmail;
+            get_storedUser.password = updateuser.UpdatePassword;
+            get_storedUser.location = updateuser.UpdateLocation;
+
+            // Add This to GetUsers()
+            update_users_list.Add(get_storedUser);    //GetUsers().ToList().Add(get_storedUser);
+
+            // Write Back to Database
+            SaveData(update_users_list);
+        }
+
 
         /// <summary>
         /// Get A Specific User using the ID
@@ -59,14 +89,14 @@ namespace ContosoCrafts.WebSite.Services
         public UserModel GetUser(string name)
         {
             // Return A Specific User using Name
-            try
-            {
+           // try
+           // {
                 return GetUsers().First(x => x.username == name);
-            } catch
-            {
+            //} catch
+            //{
                 //FX: NOT very usful so far
-                return null; 
-            }
+             //   return null; 
+            //}
             
         }
 

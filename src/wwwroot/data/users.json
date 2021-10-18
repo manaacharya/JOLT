@@ -1,13 +1,5 @@
 [
   {
-    "userID": 947498,
-    "username": "michiel123",
-    "password": "HzxTOc",
-    "email": "michiel@aol.com",
-    "location": "India"
-
-  },
-  {
     "userID": 343386,
     "username": "craigs34",
     "password": "FGTLep",
@@ -69,5 +61,12 @@
     "password": "vDEkwE",
     "email": "eminence@msn.com",
     "location": "United States of America"
+  },
+  {
+    "userID": 947498,
+    "username": "michiel123",
+    "password": "Together",
+    "email": "michiel@aol.com",
+    "location": "Mexico"
   }
 ]

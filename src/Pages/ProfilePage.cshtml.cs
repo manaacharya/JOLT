@@ -13,6 +13,9 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class ProfilePageModel : PageModel
     {
+
+        public string Message { get; set; }
+
         private readonly ILogger<ProfilePageModel> _logger;
 
         // User Services
@@ -20,28 +23,37 @@ namespace ContosoCrafts.WebSite.Pages
         // List of Users
         public IEnumerable<UserModel> Users { get; set; }
         // A User, Can be Modified
-        public UserModel User { get; set; }
+       // public UserModel UserModel { get; set; }
 
-
-        // User Attributes For Updates
-       // public string GUserName { get; set; }
-       // public string GUserPassword { get; set; }
-       // public string GUserEmail { get; set; }
-        //public string GUserLocation { get; set; }
-
-
+        [BindProperty]
+        public UpdateUserModel UpdateUser { get; set; }
 
         public ProfilePageModel(ILogger<ProfilePageModel> logger,
             JsonFileUserService userService)
         {
+           
             _logger = logger;
             UserServices = userService;
         }
         public void OnGet()
         {
+          
             Users = UserServices.GetUsers();
-            //User = UserServices.GetUser()
         }
 
+        public void OnPostUpdateUser()
+        {
+            // Message = $"Update {UpdateUser.UpdateID}, {UpdateUser.UpdateName}, Location: {UpdateUser.UpdateLocation} ";
+            // Message = $"Update {Request.QueryString["name"]} to {updateUser.location}";
+            UserServices.UpdateProfile(UpdateUser);// updates
+
+            // Updated Cookie To User Name
+            Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
+            Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
+        }
+
+
     }
+
+
 }

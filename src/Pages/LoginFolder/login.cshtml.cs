@@ -45,6 +45,10 @@ namespace ContosoCrafts.WebSite.Pages
             if (UserInput_test.username != null && UserInput_test.password != null) { 
                if (UserInput_test.password.Equals(correct_password)) {
                     // HttpContext.Session.SetString("Username", UserInput_test.username);
+
+                    // Cookies Creation -- Edwin 
+                    Response.Cookies.Append("nameCookie", UserInput_test.username); 
+                   
                     return RedirectToPage("Login_Welcome");
                 }
                 else 

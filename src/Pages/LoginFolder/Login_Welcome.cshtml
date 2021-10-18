@@ -13,9 +13,17 @@
 
     <h1>Welcome </h1>
     @* <a asp-page="Login_Welcome" asp-page-handler="Logout">Dummy Link</a> *@
-    <div class="row">
+    <div class="container">
         @* <a asp-page="Pages/lndex" class="btn btn-primary">back to home page</a> &nbsp; &nbsp; *@
-        <a asp-page="login" class="btn btn-danger">back to login</a>
+        <div class="row">
+            <div class="col">
+                <a asp-page="login" class="btn btn-danger">back to login</a>
+            </div>
+            <div class="col">
+                <a asp-page="/ProfilePage" class="nav-link" > Go to Profile </a>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>

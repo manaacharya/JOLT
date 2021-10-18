@@ -19,9 +19,9 @@ namespace ContosoCrafts.WebSite.Models
         [StringLength(50, MinimumLength = 6, ErrorMessage = "* Must be at least 6 characters long")]
         public string password { get; set; }
 
-        [Required(ErrorMessage = "* This field is required")]
-        [Compare("password")]
-        public string confirmPassword { get; set; }
+        //[Required(ErrorMessage = "* This field is required")]
+        //[Compare("password")]
+        //public string confirmPassword { get; set; }
 
 
         [EmailAddress(ErrorMessage = "* Enter a valid email")]
@@ -34,7 +34,7 @@ namespace ContosoCrafts.WebSite.Models
         [Required(ErrorMessage = "* This field is required")]
         public string location { get; set; }
 
-        public override string ToString() => JsonSerializer.Serialize<UserModel>(this);
+        //public override string ToString() => JsonSerializer.Serialize<UserModel>(this);
 
  
     }
