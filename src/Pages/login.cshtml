@@ -1,28 +1,31 @@
-﻿@page
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileUserService UserService
 @model ContosoCrafts.WebSite.Pages.LoginModel
 @{
     ViewData["Title"] = "Login";
 }
-<!DOCTYPE html>
 
-<html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Login</title>
 </head>
+
 <body>
 
     <h3>Login Form</h3>
     @Model.Msg
-    <form method="post" asp-page="Index">
+
+    <form method="post" asp-page="login">
         <table>
             <tr>
                 <td>Username</td>
-                <td><input type="text" asp-for="@Model.CurrentUsername" /></td>
+                <td><input type="text" placeholder="Enter Username" asp-for="UserInput_test.user_name" /></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" asp-for="@Model.CurrentPassword" /></td>
+                <td><input type="password" placeholder="Enter Username" asp-for="CurrentPassword" /></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -30,5 +33,7 @@
             </tr>
         </table>
     </form>
+
+
+
 </body>
-</html>

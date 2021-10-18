@@ -13,6 +13,9 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class LoginModel : PageModel
     {
+
+
+
         private readonly ILogger<IndexModel> _logger;
 
         public LoginModel(ILogger<IndexModel> logger,
@@ -22,34 +25,51 @@ namespace ContosoCrafts.WebSite.Pages
             UserService = userService;
         }
 
+
         public JsonFileUserService UserService { get; }
         public IEnumerable<UserModel> UserList { get; private set; }
 
-        
+
 
         public void OnGet() => UserList = UserService.GetUsers();
         // public void OnGet() {}
+
+
         public string CurrentUsername { get; set; }
+        // [BindProperties]
         public string CurrentPassword { get; set; }
         public string Msg { get; set; }
 
-        
+        public UserInput UserInput_test = new UserInput();
 
-       public IActionResult OnPost() {
-            if (CurrentUsername.Equals("abc") && CurrentPassword.Equals("123")) {
-                HttpContext.Session.SetString("Username", CurrentUsername);
+        public IActionResult OnPost(string id)
+        {
+            if (UserInput_test.user_name.Equals("abc") && UserInput_test.user_password.Equals("123"))
+            {
+                
+                HttpContext.Session.SetString("Username", UserInput_test.user_name);
                 return RedirectToPage("Login_Welcome");
             }
-            else {
-                Msg = "Invalid";
+            else
+            {
+                Msg = "Invalid Username or Password";
                 return Page();
             }
         }
 
-        public Boolean isValidUser() {
+        public Boolean isValidUser()
+        {
             return false;
         }
 
+    }
+
+    [BindProperties]
+    public class UserInput
+    {
+        public string user_name = "abc";
+        public string user_password = "123";
 
     }
+
 }
