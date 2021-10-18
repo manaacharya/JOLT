@@ -1,6 +1,4 @@
-﻿@page "{id}"
-@using ContosoCrafts.WebSite.Services
-@inject JsonFileUserService UserService
+﻿@page 
 @model ContosoCrafts.WebSite.Pages.LoginModel
 @{
     ViewData["Title"] = "Login";
@@ -15,25 +13,25 @@
 <body>
 
     <h3>Login Form</h3>
+    <div class=" container">
     @Model.Msg
-
     <form method="post" asp-page="login">
         <table>
             <tr>
                 <td>Username</td>
-                <td><input type="text" placeholder="Enter Username" asp-for="UserInput_test.user_name" /></td>
+                <td><input type="text" placeholder="Enter Username" asp-for="UserInput_test.username" /></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" placeholder="Enter Username" asp-for="CurrentPassword" /></td>
+                <td><input type="password" placeholder="Enter Username" asp-for="UserInput_test.password" /></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="submit" value="Login" /></td>
+                <td><input type="submit" value="Click Here to Login" /></td>
             </tr>
         </table>
     </form>
-
+    </div>
 
 
 </body>

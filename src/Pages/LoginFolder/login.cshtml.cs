@@ -31,23 +31,20 @@ namespace ContosoCrafts.WebSite.Pages
 
 
 
-        public void OnGet() => UserList = UserService.GetUsers();
+        // public void OnGet() => UserList = UserService.GetUsers();
         // public void OnGet() {}
 
-
-        public string CurrentUsername { get; set; }
-        // [BindProperties]
-        public string CurrentPassword { get; set; }
         public string Msg { get; set; }
 
-        public UserInput UserInput_test = new UserInput();
+        [BindProperty]
+        public Models.LoginModel UserInput_test { get; set; }
 
         public IActionResult OnPost(string id)
         {
-            if (UserInput_test.user_name.Equals("abc") && UserInput_test.user_password.Equals("123"))
+            if (UserInput_test.username.Equals("abc") && UserInput_test.password.Equals("123"))
             {
                 
-                HttpContext.Session.SetString("Username", UserInput_test.user_name);
+                HttpContext.Session.SetString("Username", UserInput_test.username);
                 return RedirectToPage("Login_Welcome");
             }
             else
@@ -63,13 +60,4 @@ namespace ContosoCrafts.WebSite.Pages
         }
 
     }
-
-    [BindProperties]
-    public class UserInput
-    {
-        public string user_name = "abc";
-        public string user_password = "123";
-
-    }
-
 }

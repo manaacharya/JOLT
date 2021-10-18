@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace ContosoCrafts.WebSite
 {
@@ -26,6 +27,17 @@ namespace ContosoCrafts.WebSite
 
             services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
             services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
+
+            // FX: added to in attempt to fix System.InvalidOperationException in login.cshtml.cs
+            // code...
+            /*
+            _ = services.AddSession(options =>
+              {
+                  options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+                options.Cookie.HttpOnly = true;
+                  options.Cookie.IsEssential = true;
+              });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +61,10 @@ namespace ContosoCrafts.WebSite
 
             app.UseAuthorization();
 
+            // FX: added to in attempt to fix System.InvalidOperationException in login.cshtml.cs
+            // app.UseSession();
+            // app.UseMvc();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
@@ -62,6 +78,10 @@ namespace ContosoCrafts.WebSite
                 //     return context.Response.WriteAsync(json);
                 // });
             });
+
+            
+
+
         }
     }
 }
