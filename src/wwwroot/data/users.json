@@ -1,12 +1,5 @@
 [
   {
-    "userID": 947498,
-    "username": "michiel123",
-    "password": "HzxTOc",
-    "email": "michiel@aol.com",
-    "location": "India"
-  },
-  {
     "userID": 343386,
     "username": "craigs34",
     "password": "FGTLep",
@@ -40,13 +33,6 @@
     "password": "vDEkwE",
     "email": "eminence@msn.com",
     "location": "United States of America"
-  },
-  {
-    "userID": 947498,
-    "username": "michiel123",
-    "password": "Together",
-    "email": "michiel@aol.com",
-    "location": "Mexico"
   },
   {
     "userID": 862765,
@@ -166,5 +152,12 @@
     "password": "Enter a password",
     "email": "Enter an email",
     "location": "Enter a location"
+  },
+  {
+    "userID": 947498,
+    "username": "michiel123",
+    "password": "HzxTOc",
+    "email": "michiel@aol.com",
+    "location": "China"
   }
 ]

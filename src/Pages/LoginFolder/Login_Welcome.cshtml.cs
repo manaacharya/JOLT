@@ -21,8 +21,8 @@ namespace ContosoCrafts.WebSite.Pages
         {
             // HttpContext.Session.Remove("Username");
 
-            // return RedirectToPage("Home page");
-            return Page();
+            return RedirectToPage("Login");
+            // return Page();
         }
     }
 }
