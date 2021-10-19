@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace ContosoCrafts.WebSite.Services
 {
-   public class JsonFileUserService
+    public class JsonFileUserService
     {
         public JsonFileUserService(IWebHostEnvironment webHostEnvironment)
         {
@@ -28,7 +28,7 @@ namespace ContosoCrafts.WebSite.Services
 
         public IEnumerable<UserModel> GetUsers()
         {
-            using(var jsonFileReader = File.OpenText(JsonFileName))
+            using (var jsonFileReader = File.OpenText(JsonFileName))
             {
                 return JsonSerializer.Deserialize<UserModel[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
@@ -37,7 +37,7 @@ namespace ContosoCrafts.WebSite.Services
                     });
             }
         }
-             
+
 
         /// <summary>
         ///  Service an Update To User Account
@@ -88,24 +88,24 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public UserModel GetUser(string name)
         {
-            // Return A Specific User using Name
-           // try
-           // {
-                return GetUsers().First(x => x.username == name);
-            //} catch
-            //{
-                //FX: NOT very usful so far
-             //   return null; 
-            //}
-            
+            return GetUsers().First(x => x.username == name);
+
         }
 
         /// FX: Get the password of a user(given an user entry is found)
 
         public string GetPassWord(string name)
         {
-            if (GetUser(name) == null) return "BAD_PASSWORD";
+
+            if (GetUser(name) == null)
+            {
+
+                throw new UsernameNotFoundException("Username not found.");
+            }
             return GetUser(name).password;
+
+
+
         }
         /// <summary>
         /// Save All users data to storage
@@ -194,5 +194,15 @@ namespace ContosoCrafts.WebSite.Services
 
             return data;
         }
+    }
+
+    /// <summary>
+    /// Used to throw exception when username is not found 
+    /// </summary>
+    public class UsernameNotFoundException : Exception
+    {
+        public UsernameNotFoundException() { }
+
+        public UsernameNotFoundException(string message) : base(message) { }
     }
 }
