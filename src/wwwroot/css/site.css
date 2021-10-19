@@ -149,11 +149,13 @@ ul {
     background: -webkit-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
     background: -o-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
     background: -moz-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
-    background: linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
+    /* change gradient of header*/
+    background: linear-gradient(110deg, #c54d49 75%, #5f2485 60%);
 }
 .bg-footer {
     background: -webkit-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
     background: -o-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
     background: -moz-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
-    background: linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
+    /* change gradient of footer*/
+    background: linear-gradient(110deg, #5f2485 75%, #c54d49 60%);
 }
