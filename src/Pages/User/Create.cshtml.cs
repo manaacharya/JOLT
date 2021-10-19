@@ -37,7 +37,7 @@ namespace ContosoCrafts.WebSite.Pages.User
             User = UserService.CreateData();
 
             // Redirect the webpage to the Update page populated with the data so the user can fill in the fields
-            return RedirectToPage("./Register", new { Id = User.userID });
+            return RedirectToPage("../Register", new { Id = User.userID });
         }
     }
 }
