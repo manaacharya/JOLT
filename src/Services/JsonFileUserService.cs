@@ -182,13 +182,13 @@ namespace ContosoCrafts.WebSite.Services
         /// Remove the item from the system
         /// </summary>
         /// <returns></returns>
-        public UserModel DeleteData(string id)
+        public UserModel DeleteData(UserModel data)
         {
             // Get the current set, and append the new record to it
-            var dataSet = GetUsers();
-            var data = dataSet.FirstOrDefault(m => m.userID.Equals(id));
+            var users = GetUsers();
+            var userData = users.FirstOrDefault(m => m.userID.Equals(data.userID));
 
-            var newDataSet = GetUsers().Where(m => m.userID.Equals(id) == false);
+            var newDataSet = GetUsers().Where(m => m.userID.Equals(data.userID) == false);
 
             SaveData(newDataSet);
 

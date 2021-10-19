@@ -40,10 +40,6 @@ namespace ContosoCrafts.WebSite.Pages
         
         //public void OnGet()
 
-        public void OnGet()
-        {
-            Users = UserServices.GetUsers();
-        }
         public IActionResult OnPost()
         {
             UserServices.UpdateProfile(UpdateUser);
@@ -58,6 +54,16 @@ namespace ContosoCrafts.WebSite.Pages
             return RedirectToPage("ProfilePage");
         }
 
+        public IActionResult OnPostDeleteProfile()
+        {
+            UserServices.DeleteData(UserModel);
+            Message = $"User deleted.";
+            //delete cookie
+            Response.Cookies.Delete("nameCookie"); 
+                return RedirectToPage("Register");
+
+
+        }
 
        /* public void OnPostUpdateUser()
         {
