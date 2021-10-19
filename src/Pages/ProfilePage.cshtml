@@ -98,43 +98,6 @@
                 <button type="submit" class="btn btn-primary">Create Polls Profile</button>
             </div>
         </div>
-
-        <hr />
-        <br />
-        <h3> Other Users </h3>
-        <div class="row">
-
-            <div class="col-auto">
-
-                <table class="table">
-
-                    <thead>
-                        <tr>
-                            <th scope="col" style="color: #ffffff">User Name</th>
-                            <th scope="col" style="color: #ffffff">Email</th>
-                            <th scope="col" style="color: #ffffff">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody style="color: #ffffff">
-
-                        @{
-                            foreach (UserModel people in UserService.GetUsers())
-                            {
-                                <tr>
-                                    <th> @people.username </th>
-                                    <th> @people.email </th>
-                                    <th> @people.location </th>
-                                </tr>
-                            }
-                        }
-
-                    </tbody>
-                </table>
-
-            </div>
-
-        </div>
-
         <br />
 
     </div>
