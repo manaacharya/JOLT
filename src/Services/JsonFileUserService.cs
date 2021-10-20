@@ -179,27 +179,38 @@ namespace ContosoCrafts.WebSite.Services
         /// Remove the item from the system
         /// </summary>
         /// <returns></returns>
-        public UserModel DeleteData(UserModel data)
+        public void DeleteData(int id)
         {
             // Get the current set, and append the new record to it
-            var users = GetUsers();
-            var userData = users.FirstOrDefault(m => m.userID.Equals(data.userID));
+            //var dataSet = GetUsers();
+            //var data = dataSet.FirstOrDefault(m => m.userID.Equals(id));
 
-            var newDataSet = GetUsers().Where(m => m.userID.Equals(data.userID) == false);
+            //var newDataSet = GetUsers().Where(m => m.userID.Equals(id) == false);
+            //UserModel userModel = new UserModel();
 
-            SaveData(newDataSet);
+            List<UserModel> update_users_list = GetUsers().ToList();
 
-            return data;
+            // Get the Old User, By searching for The ID
+            UserModel get_storedUser = update_users_list.Find(x => x.userID == id); // GetUsers().First(x => x.userID == updateuser.UpdateID);
+
+            // Remove Old Data From List
+            update_users_list.Remove(get_storedUser);
+
+            //convert list into Json
+            SaveData(update_users_list);
+
         }
-    }
 
-    /// <summary>
-    /// Used to throw exception when username is not found 
-    /// </summary>
-    public class UsernameNotFoundException : Exception
-    {
-        public UsernameNotFoundException() { }
 
-        public UsernameNotFoundException(string message) : base(message) { }
+
+        /// <summary>
+        /// Used to throw exception when username is not found 
+        /// </summary>
+        public class UsernameNotFoundException : Exception
+        {
+            public UsernameNotFoundException() { }
+
+            public UsernameNotFoundException(string message) : base(message) { }
+        }
     }
 }

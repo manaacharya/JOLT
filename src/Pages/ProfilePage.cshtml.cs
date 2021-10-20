@@ -38,7 +38,7 @@ namespace ContosoCrafts.WebSite.Pages
             UserServices = userService;
         }
         
-        //public void OnGet()
+       
 
         public IActionResult OnPost()
         {
@@ -54,13 +54,16 @@ namespace ContosoCrafts.WebSite.Pages
             return RedirectToPage("ProfilePage");
         }
 
-        public IActionResult OnPostDeleteProfile()
+
+        public IActionResult OnPostDeleteProfile(string id)
         {
-            UserServices.DeleteData(UserModel);
+            //UserModel userModel = new UserModel();
+            //userModel = UserServices.GetUsers().FirstOrDefault(x => x.userID.Equals(id));
+            UserServices.DeleteData(int.Parse(id));
             Message = $"User deleted.";
             //delete cookie
             Response.Cookies.Delete("nameCookie"); 
-                return RedirectToPage("Register");
+            return RedirectToPage("Index");
 
 
         }
