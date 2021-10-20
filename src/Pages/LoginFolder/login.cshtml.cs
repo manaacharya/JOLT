@@ -42,23 +42,38 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param id> user id to verify</param>
         public IActionResult OnPost(string id)
         {
-            string correct_password = UserService.GetPassWord(UserInput_test.username);
-            if (UserInput_test.username != null && UserInput_test.password != null) { 
-               if (UserInput_test.password.Equals(correct_password)) {
-                    // Cookies Creation -- Edwin 
-                    Response.Cookies.Append("nameCookie", UserInput_test.username); 
-                    return RedirectToPage("Login_Welcome");
-                }
-                else 
+
+            if (UserInput_test.username != null && UserInput_test.password != null)
+            {
+                bool InputVerified = false;
+                try
                 {
+                    InputVerified = UserService.isCorrectPassword(UserInput_test.username, UserInput_test.password);
+                    if (InputVerified)
+                    {
+                        Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
+                        return RedirectToPage("Login_Welcome");
+                    }
+                    else
+                    {
+                        // incorrect password
+                        Msg = "Invalid Username or Password";
+                        return Page();
+                    }
+
+                }
+                catch
+                {
+                    // username does not exist
                     Msg = "Invalid Username or Password";
                     return Page();
                 }
-            } else
-            {
-                Msg = "No Empty Entry";
-                return Page();
+
             }
+
+            Msg = "No Empty Entry";
+            return Page();
+            
         }
     }
 }

@@ -103,5 +103,12 @@
     "password": "password",
     "email": "js123@seattle.edu",
     "location": "Ireland"
+  },
+  {
+    "userID": 588571,
+    "username": "Jason",
+    "password": "123456",
+    "email": "xfs@gmail.com",
+    "location": "United States"
   }
 ]

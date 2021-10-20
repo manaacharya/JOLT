@@ -94,33 +94,43 @@ namespace ContosoCrafts.WebSite.Services
             } 
             catch
             {
-                throw new UsernameNotFoundException("USER Doesn't Exist");
+                throw new UsernameNotFoundException("User doesn't exit");
             }
-            //if (GetUsers().First(x => x.username == name) == null)
-           
-
         }
 
         /// FX: Get the password of a user(given an user entry is found)
-
         public string GetPassWord(string name)
         {
-            /* if (GetUser(name) == null)
-            {
-
-                throw new UsernameNotFoundException("Username not found.");
-            }*/
-
             try
             {
                 return GetUser(name).password;
 
-            } catch(UsernameNotFoundException ex)
+            } catch
             {
-                return "User Does not Exist";
+                throw new UsernameNotFoundException
+                    ("Can't find the password due to non-existing username");
             }
-           
+        }
+        
+        /// <summary>
+        /// return true if username's correct password is password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool isCorrectPassword(string username, string password)
+        {
+            try
+            {
 
+                return GetPassWord(username).Equals(password);
+
+            }
+            catch
+            {
+                throw new UsernameNotFoundException
+                    ("Can't find the password due to non-existing username");
+            }
         }
         /// <summary>
         /// Save All users data to storage
@@ -230,6 +240,8 @@ namespace ContosoCrafts.WebSite.Services
             public UsernameNotFoundException() { }
 
             public UsernameNotFoundException(string message) : base(message) { }
+
         }
+
     }
 }
