@@ -12,26 +12,26 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class RegisterModel : PageModel
     {
+        private readonly ILogger<RegisterModel> _logger;
+
 
         // Data middletier
-        public JsonFileUserService UserService { get; }
+        public JsonFileUserService UserService { get; set; }
         /// <summary>
         /// Defualt Construtor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="userService"></param>
-        public RegisterModel(JsonFileUserService userService)
+        // The data to show, bind to it for the post
+        public RegisterModel(ILogger<RegisterModel> logger, JsonFileUserService userService)
         {
+            _logger = logger;
             UserService = userService;
         }
-        // The data to show, bind to it for the post
         [BindProperty]
         public UserModel User{ get; set; }
 
-        /*public RegisterModel(ILogger<RegisterModel> logger)
-        {
-            _logger = logger;
-        }*/
+
 
         /// <summary>
         /// REST Get request
@@ -40,7 +40,8 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="id"></param>
         public void OnGet(string id)
         {
-            User = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(id));
+           int userID = Convert.ToInt32(id);
+            User = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(userID));
         }
 
         /// <summary>
@@ -52,10 +53,13 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            System.Diagnostics.Debug.WriteLine(User.username);
 
             UserService.UpdateData(User);
 

@@ -70,6 +70,68 @@
 
 <script>
 
+    $(document).ready(function () {
+        //Empty all default values in fields on start Page and disable button
+        $("#username, #email, #password, #confirmPassword, #location").val('');
+        $('#submitRegistration').prop('disabled', true);
+
+
+
+        $("#username, #password, #email, #confirmPassword, #location").on('change keyup keypress keypress blur', function (e) {
+
+            var isEmpty = false
+            var isPassMatch = false
+            var isError = false
+
+            //check if there are any errors existing enable button, otherwise disable button
+            if ($('#usernameError').html() != '' || $('#emailError').html() != '' || $('#passwordError').html() != '' || $('#confirmPasswordError').html() != '' || $('#locationError').html() != '') {
+                //No error
+                isError = false
+
+
+            }
+            else {
+                //error
+                isError = true
+
+            }
+
+            //check if there are any empty fields existing enable button, otherwise disable button
+            if ($('#username').val() == '' || $('#email').val() == '' || $('#password').val() == '' || $('#confirmPassword').val() == '' || $('#location').val() == '') {
+                isEmpty = true
+
+
+            }
+            else {
+                isEmpty = false
+
+            }
+
+            //Check if confirm password == password, if not, disable button
+            if (
+                ($("#confirmPassword").val() != $("#password").val()) && $("#confirmPassword").val() != '') {
+                isPassMatch = true
+                $('#confirmPasswordError').html('* Passwords do not match');
+
+            } else {
+                isPassMatch = false
+                $('#confirmPasswordError').html('');
+
+
+            }
+
+
+            //check if the button should ultimately be enabled or disabled
+            if (isEmpty || isPassMatch || isError) {
+
+                $('#submitRegistration').prop('disabled', true);
+            } else {
+                $('#submitRegistration').prop('disabled', false);
+            }
+
+        });
+    });
+
 
 </script>
 
