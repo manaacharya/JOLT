@@ -30,7 +30,7 @@ namespace ContosoCrafts.WebSite.Models
         [Required(ErrorMessage = "* This field is required")]
         public string email { get; set; }
 
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "* Location can only have letters")]
+        [RegularExpression("^[a-zA-Z' ']+$", ErrorMessage = "* Location can only have letters")]
         [Required(ErrorMessage = "* This field is required")]
         public string location { get; set; }
 

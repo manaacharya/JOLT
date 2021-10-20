@@ -88,7 +88,16 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public UserModel GetUser(string name)
         {
-            return GetUsers().First(x => x.username == name);
+            try
+            {
+                return GetUsers().First(x => x.username == name);
+            } 
+            catch
+            {
+                throw new UsernameNotFoundException("USER Doesn't Exist");
+            }
+            //if (GetUsers().First(x => x.username == name) == null)
+           
 
         }
 
@@ -96,15 +105,21 @@ namespace ContosoCrafts.WebSite.Services
 
         public string GetPassWord(string name)
         {
-
-            if (GetUser(name) == null)
+            /* if (GetUser(name) == null)
             {
 
                 throw new UsernameNotFoundException("Username not found.");
+            }*/
+
+            try
+            {
+                return GetUser(name).password;
+
+            } catch(UsernameNotFoundException ex)
+            {
+                return "User Does not Exist";
             }
-            return GetUser(name).password;
-
-
+           
 
         }
         /// <summary>
@@ -161,6 +176,7 @@ namespace ContosoCrafts.WebSite.Services
         public UserModel UpdateData(UserModel data)
         {
             var users = GetUsers();
+            // Validation for No Existing User
             var userData = users.FirstOrDefault(x => x.userID.Equals(data.userID));
             if (userData == null)
             {
