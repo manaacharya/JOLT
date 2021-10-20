@@ -16,37 +16,48 @@
                 <div class="col-sm">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <form id='registrationForm' method="post" asp-page="Register">
                                 @Html.HiddenFor(x => x.User.userID)
 
                                 <div class="form-group">
                                     <label asp-for="User.username">Username</label>
-                                    <input asp-for="User.username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
-                                    <span asp-validation-for="User.username" class="text-danger"></span>
+                                    <div class="input-group mb-3">
+                                        @Html.EditorFor(model => model.User.username, new { htmlAttributes = new { id = "username", @class = "form-control", placeholder = "Username" } })
+                                    </div>
+                                    <span id="usernameError" asp-validation-for="User.username" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="User.email">Email</label>
-                                    <input asp-for="User.email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                    <span asp-validation-for="User.email" class="text-danger"></span>
+                                    <div class="input-group mb-3">
+                                        @Html.EditorFor(model => model.User.email, new { htmlAttributes = new { id = "email", @class = "form-control", placeholder = "Email" } })
+                                    </div>
+                                    <span confirmPasswordError="emailError" asp-validation-for="User.email" class="text-danger"></span>
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="User.password">Password</label>
-                                    <input asp-for="User.password" type="password" class="form-control" id="password" placeholder="Enter Password">
-                                    <span asp-validation-for="User.password" class="text-danger"></span>
+                                    <div class="input-group mb-3">
+                                        @Html.EditorFor(model => model.User.password, new { htmlAttributes = new { type = "password", id = "password", @class = "form-control", placeholder = "Password" } })
+                                    </div>
+                                    <span id="passwordError" asp-validation-for="User.password" class="text-danger"></span>
+
                                 </div>
-                                @*<div class="form-group">
+                                <div class="form-group">
                                     <label for="ConfirmPassword">Confirm Password</label>
-                                    <input id="confirmPassword" onchange="confirmPassword();" for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
-                                    <span class="text-danger"></span>
-                                </div>*@
+                                    <input id="confirmPassword" for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
+                                    <span id ="confirmPasswordError" class="text-danger"></span>
+                                </div>
                                 <div class="form-group">
                                     <label asp-for="User.location">Location</label>
-                                    <input asp-for="User.location" type="text" class="form-control" id="location" placeholder="Enter your country">
-                                    <span asp-validation-for="User.location" class="text-danger"></span>
+                                    <div class="input-group mb-3">
+                                        @Html.EditorFor(model => model.User.location, new { htmlAttributes = new { id = "location", @class = "form-control", placeholder = "Location" } })
+                                    </div>
+                                    <span id="locationError" asp-validation-for="User.location" class="text-danger"></span>
+
                                 </div>
-                                <button type="submit" value="save" class="btn btn-primary">Register</button>
+                                <button id="submitRegistration" type="submit" value="save" class="btn btn-primary">Register</button>
                             </form>
                         </div>
                     </div>
@@ -55,19 +66,76 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 
+    $(document).ready(function () {
+        //Empty all default values in fields on start Page and disable button
+        $("#username, #email, #password, #confirmPassword, #location").val('');
+        $('#submitRegistration').prop('disabled', true);
 
-@*    function confirmPassword() {
-        alert('hey')
-        var password = document.getElementById('confirmPassword').value;
-        alert(password)
 
-    }
-*@
+
+        $("#username, #password, #email, #confirmPassword, #location").on('change keyup keypress keypress blur', function (e) {
+
+            var isEmpty = false
+            var isPassMatch = false
+            var isError = false
+
+            //check if there are any errors existing enable button, otherwise disable button
+            if ($('#usernameError').html() != '' || $('#emailError').html() != '' || $('#passwordError').html() != '' || $('#confirmPasswordError').html() != '' || $('#locationError').html() != '') {
+                //No error
+                isError = false
+
+
+            }
+            else {
+                //error
+                isError = true
+
+            }
+
+            //check if there are any empty fields existing enable button, otherwise disable button
+            if ($('#username').val() == '' || $('#email').val() == '' || $('#password').val() == '' || $('#confirmPassword').val() == '' || $('#location').val() == '') {
+                isEmpty = true
+
+
+            }
+            else {
+                isEmpty = false
+
+            }
+
+            //Check if confirm password == password, if not, disable button
+            if (
+                ($("#confirmPassword").val() != $("#password").val()) && $("#confirmPassword").val() != '') {
+                isPassMatch = true
+                $('#confirmPasswordError').html('* Passwords do not match');
+
+            } else {
+                isPassMatch = false
+                $('#confirmPasswordError').html('');
+
+
+            }
+
+
+            //check if the button should ultimately be enabled or disabled
+            if (isEmpty || isPassMatch || isError) {
+
+                $('#submitRegistration').prop('disabled', true);
+            } else {
+                $('#submitRegistration').prop('disabled', false);
+            }
+
+        });
+    });
+
+
 </script>
 
 @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
