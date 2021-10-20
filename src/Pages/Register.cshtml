@@ -1,4 +1,5 @@
-﻿@page "{id}"
+﻿@page
+@using ContosoCrafts.WebSite.Models
 @using ContosoCrafts.WebSite.Services
 @inject JsonFileUserService UserService
 @model ContosoCrafts.WebSite.Pages.RegisterModel
@@ -17,7 +18,7 @@
                     <div class="card">
                         <div class="card-body">
                             <form id='registrationForm' method="post" asp-page="Register">
-                                @Html.HiddenFor(x => x.User.userID)
+                                @*@Html.HiddenFor(x => x.User.userID)*@
 
                                 <div class="form-group">
                                     <label asp-for="User.username">Username</label>
@@ -47,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="ConfirmPassword">Confirm Password</label>
                                     <input id="confirmPassword" for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
-                                    <span id ="confirmPasswordError" class="text-danger"></span>
+                                    <span id="confirmPasswordError" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="User.location">Location</label>

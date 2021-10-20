@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,7 +29,7 @@
                         <li class="btn">
                         <li>
                         <li class="nav-item">
-                            <a class="btn btn-primary"  asp-page="/User/Create"> <i class="fa fa-user-plus"></i> Register</a>
+                            <a class="btn btn-primary" asp-page="/Register"> <i class="fa fa-user-plus"></i> Register</a>
                         </li> &nbsp; &nbsp;
                         <li class="nav-item">
                             <a class="btn btn-primary" asp-page="/LoginFolder/Login"> User Login</a>
@@ -45,13 +46,25 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+
+                        @{
+                            var cookie = Html.Raw(HttpContextAccessor.HttpContext.Request.Cookies["nameCookie"]).ToString();
+
+                            if (cookie.ToString() != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/ProfilePage">@cookie</a>
+                                </li>
+                            }
+                        }
+
                     </ul>
                 </div>
             </div>
-            
+
         </nav>
     </header>
-    
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -59,7 +72,7 @@
     </div>
     <br />
     <hr />
-    
+
     <footer class="border-top footer text-muted bg-footer">
         <div class="container">
             &copy; 2021 - WorldWidePolling.Website

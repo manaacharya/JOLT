@@ -53,15 +53,13 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
-
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
             System.Diagnostics.Debug.WriteLine(User.username);
 
-            UserService.UpdateData(User);
+            UserService.CreateData(User);
 
             return RedirectToPage("./Index");
         }

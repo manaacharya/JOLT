@@ -146,16 +146,16 @@ namespace ContosoCrafts.WebSite.Services
         /// After create the user can update to set values
         /// </summary>
         /// <returns></returns>
-        public UserModel CreateData()
+        public UserModel CreateData(UserModel user)
         {
             Random rnd = new Random();
             var data = new UserModel()
             {
                 userID = rnd.Next(1, 999999), //generate a random number between 1 and 999999 to be 6 digits
-                username = "Enter a username",
-                password = "Enter a password",
-                email = "Enter an email",
-                location = "Enter a location",
+                username = user.username,
+                password = user.password,
+                email = user.email,
+                location = user.location,
             };
 
             // Get the current set, and append the new record to it becuase IEnumerable does not have Add
@@ -173,8 +173,10 @@ namespace ContosoCrafts.WebSite.Services
         /// Save to the data store
         /// </summary>
         /// <param name="data"></param>
-        public UserModel UpdateData(UserModel data)
+        /*public UserModel UpdateData(UserModel data)
         {
+            Random rnd = new Random();
+
             var users = GetUsers();
             // Validation for No Existing User
             var userData = users.FirstOrDefault(x => x.userID.Equals(data.userID));
@@ -182,6 +184,7 @@ namespace ContosoCrafts.WebSite.Services
             {
                 return null;
             }
+          //  userData.userID = rnd.Next(1, 999999);
 
             userData.username = data.username;
             userData.email = data.email;
@@ -190,7 +193,7 @@ namespace ContosoCrafts.WebSite.Services
             SaveData(users);
 
             return userData;
-        }
+        }*/
         /// <summary>
         /// Remove the item from the system
         /// </summary>

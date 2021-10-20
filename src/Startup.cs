@@ -1,6 +1,7 @@
 using ContosoCrafts.WebSite.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +25,7 @@ namespace ContosoCrafts.WebSite
             services.AddServerSideBlazor();
             services.AddHttpClient();
             services.AddControllers();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
             services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
