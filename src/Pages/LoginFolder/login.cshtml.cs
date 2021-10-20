@@ -15,9 +15,7 @@ namespace ContosoCrafts.WebSite.Pages
     {
 
 
-
         private readonly ILogger<IndexModel> _logger;
-
         public LoginModel(ILogger<IndexModel> logger,
             JsonFileUserService userService)
         {
@@ -30,7 +28,6 @@ namespace ContosoCrafts.WebSite.Pages
         public IEnumerable<UserModel> UserList { get; private set; }
 
 
-
         public void OnGet() => UserList = UserService.GetUsers();
         // public void OnGet() {}
 
@@ -39,16 +36,15 @@ namespace ContosoCrafts.WebSite.Pages
         [BindProperty]
         public Models.LoginModel UserInput_test { get; set; }
 
+        // what happens after clicking "click to login button"
         public IActionResult OnPost(string id)
         {
             string correct_password = UserService.GetPassWord(UserInput_test.username);
             if (UserInput_test.username != null && UserInput_test.password != null) { 
                if (UserInput_test.password.Equals(correct_password)) {
                     // HttpContext.Session.SetString("Username", UserInput_test.username);
-
                     // Cookies Creation -- Edwin 
                     Response.Cookies.Append("nameCookie", UserInput_test.username); 
-                   
                     return RedirectToPage("Login_Welcome");
                 }
                 else 
@@ -61,14 +57,6 @@ namespace ContosoCrafts.WebSite.Pages
                 Msg = "No Empty Entry";
                 return Page();
             }
-
-
         }
-
-        public Boolean isValidUser()
-        {
-            return false;
-        }
-
     }
 }

@@ -20,9 +20,7 @@ namespace ContosoCrafts.WebSite.Pages
         public IActionResult OnGetLogout()
         {
             // HttpContext.Session.Remove("Username");
-
             return RedirectToPage("Login");
-            // return Page();
         }
     }
 }
