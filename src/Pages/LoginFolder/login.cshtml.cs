@@ -25,24 +25,26 @@ namespace ContosoCrafts.WebSite.Pages
 
 
         public JsonFileUserService UserService { get; }
-        public IEnumerable<UserModel> UserList { get; private set; }
+        public IEnumerable<UserModel> UserList { get; private set; } // list of users
 
 
-        public void OnGet() => UserList = UserService.GetUsers();
-        // public void OnGet() {}
+        public void OnGet() => UserList = UserService.GetUsers(); //initialize UserList
 
-        public string Msg { get; set; }
+        public string Msg { get; set; } // A message for user to see
 
         [BindProperty]
-        public Models.LoginModel UserInput_test { get; set; }
+        public Models.LoginModel UserInput_test { get; set; } // helper class for user input
 
-        // what happens after clicking "click to login button"
+        
+        /// <summary>
+        ///  If user is valid, direct to login_welcome page; if not, display message to instruct users
+        /// </summary>
+        /// <param id> user id to verify</param>
         public IActionResult OnPost(string id)
         {
             string correct_password = UserService.GetPassWord(UserInput_test.username);
             if (UserInput_test.username != null && UserInput_test.password != null) { 
                if (UserInput_test.password.Equals(correct_password)) {
-                    // HttpContext.Session.SetString("Username", UserInput_test.username);
                     // Cookies Creation -- Edwin 
                     Response.Cookies.Append("nameCookie", UserInput_test.username); 
                     return RedirectToPage("Login_Welcome");

@@ -38,8 +38,9 @@ namespace ContosoCrafts.WebSite.Pages
             UserServices = userService;
         }
         
-       
+        
 
+        // Update the user's information with new entires
         public IActionResult OnPost()
         {
             UserServices.UpdateProfile(UpdateUser);
@@ -55,6 +56,7 @@ namespace ContosoCrafts.WebSite.Pages
         }
 
 
+        // delete the user that's currently logged in, and direct to home page
         public IActionResult OnPostDeleteProfile(string id)
         {
             //UserModel userModel = new UserModel();

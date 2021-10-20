@@ -38,14 +38,13 @@ namespace ContosoCrafts.WebSite.Pages
             UserServices = userService;
         }
         
-        //public void OnGet()
-
+        // initializes a list of all 
         public void OnGet()
         {
             Users = UserServices.GetUsers();
         }
    
-        }
+     }
 
 
 }

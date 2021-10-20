@@ -14,13 +14,6 @@ namespace ContosoCrafts.WebSite.Pages
 
         public void OnGet()
         {
-            // SUsername = HttpContext.Session.GetString("Username");
-        }
-
-        public IActionResult OnGetLogout()
-        {
-            // HttpContext.Session.Remove("Username");
-            return RedirectToPage("Login");
         }
     }
 }

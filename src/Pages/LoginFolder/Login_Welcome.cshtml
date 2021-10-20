@@ -9,20 +9,21 @@
     <meta name="viewport" content="width=device-width" />
     <title>Welcome</title>
 </head>
+
 <body>
-
     <h1>Welcome </h1>
- @*   <a asp-page="Login_Welcome" asp-page-handler="Logout">Refresh Login Page</a> *@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <a asp-page="login" class="btn btn-danger">back to login</a>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @* direct to login page*@
+                <a asp-page="login" class="btn btn-danger">back to login</a>
+            </div>
+            <div class="col">
+                @* direct to user profile page*@
+                <a asp-page="/ProfilePage" class="btn btn-outline-success"> Go to Profile </a>
+            </div>
         </div>
-        <div class="col">
-            <a asp-page="/ProfilePage" class="btn btn-outline-success"> Go to Profile </a>
-        </div>
-    </div>
 
-</div>
+    </div>
 </body>
 </html>
