@@ -171,9 +171,6 @@ namespace ContosoCrafts.WebSite.Services
             userData.email = data.email;
             userData.password = data.password;
             userData.location = data.location;
-            System.Diagnostics.Debug.WriteLine("MOOOSE WAS HERE: " + userData.username);
-            System.Diagnostics.Debug.WriteLine(userData.email);
-            System.Diagnostics.Debug.WriteLine(userData.password);
             SaveData(users);
 
             return userData;
