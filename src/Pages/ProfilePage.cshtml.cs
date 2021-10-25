@@ -43,11 +43,23 @@ namespace ContosoCrafts.WebSite.Pages
         // Update the user's information with new entires
         public IActionResult OnPost()
         {
-            UserServices.UpdateProfile(UpdateUser);
+            if (UpdateUser == null)
+            {
+                return RedirectToPage("ProfilePage");
+            }
+
+            var updateStatus = UserServices.UpdateProfile(UpdateUser);
+
+            if (updateStatus == null)
+            {
+                // Error Updating User
+                Message = $"Error Updating {UpdateUser.UpdateName}";
+
+                return RedirectToPage("ProfilePage");
+            }
 
             // Updated Cookie To User Name
             Response.Cookies.Delete("nameCookie");
-
             Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
 
             Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";

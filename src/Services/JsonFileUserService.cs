@@ -43,12 +43,18 @@ namespace ContosoCrafts.WebSite.Services
         ///  Service an Update To User Account
         /// </summary>
         /// <param name="updateuser"></param>
-        public void UpdateProfile(UpdateUserModel updateuser)
+        public UserModel UpdateProfile(UpdateUserModel updateuser)
         {
             List<UserModel> update_users_list = GetUsers().ToList();
 
             // Get the Old User, By searching for The ID
             UserModel get_storedUser = update_users_list.Find(x => x.userID == updateuser.UpdateID); // GetUsers().First(x => x.userID == updateuser.UpdateID);
+
+            if (get_storedUser == null)
+            {
+                // No Such User Exist
+                return null;
+            }
 
             // Remove Old Data From List
             update_users_list.Remove(get_storedUser);
@@ -65,6 +71,8 @@ namespace ContosoCrafts.WebSite.Services
 
             // Write Back to Database
             SaveData(update_users_list);
+
+            return get_storedUser;
         }
 
 
