@@ -1,0 +1,106 @@
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using NUnit.Framework;
+using Moq;
+
+using ContosoCrafts.WebSite.Pages;
+using ContosoCrafts.WebSite.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace UnitTests.Pages.Users
+{
+    class UpdateProfilePage
+    {
+        #region TestSetup
+        public static ProfilePageModel pageModel;
+
+        [SetUp]
+        public void TestInitialize()
+        {
+            var MockLoggerDirect = Mock.Of<ILogger<ProfilePageModel>>();
+
+            pageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
+            {
+                PageContext = TestHelper.PageContext
+            };
+        }
+
+        #endregion TestSetup
+
+        #region OnPost
+        [Test]
+        public void OnPost_Valid_UserModel_Should_Return_Page()
+        {
+            // Valid Update
+
+            // ---- Arrange ----
+            int userID = 343386;
+            pageModel.UpdateUser = new UpdateUserModel()
+            {
+                UpdateID = userID,
+                UpdateName = "TestName",
+                UpdatePassword = "TestPassword",
+                UpdateEmail = "Test123@gmail.com",
+                UpdateLocation = "Canada"
+            };
+
+            pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
+
+            // ---- Act ----
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // ---- Reset ----
+
+            // ---- Assert ----
+
+            Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
+            // Confirm User Is Updated
+            Assert.AreEqual("TestName", TestHelper.UserService.GetUser(userID).username);
+        }
+
+        [Test]
+        public void OnPost_InValid_ModelState_Should_Return_Page()
+        {
+            // ---- Arrange ----
+
+            // Force an invalid error state
+            pageModel.ModelState.AddModelError("no update", "No Updates Made");
+
+            // ---- Act ----
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // ---- Assert ----
+            Assert.AreEqual(false, pageModel.ModelState.IsValid);
+        }
+
+        [Test]
+        public void OnPost_InValid_UserModel_Should_Return_Page()
+        {
+            // InValid Update
+            // ---- Arrange ----
+            int invalidID = 999999;
+
+            pageModel.UpdateUser = new UpdateUserModel()
+            {
+                UpdateID = invalidID,
+                UpdateName = "BogusName",
+                UpdatePassword = "BogusPassword",
+                UpdateEmail = "bogus123@gmail.com",
+                UpdateLocation = "Bogus"
+            };
+
+            // ---- Act ----
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // ---- Reset ----
+
+            // ---- Assert ----
+            var errorMessage = pageModel.Message;
+            Assert.AreEqual(errorMessage, "Error Updating BogusName");
+
+        }
+
+        #endregion OnPost
+    }
+}
