@@ -86,6 +86,52 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
         }
 
+        public void Valid_Username_Incorrect_Password_Should_Display_Error()
+        {
+            // Arrange
+            int userID = 157465;
+            pageModel.UserInput_test = new UserLoginModel()
+            {
+                username = "lakers34",
+                password = "INCORRECT_PASSWORD"
+            };
+            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
+
+            // Act
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // Reset
+            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+
+            // Assert
+            Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
+            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
+        }
+
+        public void Incorrect_Username_Incorrect_Password_Should_Display_Error()
+        {
+            // Arrange
+            int userID = 157465;
+            pageModel.UserInput_test = new UserLoginModel()
+            {
+                username = "INCORRECT_USERNAME",
+                password = "INCORRECT_PASSWORD"
+            };
+            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
+
+            // Act
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // Reset
+            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+
+            // Assert
+            Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
+            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
+        }
+
         #endregion OnPost
     }
     
