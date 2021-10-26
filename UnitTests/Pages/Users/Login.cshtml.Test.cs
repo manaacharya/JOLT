@@ -129,7 +129,7 @@ namespace UnitTests.Pages.Users
             // Assert
             Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
             Assert.AreEqual(true, result.PageName.Contains("Login"));
-            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
+            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username); 
         }
 
         #endregion OnPost
