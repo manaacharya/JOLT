@@ -63,14 +63,12 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
         }
 
+        [Test]
         public void Null_Username_Null_Password_Should_Display_Error()
         {
             // Arrange
-            int userID = 157465;
             pageModel.UserInput_test = new UserLoginModel()
             {
-                username = null,
-                password = null
             };
             // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
 
@@ -81,15 +79,14 @@ namespace UnitTests.Pages.Users
             // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
 
             // Assert
-            Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
+            Assert.AreEqual("No Empty Entry", pageModel.Msg);
             Assert.AreEqual(true, result.PageName.Contains("Login"));
-            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
         }
 
+        [Test]
         public void Valid_Username_Incorrect_Password_Should_Display_Error()
         {
             // Arrange
-            int userID = 157465;
             pageModel.UserInput_test = new UserLoginModel()
             {
                 username = "lakers34",
@@ -106,13 +103,12 @@ namespace UnitTests.Pages.Users
             // Assert
             Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
             Assert.AreEqual(true, result.PageName.Contains("Login"));
-            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
         }
 
+        [Test]
         public void Incorrect_Username_Incorrect_Password_Should_Display_Error()
         {
             // Arrange
-            int userID = 157465;
             pageModel.UserInput_test = new UserLoginModel()
             {
                 username = "INCORRECT_USERNAME",
@@ -129,7 +125,6 @@ namespace UnitTests.Pages.Users
             // Assert
             Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
             Assert.AreEqual(true, result.PageName.Contains("Login"));
-            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username); 
         }
 
         #endregion OnPost
