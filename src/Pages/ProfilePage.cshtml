@@ -95,10 +95,11 @@
                 <form method="post" asp-page-handler="DeleteProfile">
                     <button value="@user.userID" name="id" type="submit" class="btn btn-primary">Delete Profile</button>
                 </form>
-</div>
+            </div>
 
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Create Polls Profile</button>
+
+                <a asp-page="/PollsPage" class="btn btn-outline-success">Create Polls Profile</a>
             </div>
         </div>
         <br />
