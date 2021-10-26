@@ -21,28 +21,28 @@
                                 @*@Html.HiddenFor(x => x.User.userID)*@
 
                                 <div class="form-group">
-                                    <label asp-for="User.username">Username</label>
+                                    <label asp-for="BindUser.username">Username</label>
                                     <div class="input-group mb-3">
-                                        @Html.EditorFor(model => model.User.username, new { htmlAttributes = new { id = "username", @class = "form-control", placeholder = "Username" } })
+                                        @Html.EditorFor(model => model.BindUser.username, new { htmlAttributes = new { id = "username", @class = "form-control", placeholder = "Username" } })
                                     </div>
-                                    <span id="usernameError" asp-validation-for="User.username" class="text-danger"></span>
+                                    <span id="usernameError" asp-validation-for="BindUser.username" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="User.email">Email</label>
+                                    <label asp-for="BindUser.email">Email</label>
                                     <div class="input-group mb-3">
-                                        @Html.EditorFor(model => model.User.email, new { htmlAttributes = new { id = "email", @class = "form-control", placeholder = "Email" } })
+                                        @Html.EditorFor(model => model.BindUser.email, new { htmlAttributes = new { id = "email", @class = "form-control", placeholder = "Email" } })
                                     </div>
-                                    <span confirmPasswordError="emailError" asp-validation-for="User.email" class="text-danger"></span>
+                                    <span confirmPasswordError="emailError" asp-validation-for="BindUser.email" class="text-danger"></span>
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="User.password">Password</label>
+                                    <label asp-for="BindUser.password">Password</label>
                                     <div class="input-group mb-3">
-                                        @Html.EditorFor(model => model.User.password, new { htmlAttributes = new { type = "password", id = "password", @class = "form-control", placeholder = "Password" } })
+                                        @Html.EditorFor(model => model.BindUser.password, new { htmlAttributes = new { type = "password", id = "password", @class = "form-control", placeholder = "Password" } })
                                     </div>
-                                    <span id="passwordError" asp-validation-for="User.password" class="text-danger"></span>
+                                    <span id="passwordError" asp-validation-for="BindUser.password" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group">
@@ -51,11 +51,11 @@
                                     <span id="confirmPasswordError" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="User.location">Location</label>
+                                    <label asp-for="BindUser.location">Location</label>
                                     <div class="input-group mb-3">
-                                        @Html.EditorFor(model => model.User.location, new { htmlAttributes = new { id = "location", @class = "form-control", placeholder = "Location" } })
+                                        @Html.EditorFor(model => model.BindUser.location, new { htmlAttributes = new { id = "location", @class = "form-control", placeholder = "Location" } })
                                     </div>
-                                    <span id="locationError" asp-validation-for="User.location" class="text-danger"></span>
+                                    <span id="locationError" asp-validation-for="BindUser.location" class="text-danger"></span>
 
                                 </div>
                                 <button id="submitRegistration" type="submit" value="save" class="btn btn-primary">Register</button>

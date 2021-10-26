@@ -29,7 +29,7 @@ namespace ContosoCrafts.WebSite.Pages
             UserService = userService;
         }
         [BindProperty]
-        public UserModel User{ get; set; }
+        public UserModel BindUser{ get; set; }
 
 
 
@@ -41,7 +41,7 @@ namespace ContosoCrafts.WebSite.Pages
         public void OnGet(string id)
         {
            int userID = Convert.ToInt32(id);
-            User = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(userID));
+            BindUser = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(userID));
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace ContosoCrafts.WebSite.Pages
             {
                 return Page();
             }
-            System.Diagnostics.Debug.WriteLine(User.username);
+            System.Diagnostics.Debug.WriteLine(BindUser.username);
 
-            UserService.CreateData(User);
+            UserService.CreateData(BindUser);
 
             return RedirectToPage("./Index");
         }
