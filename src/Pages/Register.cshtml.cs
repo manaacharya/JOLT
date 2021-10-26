@@ -57,7 +57,6 @@ namespace ContosoCrafts.WebSite.Pages
             {
                 return Page();
             }
-            System.Diagnostics.Debug.WriteLine(BindUser.username);
 
             UserService.CreateData(BindUser);
             Response.Cookies.Append("nameCookie", BindUser.username);
