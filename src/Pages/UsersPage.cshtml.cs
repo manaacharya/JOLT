@@ -13,9 +13,6 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class UsersPageModel : PageModel
     {
-
-        public string Message { get; set; }
-
         private readonly ILogger<UsersPageModel> _logger;
 
         // User Services
@@ -23,13 +20,7 @@ namespace ContosoCrafts.WebSite.Pages
         // List of Users
         public IEnumerable<UserModel> Users { get; set; }
         // A User, Can be Modified
-       // public UserModel UserModel { get; set; }
-
-        public UserModel UserModel { get; set; }
-
-        [BindProperty]
-        public UpdateUserModel UpdateUser { get; set; }
-
+      
         public UsersPageModel(ILogger<UsersPageModel> logger,
             JsonFileUserService userService)
         {

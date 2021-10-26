@@ -1,0 +1,50 @@
+﻿[
+  {
+    "pollID": 0,
+    "userID": 1,
+    "Title": "Favorite City",
+    "Description": "What City Would like to Visit",
+    "OpinionItems": [
+      {
+        "opinionName": "Seattle",
+        "numCounts": 0
+      },
+      {
+        "opinionName": "Washington DC",
+        "numCounts": 0
+      },
+      {
+        "opinionName": "Los Angeles",
+        "numCounts": 0
+      },
+      {
+        "opinionName": "Mumbai",
+        "numCounts": 0
+      }
+    ]
+  },
+  {
+    "pollID": 1,
+    "userID": 1,
+    "Title": "Operating System",
+    "Description": "Which Operating System do you prefer ?",
+    "OpinionItems": [
+      {
+        "opinionName": "Ubuntu Linux",
+        "numCounts": 0
+      },
+      {
+        "opinionName": "MacOS",
+        "numCounts": 1
+      },
+      {
+        "opinionName": "Debian Linux",
+        "numCounts": 0
+      },
+      {
+        "opinionName": "Windows 10",
+        "numCounts": 0
+      }
+    ]
+  }
+]

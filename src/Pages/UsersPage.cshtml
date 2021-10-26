@@ -1,10 +1,7 @@
 ﻿@page
 @using ContosoCrafts.WebSite.Models
-@using ContosoCrafts.WebSite.Services
-@inject JsonFileUserService UserService
-@model ContosoCrafts.WebSite.Pages.ProfilePageModel
+@model ContosoCrafts.WebSite.Pages.UsersPageModel
 
-@* displays a list of all users*@
 
 @{
     
@@ -27,7 +24,7 @@
                     <tbody style="color: #ffffff">
 
                         @{
-                            foreach (UserModel people in UserService.GetUsers())
+                            foreach (UserModel people in Model.Users)
                             {
                                 <tr>
                                     <th> @people.username </th>
