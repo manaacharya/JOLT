@@ -41,7 +41,8 @@ namespace UnitTests.Pages.Users
         #region OnPost
         [Test]
         public void valid_username_valid_password_should_do()
-        {
+        {   
+            // Arrange
             int userID = 157465;
             pageModel.UserInput_test = new UserLoginModel()
             {
@@ -49,7 +50,10 @@ namespace UnitTests.Pages.Users
                 password = "dscWTr"
             };
 
-            Assert.AreEqual('2', '2');
+            // Act
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            Assert.AreEqual(pageModel.Msg, "");
 
         }
         #endregion OnPost
