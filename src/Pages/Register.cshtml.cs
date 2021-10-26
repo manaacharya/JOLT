@@ -60,6 +60,7 @@ namespace ContosoCrafts.WebSite.Pages
             System.Diagnostics.Debug.WriteLine(BindUser.username);
 
             UserService.CreateData(BindUser);
+            Response.Cookies.Append("nameCookie", BindUser.username);
 
             return RedirectToPage("./Index");
         }
