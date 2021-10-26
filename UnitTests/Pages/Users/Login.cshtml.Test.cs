@@ -40,7 +40,7 @@ namespace UnitTests.Pages.Users
 
         #region OnPost
         [Test]
-        public void valid_username_valid_password_should_do()
+        public void Valid_Username_Valid_Password_Should_Return_Login_Welcome()
         {   
             // Arrange
             int userID = 157465;
@@ -49,15 +49,44 @@ namespace UnitTests.Pages.Users
                 username = "lakers34",
                 password = "dscWTr"
             };
+            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
+            
+            // Act
+            var result = pageModel.OnPost() as RedirectToPageResult;
+            
+            // Reset
+            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+            
+            // Assert
+            Assert.AreEqual(true, String.IsNullOrEmpty(pageModel.Msg));
+            Assert.AreEqual(true, result.PageName.Contains("Login_Welcome"));
+            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
+        }
+
+        public void Null_Username_Null_Password_Should_Display_Error()
+        {
+            // Arrange
+            int userID = 157465;
+            pageModel.UserInput_test = new UserLoginModel()
+            {
+                username = null,
+                password = null
+            };
+            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
 
             // Act
             var result = pageModel.OnPost() as RedirectToPageResult;
 
-            Assert.AreEqual(pageModel.Msg, "");
+            // Reset
+            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
 
+            // Assert
+            Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
+            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).username);
         }
-        #endregion OnPost
 
+        #endregion OnPost
     }
     
 }

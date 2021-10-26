@@ -39,8 +39,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <summary>
         ///  If user is valid, direct to login_welcome page; if not, display message to instruct users
         /// </summary>
-        /// <param id> user id to verify</param>
-        public IActionResult OnPost(string id)
+        public IActionResult OnPost()
         {
 
             if (UserInput_test.username != null && UserInput_test.password != null)
