@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
 
 using ContosoCrafts.WebSite.Pages;
-using ContosoCrafts.WebSite.Models;
-using Microsoft.AspNetCore.Mvc;
-using ContosoCrafts.WebSite.Pages.LoginFolder;
 
 
 namespace UnitTests.Pages.Users
@@ -41,6 +31,7 @@ namespace UnitTests.Pages.Users
         public void valid_should_do()
         {
             Assert.AreEqual('2', '2');
+
         }
         #endregion OnPost
 
