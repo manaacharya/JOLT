@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContosoCrafts.WebSite.Models
 {
-    public class LoginModel
+    public class  UserLoginModel
     {
         [Required(ErrorMessage = "* This field is required")]
         public string username { get; set; }

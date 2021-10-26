@@ -12,21 +12,23 @@ using Moq;
 using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using ContosoCrafts.WebSite.Pages.LoginFolder;
+
 
 namespace UnitTests.Pages.Users
 {
     class LoginTest
     {
         #region TestSetup
-        public static ContosoCrafts.WebSite.Pages.LoginModel pageModel;
+        public static LoginPageModel pageModel;
 
         [SetUp]
 
         public void TestInitialize()
         {
-            var MockLoggerDirect = Mock.Of<ILogger<ContosoCrafts.WebSite.Pages.LoginModel>>();
+            var MockLoggerDirect = Mock.Of<ILogger<LoginPageModel>>();
 
-            pageModel = new ContosoCrafts.WebSite.Pages.LoginModel(MockLoggerDirect, TestHelper.UserService)
+            pageModel = new LoginPageModel(MockLoggerDirect, TestHelper.UserService)
             {
                 PageContext = TestHelper.PageContext
             };
@@ -40,7 +42,7 @@ namespace UnitTests.Pages.Users
         {
             Assert.AreEqual('2', '2');
         }
-        #region OnPost
+        #endregion OnPost
 
     }
     

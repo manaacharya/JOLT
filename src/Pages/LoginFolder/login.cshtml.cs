@@ -11,12 +11,12 @@ using Microsoft.Extensions.Logging;
 
 namespace ContosoCrafts.WebSite.Pages
 {
-    public class LoginModel : PageModel
+    public class LoginPageModel : PageModel
     {
 
 
-        private readonly ILogger<IndexModel> _logger;
-        public LoginModel(ILogger<IndexModel> logger,
+        private readonly ILogger<LoginPageModel> _logger;
+        public LoginPageModel(ILogger<LoginPageModel> logger,
             JsonFileUserService userService)
         {
             _logger = logger;
@@ -33,7 +33,7 @@ namespace ContosoCrafts.WebSite.Pages
         public string Msg { get; set; } // A message for user to see
 
         [BindProperty]
-        public Models.LoginModel UserInput_test { get; set; } // helper class for user input
+        public Models.UserLoginModel UserInput_test { get; set; } // helper class for user input
 
         
         /// <summary>
