@@ -20,13 +20,7 @@ namespace ContosoCrafts.WebSite.Pages
 
         // User Services
         public JsonFileUserService UserServices { get; set; }
-        // List of Users
-        public IEnumerable<UserModel> Users { get; set; }
-        // A User, Can be Modified
-       // public UserModel UserModel { get; set; }
-
-        public UserModel UserModel { get; set; }
-
+       
         [BindProperty]
         public UpdateUserModel UpdateUser { get; set; }
 
@@ -39,7 +33,6 @@ namespace ContosoCrafts.WebSite.Pages
         }
         
         
-
         // Update the user's information with new entires
         public IActionResult OnPost()
         {
