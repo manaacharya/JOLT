@@ -10,7 +10,7 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class Login_WelcomeModel : PageModel
     {
-        public object Username { get; private set; }
+        // public object Username { get; private set; }
 
         public void OnGet()
         {

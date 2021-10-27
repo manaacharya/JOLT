@@ -13,9 +13,14 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class LoginPageModel : PageModel
     {
-
-
+        // logger logs the information ex system info, error 
         private readonly ILogger<LoginPageModel> _logger;
+
+        /// <summary>
+        /// initializes the logger and userService
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="userService"></param> 
         public LoginPageModel(ILogger<LoginPageModel> logger,
             JsonFileUserService userService)
         {
@@ -23,11 +28,10 @@ namespace ContosoCrafts.WebSite.Pages
             UserService = userService;
         }
 
-
+        // Utility for JasonFile
         public JsonFileUserService UserService { get; }
+
         // public IEnumerable<UserModel> UserList { get; private set; } // list of users
-
-
         // public void OnGet() => UserList = UserService.GetUsers(); //initialize UserList
 
         public string Msg { get; set; } // A message for user to see
@@ -69,8 +73,7 @@ namespace ContosoCrafts.WebSite.Pages
                 }
 
             }
-
-            Msg = "No Empty Entry";
+            Msg = "No Empty Entry"; // null input exists
             return Page();
             
         }
