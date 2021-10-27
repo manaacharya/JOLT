@@ -43,12 +43,13 @@ namespace UnitTests.Pages.Users
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual(true, result.PageName.Contains("Index"));
-            Assert.AreEqual("", pageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
+            Assert.AreEqual(null, pageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
 
-            //confirm delete message 
+            //confirm
+
             Assert.AreEqual("User deleted.", pageModel.Message); 
 
-           
+            // Confirm the item is deleted
           
             
         }
