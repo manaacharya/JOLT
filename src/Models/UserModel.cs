@@ -25,7 +25,7 @@ namespace ContosoCrafts.WebSite.Models
 
 
         [EmailAddress(ErrorMessage = "* Enter a valid email")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "* Must be an email address")]
+        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "* Must be an email address")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "* This field is required")]
         public string email { get; set; }

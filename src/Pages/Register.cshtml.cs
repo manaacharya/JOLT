@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
@@ -32,18 +33,6 @@ namespace ContosoCrafts.WebSite.Pages
         public UserModel BindUser{ get; set; }
 
 
-
-        /// <summary>
-        /// REST Get request
-        /// Loads the Data
-        /// </summary>
-        /// <param name="id"></param>
-        public void OnGet(string id)
-        {
-           int userID = Convert.ToInt32(id);
-            BindUser = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(userID));
-        }
-
         /// <summary>
         /// Post the model back to the page
         /// The model is in the class variable User
@@ -53,13 +42,44 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            // Create a Regex for checking if username contains only number or letters
+            Regex usernameRg = new Regex(@"^[a-zA-Z0-9]+$");
+
+            // Create a Regex for checking valid email format
+            Regex emailRg = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
+            // Create a Regex for checking that only letters are in string
+            Regex locationRg = new Regex(@"^[a-zA-Z' ']+$");
+
+
+            //use regular expression to check if username contains only number or letters
+            if (usernameRg.IsMatch(BindUser.username) == false)
+            {
+
+                return Page();
+            }
+
+            //check if password length is less than 6
+            if (BindUser.password.Length < 6)
             {
                 return Page();
             }
-            System.Diagnostics.Debug.WriteLine(BindUser.username);
+
+            //check if email is not valid
+            if (emailRg.IsMatch(BindUser.email) == false)
+            {
+                return Page();
+            }
+
+            //check if location is not valid
+            if (locationRg.IsMatch(BindUser.location) == false)
+            {
+                return Page();
+            }
+
 
             UserService.CreateData(BindUser);
+            Response.Cookies.Append("nameCookie", BindUser.username);
 
             return RedirectToPage("./Index");
         }
