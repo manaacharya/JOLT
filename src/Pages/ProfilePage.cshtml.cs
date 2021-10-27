@@ -69,11 +69,11 @@ namespace ContosoCrafts.WebSite.Pages
 
 
         // delete the user that's currently logged in, and direct to home page
-        public IActionResult OnPostDeleteProfile(string id)
+        public IActionResult OnPostDeleteProfile(int id)
         {
             //UserModel userModel = new UserModel();
             //userModel = UserServices.GetUsers().FirstOrDefault(x => x.userID.Equals(id));
-            UserServices.DeleteData(int.Parse(id));
+            UserServices.DeleteData(id);
             Message = $"User deleted.";
             //delete cookie
             Response.Cookies.Delete("nameCookie"); 
