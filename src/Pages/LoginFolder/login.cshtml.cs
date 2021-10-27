@@ -25,10 +25,10 @@ namespace ContosoCrafts.WebSite.Pages
 
 
         public JsonFileUserService UserService { get; }
-        public IEnumerable<UserModel> UserList { get; private set; } // list of users
+        // public IEnumerable<UserModel> UserList { get; private set; } // list of users
 
 
-        public void OnGet() => UserList = UserService.GetUsers(); //initialize UserList
+        // public void OnGet() => UserList = UserService.GetUsers(); //initialize UserList
 
         public string Msg { get; set; } // A message for user to see
 
