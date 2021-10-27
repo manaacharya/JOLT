@@ -80,7 +80,8 @@ namespace UnitTests.Pages.Users
 
             // Assert
             Assert.AreEqual("No Empty Entry", pageModel.Msg);
-            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual(null, result);
+            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
 
         [Test]
@@ -102,7 +103,8 @@ namespace UnitTests.Pages.Users
 
             // Assert
             Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
-            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual(null, result);
+            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
 
         [Test]
@@ -124,10 +126,11 @@ namespace UnitTests.Pages.Users
 
             // Assert
             Assert.AreEqual("Invalid Username or Password", pageModel.Msg);
-            Assert.AreEqual(true, result.PageName.Contains("Login"));
+            Assert.AreEqual(null, result);
+            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
 
-        
+
         #endregion OnPost
     }
     
