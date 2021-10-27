@@ -60,6 +60,9 @@ namespace ContosoCrafts.WebSite.Pages
             // Create a Regex for checking valid email format
             Regex emailRg = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
+            // Create a Regex for checking that only letters are in string
+            Regex locationRg = new Regex(@"^[a-zA-Z' ']+$");
+
 
             //use regular expression to check if username contains only number or letters
             if (usernameRg.IsMatch(BindUser.username) == false)
@@ -76,6 +79,12 @@ namespace ContosoCrafts.WebSite.Pages
 
             //check if email is not valid
             if (emailRg.IsMatch(BindUser.email) == false)
+            {
+                return Page();
+            }
+
+            //check if location is not valid
+            if (locationRg.IsMatch(BindUser.location) == false)
             {
                 return Page();
             }
