@@ -39,7 +39,7 @@ namespace UnitTests.Pages.Users
 
         #region OnPost
         [Test]
-        public void OnPost_Valid_Post_Should_Return_To_Index()
+        public void OnPost_Valid_Post_Should_Add_New_Record()
         {
             // Valid Update
 
@@ -70,7 +70,7 @@ namespace UnitTests.Pages.Users
         }
 
         [Test]
-        public void OnPost_InValid_Username_Return_to_Register()
+        public void OnPost_InValid_Username_Should_Not_Add_New_Record()
         {
             // Valid Update
 
@@ -101,7 +101,7 @@ namespace UnitTests.Pages.Users
         }
 
         [Test]
-        public void OnPost_InValid_Password_Return_to_Register()
+        public void OnPost_InValid_Password_Should_Not_Add_New_Record()
         {
             // Valid Update
 
@@ -132,7 +132,7 @@ namespace UnitTests.Pages.Users
         }
 
         [Test]
-        public void OnPost_InValid_Email_Return_to_Register()
+        public void OnPost_InValid_Email_Should_Not_Add_New_Record()
         {
             // Valid Update
 
@@ -163,7 +163,7 @@ namespace UnitTests.Pages.Users
         }
 
         [Test]
-        public void OnPost_InValid_Location_Return_to_Register()
+        public void OnPost_InValid_Location_Should_Not_Add_New_Record()
         {
             // Valid Update
 
