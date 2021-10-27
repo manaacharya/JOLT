@@ -35,7 +35,7 @@ namespace UnitTests.Pages.Users
             // Valid Update
 
             // ---- Arrange ----
-            int userID = 885641;
+            int userID = 862765;
             pageModel.UpdateUser = new UpdateUserModel()
             {
                 UpdateID = userID,
@@ -52,11 +52,12 @@ namespace UnitTests.Pages.Users
 
             // ---- Reset ----
 
+           // var getUser = TestHelper.UserService.GetUser(userID);
             // ---- Assert ----
 
             Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
             // Confirm User Is Updated
-            Assert.AreEqual("TestName", TestHelper.UserService.GetUser(userID).username);
+            Assert.AreEqual("Update Successful to 862765, Name: TestName",pageModel.Message);
         }
 
         [Test]
