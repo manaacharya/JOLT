@@ -84,7 +84,14 @@ namespace ContosoCrafts.WebSite.Services
         public UserModel GetUser(int id)
         {
             // Return A Specific User using ID
-            return GetUsers().First(x => x.userID == id);
+            var get_user = GetUsers().First(x => x.userID == id);
+
+            if(get_user == null)
+            {
+                return null;
+            }
+
+            return get_user;
         }
 
         /// <summary>
