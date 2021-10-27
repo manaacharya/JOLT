@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
@@ -53,10 +54,16 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            // Create a Regex for checking if username contains only number or letters
+            Regex usernameRg = new Regex(@"^[a-zA-Z0-9]+$");
+
+
+            //use regular expression to check if username contains only number or letters
+            if (!usernameRg.IsMatch(BindUser.username))
             {
                 return Page();
             }
+            
 
             UserService.CreateData(BindUser);
             Response.Cookies.Append("nameCookie", BindUser.username);
