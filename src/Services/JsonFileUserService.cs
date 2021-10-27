@@ -96,14 +96,8 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public UserModel GetUser(string name)
         {
-            try
-            {
-                return GetUsers().First(x => x.username == name);
-            } 
-            catch
-            {
-                throw new UsernameNotFoundException("User doesn't exit");
-            }
+           return GetUsers().First(x => x.username == name);
+              
         }
 
         /// FX: Get the password of a user(given an user entry is found)
