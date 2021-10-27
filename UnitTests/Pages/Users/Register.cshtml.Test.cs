@@ -84,7 +84,7 @@ namespace UnitTests.Pages.Users
             {
                 userID = userID,
                 username = "User@@@", //should only contain numbers and letter
-                password = "testvalidpassword", //password is less than 6
+                password = "TestValidpassword", //password is less than 6
                 email = "TestvalidEmail@gmail.com",
                 location = "TestvalidLocation"
             };
@@ -131,6 +131,36 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
 
+        [Test]
+        public void OnPost_InValid_Email_Return_to_Register()
+        {
+            // Valid Update
+
+            // ---- Arrange ----
+            var oldCount = TestHelper.UserService.GetUsers().Count();
+
+            Random rnd = new Random();
+            int userID = rnd.Next(1, 999999);
+
+            pageModel.BindUser = new UserModel()
+            {
+                userID = userID,
+                username = "TestValidUsername",
+                password = "TestValidpassword",
+                email = "TestvalidEmail@gmail", //email should be in valid format
+                location = "TestvalidLocation"
+            };
+
+
+            // ---- Act ----
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // ---- Reset ----
+
+            // ---- Assert ---
+            // Confirm that no new recorded was added
+            Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
+        }
         #endregion OnPost
     }
     
