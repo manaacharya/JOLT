@@ -100,6 +100,37 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
 
+        [Test]
+        public void OnPost_InValid_Password_Return_to_Register()
+        {
+            // Valid Update
+
+            // ---- Arrange ----
+            var oldCount = TestHelper.UserService.GetUsers().Count();
+
+            Random rnd = new Random();
+            int userID = rnd.Next(1, 999999);
+
+            pageModel.BindUser = new UserModel()
+            {
+                userID = userID,
+                username = "TestValidUsername",
+                password = "pass", //password should be more than 6
+                email = "TestvalidEmail@gmail.com",
+                location = "TestvalidLocation"
+            };
+
+
+            // ---- Act ----
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // ---- Reset ----
+
+            // ---- Assert ---
+            // Confirm that no new recorded was added
+            Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
+        }
+
         #endregion OnPost
     }
     
