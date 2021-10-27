@@ -33,18 +33,6 @@ namespace ContosoCrafts.WebSite.Pages
         public UserModel BindUser{ get; set; }
 
 
-
-        /// <summary>
-        /// REST Get request
-        /// Loads the Data
-        /// </summary>
-        /// <param name="id"></param>
-        public void OnGet(string id)
-        {
-           int userID = Convert.ToInt32(id);
-            BindUser = UserService.GetUsers().FirstOrDefault(m => m.userID.Equals(userID));
-        }
-
         /// <summary>
         /// Post the model back to the page
         /// The model is in the class variable User
