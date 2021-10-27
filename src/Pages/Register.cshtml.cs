@@ -57,18 +57,29 @@ namespace ContosoCrafts.WebSite.Pages
             // Create a Regex for checking if username contains only number or letters
             Regex usernameRg = new Regex(@"^[a-zA-Z0-9]+$");
 
+            // Create a Regex for checking valid email format
+            Regex emailRg = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
 
             //use regular expression to check if username contains only number or letters
-            if (!usernameRg.IsMatch(BindUser.username))
+            if (usernameRg.IsMatch(BindUser.username) == false)
             {
+
                 return Page();
             }
 
+            //check if password length is less than 6
             if (BindUser.password.Length < 6)
             {
                 return Page();
             }
-            
+
+            //check if email is not valid
+            if (emailRg.IsMatch(BindUser.email) == false)
+            {
+                return Page();
+            }
+
 
             UserService.CreateData(BindUser);
             Response.Cookies.Append("nameCookie", BindUser.username);
