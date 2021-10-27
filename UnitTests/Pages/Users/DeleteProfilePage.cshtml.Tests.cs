@@ -33,27 +33,24 @@ namespace UnitTests.Pages.Users
         public void OnPost_Valid_UserModel_Should_Delete_UserObject()
         {
             // Arrange
-            // First Create the product to delete
-            var user = new UserModel()
-            {
-                username = "TestName",
-                password = "TestPassword",
-                email = "Test123@gmail.com",
-                location = "Canada"
-            };
-
-            pageModel.UserModel = TestHelper.UserService.CreateData(user);
+            //valid ID 
+            int userID = 343386;
+            pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
 
             // Act
-            string id = user.userID.ToString();
-            var result = pageModel.OnPostDeleteProfile(id) as RedirectToPageResult;
+            var result = pageModel.OnPostDeleteProfile(userID) as RedirectToPageResult;
 
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual(true, result.PageName.Contains("Index"));
+            Assert.AreEqual("", pageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
 
-            // Confirm the item is deleted
-            Assert.AreEqual(null, TestHelper.UserService.GetUser(id).username);
+            //confirm delete message 
+            Assert.AreEqual("User deleted.", pageModel.Message); 
+
+           
+          
+            
         }
         #endregion OnPostDeleteProfile 
     }
