@@ -215,7 +215,7 @@ namespace ContosoCrafts.WebSite.Services
             // Get the current set, and append the new record to it
             //var dataSet = GetUsers();
             //var data = dataSet.FirstOrDefault(m => m.userID.Equals(id));
-
+            
             //var newDataSet = GetUsers().Where(m => m.userID.Equals(id) == false);
             //UserModel userModel = new UserModel();
 
@@ -230,6 +230,7 @@ namespace ContosoCrafts.WebSite.Services
             //convert list into Json
             SaveData(update_users_list);
 
+            //changed the parameter from string to int 
         }
 
 
