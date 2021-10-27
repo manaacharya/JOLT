@@ -63,6 +63,11 @@ namespace ContosoCrafts.WebSite.Pages
             {
                 return Page();
             }
+
+            if (BindUser.password.Length < 6)
+            {
+                return Page();
+            }
             
 
             UserService.CreateData(BindUser);
