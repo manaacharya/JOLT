@@ -30,7 +30,7 @@ namespace UnitTests.Pages.Users
 
         #region OnPost
         [Test]
-        public void OnPost_Valid_UserModel_Should_Return_Page()
+        public void OnPost_Valid_UserModel_Should_Update_User()
         {
             // Valid Update
 

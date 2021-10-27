@@ -22,7 +22,7 @@ namespace ContosoCrafts.WebSite.Pages
             _logger = logger;
         }
 
-        /// <summary>
+        /// <summary> 
         /// This is a dummy method for now
         /// </summary>
         public void OnGet()
