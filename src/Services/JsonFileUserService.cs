@@ -10,8 +10,15 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace ContosoCrafts.WebSite.Services
 {
+    /// <summary>
+    /// JsonFileUserService with Services for User
+    /// </summary>
     public class JsonFileUserService
     {
+        /// <summary>
+        /// Constructor For JsonFileUserService 
+        /// </summary>
+        /// <param name="webHostEnvironment"></param>
         public JsonFileUserService(IWebHostEnvironment webHostEnvironment)
         {
             WebHostEnvironment = webHostEnvironment;
@@ -26,10 +33,16 @@ namespace ContosoCrafts.WebSite.Services
             get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "users.json"); }
         }
 
+        /// <summary>
+        ///  Deserialize a Json of User to List
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
+
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
+                // Deserialize Json to List
                 return JsonSerializer.Deserialize<UserModel[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
@@ -38,117 +51,16 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-
-        /// <summary>
-        ///  Service an Update To User Account
-        /// </summary>
-        /// <param name="updateuser"></param>
-        public UserModel UpdateProfile(UpdateUserModel updateuser)
-        {
-            List<UserModel> update_users_list = GetUsers().ToList();
-
-            // Get the Old User, By searching for The ID
-            UserModel get_storedUser = update_users_list.Find(x => x.userID == updateuser.UpdateID); // GetUsers().First(x => x.userID == updateuser.UpdateID);
-
-            if (get_storedUser == null)
-            {
-                // No Such User Exist
-                return null;
-            }
-
-            // Remove Old Data From List
-            update_users_list.Remove(get_storedUser);
-
-            // Update/OverWrite the Previously Stored User
-            get_storedUser.userID = updateuser.UpdateID;
-            get_storedUser.username = updateuser.UpdateName;
-            get_storedUser.email = updateuser.UpdateEmail;
-            get_storedUser.password = updateuser.UpdatePassword;
-            get_storedUser.location = updateuser.UpdateLocation;
-
-            // Add This to GetUsers()
-            update_users_list.Add(get_storedUser);    //GetUsers().ToList().Add(get_storedUser);
-
-            // Write Back to Database
-            SaveData(update_users_list);
-
-            return get_storedUser;
-        }
-
-
-        /// <summary>
-        /// Get A Specific User using the ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public UserModel GetUser(int id)
-        {
-            // Return A Specific User using ID
-            var get_user = GetUsers().First(x => x.userID == id);
-
-            if(get_user == null)
-            {
-                return null;
-            }
-
-            return get_user;
-        }
-
-        /// <summary>
-        /// Get A Specific User using A Name. 
-        /// Caution for Duplicate Name, the first duplicate is returned.
-        /// FX: added try catch structure
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public UserModel GetUser(string name)
-        {
-           return GetUsers().First(x => x.username == name);
-              
-        }
-
-        /// FX: Get the password of a user(given an user entry is found)
-        public string GetPassWord(string name)
-        {
-            try
-            {
-                return GetUser(name).password;
-
-            } catch
-            {
-                throw new UsernameNotFoundException
-                    ("Can't find the password due to non-existing username");
-            }
-        }
-        
-        /// <summary>
-        /// return true if username's correct password is password
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public bool isCorrectPassword(string username, string password)
-        {
-            try
-            {
-
-                return GetPassWord(username).Equals(password);
-
-            }
-            catch
-            {
-                throw new UsernameNotFoundException
-                    ("Can't find the password due to non-existing username");
-            }
-        }
         /// <summary>
         /// Save All users data to storage
         /// </summary>
+        /// <param name="users"></param>
         private void SaveData(IEnumerable<UserModel> users)
         {
 
             using (var outputStream = File.Create(JsonFileName))
             {
+                // Serialize Collection to Json
                 JsonSerializer.Serialize<IEnumerable<UserModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
@@ -161,94 +73,238 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
+        ///  Service To Update a User Account
+        /// </summary>
+        /// <param name="updateuser"></param>
+        public UserModel UpdateProfile(UpdateUserModel updateuser)
+        {
+            // To Get Users
+            List<UserModel> updateuserList = GetUsers().ToList();
+
+            // Fetch User if they exist
+            UserModel getStoredUser = GetUser(updateuser.UpdateID);
+
+            // User Condition on Existance
+            if (getStoredUser == null)
+            {
+                // No Such User Exist
+                return null;
+            }
+
+            // Remove Old User From List
+            updateuserList.Remove(getStoredUser);
+
+            // Update or OverWrite the Previously Stored User
+            getStoredUser.userID = updateuser.UpdateID;
+            getStoredUser.username = updateuser.UpdateName;
+            getStoredUser.email = updateuser.UpdateEmail;
+            getStoredUser.password = updateuser.UpdatePassword;
+            getStoredUser.location = updateuser.UpdateLocation;
+
+            // Add New Updated User to List
+            updateuserList.Add(getStoredUser);
+
+            // Write List Back to Database
+            SaveData(updateuserList);
+
+            // Return User
+            return getStoredUser;
+        }
+
+
+        /// <summary>
+        /// Get A Specific User using the ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserModel GetUser(int id)
+        {
+            List<UserModel> getuserList = GetUsers().ToList();
+
+            // Fetch User By ID
+            var getUser = getuserList.Find(x => x.userID == id);
+
+            // Condition For User Existance
+            if (getUser == null)
+            {
+                // User Doesn't Exist
+                return null;
+            }
+
+            // Return User
+            return getUser;
+        }
+
+        /// <summary>
+        /// Get A Specific User using A Name. 
+        /// Caution for Duplicate Name, the first duplicate is returned.
+        /// FX: added try catch structure
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public UserModel GetUser(string name)
+        {
+            // Fetch User By Name
+            var getUser = GetUsers().First(x => x.username == name);
+
+            // Condition For User Existance
+            if (getUser == null)
+            {
+                // User Doesn't Exist
+                return null;
+            }
+            // Return User
+            return getUser;
+
+        }
+
+        /// FX: Get the password of a user(given an user entry is found)
+        public string GetPassWord(string userName)
+        {
+            try
+            {
+                // Fetch User
+                var getUser = GetUser(userName);
+
+                // Condition For User Existance
+                if (getUser == null)
+                {
+                    // User Doesn't Exist
+                    return null;
+                }
+
+                // Return Password
+                return getUser.password;
+
+            }
+            catch
+            {
+                // Throw UsernameNotFoundException Error
+                throw new UsernameNotFoundException
+                    ("Can't find the password due to non-existing username");
+            }
+        }
+
+        /// <summary>
+        /// Return true if username's correct password is password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool isCorrectPassword(string userName, string userPassword)
+        {
+            try
+            {
+                // Fetch User
+                var getUser = GetUser(userName);
+
+                // Condition For User Existance
+                if (getUser == null)
+                {
+                    // User Doesn't Exist
+                    return false;
+                }
+
+                // Condition For Password Match
+                if (getUser.password != userPassword)
+                {
+                    // Password Do not Match
+                    return false;
+                }
+                // Password Are Equal
+                return true;
+
+            }
+            catch
+            {
+                // Throw UsernameNotFoundException Error
+                throw new UsernameNotFoundException
+                    ("Can't find the password due to non-existing username");
+            }
+        }
+
+
+        /// <summary>
         /// Create a new user using default values
         /// After create the user can update to set values
         /// </summary>
+        /// <param name="user"></param>
         /// <returns></returns>
         public UserModel CreateData(UserModel user)
         {
-            Random rnd = new Random();
+            // Random Instance Created
+            Random rnD = new Random();
+
+            // UserModel Defined with Random ID
             var data = new UserModel()
             {
-                userID = rnd.Next(1, 999999), //generate a random number between 1 and 999999 to be 6 digits
+                // generate a random number between 1 and 999999 to be 6 digits
+                userID = rnD.Next(1, 999999),
                 username = user.username,
                 password = user.password,
                 email = user.email,
                 location = user.location,
             };
 
-            // Get the current set, and append the new record to it becuase IEnumerable does not have Add
+            // Get User data set
             var dataSet = GetUsers();
+
+            // Condition For Dataset
+            if (dataSet == null)
+            {
+                // Dataset Does not Match
+                return null;
+            }
+
+            // Add to Dataset
             dataSet = dataSet.Append(data);
 
+            // Convert List into Json Dataset
             SaveData(dataSet);
 
             return data;
         }
 
         /// <summary>
-        /// Find the data record
-        /// Update the fields
-        /// Save to the data store
-        /// </summary>
-        /// <param name="data"></param>
-        /*public UserModel UpdateData(UserModel data)
-        {
-            Random rnd = new Random();
-
-            var users = GetUsers();
-            // Validation for No Existing User
-            var userData = users.FirstOrDefault(x => x.userID.Equals(data.userID));
-            if (userData == null)
-            {
-                return null;
-            }
-          //  userData.userID = rnd.Next(1, 999999);
-
-            userData.username = data.username;
-            userData.email = data.email;
-            userData.password = data.password;
-            userData.location = data.location;
-            SaveData(users);
-
-            return userData;
-        }*/
-        /// <summary>
         /// Remove the item from the system
         /// </summary>
-        /// <returns></returns>
+        /// <param name="id"></param>
         public void DeleteData(int id)
         {
-            // Get the current set, and append the new record to it
-            //var dataSet = GetUsers();
-            //var data = dataSet.FirstOrDefault(m => m.userID.Equals(id));
-            
-            //var newDataSet = GetUsers().Where(m => m.userID.Equals(id) == false);
-            //UserModel userModel = new UserModel();
+            // Get List of Users
+            List<UserModel> getuserList = GetUsers().ToList();
 
-            List<UserModel> update_users_list = GetUsers().ToList();
+            // Get Specific User
+            var getUser = GetUser(id);
 
-            // Get the Old User, By searching for The ID
-            UserModel get_storedUser = update_users_list.Find(x => x.userID == id); // GetUsers().First(x => x.userID == updateuser.UpdateID);
+            if (getUser == null)
+            {
+                // Throw Exception
+                throw new UsernameNotFoundException
+                    ("User Not Found");
+            }
 
             // Remove Old Data From List
-            update_users_list.Remove(get_storedUser);
+            bool result = getuserList.Remove(getUser);
 
-            //convert list into Json
-            SaveData(update_users_list);
-
-            //changed the parameter from string to int 
+            // Convert list into Json Dataset
+            SaveData(getuserList);
         }
-
-
 
         /// <summary>
         /// Used to throw exception when username is not found 
         /// </summary>
         public class UsernameNotFoundException : Exception
         {
+            /// <summary>
+            /// Default Construtor For UsernameNotFoundException
+            /// </summary>
             public UsernameNotFoundException() { }
 
+            /// <summary>
+            /// Constructor For UsernameNotFoundException with message as parameter to create instance
+            /// </summary>
+            /// <param name="message"></param>
             public UsernameNotFoundException(string message) : base(message) { }
 
         }
