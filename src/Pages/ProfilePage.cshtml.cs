@@ -64,30 +64,25 @@ namespace ContosoCrafts.WebSite.Pages
         // delete the user that's currently logged in, and direct to home page
         public IActionResult OnPostDeleteProfile(int id)
         {
-            //UserModel userModel = new UserModel();
-            //userModel = UserServices.GetUsers().FirstOrDefault(x => x.userID.Equals(id));
-            UserServices.DeleteData(id);
+            bool result = UserServices.DeleteData(id);
+
+            if(result == false)
+            {
+                Message = $"User Not Deleted";
+
+                return RedirectToPage("ProfilePage");
+            }
+
+
             Message = $"User deleted.";
-            //delete cookie
+
+            //Delete cookie
             Response.Cookies.Delete("nameCookie"); 
             return RedirectToPage("Index");
 
 
         }
-
-       /* public void OnPostUpdateUser()
-        {
-            // Message = $"Update {UpdateUser.UpdateID}, {UpdateUser.UpdateName}, Location: {UpdateUser.UpdateLocation} ";
-            // Message = $"Update {Request.QueryString["name"]} to {updateUser.location}";
-            UserServices.UpdateProfile(UpdateUser);// updates
-
-            // Updated Cookie To User Name
-            Response.Cookies.Delete("nameCookie");
-            Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
-            Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
-        }*/
-
-
+              
     }
 
 
