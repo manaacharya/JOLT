@@ -26,14 +26,8 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="btn">
-                        <li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" asp-page="/Register"> <i class="fa fa-user-plus"></i> Register</a>
-                        </li> &nbsp; &nbsp;
-                        <li class="nav-item">
-                            <a class="btn btn-primary" asp-page="/LoginFolder/Login"> User Login</a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/PollsPage"> Polls </a>
                         </li>
@@ -47,16 +41,26 @@
                             <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="btn btn-primary" asp-page="/Register"> <i class="fa fa-user-plus"></i> Register</a>
+                        </li>&nbsp; &nbsp;
+                        <li class="nav-item">
+                            <a class="btn btn-primary" asp-page="/LoginFolder/Login"> User Login</a>
+                        </li>
+
                         @{
                             var cookie = Html.Raw(HttpContextAccessor.HttpContext.Request.Cookies["nameCookie"]).ToString();
 
                             if (cookie.ToString() != null)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/ProfilePage">@cookie</a>
+                                    <a class="nav-link" style="color:#ffffff; font-size:large;" asp-area="" asp-page="/ProfilePage">@cookie</a>
                                 </li>
                             }
+
                         }
+
+
 
                     </ul>
                 </div>
