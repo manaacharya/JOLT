@@ -81,7 +81,7 @@ namespace ContosoCrafts.WebSite.Pages
             UserService.CreateData(BindUser);
             Response.Cookies.Append("nameCookie", BindUser.username);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./ProfilePage");
         }
 
 
