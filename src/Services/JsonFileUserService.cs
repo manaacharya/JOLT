@@ -76,39 +76,31 @@ namespace ContosoCrafts.WebSite.Services
         ///  Service To Update a User Account
         /// </summary>
         /// <param name="updateuser"></param>
-        public UserModel UpdateProfile(UpdateUserModel updateuser)
+        public UserModel UpdateProfile(UpdateUserModel updateUser)
         {
-            // To Get Users
-            List<UserModel> updateuserList = GetUsers().ToList();
+            UserModel userModel = GetUser(updateUser.UpdateID);
 
-            // Fetch User if they exist
-            UserModel getStoredUser = GetUser(updateuser.UpdateID);
-
-            // User Condition on Existance
-            if (getStoredUser == null)
+            if (userModel == null)
             {
-                // No Such User Exist
                 return null;
             }
 
-            // Remove Old User From List
-            updateuserList.Remove(getStoredUser);
+            // Modify The User Object
+            userModel.username = updateUser.UpdateName;
+            userModel.email = updateUser.UpdateEmail;
+            userModel.password = updateUser.UpdatePassword;
+            userModel.location = updateUser.UpdateLocation;
 
-            // Update or OverWrite the Previously Stored User
-            getStoredUser.userID = updateuser.UpdateID;
-            getStoredUser.username = updateuser.UpdateName;
-            getStoredUser.email = updateuser.UpdateEmail;
-            getStoredUser.password = updateuser.UpdatePassword;
-            getStoredUser.location = updateuser.UpdateLocation;
+            // Find User from DataSet and Overwrite
 
-            // Add New Updated User to List
-            updateuserList.Add(getStoredUser);
+            List<UserModel> userModels = GetUsers().ToList();
 
-            // Write List Back to Database
-            SaveData(updateuserList);
+            userModels.RemoveAll(x => x.userID == userModel.userID);
+            userModels.Add(userModel);
 
-            // Return User
-            return getStoredUser;
+            SaveData(userModels);
+
+            return userModel;
         }
 
 
@@ -269,26 +261,27 @@ namespace ContosoCrafts.WebSite.Services
         /// Remove the item from the system
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteData(int id)
+        public bool DeleteData(int id)
         {
-            // Get List of Users
-            List<UserModel> getuserList = GetUsers().ToList();
+            // Get User By ID
+            UserModel userModel = GetUser(id);
 
-            // Get Specific User
-            var getUser = GetUser(id);
-
-            if (getUser == null)
+            // Check if User Exists NUll
+            if(userModel == null)
             {
-                // Throw Exception
-                throw new UsernameNotFoundException
-                    ("User Not Found");
+                return false;
             }
 
-            // Remove Old Data From List
-            bool result = getuserList.Remove(getUser);
+            // Get DataSet and Remove
+            List<UserModel> userModels = GetUsers().ToList();
 
-            // Convert list into Json Dataset
-            SaveData(getuserList);
+            // Remove UserModel
+            userModels.RemoveAll(x => x.userID == userModel.userID);
+
+            // Save List to Data Set
+            SaveData(userModels);
+
+            return true;
         }
 
         /// <summary>
