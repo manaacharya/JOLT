@@ -10,6 +10,7 @@ using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Models;
 
 
+
 namespace UnitTests.Services
 {
     public class JsonFileUserServiceTests
@@ -155,9 +156,111 @@ namespace UnitTests.Services
         public void GetPassword_ValidName_Should_Return_Password()
         {
             // Arrange
+            string validName = "calif32";
 
+            // Act
+
+            string getPassword = TestHelper.UserService.GetPassWord(validName);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, getPassword.Equals("vDEkwE"));
+        }
+
+        [Test]
+        public void GetPassword_InValidName_Should_Return_Null()
+        {
+            // Arrange
+            string invalidName = "000000";
+
+            // Act
+            string getPassword = TestHelper.UserService.GetPassWord(invalidName);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, getPassword);
         }
 
         #endregion GetPassword
+
+        #region isCorrectPassword
+
+        [Test]
+        public void isCorrectPassword_ValidName_ValidPassword_Should_Return_True()
+        {
+            // Arrange
+
+            // Valid UserName and Password
+            string userName = "calif32";
+            string password = "vDEkwE";
+
+            // Act
+            bool result = TestHelper.UserService.isCorrectPassword(userName, password);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void isCorrectPassword_InValidName_InValidPassword_Should_Return_False()
+        {
+            // Arrange
+            string invalidName = "008998832";
+            string invalidPassword = "vDEkwE";
+
+            // Act
+            bool result = TestHelper.UserService.isCorrectPassword(invalidName, invalidPassword);
+
+            // Reset
+            // Assert
+
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void isCorrectPassword_ValidName_InValidPassword_Should_Return_False()
+        {
+            // Arrange
+            string userName = "calif32";
+            string invalidPassword = "vDEkwE";
+
+            // Act
+            bool result = TestHelper.UserService.isCorrectPassword(userName, invalidPassword);
+
+            // Reset
+
+            // Assert
+            // Invalid Passowrd
+            Assert.AreEqual(false, result);
+        }
+
+        #endregion isCorrectPassword
+
+        #region CreateData
+
+        [Test]
+        public void CreateData_New_UserModel_Should_Return_UserModel()
+        {
+            // Arrange
+            UserModel newUser = new UserModel()
+            {
+                username = "Kitchen",
+                email = "KitchenNightMare@gmail.com",
+                password = "kitchepassword",
+                location = "Cuba"
+            };
+
+            // Act
+
+            // Reset
+            // Assert
+
+        }
+
+        #endregion CreateData
     }
 }
