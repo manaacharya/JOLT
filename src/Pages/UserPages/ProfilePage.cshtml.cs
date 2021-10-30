@@ -84,8 +84,8 @@ namespace ContosoCrafts.WebSite.Pages
             Message = $"User deleted.";
 
             //Delete cookie
-            Response.Cookies.Delete("nameCookie"); 
-            return RedirectToPage("Index");
+            Response.Cookies.Delete("nameCookie");
+            return Redirect("/Index"); //RedirectToPage("/Pages/Index"); //RedirectToPage("./Index");
 
 
         }
