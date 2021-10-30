@@ -54,6 +54,26 @@ namespace UnitTests.Pages.Users
           
             
         }
+
+        [Test]
+        public void OnPost_InValid_UserModel_Should_Return_Page()
+        {
+            // Arrange
+
+            int invalidId = -93939;
+
+            // Act
+            var result = pageModel.OnPostDeleteProfile(invalidId) as RedirectToPageResult;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("ProfilePage", result.PageName);
+            Assert.AreEqual("User Not Deleted", pageModel.Message);
+
+
+        }
+
         #endregion OnPostDeleteProfile 
     }
 };
