@@ -12,13 +12,20 @@ using Microsoft.Extensions.Logging;
 
 namespace ContosoCrafts.WebSite.Pages
 {
+    /// <summary>
+    /// Page to register users and add them into the users.json database 
+    /// </summary>
     public class RegisterModel : PageModel
     {
+        //log category RegisterModel 
         private readonly ILogger<RegisterModel> _logger;
 
 
-        // Data middletier
+        /// <summary>
+        /// Data middletier
+        /// </summary>
         public JsonFileUserService UserService { get; set; }
+
         /// <summary>
         /// Defualt Construtor
         /// </summary>
@@ -28,8 +35,14 @@ namespace ContosoCrafts.WebSite.Pages
         public RegisterModel(ILogger<RegisterModel> logger, JsonFileUserService userService)
         {
             _logger = logger;
+
+            //userservice object 
             UserService = userService;
         }
+
+        /// <summary>
+        /// Usermodel object BindUser  
+        /// </summary>
         [BindProperty]
         public UserModel BindUser{ get; set; }
 
@@ -56,7 +69,6 @@ namespace ContosoCrafts.WebSite.Pages
             //use regular expression to check if username contains only number or letters
             if (usernameRg.IsMatch(BindUser.username) == false)
             {
-
                 return Page();
             }
 
@@ -78,8 +90,10 @@ namespace ContosoCrafts.WebSite.Pages
                 return Page();
             }
 
-
+            //create data using userinformation 
             UserService.CreateData(BindUser);
+
+            //new nameCookie to username 
             Response.Cookies.Append("nameCookie", BindUser.username);
 
             return RedirectToPage("./ProfilePage");
