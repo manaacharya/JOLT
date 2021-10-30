@@ -10,15 +10,7 @@ namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
     /// Mike Koenig
-    /// Mustafa "Moose" Abuthuraya
-    /// Moose merge conflict
-    /// Fangsheng "Jason" Xu
-    /// Manasa Acharya
-    /// Edwin Kaburu
     /// </summary>
-    /// 
-
-    // I love Seattle Winter And Spring
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -35,7 +27,7 @@ namespace ContosoCrafts.WebSite.Pages
 
         public void OnGet()
         {
-            Products = ProductService.GetProducts();
+            Products = ProductService.GetAllData();
         }
     }
 }
