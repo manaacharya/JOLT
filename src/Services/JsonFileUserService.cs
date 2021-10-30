@@ -98,6 +98,7 @@ namespace ContosoCrafts.WebSite.Services
             userModels.RemoveAll(x => x.userID == userModel.userID);
             userModels.Add(userModel);
 
+            //save data into database 
             SaveData(userModels);
 
             return userModel;
@@ -168,13 +169,6 @@ namespace ContosoCrafts.WebSite.Services
                 // Return Password
                 return getUser.password;
 
-           // }
-            /*catch
-            {
-                // Throw UsernameNotFoundException Error
-                throw new UsernameNotFoundException
-                    ("Can't find the password due to non-existing username");
-            }*/
         }
 
         /// <summary>
@@ -206,13 +200,6 @@ namespace ContosoCrafts.WebSite.Services
                 // Password Are Equal
                 return true;
 
-            //}
-          /*  catch
-            {
-                // Throw UsernameNotFoundException Error
-                throw new UsernameNotFoundException
-                    ("Can't find the password due to non-existing username");
-            }*/
         }
 
 
@@ -238,16 +225,7 @@ namespace ContosoCrafts.WebSite.Services
                 location = user.location,
             };
 
-            /*  // Get User data set
-              var dataSet = GetUsers();
-
-              // Condition For Dataset
-              if (dataSet == null)
-              {
-                  // Dataset Does not Match
-                  return null;
-              }
-  */
+            //object Getusers 
             var dataSet = GetUsers();
 
             // Add to Dataset
@@ -285,24 +263,5 @@ namespace ContosoCrafts.WebSite.Services
 
             return true;
         }
-
-        /*/// <summary>
-        /// Used to throw exception when username is not found 
-        /// </summary>
-        public class UsernameNotFoundException : Exception
-        {
-            /// <summary>
-            /// Default Construtor For UsernameNotFoundException
-            /// </summary>
-            public UsernameNotFoundException() { }
-
-            /// <summary>
-            /// Constructor For UsernameNotFoundException with message as parameter to create instance
-            /// </summary>
-            /// <param name="message"></param>
-            public UsernameNotFoundException(string message) : base(message) { }
-
-        }
-*/
     }
 }
