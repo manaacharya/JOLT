@@ -20,6 +20,8 @@ namespace ContosoCrafts.WebSite.Pages
 
         // User Services
         public JsonFileUserService UserServices { get; set; }
+
+        public UserModel UserModel  { get; set; }
        
         [BindProperty]
         public UpdateUserModel UpdateUser { get; set; }
@@ -32,6 +34,11 @@ namespace ContosoCrafts.WebSite.Pages
             UserServices = userService;
         }
         
+        public void OnGet()
+        {
+            var cookieValue = Request.Cookies["nameCookie"];
+            UserModel = UserServices.GetUser(cookieValue.ToString());
+        }
         
         // Update the user's information with new entires
         public IActionResult OnPost()
