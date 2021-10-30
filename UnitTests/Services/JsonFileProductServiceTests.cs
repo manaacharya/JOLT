@@ -68,7 +68,7 @@ namespace UnitTests.Services
         }
 
         [Test]
-        public void Add_ValidRating_ValidProduct_Should_Return_True()
+        public void AddRating_ValidRating_ValidProduct_Should_Return_True()
         {
             // Assert
             string valid_product = "jenlooper-survival";
@@ -107,5 +107,106 @@ namespace UnitTests.Services
         }
 
         #endregion AddRating
+
+        #region UpdateData
+        [Test]
+        public void UpdateData_Invalid_ProductModel_Should_Return_Null()
+        {
+            // Arrange
+            string invalidID = "fakeID";
+            ProductModel productModel = new ProductModel()
+            {
+                Id = invalidID,
+                Title = "NewUpdate",
+                Description = "NewDescription",
+                Maker = "MakerTest",
+                Image = "Image.png",
+                Quantity = "1",
+                Price = 40,
+                Url = "www.google.com"
+            };
+
+            // Act
+            var updateResult = TestHelper.ProductService.UpdateData(productModel);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, updateResult);
+        }
+
+        [Test]
+        public void UpdateData_Valid_ProductModel_Should_Return_ProductModel()
+        {
+            // Arrange
+
+            string validID = "jenlooper-cactus";
+            ProductModel productModel = new ProductModel()
+            {
+                Id = validID,
+                Title = "NewUpdate",
+                Description = "NewDescription",
+                Maker = "MakerTest",
+                Image = "Image.png",
+                Quantity = "1",
+                Price = 40,
+                Url = "www.google.com"
+            };
+
+            
+            // Act
+            var updateResult = TestHelper.ProductService.UpdateData(productModel);
+
+            // Reset
+            var findProduct = TestHelper.ProductService.GetAllData().ToList().Find(x => x.Id == validID);
+
+            // Assert
+
+            Assert.AreEqual(true, updateResult.Id == findProduct.Id);
+            Assert.AreEqual(true, updateResult.Description == findProduct.Description);
+            Assert.AreEqual(true, updateResult.Quantity == findProduct.Quantity);
+        }
+        #endregion UpdateData
+
+        #region CreateData
+
+        [Test]
+        public void CreateData_ValidProduct_Should_Return_ProductModel()
+        {
+            // Arrange
+
+            // Act
+
+            var getResult = TestHelper.ProductService.CreateData();
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, getResult.Description.Equals("Enter Description"));
+            Assert.AreEqual(true, getResult.Title.Equals("Enter Title"));
+        }
+
+        #endregion CreateData
+
+        #region DeleteData
+        [Test]
+        public void DeleteData_ValidId_Should_Return_ProductModel()
+        {
+            // Arrange
+
+            var validId = "jenlooper-light";
+
+            // Act
+
+            var getResult = TestHelper.ProductService.DeleteData(validId);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, getResult.Maker.Equals("jenlooper"));
+            Assert.AreEqual(true, getResult.Title.Equals("A beautiful switch-on book light"));
+
+
+        }
+        #endregion DeleteData
     }
 }
