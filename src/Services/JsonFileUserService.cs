@@ -238,15 +238,17 @@ namespace ContosoCrafts.WebSite.Services
                 location = user.location,
             };
 
-            // Get User data set
-            var dataSet = GetUsers();
+            /*  // Get User data set
+              var dataSet = GetUsers();
 
-            // Condition For Dataset
-            if (dataSet == null)
-            {
-                // Dataset Does not Match
-                return null;
-            }
+              // Condition For Dataset
+              if (dataSet == null)
+              {
+                  // Dataset Does not Match
+                  return null;
+              }
+  */
+            var dataSet = GetUsers();
 
             // Add to Dataset
             dataSet = dataSet.Append(data);
