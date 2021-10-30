@@ -17,6 +17,10 @@ namespace ContosoCrafts.WebSite.Pages
             _logger = logger;
         }
 
+        /// <summary>
+        /// OnGet information dispalyed
+        /// TODO: add PollServices polls to display polls
+        /// </summary>
         public void OnGet()
         {
         }
