@@ -153,8 +153,8 @@ namespace ContosoCrafts.WebSite.Services
         /// FX: Get the password of a user(given an user entry is found)
         public string GetPassWord(string userName)
         {
-            try
-            {
+            //try
+           // {
                 // Fetch User
                 var getUser = GetUser(userName);
 
@@ -168,13 +168,13 @@ namespace ContosoCrafts.WebSite.Services
                 // Return Password
                 return getUser.password;
 
-            }
-            catch
+           // }
+            /*catch
             {
                 // Throw UsernameNotFoundException Error
                 throw new UsernameNotFoundException
                     ("Can't find the password due to non-existing username");
-            }
+            }*/
         }
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool isCorrectPassword(string userName, string userPassword)
         {
-            try
-            {
+           // try
+            //{
                 // Fetch User
                 var getUser = GetUser(userName);
 
@@ -206,13 +206,13 @@ namespace ContosoCrafts.WebSite.Services
                 // Password Are Equal
                 return true;
 
-            }
-            catch
+            //}
+          /*  catch
             {
                 // Throw UsernameNotFoundException Error
                 throw new UsernameNotFoundException
                     ("Can't find the password due to non-existing username");
-            }
+            }*/
         }
 
 
