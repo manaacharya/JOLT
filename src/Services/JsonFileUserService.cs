@@ -286,7 +286,7 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Used to throw exception when username is not found 
         /// </summary>
         public class UsernameNotFoundException : Exception
@@ -303,6 +303,6 @@ namespace ContosoCrafts.WebSite.Services
             public UsernameNotFoundException(string message) : base(message) { }
 
         }
-
+*/
     }
 }
