@@ -11,25 +11,45 @@ using ContosoCrafts.WebSite.Services;
 
 namespace ContosoCrafts.WebSite.Pages
 {
+    /// <summary>
+    /// UserPage model for displaying users 
+    /// </summary>
     public class UsersPageModel : PageModel
     {
+        //log category for UsersPageModel 
         private readonly ILogger<UsersPageModel> _logger;
 
-        // User Services
+
+        /// <summary>
+        /// User Services
+        /// </summary>
         public JsonFileUserService UserServices { get; set; }
-        // List of Users
+        
+        /// <summary>
+        /// List of Users
+        /// </summary>
         public IEnumerable<UserModel> Users { get; set; }
-        // A User, Can be Modified
-      
+    
+
+        /// <summary>
+        /// A User, Can be Modified
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="userService"></param>
         public UsersPageModel(ILogger<UsersPageModel> logger,
             JsonFileUserService userService)
         {
            
             _logger = logger;
+
+            //Userservice object 
             UserServices = userService;
         }
-        
-        // initializes a list of all 
+
+      
+        /// <summary>
+        /// initializes a list of all
+        /// </summary>
         public void OnGet()
         {
             Users = UserServices.GetUsers();
