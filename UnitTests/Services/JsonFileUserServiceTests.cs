@@ -226,7 +226,7 @@ namespace UnitTests.Services
         {
             // Arrange
             string userName = "calif32";
-            string invalidPassword = "vDEkwE";
+            string invalidPassword = "613841";
 
             // Act
             bool result = TestHelper.UserService.isCorrectPassword(userName, invalidPassword);
@@ -255,12 +255,49 @@ namespace UnitTests.Services
             };
 
             // Act
+            UserModel userModel = TestHelper.UserService.CreateData(newUser);
 
             // Reset
             // Assert
-
+            Assert.AreEqual(true, userModel.username.Equals(newUser.username));
+            Assert.AreEqual(true, userModel.email.Equals(newUser.email));
+            Assert.AreEqual(true, userModel.password.Equals(newUser.password));
+            Assert.AreEqual(true, userModel.location.Equals(newUser.location));
         }
 
         #endregion CreateData
+
+        #region DeleteData
+
+        [Test]
+        public void DeleteData_ValidId_Should_Return_True()
+        {
+            // Arrange
+            int validId = 341292;
+
+            // Act
+            bool getResult = TestHelper.UserService.DeleteData(validId);
+
+            // Reset
+            // Assert
+            Assert.AreEqual(true, getResult);
+
+        }
+
+        [Test]
+        public void DeleteData_InValidId_Should_Return_False()
+        {
+            // Arrange
+            int invalidId = 111111;
+
+            // Act
+            bool getResult = TestHelper.UserService.DeleteData(invalidId);
+
+            // Reset
+            // Assert
+            Assert.AreEqual(false, getResult);
+        }
+
+        #endregion DeleteData
     }
 }
