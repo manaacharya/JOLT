@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
+
 namespace ContosoCrafts.WebSite.Pages
 {
     public class RegisterModel : PageModel
@@ -81,7 +82,7 @@ namespace ContosoCrafts.WebSite.Pages
             UserService.CreateData(BindUser);
             Response.Cookies.Append("nameCookie", BindUser.username);
 
-            return RedirectToPage("./ProfilePage");
+            return RedirectToPage("./UserPages/ProfilePage");
         }
 
 
