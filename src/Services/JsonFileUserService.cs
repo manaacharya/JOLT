@@ -137,7 +137,7 @@ namespace ContosoCrafts.WebSite.Services
         public UserModel GetUser(string name)
         {
             // Fetch User By Name
-            var getUser = GetUsers().First(x => x.username == name);
+            var getUser = GetUsers().ToList().Find(x => x.username == name);
 
             // Condition For User Existance
             if (getUser == null)
