@@ -299,5 +299,129 @@ namespace UnitTests.Services
         }
 
         #endregion DeleteData
+
+
+        #region CreateCookie
+
+        [Test]
+        public void CreateCookie_ValidKey_ValidValue_Should_AddCookie()
+        {
+            // Arrange
+            string key = "testName";
+            string value = "testkey";
+
+            // Act
+            bool result = TestHelper.UserService.CreateCookie(key, value);
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual("testkey", TestHelper.UserService.GetCookieValue(key));
+
+        }
+
+        [Test]
+        public void CreateCookie_KeyExist_Should_Return_False()
+        {
+            // Arrange
+            string key = "duplicateKey";
+            string value = "duplicateValue";
+
+            TestHelper.UserService.CreateCookie(key, value);
+
+            // Act
+            bool result = TestHelper.UserService.CreateCookie(key, value);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        #endregion CreateCookie
+
+        #region GetCookieValue
+
+        [Test]
+        public void GetCookieValue_ValidKey_Should_Return_CookieValue()
+        {
+            // Arrange
+            string key = "newkey";
+            string value = "newValue";
+
+            TestHelper.UserService.CreateCookie(key, value);
+
+            // Act
+            string result = TestHelper.UserService.GetCookieValue(key);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("newValue", result);
+        }
+
+        [Test]
+        public void GetCookieValue_InValidKey_Should_Return_Null()
+        {
+            // Arrange
+            string key = "newkey";
+            string value = "newValue";
+
+            string invalidKey = "fakekey";
+
+            TestHelper.UserService.CreateCookie(key, value);
+
+            // Act
+            string result = TestHelper.UserService.GetCookieValue(invalidKey);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+        #endregion GetCookieValue
+
+
+        #region DeleteCookie
+        [Test]
+        public void DeleteCookie_ValidKey_Should_Return_True()
+        {
+            // Arrange
+            string key = "deletekey";
+            string value = "deleteValue";
+
+            TestHelper.UserService.CreateCookie(key, value);
+
+            // Act
+            bool result = TestHelper.UserService.DeleteCookie(key);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void DeleteCookie_InValidKey_Should_Return_True()
+        {
+            // Arrange
+            string key = "deletekey";
+            string value = "deleteValue";
+
+            string invalidKey = "fdjfdfd";
+
+            TestHelper.UserService.CreateCookie(key, value);
+
+            // Act
+            bool result = TestHelper.UserService.DeleteCookie(invalidKey);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        #endregion DeleteCookie
     }
 }
