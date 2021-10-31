@@ -16,7 +16,7 @@ namespace ContosoCrafts.WebSite.Models
         /// required field for login 
         /// </summary>
         [Required(ErrorMessage = "* This field is required")]
-        public string username { get; set; }
+        public string Username { get; set; }
 
         /// <summary>
         /// get and set method for password in userservices 
@@ -25,6 +25,6 @@ namespace ContosoCrafts.WebSite.Models
         [Required(ErrorMessage = "* This field is required")]
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "* Must be at least 6 characters long")]
-        public string password { get; set; }
+        public string Password { get; set; }
     }
 }
