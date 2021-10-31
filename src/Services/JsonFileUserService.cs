@@ -79,14 +79,19 @@ namespace ContosoCrafts.WebSite.Services
 
         // -----------------
 
-        public Dictionary<string, string> GetCookiesCollection()
+        public bool CreateCookie(string key, string value)
         {
-            return pollingCookieModel.CookieCollection;
-        }
+            // Does Key Exists ?
+            if(pollingCookieModel.CookieCollection.ContainsKey(key) == true)
+            {
+                // Not Successfully Added
+                return false;
+            }
 
-        public void CreateCookie(string key, string value)
-        {
             pollingCookieModel.CookieCollection.Add(key, value);
+
+            // Successfully Added
+            return true;
         }
 
         public string GetCookieValue(string key)
