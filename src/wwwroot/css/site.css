@@ -57,7 +57,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-   color: #0366d6;
+    color: #189AB4;
 }
 
 .btn-primary {
@@ -65,16 +65,30 @@ a {
     background-color: #189AB4;
     border-color: #189AB4;
 }
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #189AB4;
+.btn-primary:hover {
+    color: #fff;
+    background-color: #189AB4;
+    border-color: #189AB4;
+}
+.btn-outline-primary {
+    color: #2b2b2b;
+    border-color: #2b2b2b;
+}
+    .btn-outline-primary:hover {
+        color: #189AB4;
         border-color: #189AB4;
+        background-color:rgb(240 248 255 / 0.00)
+    }
+    .btn-outline-primary:active {
+        color: #189AB4;
+        border-color: #189AB4;
+        background-color: rgb(240 248 255 / 0.00)
     }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
