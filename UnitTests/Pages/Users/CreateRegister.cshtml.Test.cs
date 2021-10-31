@@ -22,14 +22,14 @@ namespace UnitTests.Pages.Users
     class RegisterTest
     {
         #region TestSetup
-        public static RegisterModel pageModel;
+        public static RegisterModel PageModel;
 
         [SetUp]
         public void TestInitialize()
         {
             var MockLoggerDirect = Mock.Of<ILogger<RegisterModel>>();
 
-            pageModel = new RegisterModel(MockLoggerDirect, TestHelper.UserService)
+            PageModel = new RegisterModel(MockLoggerDirect, TestHelper.UserService)
             {
                 PageContext = TestHelper.PageContext
             };
@@ -48,23 +48,23 @@ namespace UnitTests.Pages.Users
 
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
-            pageModel.BindUser = new UserModel()
+            PageModel.BindUser = new UserModel()
             {
-                userID = userID,
-                username = "TestValidName",
-                password = "TestValidPassword",
-                email = "TestValidEmail@gmail.com",
-                location = "TestValidLocation"
+                UserID = userID,
+                Username = "TestValidName",
+                Password = "TestValidPassword",
+                Email = "TestValidEmail@gmail.com",
+                Location = "TestValidLocation"
             };
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
             // ---- Assert ----
 
-            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
             // Confirm that record was created
             Assert.AreEqual(oldCount + 1, TestHelper.UserService.GetUsers().Count());
         }
@@ -79,19 +79,19 @@ namespace UnitTests.Pages.Users
 
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
-            
-            pageModel.BindUser = new UserModel()
+
+            PageModel.BindUser = new UserModel()
             {
-                userID = userID,
-                username = "User@@@", //should only contain numbers and letter
-                password = "TestValidpassword", //password is less than 6
-                email = "TestvalidEmail@gmail.com",
-                location = "TestvalidLocation"
+                UserID = userID,
+                Username = "User@@@", //should only contain numbers and letter
+                Password = "TestValidpassword", //password is less than 6
+                Email = "TestvalidEmail@gmail.com",
+                Location = "TestvalidLocation"
             };
 
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
@@ -111,18 +111,18 @@ namespace UnitTests.Pages.Users
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
-            pageModel.BindUser = new UserModel()
+            PageModel.BindUser = new UserModel()
             {
-                userID = userID,
-                username = "TestValidUsername",
-                password = "pass", //password should be more than 6
-                email = "TestvalidEmail@gmail.com",
-                location = "TestvalidLocation"
+                UserID = userID,
+                Username = "TestValidUsername",
+                Password = "pass", //password should be more than 6
+                Email = "TestvalidEmail@gmail.com",
+                Location = "TestvalidLocation"
             };
 
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
@@ -142,18 +142,18 @@ namespace UnitTests.Pages.Users
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
-            pageModel.BindUser = new UserModel()
+            PageModel.BindUser = new UserModel()
             {
-                userID = userID,
-                username = "TestValidUsername",
-                password = "TestValidpassword",
-                email = "TestvalidEmail@gmail", //email should be in valid format
-                location = "TestvalidLocation"
+                UserID = userID,
+                Username = "TestValidUsername",
+                Password = "TestValidpassword",
+                Email = "TestvalidEmail@gmail", //email should be in valid format
+                Location = "TestvalidLocation"
             };
 
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
@@ -173,18 +173,18 @@ namespace UnitTests.Pages.Users
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
-            pageModel.BindUser = new UserModel()
+            PageModel.BindUser = new UserModel()
             {
-                userID = userID,
-                username = "TestValidUsername",
-                password = "TestValidpassword",
-                email = "TestvalidEmail@gmail.com",
-                location = "TestInvalidLocation!!!!" //should only contain letters
+                UserID = userID,
+                Username = "TestValidUsername",
+                Password = "TestValidpassword",
+                Email = "TestvalidEmail@gmail.com",
+                Location = "TestInvalidLocation!!!!" //should only contain letters
             };
 
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
