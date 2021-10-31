@@ -13,14 +13,14 @@ namespace UnitTests.Pages.Users
     class UpdateProfilePage
     {
         #region TestSetup
-        public static ProfilePageModel pageModel;
+        public static ProfilePageModel PageModel;
 
         [SetUp]
         public void TestInitialize()
         {
             var MockLoggerDirect = Mock.Of<ILogger<ProfilePageModel>>();
 
-            pageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
+            PageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
             {
                 PageContext = TestHelper.PageContext
             };
@@ -36,7 +36,7 @@ namespace UnitTests.Pages.Users
 
             // ---- Arrange ----
             int userID = 862765;
-            pageModel.UpdateUser = new UpdateUserModel()
+            PageModel.UpdateUser = new UpdateUserModel()
             {
                 UpdateID = userID,
                 UpdateName = "TestName",
@@ -45,10 +45,10 @@ namespace UnitTests.Pages.Users
                 UpdateLocation = "Canada"
             };
 
-            pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
+            PageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
@@ -57,7 +57,7 @@ namespace UnitTests.Pages.Users
 
             Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
             // Confirm User Is Updated
-            Assert.AreEqual("Update Successful to 862765, Name: TestName",pageModel.Message);
+            Assert.AreEqual("Update Successful to 862765, Name: TestName", PageModel.Message);
         }
 
         [Test]
@@ -66,13 +66,13 @@ namespace UnitTests.Pages.Users
             // ---- Arrange ----
 
             // Force an invalid error state
-            pageModel.ModelState.AddModelError("no update", "No Updates Made");
+            PageModel.ModelState.AddModelError("no update", "No Updates Made");
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Assert ----
-            Assert.AreEqual(false, pageModel.ModelState.IsValid);
+            Assert.AreEqual(false, PageModel.ModelState.IsValid);
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace UnitTests.Pages.Users
             // ---- Arrange ----
             int invalidID = 999999;
 
-            pageModel.UpdateUser = new UpdateUserModel()
+            PageModel.UpdateUser = new UpdateUserModel()
             {
                 UpdateID = invalidID,
                 UpdateName = "BogusName",
@@ -92,12 +92,12 @@ namespace UnitTests.Pages.Users
             };
 
             // ---- Act ----
-            var result = pageModel.OnPost() as RedirectToPageResult;
+            var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ---- Reset ----
 
             // ---- Assert ----
-            var errorMessage = pageModel.Message;
+            var errorMessage = PageModel.Message;
             Assert.AreEqual(errorMessage, "Error Updating BogusName");
 
         }
