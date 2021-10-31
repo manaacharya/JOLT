@@ -15,6 +15,11 @@ namespace ContosoCrafts.WebSite.Services
     /// </summary>
     public class JsonFileUserService
     {
+        public static PollingCookieModel pollingCookieModel = new PollingCookieModel()
+        {
+            CookieCollection = new Dictionary<string, string>()
+        };
+
         /// <summary>
         /// Constructor For JsonFileUserService 
         /// </summary>
@@ -71,6 +76,40 @@ namespace ContosoCrafts.WebSite.Services
                 );
             }
         }
+
+        // -----------------
+
+        public Dictionary<string, string> GetCookiesCollection()
+        {
+            return pollingCookieModel.CookieCollection;
+        }
+
+        public void CreateCookie(string key, string value)
+        {
+            pollingCookieModel.CookieCollection.Add(key, value);
+        }
+
+        public string GetCookieValue(string key)
+        {
+            string result = null;
+
+            pollingCookieModel.CookieCollection.TryGetValue(key, out result);
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public bool DeleteCookie(string key)
+        {
+            return pollingCookieModel.CookieCollection.Remove(key);
+
+        }
+
+        // -----------------
 
         /// <summary>
         ///  Service To Update a User Account
