@@ -13,14 +13,14 @@ namespace ContosoCrafts.WebSite.Models
         /// get and set userId
         /// unique userId given at random to user when created in userServices
         /// </summary>
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
         /// <summary>
         /// get set string username of user specific to ID 
         /// </summary>
         [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "* Must only include letters or numbers")]
         [Required(ErrorMessage = "* This field is required")]
-        public string username { get; set; }
+        public string Username { get; set; }
 
         /// <summary>
         /// get set password of userID
@@ -30,7 +30,7 @@ namespace ContosoCrafts.WebSite.Models
         [Required(ErrorMessage = "* This field is required")]
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "* Must be at least 6 characters long")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// get set email for userID
@@ -40,7 +40,7 @@ namespace ContosoCrafts.WebSite.Models
         [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "* Must be an email address")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "* This field is required")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// get and set location for userID
@@ -49,7 +49,7 @@ namespace ContosoCrafts.WebSite.Models
         /// </summary>
         [RegularExpression("^[a-zA-Z' ']+$", ErrorMessage = "* Location can only have letters")]
         [Required(ErrorMessage = "* This field is required")]
-        public string location { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// toString methof of user object
