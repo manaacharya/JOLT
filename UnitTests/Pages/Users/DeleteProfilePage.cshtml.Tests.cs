@@ -13,14 +13,14 @@ namespace UnitTests.Pages.Users
     class DeleteProfilePage
     {
         #region TestSetup
-        public static ProfilePageModel pageModel;
+        public static ProfilePageModel PageModel;
 
         [SetUp]
         public void TestInitialize()
         {
             var MockLoggerDirect = Mock.Of<ILogger<ProfilePageModel>>();
 
-            pageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
+            PageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
             {
                 PageContext = TestHelper.PageContext
             };
@@ -35,20 +35,20 @@ namespace UnitTests.Pages.Users
             // Arrange
             //valid ID 
             int userID = 343386;
-            pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
+            PageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
 
             // Act
-            var result = pageModel.OnPostDeleteProfile(userID) as RedirectToPageResult;
+            var result = PageModel.OnPostDeleteProfile(userID) as RedirectToPageResult;
 
             // Assert
-            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
             //var name = result.PageName;
             //Assert.AreEqual(true, result.PageName.Contains("Index"));
-            Assert.AreEqual(null, pageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
+            Assert.AreEqual(null, PageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
 
             //confirm
 
-            Assert.AreEqual("User deleted.", pageModel.Message); 
+            Assert.AreEqual("User deleted.", PageModel.Message); 
 
             // Confirm the item is deleted
           
@@ -63,13 +63,13 @@ namespace UnitTests.Pages.Users
             int invalidId = -93939;
 
             // Act
-            var result = pageModel.OnPostDeleteProfile(invalidId) as RedirectToPageResult;
+            var result = PageModel.OnPostDeleteProfile(invalidId) as RedirectToPageResult;
 
             // Reset
 
             // Assert
             Assert.AreEqual("ProfilePage", result.PageName);
-            Assert.AreEqual("User Not Deleted", pageModel.Message);
+            Assert.AreEqual("User Not Deleted", PageModel.Message);
 
 
         }
