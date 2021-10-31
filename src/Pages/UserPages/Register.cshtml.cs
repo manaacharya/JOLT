@@ -67,25 +67,25 @@ namespace ContosoCrafts.WebSite.Pages
 
 
             //use regular expression to check if username contains only number or letters
-            if (usernameRg.IsMatch(BindUser.username) == false)
+            if (usernameRg.IsMatch(BindUser.Username) == false)
             {
                 return Page();
             }
 
             //check if password length is less than 6
-            if (BindUser.password.Length < 6)
+            if (BindUser.Password.Length < 6)
             {
                 return Page();
             }
 
             //check if email is not valid
-            if (emailRg.IsMatch(BindUser.email) == false)
+            if (emailRg.IsMatch(BindUser.Email) == false)
             {
                 return Page();
             }
 
             //check if location is not valid
-            if (locationRg.IsMatch(BindUser.location) == false)
+            if (locationRg.IsMatch(BindUser.Location) == false)
             {
                 return Page();
             }
@@ -94,9 +94,7 @@ namespace ContosoCrafts.WebSite.Pages
             UserService.CreateData(BindUser);
 
             //new nameCookie to username 
-            //Response.Cookies.Append("nameCookie", BindUser.username);
-
-            UserService.CreateCookie("nameCookie", BindUser.username);
+            Response.Cookies.Append("nameCookie", BindUser.Username);
 
             return RedirectToPage("./ProfilePage");
         }
