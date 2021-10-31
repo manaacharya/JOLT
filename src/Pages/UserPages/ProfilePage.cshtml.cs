@@ -62,7 +62,8 @@ namespace ContosoCrafts.WebSite.Pages
         public void OnGet()
         {
             //cookie username 
-            var cookieValue = Request.Cookies["nameCookie"];
+            var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
+ 
             //userModel object of cookie username stored 
             UserModel = UserServices.GetUser(cookieValue.ToString());
         }
@@ -92,10 +93,14 @@ namespace ContosoCrafts.WebSite.Pages
             }
 
             // Updated Cookie To User Name
-            Response.Cookies.Delete("nameCookie");
+            //Response.Cookies.Delete("nameCookie");
+            UserServices.DeleteCookie("nameCookie");
 
             //cookie username updated to new update 
-            Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
+
+            UserServices.CreateCookie("nameCookie", UpdateUser.UpdateName);
+
+            //Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
 
             //Message to confirm update is successful 
             Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
@@ -127,7 +132,9 @@ namespace ContosoCrafts.WebSite.Pages
             Message = $"User deleted.";
 
             //Delete cookie
-            Response.Cookies.Delete("nameCookie");
+            //Response.Cookies.Delete("nameCookie");
+            UserServices.DeleteCookie("nameCookie");
+
             return Redirect("/Index"); //RedirectToPage("/Pages/Index");
             //RedirectToPage("./Index");
 
