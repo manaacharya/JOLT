@@ -16,13 +16,13 @@ namespace ContosoCrafts.WebSite.Models
         /// get and set the string of each opinion item
         /// One poll can have multiple opinions 
         /// </summary>
-        public string opinionName { get; set; }
+        public string OpinionName { get; set; }
 
         /// <summary>
         /// get and set numCounts
         /// number of votes for each opinion in one poll 
         /// </summary>
-        public int numCounts { get; set; }
+        public int NumCounts { get; set; }
 
         /// <summary>
         /// OpinionItem constructor 
@@ -31,8 +31,8 @@ namespace ContosoCrafts.WebSite.Models
         /// <param name="count"></param> count of vote 
         public OpinionItem(string name, int count)
         {
-            this.opinionName = name;
-            this.numCounts = count;
+            this.OpinionName = name;
+            this.NumCounts = count;
         }
     };
 
@@ -45,14 +45,14 @@ namespace ContosoCrafts.WebSite.Models
         /// get and set method pollId
         /// Unique identifier of each poll 
         /// </summary>
-        public int pollID { get; set; }
+        public int PollID { get; set; }
 
         /// <summary>
         /// get and set the userId of the creator of the poll
         /// each poll has to be created by a user with a
         /// unique poll ID
         /// </summary>
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
         /// <summary>
         /// get and set of title of poll 
