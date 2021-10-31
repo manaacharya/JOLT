@@ -13,14 +13,14 @@ namespace UnitTests.Pages.Users
     {
         #region TestSetup
 
-        public static UsersPageModel usersPageModel;
+        public static UsersPageModel UsersPageModel;
 
         [SetUp]
         public void TestInitialize()
         {
             var MockLoggerDirect = Mock.Of<ILogger<UsersPageModel>>();
 
-            usersPageModel = new UsersPageModel(MockLoggerDirect, TestHelper.UserService)
+            UsersPageModel = new UsersPageModel(MockLoggerDirect, TestHelper.UserService)
             {
             };
         }
@@ -34,11 +34,11 @@ namespace UnitTests.Pages.Users
             // Arrange
 
             // Act
-            usersPageModel.OnGet();
+            UsersPageModel.OnGet();
 
             // Assert
-            Assert.AreEqual(true, usersPageModel.ModelState.IsValid);
-            Assert.AreEqual(true, usersPageModel.Users.ToList().Any());
+            Assert.AreEqual(true, UsersPageModel.ModelState.IsValid);
+            Assert.AreEqual(true, UsersPageModel.Users.ToList().Any());
         }
         #endregion OnGet
 
