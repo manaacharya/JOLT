@@ -130,16 +130,16 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             // Modify The User Object
-            userModel.username = updateUser.UpdateName;
-            userModel.email = updateUser.UpdateEmail;
-            userModel.password = updateUser.UpdatePassword;
-            userModel.location = updateUser.UpdateLocation;
+            userModel.Username = updateUser.UpdateName;
+            userModel.Email = updateUser.UpdateEmail;
+            userModel.Password = updateUser.UpdatePassword;
+            userModel.Location = updateUser.UpdateLocation;
 
             // Find User from DataSet and Overwrite
 
             List<UserModel> userModels = GetUsers().ToList();
 
-            userModels.RemoveAll(x => x.userID == userModel.userID);
+            userModels.RemoveAll(x => x.UserID == userModel.UserID);
             userModels.Add(userModel);
 
             //save data into database 
@@ -159,7 +159,7 @@ namespace ContosoCrafts.WebSite.Services
             List<UserModel> getuserList = GetUsers().ToList();
 
             // Fetch User By ID
-            var getUser = getuserList.Find(x => x.userID == id);
+            var getUser = getuserList.Find(x => x.UserID == id);
 
             // Condition For User Existance
             if (getUser == null)
@@ -182,7 +182,7 @@ namespace ContosoCrafts.WebSite.Services
         public UserModel GetUser(string name)
         {
             // Fetch User By Name
-            var getUser = GetUsers().ToList().Find(x => x.username == name);
+            var getUser = GetUsers().ToList().Find(x => x.Username == name);
 
             // Condition For User Existance
             if (getUser == null)
@@ -211,7 +211,7 @@ namespace ContosoCrafts.WebSite.Services
                 }
 
                 // Return Password
-                return getUser.password;
+                return getUser.Password;
 
         }
 
@@ -221,7 +221,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool isCorrectPassword(string userName, string userPassword)
+        public bool IsCorrectPassword(string userName, string userPassword)
         {
            // try
             //{
@@ -236,7 +236,7 @@ namespace ContosoCrafts.WebSite.Services
                 }
 
                 // Condition For Password Match
-                if (getUser.password != userPassword)
+                if (getUser.Password != userPassword)
                 {
                     // Password Do not Match
                     return false;
@@ -262,11 +262,11 @@ namespace ContosoCrafts.WebSite.Services
             var data = new UserModel()
             {
                 // generate a random number between 1 and 999999 to be 6 digits
-                userID = rnD.Next(1, 999999),
-                username = user.username,
-                password = user.password,
-                email = user.email,
-                location = user.location,
+                UserID = rnD.Next(1, 999999),
+                Username = user.Username,
+                Password = user.Password,
+                Email = user.Email,
+                Location = user.Location,
             };
 
             //object Getusers 
@@ -300,7 +300,7 @@ namespace ContosoCrafts.WebSite.Services
             List<UserModel> userModels = GetUsers().ToList();
 
             // Remove UserModel
-            userModels.RemoveAll(x => x.userID == userModel.userID);
+            userModels.RemoveAll(x => x.UserID == userModel.UserID);
 
             // Save List to Data Set
             SaveData(userModels);
