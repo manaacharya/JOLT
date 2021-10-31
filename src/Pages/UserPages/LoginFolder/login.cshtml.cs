@@ -54,7 +54,8 @@ namespace ContosoCrafts.WebSite.Pages
                     InputVerified = UserService.isCorrectPassword(UserInput_test.username, UserInput_test.password);
                     if (InputVerified)
                     {
-                        Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
+                        UserService.CreateCookie("nameCookie", UserInput_test.username);
+                        //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
                         return RedirectToPage("Login_Welcome");
                     }
                     else
