@@ -17,7 +17,7 @@ for details on configuring this project to bundle and minify static web assets. 
 .card-columns .card-body {
     height: 100px;
     font-family: 'Trirong', sans-serif;
-    background: #F54748;
+    background: #b9dbdf;
 }
 
 .card-columns .card-img {
@@ -54,26 +54,41 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+
 /* Provide sufficient contrast against white background */
 a {
-   color: #0366d6;
+    color: #189AB4;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #343F56;
-    border-color: #343F56;
+    background-color: #189AB4;
+    border-color: #189AB4;
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: #4d5d7f;
-    border-color: #4d5d7f;
+    background-color: #189AB4;
+    border-color: #189AB4;
 }
+.btn-outline-primary {
+    color: #2b2b2b;
+    border-color: #2b2b2b;
+}
+    .btn-outline-primary:hover {
+        color: #189AB4;
+        border-color: #189AB4;
+        background-color:rgb(240 248 255 / 0.00)
+    }
+    .btn-outline-primary:active {
+        color: #189AB4;
+        border-color: #189AB4;
+        background-color: rgb(240 248 255 / 0.00)
+    }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
@@ -130,8 +145,13 @@ body {
 p {
     font-family: 'Roboto', sans-serif;
 }
-h1,h2,h3,h4,h5,h6 {
+h5 {
     font-family: 'Roboto', sans-serif;
+    color: #2b2b2b
+}
+h1, h2, h3, h4, h6 {
+    font-family: 'Roboto', sans-serif;
+    color: #b9dbdf
 }
 ul {
     font-family: 'Roboto', sans-serif;
@@ -146,16 +166,16 @@ ul {
 }
 /*Backgrounds*/
 .bg-navbar {
-    background: -webkit-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
-    background: -o-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
-    background: -moz-linear-gradient(110deg, #c54d49 60%, #5f2485 60%);
+    background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -o-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -moz-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
     /* change gradient of header*/
-    background: linear-gradient(110deg, #c54d49 75%, #5f2485 60%);
+    background: linear-gradient(110deg, #b9dbdf 75%, #189AB4 60%);
 }
 .bg-footer {
-    background: -webkit-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
-    background: -o-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
-    background: -moz-linear-gradient(110deg, #5f2485 60%, #c54d49 60%);
+    background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -o-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -moz-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
     /* change gradient of footer*/
-    background: linear-gradient(110deg, #5f2485 75%, #c54d49 60%);
+    background: linear-gradient(110deg, #b9dbdf 75%, #189AB4 60%);
 }
