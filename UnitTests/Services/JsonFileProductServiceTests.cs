@@ -12,6 +12,9 @@ namespace UnitTests.Services
     public class JsonFileProductServiceTests
     {
         #region TestSetup
+        /// <summary>
+        /// JsonFileProductService Test Initialization Method
+        /// </summary>
         [SetUp]
         public void TestInitialize()
         {
@@ -19,12 +22,13 @@ namespace UnitTests.Services
         #endregion TestSetup
 
         #region AddRating
-
+        /// <summary>
+        /// Test for InValid Null Product
+        /// </summary>
         [Test]
         public void AddRating_InValid_Product_Null_Should_Return_False()
         {
             // Arrange
-
             // Act
             var result = TestHelper.ProductService.AddRating(null, 1);
 
@@ -32,11 +36,13 @@ namespace UnitTests.Services
             Assert.AreEqual(false, result);
         }
 
+        /// <summary>
+        /// Test for InValid Incorrect Product
+        /// </summary>
         [Test]
         public void AddRating_Invalid_Product_Should_Return_False()
         {
             // Arrange
-            
 
             // Act
             var product_result = TestHelper.ProductService.AddRating("light=house", 2);
@@ -46,6 +52,9 @@ namespace UnitTests.Services
             Assert.AreEqual(false, product_result);
         }
 
+        /// <summary>
+        /// Test For Valid Product with InValid Ratings above criteria
+        /// </summary>
         [Test]
         public void Add_InValidRating_ValidProduct_Should_Return_False()
         {
@@ -67,6 +76,9 @@ namespace UnitTests.Services
             Assert.AreEqual(false, rating_above);
         }
 
+        /// <summary>
+        /// Test For Valid Product and Valid Ratings
+        /// </summary>
         [Test]
         public void AddRating_ValidRating_ValidProduct_Should_Return_True()
         {
@@ -86,7 +98,9 @@ namespace UnitTests.Services
             Assert.AreEqual(true, product_rating);
         }
 
-
+        /// <summary>
+        /// Test For Valid Product and Valid Ratings
+        /// </summary>
         [Test]
         public void AddRating_Valid_Product_Valid_Rating_Valid_Should_Return_True()
         {
@@ -109,6 +123,10 @@ namespace UnitTests.Services
         #endregion AddRating
 
         #region UpdateData
+
+        /// <summary>
+        /// Test For Updating Invalid Product
+        /// </summary>
         [Test]
         public void UpdateData_Invalid_ProductModel_Should_Return_Null()
         {
@@ -135,6 +153,9 @@ namespace UnitTests.Services
             Assert.AreEqual(null, updateResult);
         }
 
+        /// <summary>
+        ///  Test for Updating Valid Product
+        /// </summary>
         [Test]
         public void UpdateData_Valid_ProductModel_Should_Return_ProductModel()
         {
@@ -153,7 +174,7 @@ namespace UnitTests.Services
                 Url = "www.google.com"
             };
 
-            
+
             // Act
             var updateResult = TestHelper.ProductService.UpdateData(productModel);
 
@@ -170,6 +191,9 @@ namespace UnitTests.Services
 
         #region CreateData
 
+        /// <summary>
+        /// Test For Creating Valid Product
+        /// </summary>
         [Test]
         public void CreateData_ValidProduct_Should_Return_ProductModel()
         {
@@ -188,15 +212,17 @@ namespace UnitTests.Services
         #endregion CreateData
 
         #region DeleteData
+
+        /// <summary>
+        /// Test For Deleting Valid Product
+        /// </summary>
         [Test]
         public void DeleteData_ValidId_Should_Return_ProductModel()
         {
             // Arrange
-
             var validId = "jenlooper-light";
 
             // Act
-
             var getResult = TestHelper.ProductService.DeleteData(validId);
 
             // Reset
@@ -204,7 +230,6 @@ namespace UnitTests.Services
             // Assert
             Assert.AreEqual(true, getResult.Maker.Equals("jenlooper"));
             Assert.AreEqual(true, getResult.Title.Equals("A beautiful switch-on book light"));
-
 
         }
         #endregion DeleteData
