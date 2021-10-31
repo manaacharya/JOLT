@@ -46,15 +46,15 @@ namespace ContosoCrafts.WebSite.Pages
         public IActionResult OnPost()
         {
 
-            if (UserInput_test.username != null && UserInput_test.password != null)
+            if (UserInput_test.Username != null && UserInput_test.Password != null)
             {
                 bool InputVerified = false;
                 try
                 {
-                    InputVerified = UserService.isCorrectPassword(UserInput_test.username, UserInput_test.password);
+                    InputVerified = UserService.IsCorrectPassword(UserInput_test.Username, UserInput_test.Password);
                     if (InputVerified)
                     {
-                        UserService.CreateCookie("nameCookie", UserInput_test.username);
+                        UserService.CreateCookie("nameCookie", UserInput_test.Username);
                         //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
                         return RedirectToPage("Login_Welcome");
                     }
