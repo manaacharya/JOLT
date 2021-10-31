@@ -13,14 +13,14 @@ namespace UnitTests.Pages.Privacy
     public class PrivacyTests
     {
         #region TestSetup
-        public static PrivacyModel pageModel;
+        public static PrivacyModel PageModel;
 
         [SetUp]
         public void TestInitialize()
         {
             var MockLoggerDirect = Mock.Of<ILogger<PrivacyModel>>();
 
-            pageModel = new PrivacyModel(MockLoggerDirect)
+            PageModel = new PrivacyModel(MockLoggerDirect)
             {
                 PageContext = TestHelper.PageContext,
                 TempData = TestHelper.TempData,
@@ -36,12 +36,12 @@ namespace UnitTests.Pages.Privacy
             // Arrange
 
             // Act
-            pageModel.OnGet();
+            PageModel.OnGet();
 
             // Reset
 
             // Assert
-            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
         }
 
         #endregion OnGet
