@@ -72,9 +72,9 @@ namespace UnitTests.Services
             // Arrange
 
             // Confirm Update Has Gone Through
-            Assert.AreEqual(true, getResult.userID.Equals(updateUserModel.UpdateID));
-            Assert.AreEqual(true, getResult.email.Equals(updateUserModel.UpdateEmail));
-            Assert.AreEqual(true, getResult.password.Equals(updateUserModel.UpdatePassword));
+            Assert.AreEqual(true, getResult.UserID.Equals(updateUserModel.UpdateID));
+            Assert.AreEqual(true, getResult.Email.Equals(updateUserModel.UpdateEmail));
+            Assert.AreEqual(true, getResult.Password.Equals(updateUserModel.UpdatePassword));
 
         }
 
@@ -95,9 +95,9 @@ namespace UnitTests.Services
             // Reset
 
             // Assert
-            Assert.AreEqual(true, userModel.userID.Equals(validId));
-            Assert.AreEqual(true, userModel.username.Equals("calif32"));
-            Assert.AreEqual(true, userModel.location.Equals("United States of America"));
+            Assert.AreEqual(true, userModel.UserID.Equals(validId));
+            Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+            Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
         }
 
         [Test]
@@ -128,9 +128,9 @@ namespace UnitTests.Services
             // Reset
 
             // Assert
-            Assert.AreEqual(true, userModel.userID.Equals(491376));
-            Assert.AreEqual(true, userModel.username.Equals("calif32"));
-            Assert.AreEqual(true, userModel.location.Equals("United States of America"));
+            Assert.AreEqual(true, userModel.UserID.Equals(491376));
+            Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+            Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
         }
 
         [Test]
@@ -185,7 +185,7 @@ namespace UnitTests.Services
 
         #endregion GetPassword
 
-        #region isCorrectPassword
+        #region IsCorrectPassword
 
         [Test]
         public void isCorrectPassword_ValidName_ValidPassword_Should_Return_True()
@@ -197,7 +197,7 @@ namespace UnitTests.Services
             string password = "vDEkwE";
 
             // Act
-            bool result = TestHelper.UserService.isCorrectPassword(userName, password);
+            bool result = TestHelper.UserService.IsCorrectPassword(userName, password);
 
             // Reset
 
@@ -213,7 +213,7 @@ namespace UnitTests.Services
             string invalidPassword = "vDEkwE";
 
             // Act
-            bool result = TestHelper.UserService.isCorrectPassword(invalidName, invalidPassword);
+            bool result = TestHelper.UserService.IsCorrectPassword(invalidName, invalidPassword);
 
             // Reset
             // Assert
@@ -229,7 +229,7 @@ namespace UnitTests.Services
             string invalidPassword = "613841";
 
             // Act
-            bool result = TestHelper.UserService.isCorrectPassword(userName, invalidPassword);
+            bool result = TestHelper.UserService.IsCorrectPassword(userName, invalidPassword);
 
             // Reset
 
@@ -248,10 +248,10 @@ namespace UnitTests.Services
             // Arrange
             UserModel newUser = new UserModel()
             {
-                username = "Kitchen",
-                email = "KitchenNightMare@gmail.com",
-                password = "kitchepassword",
-                location = "Cuba"
+                Username = "Kitchen",
+                Email = "KitchenNightMare@gmail.com",
+                Password = "kitchepassword",
+                Location = "Cuba"
             };
 
             // Act
@@ -259,10 +259,10 @@ namespace UnitTests.Services
 
             // Reset
             // Assert
-            Assert.AreEqual(true, userModel.username.Equals(newUser.username));
-            Assert.AreEqual(true, userModel.email.Equals(newUser.email));
-            Assert.AreEqual(true, userModel.password.Equals(newUser.password));
-            Assert.AreEqual(true, userModel.location.Equals(newUser.location));
+            Assert.AreEqual(true, userModel.Username.Equals(newUser.Username));
+            Assert.AreEqual(true, userModel.Email.Equals(newUser.Email));
+            Assert.AreEqual(true, userModel.Password.Equals(newUser.Password));
+            Assert.AreEqual(true, userModel.Location.Equals(newUser.Location));
         }
 
         #endregion CreateData
