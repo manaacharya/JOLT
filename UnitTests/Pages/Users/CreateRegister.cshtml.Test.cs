@@ -5,13 +5,8 @@ using Moq;
 using ContosoCrafts.WebSite.Pages;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
-
 using ContosoCrafts.WebSite.Models;
-using ContosoCrafts.WebSite.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,35 +14,52 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace UnitTests.Pages.Users
 {
+    /// <summary>
+    /// RegisterTest class for Register
+    /// </summary>
     class RegisterTest
     {
         #region TestSetup
+        // Register Model static field/attribute
         public static RegisterModel PageModel;
 
+        /// <summary>
+        ///  Test Initialization for RegisterPage
+        /// </summary>
         [SetUp]
         public void TestInitialize()
         {
+            // logging attribute created
             var MockLoggerDirect = Mock.Of<ILogger<RegisterModel>>();
 
+            // Register Model instance created with logging attribute passed in constructor
             PageModel = new RegisterModel(MockLoggerDirect, TestHelper.UserService)
             {
+                // Set the Page Context
                 PageContext = TestHelper.PageContext
             };
         }
-
         #endregion TestSetup
 
         #region OnPost
-        [Test]
-        public void OnPost_Valid_Post_Should_Add_New_Record()
-        {
-            // Valid Update
 
-            // ---- Arrange ----
+        /// <summary>
+        /// Test for OnPost Valid UserModel
+        /// </summary>
+        [Test]
+        public void OnPost_Valid_UserModel_Should_Add_New_Record()
+        {
+            // ----------------- Arrange -----------------
+            // oldCount variable for total numbers of Users
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
+            // Random object instance creation
             Random rnd = new Random();
+            
+            // userID variable with random number
             int userID = rnd.Next(1, 999999);
+
+            // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
@@ -57,29 +69,37 @@ namespace UnitTests.Pages.Users
                 Location = "TestValidLocation"
             };
 
-            // ---- Act ----
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ---- Reset ----
+            // ----------------- Reset -----------------
 
-            // ---- Assert ----
+            // ----------------- Assert -----------------
 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
             // Confirm that record was created
             Assert.AreEqual(oldCount + 1, TestHelper.UserService.GetUsers().Count());
         }
 
+        /// <summary>
+        /// Test for OnPost InValid UserModel
+        /// </summary>
         [Test]
-        public void OnPost_InValid_Username_Should_Not_Add_New_Record()
+        public void OnPost_InValid_UserModel_Name_Should_Not_Add_New_Record()
         {
-            // Valid Update
-
-            // ---- Arrange ----
+            // ----------------- Arrange -----------------
+            // oldCount variable for total numbers of Users
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
+            // Random object instance creation
             Random rnd = new Random();
+
+            // userID variable with random number
             int userID = rnd.Next(1, 999999);
 
+            // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
@@ -90,27 +110,31 @@ namespace UnitTests.Pages.Users
             };
 
 
-            // ---- Act ----
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ---- Reset ----
+            // ----------------- Reset -----------------
 
-            // ---- Assert ---
+            // ----------------- Assert -----------------
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
 
+        /// <summary>
+        /// Test for OnPost Invalid UserModel password
+        /// </summary>
         [Test]
-        public void OnPost_InValid_Password_Should_Not_Add_New_Record()
+        public void OnPost_InValid_UserModel_Password_Should_Not_Add_New_Record()
         {
-            // Valid Update
+            // ----------------- Arrange -----------------
 
-            // ---- Arrange ----
             var oldCount = TestHelper.UserService.GetUsers().Count();
-
+            // Random object instance creation
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
+            // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
@@ -121,27 +145,31 @@ namespace UnitTests.Pages.Users
             };
 
 
-            // ---- Act ----
+            // ----------------- Act -----------------
+            // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ---- Reset ----
+            // ----------------- Reset -----------------
 
-            // ---- Assert ---
+            // ----------------- Assert -----------------
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
 
+        /// <summary>
+        /// Test for OnPost InValid UserModel Email
+        /// </summary>
         [Test]
-        public void OnPost_InValid_Email_Should_Not_Add_New_Record()
+        public void OnPost_InValid_UserModel_Email_Should_Not_Add_New_Record()
         {
-            // Valid Update
-
-            // ---- Arrange ----
+            // ----------------- Arrange -----------------
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
+            // Random object instance creation
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
+            // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
@@ -151,28 +179,31 @@ namespace UnitTests.Pages.Users
                 Location = "TestvalidLocation"
             };
 
-
-            // ---- Act ----
+            // ----------------- Act -----------------
+            // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ---- Reset ----
+            // ----------------- Reset -----------------
 
-            // ---- Assert ---
+            // ----------------- Assert -----------------
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
 
+        /// <summary>
+        /// Test for OnPost Invalid UserModel Location
+        /// </summary>
         [Test]
         public void OnPost_InValid_Location_Should_Not_Add_New_Record()
         {
-            // Valid Update
-
-            // ---- Arrange ----
+            // ----------------- Arrange -----------------
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
+            // Random object instance creation
             Random rnd = new Random();
             int userID = rnd.Next(1, 999999);
 
+            // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
@@ -182,13 +213,13 @@ namespace UnitTests.Pages.Users
                 Location = "TestInvalidLocation!!!!" //should only contain letters
             };
 
-
-            // ---- Act ----
+            // ----------------- Act -----------------
+            // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ---- Reset ----
+            // ----------------- Reset -----------------
 
-            // ---- Assert ---
+            // ----------------- Assert -----------------
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
