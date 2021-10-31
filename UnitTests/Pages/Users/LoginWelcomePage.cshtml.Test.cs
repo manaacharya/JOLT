@@ -23,11 +23,20 @@ namespace UnitTests.Pages.Users
         #region
         public static Login_WelcomeModel LoginWelcomeModel;
 
+        [SetUp]
         public void TestInitialize()
         {
-            var MockLoggerDirect = Mock.Of<ILogger<Login_WelcomeModel>>();
+            // var MockLoggerDirect = Mock.Of<ILogger<Login_WelcomeModel>>();
 
+            LoginWelcomeModel = new Login_WelcomeModel()
+            {
+                PageContext = TestHelper.PageContext
+        };
         }
         #endregion
+
+        #region OnGet
+
+        #endregion OnGet
     }
 }
