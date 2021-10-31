@@ -15,6 +15,9 @@ namespace ContosoCrafts.WebSite.Services
     /// </summary>
     public class JsonFileUserService
     {
+        /// <summary>
+        /// Static PollingCookieModel instance created 
+        /// </summary>
         public static PollingCookieModel pollingCookieModel = new PollingCookieModel()
         {
             CookieCollection = new Dictionary<string, string>()
@@ -44,7 +47,6 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
-
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
                 // Deserialize Json to List
@@ -77,44 +79,62 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-        // -----------------
-
+        /// <summary>
+        /// Create and add a cookie with key-value pair
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool CreateCookie(string key, string value)
         {
             // Does Key Exists ?
-            if(pollingCookieModel.CookieCollection.ContainsKey(key) == true)
+            if (pollingCookieModel.CookieCollection.ContainsKey(key) == true)
             {
                 // Not Successfully Added
+                // A key with the same name exists
                 return false;
             }
-
+            // Add key-value pair to Cookie Collection
             pollingCookieModel.CookieCollection.Add(key, value);
 
             // Successfully Added
             return true;
         }
 
+        /// <summary>
+        /// Get the Value of a Cookie with Key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public string GetCookieValue(string key)
         {
+            // result attribute
             string result = null;
 
+            // Find cookie from dictionary and insert into result the value
             pollingCookieModel.CookieCollection.TryGetValue(key, out result);
 
+            // result will be null, if key doesn't exist
             if (result == null)
             {
+                // return null
                 return null;
             }
 
+            // return result
             return result;
         }
 
+        /// <summary>
+        /// Delete a Key-Value pair from Dictionary Collection
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool DeleteCookie(string key)
         {
+            // Finds and Remove Cookie (key-value pair) from dictionary
             return pollingCookieModel.CookieCollection.Remove(key);
-
         }
-
-        // -----------------
 
         /// <summary>
         ///  Service To Update a User Account
@@ -195,23 +215,24 @@ namespace ContosoCrafts.WebSite.Services
 
         }
 
+        /// <summary>
         /// FX: Get the password of a user(given an user entry is found)
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         public string GetPassWord(string userName)
         {
-            //try
-           // {
-                // Fetch User
-                var getUser = GetUser(userName);
+            var getUser = GetUser(userName);
 
-                // Condition For User Existance
-                if (getUser == null)
-                {
-                    // User Doesn't Exist
-                    return null;
-                }
+            // Condition For User Existance
+            if (getUser == null)
+            {
+                // User Doesn't Exist
+                return null;
+            }
 
-                // Return Password
-                return getUser.Password;
+            // Return Password
+            return getUser.Password;
 
         }
 
@@ -223,26 +244,26 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool IsCorrectPassword(string userName, string userPassword)
         {
-           // try
+            // try
             //{
-                // Fetch User
-                var getUser = GetUser(userName);
+            // Fetch User
+            var getUser = GetUser(userName);
 
-                // Condition For User Existance
-                if (getUser == null)
-                {
-                    // User Doesn't Exist
-                    return false;
-                }
+            // Condition For User Existance
+            if (getUser == null)
+            {
+                // User Doesn't Exist
+                return false;
+            }
 
-                // Condition For Password Match
-                if (getUser.Password != userPassword)
-                {
-                    // Password Do not Match
-                    return false;
-                }
-                // Password Are Equal
-                return true;
+            // Condition For Password Match
+            if (getUser.Password != userPassword)
+            {
+                // Password Do not Match
+                return false;
+            }
+            // Password Are Equal
+            return true;
 
         }
 
@@ -289,9 +310,8 @@ namespace ContosoCrafts.WebSite.Services
         {
             // Get User By ID
             UserModel userModel = GetUser(id);
-
             // Check if User Exists NUll
-            if(userModel == null)
+            if (userModel == null)
             {
                 return false;
             }
