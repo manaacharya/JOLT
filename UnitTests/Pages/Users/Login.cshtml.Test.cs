@@ -6,9 +6,8 @@ using ContosoCrafts.WebSite.Pages;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
@@ -19,19 +18,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace UnitTests.Pages.Users
 {
+    /// <summary>
+    /// LoginTest class for Login
+    /// </summary>
     class LoginTest
     {
         #region TestSetup
+        // LoginPage Model static field/attribute
         public static LoginPageModel PageModel;
 
+        /// <summary>
+        /// Test Initialization for LoginPage
+        /// </summary>
         [SetUp]
-
         public void TestInitialize()
         {
+            // logging attribute created
             var MockLoggerDirect = Mock.Of<ILogger<LoginPageModel>>();
 
+            // Login Model instance created with logging attribute passed in constructor
             PageModel = new LoginPageModel(MockLoggerDirect, TestHelper.UserService)
             {
+                // Set the Page Context
                 PageContext = TestHelper.PageContext
             };
 
@@ -39,97 +47,105 @@ namespace UnitTests.Pages.Users
         #endregion TestSetup
 
         #region OnPost
+
+        /// <summary>
+        /// Test For OnPost() on Valid User and Password
+        /// </summary>
         [Test]
-        public void Valid_Username_Valid_Password_Should_Return_Login_Welcome()
-        {   
-            // Arrange
+        public void OnPost_Valid_Username_Valid_Password_Should_Return_Login_Welcome()
+        {
+            // ----------------- Arrange -----------------
             int userID = 157465;
+            // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
                 Username = "lakers34",
                 Password = "dscWTr"
             };
-            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
-            
-            // Act
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
-            
+
             // Reset
-            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
-            
-            // Assert
+
+            // ----------------- Assert -----------------
             Assert.AreEqual(true, String.IsNullOrEmpty(PageModel.Msg));
             Assert.AreEqual(true, result.PageName.Contains("Login_Welcome"));
             Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).Username);
         }
 
+        /// <summary>
+        /// Test for OnPost() Null Username and Password
+        /// </summary>
         [Test]
-        public void Null_Username_Null_Password_Should_Display_Error()
+        public void OnPost_Null_Username_Null_Password_Should_Display_Error()
         {
-            // Arrange
+            // ----------------- Arrange -----------------
+            // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
             };
-            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
 
-            // Act
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // Reset
-            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+            // ----------------- Reset -----------------
 
-            // Assert
+            // ----------------- Assert -----------------
             Assert.AreEqual("No Empty Entry", PageModel.Msg);
             Assert.AreEqual(null, result);
-            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
 
+        /// <summary>
+        /// Test for OnPost Valid name, Invalid Password
+        /// </summary>
         [Test]
-        public void Valid_Username_Incorrect_Password_Should_Display_Error()
+        public void OnPost_Valid_Username_Incorrect_Password_Should_Display_Error()
         {
-            // Arrange
+            // ----------------- Arrange -----------------
+            // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
                 Username = "lakers34",
                 Password = "INCORRECT_PASSWORD"
             };
-            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
 
-            // Act
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // Reset
-            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+            // ----------------- Reset -----------------
 
-            // Assert
+            // ----------------- Assert -----------------
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
             Assert.AreEqual(null, result);
-            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
 
+        /// <summary>
+        /// Test for OnPost Incorrect name and Password
+        /// </summary>
         [Test]
-        public void Incorrect_Username_Incorrect_Password_Should_Display_Error()
+        public void OnPost_Incorrect_Username_Incorrect_Password_Should_Display_Error()
         {
-            // Arrange
+            // ----------------- Arrange -----------------
+            // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
                 Username = "INCORRECT_USERNAME",
                 Password = "INCORRECT_PASSWORD"
             };
-            // pageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "lakers34");
 
-            // Act
+            // ----------------- Act -----------------
+            // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // Reset
-            // pageModel.PageContext.HttpContext.Response.Cookies.Delete("nameCookie");
+            // ----------------- Reset -----------------
 
-            // Assert
+            // ----------------- Assert -----------------
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
             Assert.AreEqual(null, result);
-            //Assert.AreEqual(true, result.PageName.Contains("Login"));
         }
-
 
         #endregion OnPost
     }
