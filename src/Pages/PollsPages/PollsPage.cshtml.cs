@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+
+using ContosoCrafts.WebSite.Models;
+using ContosoCrafts.WebSite.Services;
 
 namespace ContosoCrafts.WebSite.Pages
 {
@@ -23,6 +27,11 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+        }
+
+        public IActionResult OnPostGuidelines()
+        {
+            return Redirect("/PollsPage/GuidelinePage");
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model PrivacyModel
+@model PollsPageModel
 @{
     ViewData["Title"] = "Polls Page";
 }
@@ -8,3 +8,4 @@
 <p>This page will display all active polls created by our users.</p>
 
 <a class="btn btn-outline-success" asp-page="/Poll/Create"> <i class="fa fa-plus"></i> Create Poll</a>
+<a asp-page="/PollsPages/GuidelinePage" class="btn btn-outline-success">Guidelines</a>
