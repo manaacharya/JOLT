@@ -27,19 +27,8 @@ namespace ContosoCrafts.WebSite
             services.AddControllers();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
+            // services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
             services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
-
-            // FX: added to in attempt to fix System.InvalidOperationException in login.cshtml.cs
-            // code...
-            /*
-            _ = services.AddSession(options =>
-              {
-                  options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
-                options.Cookie.HttpOnly = true;
-                  options.Cookie.IsEssential = true;
-              });
-            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
