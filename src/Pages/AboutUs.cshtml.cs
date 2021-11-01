@@ -21,16 +21,20 @@ namespace ContosoCrafts.WebSite.Pages
         /// initialize the logger object
         /// </summary>
         /// <param name="logger"></param> logger object
+         
+        /*
         public AboutUsModel(ILogger<AboutUsModel> logger)
         {
             _logger = logger;
         }
-
+        */
         /// <summary> 
         /// This is a dummy method for now
         /// </summary>
+        /*
         public void OnGet()
         {
         }
+        */
     }
 }
