@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Models;
+using System.Text.Json;
 
 namespace UnitTests.Services
 {
@@ -353,6 +354,31 @@ namespace UnitTests.Services
 
         #endregion DeleteData
 
+        #region ToString
+
+        /// <summary>
+        /// Test for ToString
+        /// </summary>
+        [Test]
+        public void ToString_Should_Return_Valid_Info()
+        {
+            // ------------------------- Arrange -------------------------
+            int validId = 491376;
+
+            // ------------------------- Act -------------------------
+            // Fetch User Result from Act
+            UserModel userModel = TestHelper.UserService.GetUser(validId);
+            string correctResult = JsonSerializer.Serialize<UserModel>(userModel);
+            // Reset
+            // ------------------------- Assert -------------------------
+            Assert.AreEqual(true, userModel.UserID.Equals(validId));
+            Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+            Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
+            Assert.AreEqual(true, userModel.ToString().Equals(correctResult));
+
+        }
+
+        #endregion ToString
 
         #region CreateCookie
 
@@ -449,7 +475,6 @@ namespace UnitTests.Services
         }
 
         #endregion GetCookieValue
-
 
         #region DeleteCookie
 
