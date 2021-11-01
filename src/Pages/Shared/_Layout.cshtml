@@ -47,7 +47,6 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-primary" asp-page="/UserPages/LoginFolder/Login"> User Login</a>
                         </li>
-
                         @{
                             var cookie = Html.Raw(HttpContextAccessor.HttpContext.Request.Cookies["nameCookie"]).ToString();
 
@@ -57,11 +56,7 @@
                                     <a class="nav-link" style="color:#ffffff; font-size:large;" asp-area="" asp-page="/UserPages/ProfilePage">@cookie</a>
                                 </li>
                             }
-
                         }
-
-
-
                     </ul>
                 </div>
             </div>
