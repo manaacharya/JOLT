@@ -12,8 +12,5 @@ namespace ContosoCrafts.WebSite.Pages
     {
         // public object Username { get; private set; }
 
-        public void OnGet()
-        {
-        }
     }
 }

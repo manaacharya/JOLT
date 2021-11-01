@@ -6,9 +6,8 @@ using ContosoCrafts.WebSite.Pages;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
@@ -28,10 +27,10 @@ namespace UnitTests.Pages.Users
         {
             // var MockLoggerDirect = Mock.Of<ILogger<Login_WelcomeModel>>();
 
-            LoginWelcomeModel = new Login_WelcomeModel()
-            {
-                PageContext = TestHelper.PageContext
-        };
+            // LoginWelcomeModel = new Login_WelcomeModel()
+            // {
+                // PageContext = TestHelper.PageContext
+            // };
         }
         #endregion
 

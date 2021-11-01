@@ -49,30 +49,20 @@ namespace ContosoCrafts.WebSite.Pages
             if (UserInput_test.Username != null && UserInput_test.Password != null)
             {
                 bool InputVerified = false;
-                try
-                {
-                    InputVerified = UserService.IsCorrectPassword(UserInput_test.Username, UserInput_test.Password);
-                    if (InputVerified)
-                    {
-                        UserService.CreateCookie("nameCookie", UserInput_test.Username);
-                        //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
-                        return RedirectToPage("Login_Welcome");
-                    }
-                    else
-                    {
-                        // incorrect password
-                        Msg = "Invalid Username or Password";
-                        return Page();
-                    }
 
-                }
-                catch
+                InputVerified = UserService.IsCorrectPassword(UserInput_test.Username, UserInput_test.Password);
+                if (InputVerified)
                 {
-                    // username does not exist
+                    UserService.CreateCookie("nameCookie", UserInput_test.Username);
+                    //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
+                    return RedirectToPage("Login_Welcome");
+                 }
+                 else
+                 {
+                    // incorrect password
                     Msg = "Invalid Username or Password";
                     return Page();
-                }
-
+                  }
             }
             Msg = "No Empty Entry"; // null input exists
             return Page();
