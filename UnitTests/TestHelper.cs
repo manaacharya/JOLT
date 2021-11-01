@@ -43,7 +43,7 @@ namespace UnitTests
         public static ViewDataDictionary ViewData;
         public static TempDataDictionary TempData;
         public static PageContext PageContext;
-        public static JsonFileProductService ProductService;
+        // public static JsonFileProductService ProductService;
 
         // User Services
         public static JsonFileUserService UserService;
@@ -78,11 +78,11 @@ namespace UnitTests
                 HttpContext = HttpContextDefault
             };
 
-            ProductService = new JsonFileProductService(MockWebHostEnvironment.Object);
+            // ProductService = new JsonFileProductService(MockWebHostEnvironment.Object);
 
-            JsonFileProductService productService;
+            // JsonFileProductService productService;
 
-            productService = new JsonFileProductService(TestHelper.MockWebHostEnvironment.Object);
+            // productService = new JsonFileProductService(TestHelper.MockWebHostEnvironment.Object);
 
             // User Services
             UserService = new JsonFileUserService(MockWebHostEnvironment.Object);

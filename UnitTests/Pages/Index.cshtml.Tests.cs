@@ -30,7 +30,7 @@ namespace UnitTests.Pages.Index
             var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
 
             // Index Model instance created with logging attribute passed in constructor
-            PageModel = new IndexModel(MockLoggerDirect, TestHelper.ProductService)
+            PageModel = new IndexModel(MockLoggerDirect)
             {
             };
         }
@@ -52,7 +52,7 @@ namespace UnitTests.Pages.Index
 
             // ----------------- Assert -----------------
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-            Assert.AreEqual(true, PageModel.Products.ToList().Any());
+            // Assert.AreEqual(true, PageModel.Products.ToList().Any());
         }
         #endregion OnGet
     }
