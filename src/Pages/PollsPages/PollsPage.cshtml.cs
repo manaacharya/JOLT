@@ -25,9 +25,11 @@ namespace ContosoCrafts.WebSite.Pages
         /// OnGet information dispalyed
         /// TODO: add PollServices polls to display polls
         /// </summary>
+        /*
         public void OnGet()
         {
         }
+        */
 
         public IActionResult OnPostGuidelines()
         {

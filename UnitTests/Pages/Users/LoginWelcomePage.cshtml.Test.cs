@@ -33,9 +33,5 @@ namespace UnitTests.Pages.Users
             // };
         }
         #endregion
-
-        #region OnGet
-
-        #endregion OnGet
     }
 }
