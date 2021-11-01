@@ -20,7 +20,7 @@ namespace UnitTests.Pages.Users
     class LoginWelcomePageTest
     {
         #region
-        public static Login_WelcomeModel LoginWelcomeModel;
+        // public static Login_WelcomeModel LoginWelcomeModel;
 
         [SetUp]
         public void TestInitialize()
