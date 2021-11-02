@@ -35,24 +35,36 @@ namespace UnitTests.Services
         public void UpdateProfile_InValidId_InValidUpdateUserModel_Should_Return_Null()
         {
             // ------------------------- Arrange -------------------------
+            //invalid user id 
             int invalidId = 999999;
 
             // Create UpdateUserModel model instance
             UpdateUserModel updateUserModel = new UpdateUserModel()
             {
+                //invalid user id 
                 UpdateID = invalidId,
+
+                //username
                 UpdateName = "Invalid Name",
+
+                //email
                 UpdateEmail = "invalid@gmail.com",
+
+                //password
                 UpdatePassword = "Invalidpassword",
+
+                //location 
                 UpdateLocation = "USA"
             };
 
             // ------------------------- Act -------------------------
+            //get updateprofile result 
             var getResult = TestHelper.UserService.UpdateProfile(updateUserModel);
 
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check that return result is null 
             Assert.AreEqual(null, getResult);
         }
 
@@ -63,15 +75,25 @@ namespace UnitTests.Services
         public void UpdateProfile_ValidId_ValidUpdateUserModel_Should_Return_UserModel()
         {
             // ------------------------- Arrange -------------------------
+            //already exisiting valid userid 
             int validId = 862765;
 
             // Create UpdateUserModel model instance
             UpdateUserModel updateUserModel = new UpdateUserModel()
             {
+                //userid 
                 UpdateID = validId,
+
+                //username
                 UpdateName = "Valid Name",
+
+                //email
                 UpdateEmail = "valid@gmail.com",
+
+                //password
                 UpdatePassword = "ValidPassword",
+
+                //location 
                 UpdateLocation = "USA"
             };
 
@@ -83,8 +105,13 @@ namespace UnitTests.Services
 
             // ------------------------- Arrange -------------------------
             // Confirm Update Has Gone Through
+            //check userid 
             Assert.AreEqual(true, getResult.UserID.Equals(updateUserModel.UpdateID));
+
+            //check email 
             Assert.AreEqual(true, getResult.Email.Equals(updateUserModel.UpdateEmail));
+
+            //check password 
             Assert.AreEqual(true, getResult.Password.Equals(updateUserModel.UpdatePassword));
 
         }
@@ -100,17 +127,21 @@ namespace UnitTests.Services
         public void GetUser_ValidID_Should_Return_UserModel()
         {
             // ------------------------- Arrange -------------------------
+            //valid userid from exisiting user 
             int validId = 491376;
 
             // ------------------------- Act -------------------------
             // Fetch User Result from Act
             UserModel userModel = TestHelper.UserService.GetUser(validId);
 
-            // Reset
-
             // ------------------------- Assert -------------------------
+            //check userid
             Assert.AreEqual(true, userModel.UserID.Equals(validId));
+
+            //check username 
             Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+
+            //check location 
             Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
         }
 
@@ -121,15 +152,15 @@ namespace UnitTests.Services
         public void GetUser_InValidID_Should_Return_Null()
         {
             // ------------------------- Arrange -------------------------
+            //invalid user id 
             int invalidId = 000000;
 
             // ------------------------- Act -------------------------
             // Fetch User Result From Act
             UserModel userModel = TestHelper.UserService.GetUser(invalidId);
 
-            // Reset
-
             // ------------------------- Assert -------------------------
+            //check usermode is not created 
             Assert.AreEqual(null, userModel);
         }
 
@@ -140,6 +171,7 @@ namespace UnitTests.Services
         public void GetUser_ValidName_Should_Return_UserModel()
         {
             // ------------------------- Arrange -------------------------
+            //create valid username name 
             string validName = "calif32";
 
             // ------------------------- Act -------------------------
@@ -149,8 +181,13 @@ namespace UnitTests.Services
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check userid
             Assert.AreEqual(true, userModel.UserID.Equals(491376));
+
+            //check username 
             Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+
+            //check location 
             Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
         }
 
@@ -161,6 +198,7 @@ namespace UnitTests.Services
         public void GetUser_InValidName_Should_Return_Null()
         {
             // ------------------------- Arrange -------------------------
+            //create invalid username name 
             string invalidName = "InvalidName";
 
             // ------------------------- Act -------------------------
@@ -170,6 +208,7 @@ namespace UnitTests.Services
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check that usermodel was not created 
             Assert.AreEqual(null, userModel);
         }
 
@@ -184,6 +223,7 @@ namespace UnitTests.Services
         public void GetPassword_ValidName_Should_Return_Password()
         {
             // ------------------------- Arrange -------------------------
+            //create valid password 
             string validName = "calif32";
 
             // ------------------------- Act -------------------------
@@ -193,6 +233,7 @@ namespace UnitTests.Services
             // -------------------------  Reset-------------------------
 
             // ------------------------- Assert -------------------------
+            //check password 
             Assert.AreEqual(true, getPassword.Equals("vDEkwE"));
         }
 
@@ -203,6 +244,7 @@ namespace UnitTests.Services
         public void GetPassword_InValidName_Should_Return_Null()
         {
             // ------------------------- Arrange -------------------------
+            //create invalid password 
             string invalidName = "000000";
 
             // ------------------------- Act -------------------------
@@ -212,6 +254,7 @@ namespace UnitTests.Services
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check that no usermodel was created 
             Assert.AreEqual(null, getPassword);
         }
 
@@ -238,6 +281,7 @@ namespace UnitTests.Services
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check return result is correct 
             Assert.AreEqual(true, result);
         }
 
@@ -248,6 +292,7 @@ namespace UnitTests.Services
         public void isCorrectPassword_InValidName_InValidPassword_Should_Return_False()
         {
             // ------------------------- Arrange -------------------------
+            //create invalid username and password 
             string invalidName = "008998832";
             string invalidPassword = "vDEkwE";
 
@@ -257,6 +302,7 @@ namespace UnitTests.Services
 
             // Reset
             // -------------------------  Assert -------------------------
+            //check that result is incorrect combo 
             Assert.AreEqual(false, result);
         }
 
@@ -267,10 +313,14 @@ namespace UnitTests.Services
         public void isCorrectPassword_ValidName_InValidPassword_Should_Return_False()
         {
             // ------------------------- Arrange -------------------------
+            //create valid username
             string userName = "calif32";
+
+            //invalid password 
             string invalidPassword = "613841";
 
             // ------------------------- Act -------------------------
+            //fetch result 
             bool result = TestHelper.UserService.IsCorrectPassword(userName, invalidPassword);
 
             // Reset
@@ -291,11 +341,16 @@ namespace UnitTests.Services
         public void CreateData_New_UserModel_Should_Return_UserModel()
         {
             // ------------------------- Arrange -------------------------
+            //create new usermodel 
             UserModel newUser = new UserModel()
             {
+                //username
                 Username = "Kitchen",
+                //email
                 Email = "KitchenNightMare@gmail.com",
+                //password
                 Password = "kitchepassword",
+                //location 
                 Location = "Cuba"
             };
 
@@ -305,9 +360,16 @@ namespace UnitTests.Services
 
             // Reset
             // ------------------------- Assert -------------------------
+            //check username 
             Assert.AreEqual(true, userModel.Username.Equals(newUser.Username));
+
+            //check email 
             Assert.AreEqual(true, userModel.Email.Equals(newUser.Email));
+
+            //check password 
             Assert.AreEqual(true, userModel.Password.Equals(newUser.Password));
+
+            //check location 
             Assert.AreEqual(true, userModel.Location.Equals(newUser.Location));
         }
 
@@ -322,6 +384,7 @@ namespace UnitTests.Services
         public void DeleteData_ValidId_Should_Return_True()
         {
             // ------------------------- Arrange -------------------------
+            //use existing valid user id 
             int validId = 341292;
 
             // ------------------------- Act -------------------------
@@ -330,6 +393,7 @@ namespace UnitTests.Services
 
             // Reset
             // ------------------------- Assert -------------------------
+            //check that data is deleted 
             Assert.AreEqual(true, getResult);
 
         }
@@ -341,6 +405,7 @@ namespace UnitTests.Services
         public void DeleteData_InValidId_Should_Return_False()
         {
             // ------------------------- Arrange -------------------------
+            //create invalid user id
             int invalidId = 111111;
 
             // ------------------------- Act -------------------------
@@ -349,6 +414,7 @@ namespace UnitTests.Services
 
             // Reset
             // ------------------------- Assert -------------------------
+            //check that data is not deleted because data does not exist 
             Assert.AreEqual(false, getResult);
         }
 
@@ -363,17 +429,26 @@ namespace UnitTests.Services
         public void ToString_Should_Return_Valid_Info()
         {
             // ------------------------- Arrange -------------------------
+            //use valid exisitng user id 
             int validId = 491376;
 
             // ------------------------- Act -------------------------
             // Fetch User Result from Act
             UserModel userModel = TestHelper.UserService.GetUser(validId);
+            //fetch result from usermodel 
             string correctResult = JsonSerializer.Serialize<UserModel>(userModel);
             // Reset
             // ------------------------- Assert -------------------------
+            //check id is valid 
             Assert.AreEqual(true, userModel.UserID.Equals(validId));
+
+            //check username 
             Assert.AreEqual(true, userModel.Username.Equals("calif32"));
+
+            //check location 
             Assert.AreEqual(true, userModel.Location.Equals("United States of America"));
+
+            //check tostring prints usermodel correctly 
             Assert.AreEqual(true, userModel.ToString().Equals(correctResult));
 
         }
@@ -389,6 +464,7 @@ namespace UnitTests.Services
         public void CreateCookie_ValidKey_ValidValue_Should_AddCookie()
         {
             // ------------------------- Arrange -------------------------
+            //create key and value to test cookie 
             string key = "testName";
             string value = "testkey";
 
@@ -398,7 +474,9 @@ namespace UnitTests.Services
             // ------------------------- Reset -------------------------
 
             // ------------------------- Assert -------------------------
+            //check cookie was created 
             Assert.AreEqual(true, result);
+            //test that key is correct 
             Assert.AreEqual("testkey", TestHelper.UserService.GetCookieValue(key));
 
         }
@@ -410,6 +488,7 @@ namespace UnitTests.Services
         public void CreateCookie_KeyExist_Should_Return_False()
         {
             // ------------------------- Arrange -------------------------
+            //create duplicate key and value 
             string key = "duplicateKey";
             string value = "duplicateValue";
             // Create Cookie in advance
@@ -422,6 +501,7 @@ namespace UnitTests.Services
             // ------------------------- Reset -------------------------
 
             // ------------------------- Assert -------------------------
+            //check that duplicate cookie could not be made 
             Assert.AreEqual(false, result);
         }
 
@@ -436,8 +516,10 @@ namespace UnitTests.Services
         public void GetCookieValue_ValidKey_Should_Return_CookieValue()
         {
             // ------------------------- Arrange -------------------------
+            //create key and value for cookie 
             string key = "newkey";
             string value = "newValue";
+
             // Create Cookie in advance
             TestHelper.UserService.CreateCookie(key, value);
 
@@ -448,6 +530,7 @@ namespace UnitTests.Services
             // Reset
 
             // ------------------------- Assert -------------------------
+            //check that Get Cookie produced correct result 
             Assert.AreEqual("newValue", result);
         }
 
@@ -471,6 +554,7 @@ namespace UnitTests.Services
 
             // Reset
             // ------------------------- Assert -------------------------
+            //check return result is null 
             Assert.AreEqual(null, result);
         }
 
@@ -485,6 +569,7 @@ namespace UnitTests.Services
         public void DeleteCookie_ValidKey_Should_Return_True()
         {
             // ------------------------- Arrange -------------------------
+            //create key and value for cookie 
             string key = "deletekey";
             string value = "deleteValue";
 
@@ -498,6 +583,7 @@ namespace UnitTests.Services
             // ------------------------- Reset -------------------------
 
             // ------------------------- Assert -------------------------
+            //check return result is true 
             Assert.AreEqual(true, result);
         }
 
@@ -508,6 +594,7 @@ namespace UnitTests.Services
         public void DeleteCookie_InValidKey_Should_Return_True()
         {
             // ------------------------- Arrange -------------------------
+            //create key and value for cookie 
             string key = "deletekey";
             string value = "deleteValue";
 
@@ -523,6 +610,7 @@ namespace UnitTests.Services
             // Reset
 
             // -------------------------  Assert -------------------------
+            //check return result is false
             Assert.AreEqual(false, result);
         }
 
