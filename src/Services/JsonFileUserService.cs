@@ -32,13 +32,18 @@ namespace ContosoCrafts.WebSite.Services
             WebHostEnvironment = webHostEnvironment;
         }
 
-        // WebHostEnvironment knows where the  data file is stored at
+        /// <summary>
+        /// WebHostEnvironment knows where the  data file is stored at
+        /// </summary>
         public IWebHostEnvironment WebHostEnvironment { get; }
 
-        // specify file path to retrieve from
+        /// <summary>
+        /// specify file path to retrieve from
+        /// </summary>
         private string JsonFileName
         {
-            get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "users.json"); }
+            get { return Path.Combine(WebHostEnvironment.WebRootPath,
+                "data", "users.json"); }
         }
 
         /// <summary>
@@ -47,12 +52,15 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
+            //create file reader for Json file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
                 // Deserialize Json to List
-                return JsonSerializer.Deserialize<UserModel[]>(jsonFileReader.ReadToEnd(),
+              return JsonSerializer.Deserialize<UserModel[]>
+                    (jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
+                        //make case insensitive
                         PropertyNameCaseInsensitive = true
                     });
             }
@@ -64,16 +72,19 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="users"></param>
         private void SaveData(IEnumerable<UserModel> users)
         {
-
             using (var outputStream = File.Create(JsonFileName))
             {
                 // Serialize Collection to Json
                 JsonSerializer.Serialize<IEnumerable<UserModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
+                        //skip validation 
                         SkipValidation = true,
+
+                        //make indented 
                         Indented = true
                     }),
+                    //for users
                     users
                 );
             }
@@ -87,7 +98,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool CreateCookie(string key, string value)
         {
-            // Does Key Exists ?
+            // Do Key Exists ?
             if (pollingCookieModel.CookieCollection.ContainsKey(key) == true)
             {
                 // Not Successfully Added
@@ -150,9 +161,16 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             // Modify The User Object
+            //username 
             userModel.Username = updateUser.UpdateName;
+
+            //email
             userModel.Email = updateUser.UpdateEmail;
+
+            //password
             userModel.Password = updateUser.UpdatePassword;
+
+            //location 
             userModel.Location = updateUser.UpdateLocation;
 
             // Find User from DataSet and Overwrite
