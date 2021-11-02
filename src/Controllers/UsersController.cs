@@ -32,6 +32,10 @@ namespace ContosoCrafts.WebSite.Controllers
         /// </summary>
         public JsonFileUserService UserService { get; }
 
+        /// <summary>
+        /// List of Users
+        /// </summary>
+        public IEnumerable<UserModel> Users { get; set; }
 
         /// <summary>
         /// This method will be used to get methods from
@@ -41,7 +45,9 @@ namespace ContosoCrafts.WebSite.Controllers
         [HttpGet]
         public IEnumerable<UserModel> Get()
         {
-           return UserService.GetUsers();
+           Users = UserService.GetUsers();
+            return Users; 
+            
         }
 
     }
