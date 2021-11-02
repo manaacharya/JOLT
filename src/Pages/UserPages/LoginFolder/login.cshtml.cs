@@ -25,19 +25,24 @@ namespace ContosoCrafts.WebSite.Pages
             JsonFileUserService userService)
         {
             _logger = logger;
+
+            //Userservice object
             UserService = userService;
         }
 
         // Utility for JasonFile
         public JsonFileUserService UserService { get; }
 
-        // public IEnumerable<UserModel> UserList { get; private set; } // list of users
-        // public void OnGet() => UserList = UserService.GetUsers(); //initialize UserList
+        /// <summary>
+        /// A message for user to see
+        /// </summary>
+        public string Msg { get; set; } 
 
-        public string Msg { get; set; } // A message for user to see
-
+        /// <summary>
+        /// helper class for user input
+        /// </summary>
         [BindProperty]
-        public Models.UserLoginModel UserInput_test { get; set; } // helper class for user input
+        public Models.UserLoginModel UserInput_test { get; set; }
 
         
         /// <summary>
@@ -48,23 +53,31 @@ namespace ContosoCrafts.WebSite.Pages
 
             if (UserInput_test.Username != null && UserInput_test.Password != null)
             {
+                //set inputverified to false 
                 bool InputVerified = false;
 
                 InputVerified = UserService.IsCorrectPassword(UserInput_test.Username, UserInput_test.Password);
                 if (InputVerified)
                 {
+                    //create cookie with username 
                     UserService.CreateCookie("nameCookie", UserInput_test.Username);
+
                     //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
                     return RedirectToPage("Login_Welcome");
                  }
                  else
                  {
-                    // incorrect password
+                    //message incorrect password
                     Msg = "Invalid Username or Password";
+
+                    //redirect to page 
                     return Page();
                   }
             }
-            Msg = "No Empty Entry"; // null input exists
+            //null input exists 
+            Msg = "No Empty Entry";
+
+            //redirect to page 
             return Page();
             
         }
