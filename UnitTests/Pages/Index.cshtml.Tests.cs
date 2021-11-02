@@ -48,11 +48,13 @@ namespace UnitTests.Pages.Index
             // ----------------- Arrange -----------------
 
             // ----------------- Act -----------------
+            //fetch onget 
             PageModel.OnGet();
 
             // ----------------- Assert -----------------
+            //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-            // Assert.AreEqual(true, PageModel.Products.ToList().Any());
+            
         }
         #endregion OnGet
     }
