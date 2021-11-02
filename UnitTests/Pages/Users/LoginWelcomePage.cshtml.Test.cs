@@ -21,7 +21,7 @@ namespace UnitTests.Pages.Users
     {
         #region
         // public static Login_WelcomeModel LoginWelcomeModel;
-
+        /*
         [SetUp]
         public void TestInitialize()
         {
@@ -32,6 +32,7 @@ namespace UnitTests.Pages.Users
                 // PageContext = TestHelper.PageContext
             // };
         }
+        */
         #endregion
     }
 }
