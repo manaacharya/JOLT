@@ -51,7 +51,11 @@ namespace UnitTests.Pages.Users
             UsersPageModel.OnGet();
 
             // ----------------- Assert -----------------
+
+            //check model state is valid 
             Assert.AreEqual(true, UsersPageModel.ModelState.IsValid);
+
+            //check Users list is filled 
             Assert.AreEqual(true, UsersPageModel.Users.ToList().Any());
         }
         #endregion OnGet

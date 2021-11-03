@@ -59,18 +59,25 @@ namespace UnitTests.Pages.Users
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
+                //username
                 Username = "lakers34",
+
+                //password 
                 Password = "dscWTr"
             };
             // ----------------- Act -----------------
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // Reset
 
             // ----------------- Assert -----------------
+            //check message is empty 
             Assert.AreEqual(true, String.IsNullOrEmpty(PageModel.Msg));
+
+            //check page is loginwelcome page
             Assert.AreEqual(true, result.PageName.Contains("Login_Welcome"));
+
+            //check username is correct 
             Assert.AreEqual("lakers34", TestHelper.UserService.GetUser(userID).Username);
         }
 
@@ -93,7 +100,10 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //check message 
             Assert.AreEqual("No Empty Entry", PageModel.Msg);
+
+            //check return result is null 
             Assert.AreEqual(null, result);
         }
 
@@ -107,7 +117,9 @@ namespace UnitTests.Pages.Users
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
+                //username 
                 Username = "lakers34",
+                //incorrect password 
                 Password = "INCORRECT_PASSWORD"
             };
 
@@ -118,7 +130,11 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+
+            //check message for incorrect password 
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
+
+            //check return result is null 
             Assert.AreEqual(null, result);
         }
 
@@ -132,7 +148,9 @@ namespace UnitTests.Pages.Users
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
+                //incorrect username 
                 Username = "INCORRECT_USERNAME",
+                //incorrect password 
                 Password = "INCORRECT_PASSWORD"
             };
 
@@ -143,7 +161,10 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //check message is inocrrect password/username 
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
+
+            //check return result is null 
             Assert.AreEqual(null, result);
         }
 

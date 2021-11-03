@@ -32,7 +32,10 @@ namespace UnitTests.Pages.Privacy
             // Privacy Model instance created with logging attribute passed in constructor
             PageModel = new PrivacyModel(MockLoggerDirect)
             {
+                //create PageContext object
                 PageContext = TestHelper.PageContext,
+
+                //create temporary data 
                 TempData = TestHelper.TempData,
             };
         }
@@ -49,12 +52,13 @@ namespace UnitTests.Pages.Privacy
         {
             // ----------------- Arrange -----------------
 
-            // Act
+            //fetch onget
             PageModel.OnGet();
 
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //check model state is valid
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
         }
 

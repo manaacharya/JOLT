@@ -31,7 +31,9 @@ namespace ContosoCrafts.WebSite.Models
         /// <param name="count"></param> count of vote 
         public OpinionItem(string name, int count)
         {
+            //set opinionname as parameter 
             this.OpinionName = name;
+            //set numcounts as parameter
             this.NumCounts = count;
         }
     };

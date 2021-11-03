@@ -61,8 +61,14 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+
+            //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            //check correct username 
             Assert.AreEqual("lakers34", PageModel.UserModel.Username);
+
+            //check correct location 
             Assert.AreEqual("Egypt", PageModel.UserModel.Location);
 
         }

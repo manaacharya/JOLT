@@ -62,10 +62,19 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
+                //user id
                 UserID = userID,
+
+                //username
                 Username = "TestValidName",
+
+                //password
                 Password = "TestValidPassword",
+
+                //email
                 Email = "TestValidEmail@gmail.com",
+
+                //location 
                 Location = "TestValidLocation"
             };
 
@@ -137,10 +146,19 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
+                //id 
                 UserID = userID,
+
+                //username 
                 Username = "TestValidUsername",
+
+                //password to fail 
                 Password = "pass", //password should be more than 6
+
+                //email 
                 Email = "TestvalidEmail@gmail.com",
+
+                //location 
                 Location = "TestvalidLocation"
             };
 
@@ -172,10 +190,19 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
+                //user id 
                 UserID = userID,
+
+                //username 
                 Username = "TestValidUsername",
+
+                //password 
                 Password = "TestValidpassword",
+
+                //email to fail 
                 Email = "TestvalidEmail@gmail", //email should be in valid format
+
+                //location 
                 Location = "TestvalidLocation"
             };
 
@@ -206,9 +233,16 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
+                //user id 
                 UserID = userID,
+
+                //username 
                 Username = "TestValidUsername",
+
+                //password 
                 Password = "TestValidpassword",
+
+                //email
                 Email = "TestvalidEmail@gmail.com",
                 Location = "TestInvalidLocation!!!!" //should only contain letters
             };

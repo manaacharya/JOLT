@@ -23,20 +23,30 @@ namespace UnitTests.Pages.Polls
     class PollsPageTest
     {
         #region TestSetup
+        //create PollsPagemodel object 
         public static PollsPageModel PageModel;
-        
+
+        /// <summary>
+        /// create test logger and PageContect object for testing 
+        /// </summary>
         [SetUp] 
         public void TestInitialize()
         {
+            //logger object
             var MockLoggerDirect = Mock.Of<ILogger<PollsPageModel>>();
 
+            //assign logger to PageModel 
             PageModel = new PollsPageModel(MockLoggerDirect)
             {
+                //create PageContext object 
                 PageContext = TestHelper.PageContext
             };
         }
         #endregion TestSetup
 
+        /// <summary>
+        /// Test OnPost yields valid results 
+        /// </summary>
         [Test]
         #region OnPost
         public void OnPost_Valid()
@@ -47,7 +57,7 @@ namespace UnitTests.Pages.Polls
             var result = PageModel.OnPostGuidelines() as RedirectToPageResult;
 
             // ----------------- Assert -----------------
-            // Assert.AreEqual(true, result.PageName.Contains("/PollsPage/GuidelinePage"));
+            //check return null when OnPost
             Assert.AreEqual(null, result);
         }
         #endregion OnPost

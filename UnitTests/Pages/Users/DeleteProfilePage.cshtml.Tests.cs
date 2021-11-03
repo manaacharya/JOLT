@@ -55,7 +55,10 @@ namespace UnitTests.Pages.Users
             var result = PageModel.OnPostDeleteProfile(userID) as RedirectToPageResult;
 
             // ----------------- Assert -----------------
+            //check modelstate 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            //check that cookie is null  
             Assert.AreEqual(null, PageModel.PageContext.HttpContext.Request.Cookies["nameCookie"]);
 
             // Confirm the item is deleted
@@ -79,7 +82,10 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //check page is profilepage
             Assert.AreEqual("ProfilePage", result.PageName);
+
+            //check that message is not deleted 
             Assert.AreEqual("User Not Deleted", PageModel.Message);
 
         }
