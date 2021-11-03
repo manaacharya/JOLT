@@ -4,7 +4,10 @@ using System.Linq;
 
 namespace UnitTests.Controllers.Users
 {
-  class UserControllerTest
+    /// <summary>
+    ///  UserControllerTest Class for User Controller
+    /// </summary>
+    class UserControllerTest
     { 
     /// <summary>
     /// Test UserController for all user services methods 
