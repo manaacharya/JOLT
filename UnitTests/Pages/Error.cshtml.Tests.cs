@@ -54,13 +54,17 @@ namespace UnitTests.Pages.Error
             activity.Start();
 
             // ----------------- Act -----------------
+            //fetch OnGet()
             PageModel.OnGet();
 
             // ----------------- Reset -----------------
+            //Reset activty - stop 
             activity.Stop();
 
             // ----------------- Assert -----------------
+            //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+            //check activityID is correct 
             Assert.AreEqual(activity.Id, PageModel.RequestId);
         }
 
@@ -73,13 +77,19 @@ namespace UnitTests.Pages.Error
             // ----------------- Arrange -----------------
 
             // ----------------- Act -----------------
+            //Fetch Onget
             PageModel.OnGet();
 
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            //check request id is correct 
             Assert.AreEqual("trace", PageModel.RequestId);
+
+            //check that pagemodel can show id (BOOL)
             Assert.AreEqual(true, PageModel.ShowRequestId);
         }
         #endregion OnGet

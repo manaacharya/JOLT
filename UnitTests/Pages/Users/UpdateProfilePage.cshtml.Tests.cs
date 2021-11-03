@@ -46,13 +46,25 @@ namespace UnitTests.Pages.Users
         public void OnPost_Valid_UserModel_Should_Update_User()
         {
             // ----------------- Arrange -----------------
+            //use existing userID
             int userID = 862765;
+
+            //new User object 
             PageModel.UpdateUser = new UpdateUserModel()
             {
+                //userID
                 UpdateID = userID,
+
+                //username 
                 UpdateName = "TestName",
+
+                //password
                 UpdatePassword = "TestPassword",
+
+                //email 
                 UpdateEmail = "Test123@gmail.com",
+
+                //location 
                 UpdateLocation = "Canada"
             };
 
@@ -65,7 +77,7 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ---- Assert ----
-
+            //check page is profile page 
             Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
             // Confirm User Is Updated
             Assert.AreEqual("Update Successful to 862765, Name: TestName", PageModel.Message);
@@ -87,6 +99,7 @@ namespace UnitTests.Pages.Users
             var result = PageModel.OnPost() as RedirectToPageResult;
 
             // ----------------- Assert -----------------
+            //check that model state is not valid 
             Assert.AreEqual(false, PageModel.ModelState.IsValid);
         }
 
@@ -100,12 +113,22 @@ namespace UnitTests.Pages.Users
             // invalid id variable
             int invalidID = 999999;
 
+            //create new user object
             PageModel.UpdateUser = new UpdateUserModel()
             {
+                //invalid user id 
                 UpdateID = invalidID,
+
+                //username 
                 UpdateName = "BogusName",
+
+                //password 
                 UpdatePassword = "BogusPassword",
+
+                //email 
                 UpdateEmail = "bogus123@gmail.com",
+
+                //location 
                 UpdateLocation = "Bogus"
             };
 
@@ -116,7 +139,9 @@ namespace UnitTests.Pages.Users
             // ----------------- Reset -----------------
 
             // ----------------- Assert -----------------
+            //fetch error message
             var errorMessage = PageModel.Message;
+            //check error message 
             Assert.AreEqual(errorMessage, "Error Updating BogusName");
 
         }

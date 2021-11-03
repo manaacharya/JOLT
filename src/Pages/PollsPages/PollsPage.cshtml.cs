@@ -21,16 +21,11 @@ namespace ContosoCrafts.WebSite.Pages
             _logger = logger;
         }
 
+      
         /// <summary>
-        /// OnGet information dispalyed
-        /// TODO: add PollServices polls to display polls
+        /// Takes user to guideline page when button is clicked
         /// </summary>
-        /*
-        public void OnGet()
-        {
-        }
-        */
-
+        /// <returns></returns>
         public IActionResult OnPostGuidelines()
         {
             return Redirect("/PollsPage/GuidelinePage");

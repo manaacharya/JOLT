@@ -22,23 +22,13 @@ namespace ContosoCrafts.WebSite.Pages
         /// Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="productService"></param> //change this to polls 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            // ProductService = productService;
+            
         }
 
-        /// <summary>
-        /// get method for ProductServices to display on homepage 
-        /// </summary>
-        // public JsonFileProductService ProductService { get; }
-
-        /// <summary>
-        /// list of ProductModel with get and private set 
-        /// </summary>
-        // public IEnumerable<ProductModel> Products { get; private set; }
-
+                       
         /// <summary>
         /// Dispaly all products on OnGet of homepage
         /// </summary>
