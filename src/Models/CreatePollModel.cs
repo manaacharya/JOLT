@@ -9,10 +9,10 @@ namespace ContosoCrafts.WebSite.Models
     {
         public string CreateTitle { get; set; }
 
-        public string UpdateDescription { get; set; }
+        public string CreateDescription { get; set; }
 
-        public string OpinionOne { get; set; }
+        public string CreateOpinionOne { get; set; }
 
-        public string OpinionTwo { get; set; }
+        public string CreateOpinionTwo { get; set; }
     }
 }
