@@ -18,8 +18,7 @@ namespace ContosoCrafts.WebSite.Models
         /// <summary>
         /// get set string username of user specific to ID 
         /// </summary>
-        [RegularExpression("^[a-zA-Z0-9]+$",
-            ErrorMessage = "* Must only include letters or numbers")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "* Must only include letters or numbers")]
         [Required(ErrorMessage = "* This field is required")]
         public string Username { get; set; }
 
