@@ -29,19 +29,39 @@ namespace UnitTests.Pages.Polls
         public void TestInitialize()
         {
             // logging attribute created
-            var MockLoggerDirect = Mock.Of<ILogger<ProfilePageModel>>();
+            var MockLoggerDirect = Mock.Of<ILogger<CreatePollPageModel>>();
 
             // Profile Model instance created with logging attribute passed in constructor
-           /* PageModel = new ProfilePageModel(MockLoggerDirect, TestHelper.UserService)
+            PageModel = new CreatePollPageModel(MockLoggerDirect, TestHelper.UserService, TestHelper.PollService)
             {
                 // Set the Page Context
                 PageContext = TestHelper.PageContext
-            };*/
+            };
         }
 
         #endregion TestSetup
 
         #region OnGet
+
+        [Test]
+        public void OnGet_Valid_Should_Generate_Welcome_Message()
+        {
+            // Arrange
+            TestHelper.UserService.CreateCookie("nameCookie", "PersonTest");
+
+            // Act
+
+            PageModel.OnGet();
+
+            // Reset
+
+            // Assert
+
+            // check model state is valid 
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
+            // check whether messag was created
+            Assert.AreEqual(true, PageModel.Message.Equals($"Welcome PersonTest:  Create Your Amazing Poll"));
+        }
         #endregion OnGet
 
         #region OnPost
