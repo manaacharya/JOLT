@@ -20,6 +20,8 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
         public JsonFilePollService PollService { get; set; }
 
+        public string CookieNameValue { get; }
+
         [BindProperty]
         public CreatePollModel CreatePoll { get; set; }
 
@@ -29,27 +31,34 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             _logger = logger;
             UserServices = userService;
             PollService = pollService;
+            CookieNameValue = UserServices.GetCookieValue("nameCookie");
         }
 
         public void OnGet()
         {
-            Message = $"Welcome Create Your Polls";
+            Message = $"Welcome {CookieNameValue}:  Create Your Amazing Poll";
         }
 
         public IActionResult OnPost()
         {
-            var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
+            UserModel getUser = UserServices.GetUser(CookieNameValue);
 
-            var getUser = UserServices.GetUser(cookieValue.ToString());
+            if(getUser == null)
+            {
+                RedirectToPage("PollsPage");
+            }
 
-            var pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
+            PollModel pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
 
             if(pollCreationStatus == null)
             {
+                Message = $"Something Went Wrong Try Again";
                 return Page();
             }
 
-            return RedirectToPage("PollsPage");
+            Message = $"Awesome {pollCreationStatus.Title} Created: Make Another Poll";
+
+            return Page();
         }
     }
 }
