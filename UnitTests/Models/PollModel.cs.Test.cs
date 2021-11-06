@@ -34,15 +34,10 @@ namespace UnitTests.Models
         public void Create_Valid_Poll_Should_Get_All_Public_Attributes()
         {
             // ------------------------- Arrange -------------------------
-            //create list of items 
-            IEnumerable<OpinionItem> listOfItems = new List<OpinionItem>();
-
+           
             //create new opinion item 
             OpinionItem exampleOptionName =
                 new OpinionItem("ExampleOpinionName", 2);
-
-            //add opinion item to list 
-            listOfItems.Append(exampleOptionName);
 
             //create new poll model with attributes 
             PollModel testPollModel = new PollModel()
@@ -60,7 +55,7 @@ namespace UnitTests.Models
                 Description = "ExampleDescription",
 
                 //opinion items are list of items 
-                OpinionItems = listOfItems
+                OpinionItems = new List<OpinionItem>() { exampleOptionName }
             };
             // ----------------- Act -----------------
 
@@ -78,9 +73,7 @@ namespace UnitTests.Models
             Assert.AreEqual("ExampleDescription", testPollModel.Description);
 
             //check opinion item is not empty 
-            Assert.AreEqual(
-                testPollModel.OpinionItems.FirstOrDefault().
-                ToString().Equals(""), false);
+            Assert.AreEqual(true, testPollModel.OpinionItems.First().OpinionName.Equals(exampleOptionName.OpinionName));
 
             //check opinion has correct name 
             Assert.AreEqual(exampleOptionName.OpinionName, "ExampleOpinionName");
