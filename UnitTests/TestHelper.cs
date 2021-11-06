@@ -58,6 +58,9 @@ namespace UnitTests
         // User Services
         public static JsonFileUserService UserService;
 
+        // Poll Services
+        public static JsonFilePollService PollService;
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -108,6 +111,13 @@ namespace UnitTests
             JsonFileUserService userService;
 
             userService = new JsonFileUserService(TestHelper.MockWebHostEnvironment.Object);
+
+            // Poll Services
+            PollService = new JsonFilePollService(MockWebHostEnvironment.Object);
+
+            JsonFilePollService pollService;
+
+            pollService = new JsonFilePollService(TestHelper.MockWebHostEnvironment.Object);
         }
     }
 }
