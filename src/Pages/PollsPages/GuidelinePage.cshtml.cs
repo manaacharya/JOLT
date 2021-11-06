@@ -3,8 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ContosoCrafts.WebSite.Pages
 {
+
     public class GuidelinePage : PageModel
-    {   
+    {
         /*
         // logger logs the information ex system info, error
         private readonly ILogger<GuidelinePage> _logger;
@@ -29,4 +30,5 @@ namespace ContosoCrafts.WebSite.Pages
         }
         */
     }
+
 }
