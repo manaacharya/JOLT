@@ -83,9 +83,52 @@ namespace ContosoCrafts.WebSite.Services
                 );
             }
         }
+        
+        public PollModel GetPoll(int pollID)
+        {
+            List<PollModel> polls = GetPolls().ToList();
+
+            return polls.Find(x => x.PollID == pollID);
+        }
+
+        public PollModel GetPoll(string inputTitle)
+        {
+            List<PollModel> polls = GetPolls().ToList();
+
+            return polls.Find(x => x.Title == inputTitle);
+        }
+
+        public bool PollExist(string inputTitle)
+        {
+            if(GetPoll(inputTitle) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool PollExist(int inputID)
+        {
+            if (GetPoll(inputID) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
 
         public PollModel CreatePoll(CreatePollModel newPoll, int userID)
         {
+            // Make Sure Poll is Unique
+            bool pollExists = PollExist(newPoll.CreateTitle);
+            
+            if(pollExists)
+            {
+                return null;
+            }
+           
             var poll = new PollModel()
             {
                 UserID = userID,
