@@ -33,6 +33,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
         public void OnGet()
         {
+            Message = $"Welcome Create Your Polls";
         }
 
         public IActionResult OnPost()
