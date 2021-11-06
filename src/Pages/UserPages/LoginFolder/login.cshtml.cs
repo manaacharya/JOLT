@@ -13,7 +13,6 @@ namespace ContosoCrafts.WebSite.Pages
 {
     public class LoginPageModel : PageModel
     {
-
         // logger logs the information ex system info, error 
         private readonly ILogger<LoginPageModel> _logger;
 
@@ -29,7 +28,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             //Userservice object
             UserService = userService;
-
         }
 
         // Utility for JasonFile
@@ -55,7 +53,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             if (UserInput_test.Username != null && UserInput_test.Password != null)
             {
-
                 //set inputverified to false 
                 bool InputVerified = false;
 
@@ -68,7 +65,6 @@ namespace ContosoCrafts.WebSite.Pages
 
                     //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
                     return RedirectToPage("Login_Welcome");
-
                  }
 
                  else
@@ -79,7 +75,6 @@ namespace ContosoCrafts.WebSite.Pages
                     //redirect to page 
                     return Page();
                   }
-
             }
 
             //null input exists 
@@ -87,9 +82,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             //redirect to page 
             return Page();
-            
         }
-
     }
-
 }
