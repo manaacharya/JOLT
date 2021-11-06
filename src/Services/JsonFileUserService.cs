@@ -306,9 +306,13 @@ namespace ContosoCrafts.WebSite.Services
             {
                 // generate a random number between 1 and 999999 to be 6 digits
                 UserID = rnD.Next(1, 999999),
+
                 Username = user.Username,
+
                 Password = user.Password,
+
                 Email = user.Email,
+
                 Location = user.Location,
             };
 
