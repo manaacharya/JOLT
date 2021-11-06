@@ -8,6 +8,7 @@ using ContosoCrafts.WebSite.Services;
 
 namespace ContosoCrafts.WebSite.Pages
 {
+
     /// <summary>
     /// Index model for the front page where some polls will be displayed
     /// and other links to CRUDI operations for user 
@@ -24,6 +25,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="logger"></param>
         public IndexModel(ILogger<IndexModel> logger)
         {
+
             _logger = logger;
             
         }
@@ -34,7 +36,11 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+
             //Products = ProductService.GetAllData();
+
         }
+
     }
+
 }
