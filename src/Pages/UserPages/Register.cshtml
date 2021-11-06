@@ -1,87 +1,142 @@
 ﻿@page
+
 @using ContosoCrafts.WebSite.Models
+
 @using ContosoCrafts.WebSite.Services
+
 @inject JsonFileUserService UserService
+
 @model ContosoCrafts.WebSite.Pages.RegisterModel
+
 @*@model RegisterModel*@
 
 @{
+
     ViewData["Title"] = "Register";
+
 }
 
 <div class="container">
 
     <div class="row">
+
         <div class="container">
+
             <div class="row">
+
                 <div class="col-sm">
+
                     <div class="card">
+
                         <div class="card-body">
+
                             <form id='registrationForm' method="post" asp-page="Register">
+
                                 @*@Html.HiddenFor(x => x.User.userID)*@
 
                                 <div class="form-group">
+
                                     <label asp-for="BindUser.Username">Username</label>
+
                                     <div class="input-group mb-3">
+
                                         @Html.EditorFor(model => model.BindUser.Username, new { htmlAttributes = new { id = "username", @class = "form-control", placeholder = "Username" } })
+                                    
                                     </div>
+
                                     <span id="usernameError" asp-validation-for="BindUser.Username" class="text-danger"></span>
 
                                 </div>
+
                                 <div class="form-group">
+
                                     <label asp-for="BindUser.Email">Email</label>
+
                                     <div class="input-group mb-3">
+
                                         @Html.EditorFor(model => model.BindUser.Email, new { htmlAttributes = new { id = "email", @class = "form-control", placeholder = "Email" } })
+                                    
                                     </div>
+
                                     <span confirmPasswordError="emailError" asp-validation-for="BindUser.Email" class="text-danger"></span>
+
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
                                 </div>
+
                                 <div class="form-group">
+
                                     <label asp-for="BindUser.Password">Password</label>
+
                                     <div class="input-group mb-3">
+
                                         @Html.EditorFor(model => model.BindUser.Password, new { htmlAttributes = new { type = "password", id = "password", @class = "form-control", placeholder = "Password" } })
+
                                     </div>
+
                                     <span id="passwordError" asp-validation-for="BindUser.Password" class="text-danger"></span>
 
                                 </div>
+
                                 <div class="form-group">
+
                                     <label for="ConfirmPassword">Confirm Password</label>
+
                                     <input id="confirmPassword" for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
+
                                     <span id="confirmPasswordError" class="text-danger"></span>
+
                                 </div>
+
                                 <div class="form-group">
+
                                     <label asp-for="BindUser.Location">Location</label>
+
                                     <div class="input-group mb-3">
+
                                         @Html.EditorFor(model => model.BindUser.Location, new { htmlAttributes = new { id = "location", @class = "form-control", placeholder = "Location" } })
+
                                     </div>
+
                                     <span id="locationError" asp-validation-for="BindUser.Location" class="text-danger"></span>
 
                                 </div>
+
                                 <button id="submitRegistration" type="submit" value="save" class="btn btn-primary">Register</button>
+
                             </form>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 
     $(document).ready(function () {
+
         //Empty all default values in fields on start Page and disable button
         $("#username, #email, #password, #confirmPassword, #location").val('');
+
         $('#submitRegistration').prop('disabled', true);
-
-
 
         $("#username, #password, #email, #confirmPassword, #location").on('change keyup keypress keypress blur', function (e) {
 
             var isEmpty = false
+
             var isPassMatch = false
+
             var isError = false
 
             //check if there are any errors existing enable button, otherwise disable button
@@ -89,9 +144,9 @@
                 //No error
                 isError = false
 
-
             }
             else {
+
                 //error
                 isError = true
 
@@ -99,25 +154,29 @@
 
             //check if there are any empty fields existing enable button, otherwise disable button
             if ($('#username').val() == '' || $('#email').val() == '' || $('#password').val() == '' || $('#confirmPassword').val() == '' || $('#location').val() == '') {
+
                 isEmpty = true
 
-
             }
+
             else {
+
                 isEmpty = false
 
             }
 
             //Check if confirm password == password, if not, disable button
-            if (
-                ($("#confirmPassword").val() != $("#password").val()) && $("#confirmPassword").val() != '') {
+            if (($("#confirmPassword").val() != $("#password").val()) && $("#confirmPassword").val() != '') {
+
                 isPassMatch = true
+
                 $('#confirmPasswordError').html('* Passwords do not match');
 
             } else {
-                isPassMatch = false
-                $('#confirmPasswordError').html('');
 
+                isPassMatch = false
+
+                $('#confirmPasswordError').html('');
 
             }
 
@@ -126,8 +185,11 @@
             if (isEmpty || isPassMatch || isError) {
 
                 $('#submitRegistration').prop('disabled', true);
+
             } else {
+
                 $('#submitRegistration').prop('disabled', false);
+
             }
 
         });
@@ -137,5 +199,7 @@
 </script>
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }
