@@ -4,43 +4,50 @@
 
 
 @{
-    
-        <hr />
-        <br />
-        <h3> Other Users </h3>
+    <div class="container">
+
         <div class="row">
+            <div class="col-12">
 
-            <div class="col-auto">
+                <br />
+                <h3> Other Users </h3>
+                <div class="row">
 
-                <table class="table">
+                    <div class="col-auto">
 
-                    <thead>
-                        <tr>
-                            <th scope="col" style="color: #ffffff">User Name</th>
-                            <th scope="col" style="color: #ffffff">Email</th>
-                            <th scope="col" style="color: #ffffff">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody style="color: #ffffff">
+                        <table class="table">
 
-                        @{
-                            foreach (UserModel people in Model.Users)
-                            {
+                            <thead>
                                 <tr>
-                                    <th> @people.Username </th>
-                                    <th> @people.Email </th>
-                                    <th> @people.Location </th>
+                                    <th scope="col" style="color: #ffffff">User Name</th>
+                                    <th scope="col" style="color: #ffffff">Email</th>
+                                    <th scope="col" style="color: #ffffff">Location</th>
                                 </tr>
-                            }
-                        }
+                            </thead>
+                            <tbody style="color: #ffffff">
 
-                    </tbody>
-                </table>
+                                @{
+                                    foreach (UserModel people in Model.Users)
+                                    {
+                                        <tr>
+                                            <th> @people.Username </th>
+                                            <th> @people.Email </th>
+                                            <th> @people.Location </th>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <br />
+
 
             </div>
-
         </div>
-
-        <br />
-
+    </div>
 }
