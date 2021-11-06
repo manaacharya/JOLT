@@ -8,7 +8,6 @@ using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages
 {
     public class PollsPageModel : PageModel
-
     {
         // logger logs the information ex system info, error
         private readonly ILogger<PollsPageModel> _logger;
@@ -22,7 +21,6 @@ namespace ContosoCrafts.WebSite.Pages
             _logger = logger;
         }
 
-      
         /// <summary>
         /// Takes user to guideline page when button is clicked
         /// </summary>
@@ -31,7 +29,5 @@ namespace ContosoCrafts.WebSite.Pages
         {
             return Redirect("/PollsPage/GuidelinePage");
         }
-
     }
-
 }
