@@ -37,7 +37,16 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
         public IActionResult OnPost()
         {
-         //   var pollCreationStatus = PollService.CreatePoll
+            var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
+
+            var getUser = UserServices.GetUser(cookieValue.ToString());
+
+            var pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
+
+            if(pollCreationStatus == null)
+            {
+                return Page();
+            }
 
             return RedirectToPage("PollsPage");
         }
