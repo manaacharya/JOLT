@@ -1,14 +1,8 @@
 ﻿@page
-
 @using ContosoCrafts.WebSite.Models
-
 @using ContosoCrafts.WebSite.Services
-
 @inject JsonFileUserService UserService
-
 @model ContosoCrafts.WebSite.Pages.ProfilePageModel
-
-
 
 @{
     //var cookieValue = Request.Cookies["nameCookie"];
@@ -26,131 +20,90 @@
         <div class="row">
 
             <div class="col-12">
-
                 <h3> Welcome @Model.UserModel.Username </h3>
-
             </div>
 
             <div class="col-12">
-
                 <hr />
-
             </div>
 
             <div class="col">
-
                 <div class="container-fluid">
-
                     <div>
-
                         <h5> Profile Information </h5>
-
                         <hr />
-
                     </div>
 
                     <div class="row" style="font-size:20px">
 
                         <div class="col-6"> User ID:   </div>
-
                         <div class="col-6"> @Model.UserModel.UserID  </div>
 
                         <div class="col-6"> User Name:  </div>
-
                         <div class="col-6"> @Model.UserModel.Username  </div>
 
                         <div class="col-6"> User Email:  </div>
-
                         <div class="col-6"> @Model.UserModel.Email  </div>
 
                         <div class="col-6"> User Password:  </div>
-
                         <div class="col-6"> @Model.UserModel.Password  </div>
 
                         <div class="col-6"> User Location:  </div>
-
                         <div class="col-6"> @Model.UserModel.Location  </div>
 
                     </div>
 
                 </div>
-
-
             </div>
 
             <div class="col">
-
                 <form method="post" asp-page="ProfilePage">
-
                     <h5> Update Information </h5><hr />
-
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-
                             <label for="inputEmail4">User Name</label>
-
                             <input type="hidden" asp-for="UpdateUser.UpdateID" name="UpdateID" value="@Model.UserModel.UserID" class="form-control" placeholder="@Model.UserModel.UserID" />
-
                             <input type="text" asp-for="UpdateUser.UpdateName" name="UpdateName" value="@Model.UserModel.Username" class="form-control" placeholder="@Model.UserModel.Username">
-
                         </div>
 
                         <div class="form-group col-md-6">
-
                             <label for="inputEmail4">User Email</label>
-
                             <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateEmail" value="@Model.UserModel.Email" class="form-control" placeholder="@Model.UserModel.Email">
-
                         </div>
 
                         <div class="form-group col-md-6">
-
                             <label for="inputPassword4">User Password</label>
-
                             <input type="text" asp-for="UpdateUser.UpdatePassword" name="UpdatePassword" value="@Model.UserModel.Password" class="form-control" placeholder="@Model.UserModel.Password">
-
                         </div>
 
                         <div class="form-group col-md-6">
-
                             <label for="inputEmail4">User Location</label>
-
                             <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateLocation" value="@Model.UserModel.Location" class="form-control" placeholder="@Model.UserModel.Location">
-
                         </div>
 
                         <div class="col-auto">
-
                             <button type="submit" class="btn btn-primary">Update Profile</button>
-
                         </div>
 
                     </div>
-
                 </form>
-
             </div>
         </div>
 
         <hr />
 
         <div class="row">
-
             <div class="col-auto">
 
                 <form method="post" asp-page-handler="DeleteProfile">
-
                     <button value="@Model.UserModel.UserID" name="id" type="submit" class="btn btn-primary">Delete Profile</button>
-
                 </form>
 
             </div>
 
             <div class="col-auto">
-
                 <a asp-page="/PollsPages/PollsPage" class="btn btn-outline-success">Create Polls Profile</a>
-
             </div>
 
         </div>
