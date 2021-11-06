@@ -34,15 +34,25 @@ namespace UnitTests
     public static class TestHelper
     {
         public static Mock<IWebHostEnvironment> MockWebHostEnvironment;
+
         public static IUrlHelperFactory UrlHelperFactory;
+
         public static DefaultHttpContext HttpContextDefault;
+
         public static IWebHostEnvironment WebHostEnvironment;
+
         public static ModelStateDictionary ModelState;
+
         public static ActionContext ActionContext;
+
         public static EmptyModelMetadataProvider ModelMetadataProvider;
+
         public static ViewDataDictionary ViewData;
+
         public static TempDataDictionary TempData;
+
         public static PageContext PageContext;
+
         // public static JsonFileProductService ProductService;
 
         // User Services
@@ -54,14 +64,19 @@ namespace UnitTests
         static TestHelper()
         {
             MockWebHostEnvironment = new Mock<IWebHostEnvironment>();
+
             MockWebHostEnvironment.Setup(m => m.EnvironmentName).Returns("Hosting:UnitTestEnvironment");
+
             MockWebHostEnvironment.Setup(m => m.WebRootPath).Returns(TestFixture.DataWebRootPath);
+
             MockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns(TestFixture.DataContentRootPath);
+
 
             HttpContextDefault = new DefaultHttpContext()
             {
                 TraceIdentifier = "trace",
             };
+
             HttpContextDefault.HttpContext.TraceIdentifier = "trace";
 
             ModelState = new ModelStateDictionary();
@@ -69,12 +84,15 @@ namespace UnitTests
             ActionContext = new ActionContext(HttpContextDefault, HttpContextDefault.GetRouteData(), new PageActionDescriptor(), ModelState);
 
             ModelMetadataProvider = new EmptyModelMetadataProvider();
+
             ViewData = new ViewDataDictionary(ModelMetadataProvider, ModelState);
+
             TempData = new TempDataDictionary(HttpContextDefault, Mock.Of<ITempDataProvider>());
 
             PageContext = new PageContext(ActionContext)
             {
                 ViewData = ViewData,
+
                 HttpContext = HttpContextDefault
             };
 
