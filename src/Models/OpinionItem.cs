@@ -24,14 +24,14 @@ namespace ContosoCrafts.WebSite.Models
         /// <summary>
         /// OpinionItem constructor 
         /// </summary>
-        /// <param name="name"></param> opinion information 
-        /// <param name="count"></param> count of vote 
-        public OpinionItem(string name, int count)
+        /// <param name="opinionName"></param> opinion information 
+        /// <param name="numCounts"></param> count of vote 
+        public OpinionItem(string opinionName, int numCounts)
         {
-            //set opinionname as parameter 
-            this.OpinionName = name;
-            //set numcounts as parameter
-            this.NumCounts = count;
+            //set opinionname as parameter, name must match attribute (camelCase)
+            this.OpinionName = opinionName;
+            //set numcounts as parameter, name must match attribute (camelCase)
+            this.NumCounts = numCounts;
         }
     }
 }
