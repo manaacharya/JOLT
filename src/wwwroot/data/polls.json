@@ -1,1 +1,34 @@
-﻿
+[
+  {
+    "PollID": 0,
+    "UserID": 0,
+    "Title": "Title",
+    "Description": "Description",
+    "OpinionItems": [
+      {
+        "OpinionName": "FD",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "HH",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 1,
+    "UserID": 163958,
+    "Title": "Aerospace company",
+    "Description": "Aerospace companies with the best aircrafts",
+    "OpinionItems": [
+      {
+        "OpinionName": "Boeing",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Airbus",
+        "NumCounts": 0
+      }
+    ]
+  }
+]
