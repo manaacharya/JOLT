@@ -20,7 +20,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
         public JsonFilePollService PollService { get; set; }
 
-        public string CookieNameValue { get; }
+        public string CookieNameValue { get; set; }
 
         [BindProperty]
         public CreatePollModel CreatePoll { get; set; }
@@ -46,7 +46,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
             if(getUser == null)
             {
-                RedirectToPage("PollsPage");
+                return RedirectToPage("PollsPage");
             }
 
             PollModel pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
