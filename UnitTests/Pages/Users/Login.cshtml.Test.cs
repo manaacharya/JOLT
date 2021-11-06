@@ -119,6 +119,7 @@ namespace UnitTests.Pages.Users
             {
                 //username 
                 Username = "lakers34",
+
                 //incorrect password 
                 Password = "INCORRECT_PASSWORD"
             };
@@ -150,6 +151,7 @@ namespace UnitTests.Pages.Users
             {
                 //incorrect username 
                 Username = "INCORRECT_USERNAME",
+
                 //incorrect password 
                 Password = "INCORRECT_PASSWORD"
             };
