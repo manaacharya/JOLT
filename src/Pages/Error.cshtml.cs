@@ -31,9 +31,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="logger"></param>
         public ErrorModel(ILogger<ErrorModel> logger)
         {
-
             _logger = logger;
-
         }
 
         /// <summary>
@@ -41,11 +39,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
-
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-
         }
-
     }
-
 }
