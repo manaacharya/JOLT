@@ -22,9 +22,13 @@ namespace ContosoCrafts.WebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
             services.AddServerSideBlazor();
+
             services.AddHttpClient();
+
             services.AddControllers();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
@@ -46,6 +50,7 @@ namespace ContosoCrafts.WebSite
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -59,7 +64,9 @@ namespace ContosoCrafts.WebSite
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
                 endpoints.MapControllers();
+
                 endpoints.MapBlazorHub();
 
                 // endpoints.MapGet("/products", (context) => 
@@ -69,10 +76,6 @@ namespace ContosoCrafts.WebSite
                 //     return context.Response.WriteAsync(json);
                 // });
             });
-
-            
-
-
         }
     }
 }
