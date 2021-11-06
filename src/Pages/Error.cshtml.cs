@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 namespace ContosoCrafts.WebSite.Pages
 {
+
     /// <summary>
     /// Creatiin of ErrorModel class to handle errors 
     /// </summary>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
-    {//stashing time
+    {
+        //stashing time
 
         /// <summary>
         /// method to get and set userID 
@@ -29,7 +31,9 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="logger"></param>
         public ErrorModel(ILogger<ErrorModel> logger)
         {
+
             _logger = logger;
+
         }
 
         /// <summary>
@@ -37,7 +41,11 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
         }
+
     }
+
 }
