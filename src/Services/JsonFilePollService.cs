@@ -89,9 +89,13 @@ namespace ContosoCrafts.WebSite.Services
             var poll = new PollModel()
             {
                 UserID = userID,
+
                 PollID = GetPolls().Count(),
+
                 Title = newPoll.Title,
+
                 Description = newPoll.Description,
+
                 OpinionItems = newPoll.OpinionItems
             };
 
