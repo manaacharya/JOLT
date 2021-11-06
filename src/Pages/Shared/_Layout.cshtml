@@ -1,90 +1,148 @@
 ﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - Poller Bear</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
     <link rel="stylesheet" href="~/css/site.css" />
+
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
+
     <header>
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-navbar border-bottom box-shadow mb-3">
+
             <div class="container">
+
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Poller Bear</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
+
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
                     <ul class="navbar-nav flex-grow-1">
 
 
                         <li class="nav-item">
+
                             <a class="nav-link" asp-page="/PollsPages/PollsPage"> Polls </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-page="/UsersPage"> Users </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-page="/AboutUs">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
+
                         </li>
 
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary" asp-page="/UserPages/Register"> <i class="fa fa-user-plus"></i> Register</a>
-                        </li>&nbsp; &nbsp;
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" asp-page="/UserPages/LoginFolder/Login"> User Login</a>
+
+                            <a class="nav-link" asp-page="/UsersPage"> Users </a>
+
                         </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" asp-page="/AboutUs">About Us</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="btn btn-outline-primary" asp-page="/UserPages/Register"> <i class="fa fa-user-plus"></i> Register</a>
+
+                        </li>&nbsp; &nbsp;
+
+                        <li class="nav-item">
+
+                            <a class="btn btn-outline-primary" asp-page="/UserPages/LoginFolder/Login"> User Login</a>
+
+                        </li>
+
                         @{
                             var cookie = Html.Raw(HttpContextAccessor.HttpContext.Request.Cookies["nameCookie"]).ToString();
 
                             if (cookie.ToString() != null)
                             {
                                 <li class="nav-item">
+
                                     <a class="nav-link" style="color:#ffffff; font-size:large;" asp-area="" asp-page="/UserPages/ProfilePage">@cookie</a>
+
                                 </li>
                             }
                         }
+
                     </ul>
+
                 </div>
+
             </div>      
+
         </nav>
+
     </header>
   
     <main role="main" class="pb-3">
+
         @RenderBody()
+
     </main>
     
     <br />
+
     <hr />
 
     <footer class="border-top footer text-muted bg-footer">
+
         <div class="container">
+
             &copy; 2021 - PollerBear.Website
+
             - <a asp-area=" " asp-page="/Privacy"> Privacy </a>
+
             <a asp-area=" " asp-page="/UsersPage"> Users </a>
+
             <a asp-area=" " asp-page="/PollsPages/PollsPage"> Polls </a>
+
             <a asp-area=" " asp-page="/AboutUs"> About Us </a>
         </div>
 
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
