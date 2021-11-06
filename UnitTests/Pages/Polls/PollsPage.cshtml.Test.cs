@@ -36,7 +36,7 @@ namespace UnitTests.Pages.Polls
             var MockLoggerDirect = Mock.Of<ILogger<PollsPageModel>>();
 
             //assign logger to PageModel 
-            PageModel = new PollsPageModel(MockLoggerDirect)
+            PageModel = new PollsPageModel(MockLoggerDirect, TestHelper.PollService)
             {
                 //create PageContext object 
                 PageContext = TestHelper.PageContext
