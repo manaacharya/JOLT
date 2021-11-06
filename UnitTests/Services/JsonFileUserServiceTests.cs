@@ -272,6 +272,7 @@ namespace UnitTests.Services
 
             // Valid UserName and Password
             string userName = "calif32";
+
             string password = "vDEkwE";
 
             // ------------------------- Act -------------------------
@@ -294,6 +295,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create invalid username and password 
             string invalidName = "008998832";
+
             string invalidPassword = "vDEkwE";
 
             // ------------------------- Act -------------------------
@@ -346,10 +348,13 @@ namespace UnitTests.Services
             {
                 //username
                 Username = "Kitchen",
+
                 //email
                 Email = "KitchenNightMare@gmail.com",
+
                 //password
                 Password = "kitchepassword",
+
                 //location 
                 Location = "Cuba"
             };
@@ -435,8 +440,10 @@ namespace UnitTests.Services
             // ------------------------- Act -------------------------
             // Fetch User Result from Act
             UserModel userModel = TestHelper.UserService.GetUser(validId);
+
             //fetch result from usermodel 
             string correctResult = JsonSerializer.Serialize<UserModel>(userModel);
+
             // Reset
             // ------------------------- Assert -------------------------
             //check id is valid 
@@ -466,6 +473,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create key and value to test cookie 
             string key = "testName";
+
             string value = "testkey";
 
             // ------------------------- Act -------------------------
@@ -476,6 +484,7 @@ namespace UnitTests.Services
             // ------------------------- Assert -------------------------
             //check cookie was created 
             Assert.AreEqual(true, result);
+
             //test that key is correct 
             Assert.AreEqual("testkey", TestHelper.UserService.GetCookieValue(key));
 
@@ -490,6 +499,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create duplicate key and value 
             string key = "duplicateKey";
+
             string value = "duplicateValue";
             // Create Cookie in advance
             TestHelper.UserService.CreateCookie(key, value);
@@ -518,6 +528,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create key and value for cookie 
             string key = "newkey";
+
             string value = "newValue";
 
             // Create Cookie in advance
@@ -542,9 +553,12 @@ namespace UnitTests.Services
         {
             // ------------------------- Arrange -------------------------
             string key = "newkey";
+
             string value = "newValue";
+
             // Invalid key attribute
             string invalidKey = "fakekey";
+
             // Create Cookie in advance
             TestHelper.UserService.CreateCookie(key, value);
 
@@ -571,6 +585,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create key and value for cookie 
             string key = "deletekey";
+
             string value = "deleteValue";
 
             // Create Cookie in advance
@@ -596,6 +611,7 @@ namespace UnitTests.Services
             // ------------------------- Arrange -------------------------
             //create key and value for cookie 
             string key = "deletekey";
+
             string value = "deleteValue";
 
             string invalidKey = "fdjfdfd";
