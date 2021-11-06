@@ -84,61 +84,95 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
         
+        /// <summary>
+        /// Return a PollModel based on ID
+        /// </summary>
+        /// <param name="pollID"></param>
+        /// <returns></returns>
         public PollModel GetPoll(int pollID)
         {
+            // Get list of Polls
             List<PollModel> polls = GetPolls().ToList();
 
+            // Return Poll found by Poll ID
             return polls.Find(x => x.PollID == pollID);
         }
 
+        /// <summary>
+        /// Return a PollModel based on Title
+        /// </summary>
+        /// <param name="inputTitle"></param>
+        /// <returns></returns>
         public PollModel GetPoll(string inputTitle)
         {
+            // Get list of Polls
             List<PollModel> polls = GetPolls().ToList();
 
+            // Return Poll found by Poll Title
             return polls.Find(x => x.Title == inputTitle);
         }
 
+        /// <summary>
+        /// Checks And Return True if Poll Exist by Title, False Otherwise 
+        /// </summary>
+        /// <param name="inputTitle"></param>
+        /// <returns></returns>
         public bool PollExist(string inputTitle)
         {
+            // Fetch A Given Poll
             if(GetPoll(inputTitle) == null)
             {
+                // return false for Poll Don't Exists
                 return false;
             }
 
+            // return True , for Poll Exists
             return true;
         }
 
+        /// <summary>
+        /// Checks And Return True if Poll Exist by ID, False Otherwise 
+        /// </summary>
+        /// <param name="inputID"></param>
+        /// <returns></returns>
         public bool PollExist(int inputID)
         {
+            // Fetch A Given Poll
             if (GetPoll(inputID) == null)
             {
+                // return false for Poll Don't Exists
                 return false;
             }
+
+            // return True , for Poll Exists
             return true;
         }
 
-
-
+        /// <summary>
+        /// Creates and Add New Poll Model to Polls Json Dataset/Database.
+        /// </summary>
+        /// <param name="newPoll"></param>
+        /// <param name="userID"></param>
+        /// <returns>PollModel</returns>
         public PollModel CreatePoll(CreatePollModel newPoll, int userID)
         {
-            // Make Sure Poll is Unique
+            // Boolean for Duplicate Poll Existance 
             bool pollExists = PollExist(newPoll.CreateTitle);
             
+            // True for Duplicate
             if(pollExists)
             {
+                // Return Null
                 return null;
             }
-           
+
+            // Instantiate a new Poll Model, with attributes
             var poll = new PollModel()
             {
                 UserID = userID,
-
                 PollID = GetPolls().Count(),
-
                 Title = newPoll.CreateTitle,
-
                 Description = newPoll.CreateDescription,
-
                 OpinionItems = new List<OpinionItem> () {
                     new OpinionItem(newPoll.CreateOpinionOne, 0), new OpinionItem(newPoll.CreateOpinionTwo, 0)
                 }
@@ -153,6 +187,7 @@ namespace ContosoCrafts.WebSite.Services
             // Convert List into Json DataSet
             SavePollData(dataSet);
 
+            // Return the Instantiated Poll Model 
             return poll;
         }
     }
