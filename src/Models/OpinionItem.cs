@@ -19,6 +19,8 @@ namespace ContosoCrafts.WebSite.Models
         /// </summary>
         public int NumCounts { get; set; }
 
+        public OpinionItem() { }
+
         /// <summary>
         /// OpinionItem constructor 
         /// </summary>
