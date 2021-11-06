@@ -29,7 +29,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// List of Users
         /// </summary>
         public IEnumerable<UserModel> Users { get; set; }
-    
 
         /// <summary>
         /// A User, Can be Modified
@@ -45,7 +44,6 @@ namespace ContosoCrafts.WebSite.Pages
             //Userservice object 
             UserServices = userService;
         }
-
       
         /// <summary>
         /// initializes a list of all
@@ -56,6 +54,5 @@ namespace ContosoCrafts.WebSite.Pages
         }
    
      }
-
 
 }
