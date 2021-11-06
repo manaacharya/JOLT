@@ -3,18 +3,24 @@
 @{
     ViewData["Title"] = "Polls Page";
 }
+
 <div class="container">
 
     <div class="row">
+
         <div class="col-12">
+
             <h1>@ViewData["Title"]</h1>
 
             <p>This page will display all active polls created by our users.</p>
 
             <a class="btn btn-info" asp-page="/Poll/Create"> <i class="fa fa-plus"></i> Create Poll</a>
+
             <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
 
         </div>
+
     </div>
+
 </div>
 
