@@ -15,9 +15,7 @@ namespace UnitTests.Controllers.Users
     #region TestSetup
     // UsersController static field/attribute
     public static UsersController usersController;
-
-    
-
+ 
         /// <summary>
         /// Test Initialization for UsersController 
         /// </summary>
@@ -42,7 +40,6 @@ namespace UnitTests.Controllers.Users
     {
         // ----------------- Arrange -----------------
 
-
         // ----------------- Act -----------------
 
         // Fetch result from OnGet()
@@ -51,10 +48,9 @@ namespace UnitTests.Controllers.Users
         // ----------------- Assert -----------------
         //check model state 
         Assert.AreEqual(true, usersController.ModelState.IsValid);
+
         //check User object  
         Assert.AreEqual(true, usersController.Users.ToList().Any());
-            
-
         }
     #endregion Get
   }
