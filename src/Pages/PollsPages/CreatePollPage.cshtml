@@ -7,38 +7,61 @@
 
         <hr />
 
-        <form method="post" asp-page="CreatePollPage"> 
+        <form method="post" asp-page="CreatePollPage">
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" asp-for="CreatePoll.CreateTitle" name="CreateTitle" class="form-control" placeholder="Enter Title">
+                <input type="text" asp-for="CreatePoll.CreateTitle" name="CreateTitle" class="form-control" placeholder="Enter Title" required>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" asp-for="CreatePoll.CreateDescription"  name="CreateDescription" class="form-control" placeholder="Enter Description">
+                <input type="text" asp-for="CreatePoll.CreateDescription" name="CreateDescription" class="form-control" placeholder="Enter Description">
             </div>
+
+            <hr />
 
             <div class="form-group">
-                <h5>Enter Opinions</h5>
+                <h5>
+                    What Are Your Choices
+                    <small class="form-text text-info"> 2 Opinions Needed</small>
+                </h5>
                 <div class="col-auto">
-                    <label>Opinion Item 1</label>
-                    <input type="text" asp-for="CreatePoll.CreateOpinionOne" name="CreateOpinionOne" class="form-control" placeholder="Enter Opinion One">
-
+                    <label>Choice One</label>
+                    <input type="text" asp-for="CreatePoll.CreateOpinionOne" name="CreateOpinionOne"
+                           class="form-control" placeholder="Enter Opinion One" required>
+                    <div class="invalid-feedback">Enter Choice One</div>
                 </div>
 
                 <div class="col-auto">
-                    <label>Opinion Item 2</label>
-                    <input type="text" asp-for="CreatePoll.CreateOpinionTwo" name="CreateOpinionTwo" class="form-control" placeholder="Enter Opinion Two">
-
+                    <br />
+                    <label>Choice Two</label>
+                    <input type="text" asp-for="CreatePoll.CreateOpinionTwo" name="CreateOpinionTwo"
+                           class="form-control" placeholder="Enter Opinion Two" required>
+                    <div class="invalid-feedback">Enter Choice Two</div>
                 </div>
+
+
             </div>
+
+            <br />
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Create Poll</button>
-
             </div>
-
         </form>
+
+        <hr />
+        <div class="row">
+
+            <div class="col-auto">
+                <a asp-page="/PollsPages/PollsPage" class="btn btn-outline-info">View Polls</a>
+            </div>
+            <div class="col-auto">
+                <a asp-page="/UserPages/ProfilePage" class="btn btn-outline-success">Go Back To Profile </a>
+            </div>
+        </div>
+
+        <br />
     </div>
 
 }
