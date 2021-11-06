@@ -33,6 +33,8 @@ namespace ContosoCrafts.WebSite
 
             // services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
             services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
+
+            services.AddTransient<JsonFilePollService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
