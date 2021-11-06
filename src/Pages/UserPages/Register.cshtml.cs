@@ -34,12 +34,10 @@ namespace ContosoCrafts.WebSite.Pages
         // The data to show, bind to it for the post
         public RegisterModel(ILogger<RegisterModel> logger, JsonFileUserService userService)
         {
-
             _logger = logger;
 
             //userservice object 
             UserService = userService;
-
         }
 
         /// <summary>
@@ -71,33 +69,25 @@ namespace ContosoCrafts.WebSite.Pages
             //use regular expression to check if username contains only number or letters
             if (usernameRg.IsMatch(BindUser.Username) == false)
             {
-
                 return Page();
-
             }
 
             //check if password length is less than 6
             if (BindUser.Password.Length < 6)
             {
-
                 return Page();
-
             }
 
             //check if email is not valid
             if (emailRg.IsMatch(BindUser.Email) == false)
             {
-
                 return Page();
-
             }
 
             //check if location is not valid
             if (locationRg.IsMatch(BindUser.Location) == false)
             {
-
                 return Page();
-
             }
 
             //create data using userinformation 
