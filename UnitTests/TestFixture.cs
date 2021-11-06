@@ -7,7 +7,6 @@ namespace UnitTests
     [SetUpFixture]
     class TestFixture
     {
-
         // Path to the Web Root
         public static string DataWebRootPath = "./wwwroot";
 
@@ -29,7 +28,9 @@ namespace UnitTests
 
             // var DataWebPath = "../../../../src/bin/Debug/net5.0/wwwroot/data";
             var dataWebPath = "../../../../src/wwwroot/data";
+
             var dataUTDirectory = "wwwroot";
+
             var dataUTPath = dataUTDirectory + "/data";
 
             // Delete the Detination folder
@@ -43,9 +44,11 @@ namespace UnitTests
 
             // Copy over all data files
             var filePaths = Directory.GetFiles(dataWebPath);
+
             foreach (var filename in filePaths)
             {
                 string originalFilePathName = filename.ToString();
+
                 var newFilePathName = originalFilePathName.Replace(dataWebPath, dataUTPath);
 
                 File.Copy(originalFilePathName, newFilePathName);
