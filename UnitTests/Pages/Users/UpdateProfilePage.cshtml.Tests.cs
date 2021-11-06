@@ -79,6 +79,7 @@ namespace UnitTests.Pages.Users
             // ---- Assert ----
             //check page is profile page 
             Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
+
             // Confirm User Is Updated
             Assert.AreEqual("Update Successful to 862765, Name: TestName", PageModel.Message);
         }
@@ -141,6 +142,7 @@ namespace UnitTests.Pages.Users
             // ----------------- Assert -----------------
             //fetch error message
             var errorMessage = PageModel.Message;
+
             //check error message 
             Assert.AreEqual(errorMessage, "Error Updating BogusName");
 
