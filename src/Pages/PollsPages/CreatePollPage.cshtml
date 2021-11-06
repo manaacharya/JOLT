@@ -9,34 +9,35 @@
 
         <form>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label>Title</label>
+                <input type="text" asp-for="CreatePoll.CreateTitle" name="PollTitle" class="form-control" placeholder="Enter Title">
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label>Description</label>
+                <input type="text" asp-for="CreatePoll.CreateDescription" name="PollDescription" class="form-control" placeholder="Enter Description">
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <h5>Enter Opinions</h5>
+                <div class="col-auto">
+                    <label>Opinion Item 1</label>
+                    <input type="text" asp-for="CreatePoll.CreateOpinionOne" name="OpinionOne" class="form-control" placeholder="Enter Opinion One">
+
+                </div>
+
+                <div class="col-auto">
+                    <label>Opinion Item 2</label>
+                    <input type="text" asp-for="CreatePoll.CreateOpinionTwo" name="OpinionTwo" class="form-control" placeholder="Enter Opinion Two">
+
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <button type="submit" class="btn btn-primary">Create Poll</button>
+
             </div>
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
         </form>
     </div>
 
