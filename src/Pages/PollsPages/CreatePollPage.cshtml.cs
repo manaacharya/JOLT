@@ -41,6 +41,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
 
         public IActionResult OnPost()
         {
+           
             UserModel getUser = UserServices.GetUser(CookieNameValue);
 
             if(getUser == null)
@@ -49,6 +50,13 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             }
 
             PollModel pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
+
+            ModelState.Clear();
+
+            CreatePoll.CreateTitle = String.Empty;
+            CreatePoll.CreateDescription = String.Empty;
+            CreatePoll.CreateOpinionOne = String.Empty;
+            CreatePoll.CreateOpinionTwo = String.Empty;
 
             if(pollCreationStatus == null)
             {
