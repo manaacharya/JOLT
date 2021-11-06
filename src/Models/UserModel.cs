@@ -38,8 +38,7 @@ namespace ContosoCrafts.WebSite.Models
         /// required field 
         /// </summary>
         [EmailAddress(ErrorMessage = "* Enter a valid email")]
-        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
-            ErrorMessage = "* Must be an email address")]
+        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "* Must be an email address")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "* This field is required")]
         public string Email { get; set; }
@@ -49,8 +48,7 @@ namespace ContosoCrafts.WebSite.Models
         /// required field
         /// can only use characters 
         /// </summary>
-        [RegularExpression("^[a-zA-Z' ']+$",
-            ErrorMessage = "* Location can only have letters")]
+        [RegularExpression("^[a-zA-Z' ']+$", ErrorMessage = "* Location can only have letters")]
         [Required(ErrorMessage = "* This field is required")]
         public string Location { get; set; }
 
