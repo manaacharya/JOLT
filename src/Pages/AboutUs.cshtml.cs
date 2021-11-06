@@ -14,6 +14,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// </summary>
     public class AboutUsModel : PageModel
     {  
+
         // create log category of AboutUsModel 
         private readonly ILogger<AboutUsModel> _logger;
 
@@ -37,4 +38,5 @@ namespace ContosoCrafts.WebSite.Pages
         }
         */
     }
+
 }
