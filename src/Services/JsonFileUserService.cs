@@ -52,9 +52,11 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
+
             //create file reader for Json file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
+
                 // Deserialize Json to List
               return JsonSerializer.Deserialize<UserModel[]>
                     (jsonFileReader.ReadToEnd(),
@@ -128,8 +130,10 @@ namespace ContosoCrafts.WebSite.Services
             // result will be null, if key doesn't exist
             if (result == null)
             {
+
                 // return null
                 return null;
+
             }
 
             // return result
