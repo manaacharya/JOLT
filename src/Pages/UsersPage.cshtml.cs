@@ -37,8 +37,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="userService"></param>
         public UsersPageModel(ILogger<UsersPageModel> logger,
             JsonFileUserService userService)
-        {
-           
+        { 
             _logger = logger;
 
             //Userservice object 
@@ -52,7 +51,5 @@ namespace ContosoCrafts.WebSite.Pages
         {
             Users = UserServices.GetUsers();
         }
-   
      }
-
 }
