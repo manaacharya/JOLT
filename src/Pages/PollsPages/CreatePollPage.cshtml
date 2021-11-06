@@ -7,28 +7,28 @@
 
         <hr />
 
-        <form>
+        <form method="post" asp-page="CreatePollPage"> 
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" asp-for="CreatePoll.CreateTitle" name="PollTitle" class="form-control" placeholder="Enter Title">
+                <input type="text" asp-for="CreatePoll.CreateTitle" name="CreateTitle" class="form-control" placeholder="Enter Title">
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" asp-for="CreatePoll.CreateDescription" name="PollDescription" class="form-control" placeholder="Enter Description">
+                <input type="text" asp-for="CreatePoll.CreateDescription"  name="CreateDescription" class="form-control" placeholder="Enter Description">
             </div>
 
             <div class="form-group">
                 <h5>Enter Opinions</h5>
                 <div class="col-auto">
                     <label>Opinion Item 1</label>
-                    <input type="text" asp-for="CreatePoll.CreateOpinionOne" name="OpinionOne" class="form-control" placeholder="Enter Opinion One">
+                    <input type="text" asp-for="CreatePoll.CreateOpinionOne" name="CreateOpinionOne" class="form-control" placeholder="Enter Opinion One">
 
                 </div>
 
                 <div class="col-auto">
                     <label>Opinion Item 2</label>
-                    <input type="text" asp-for="CreatePoll.CreateOpinionTwo" name="OpinionTwo" class="form-control" placeholder="Enter Opinion Two">
+                    <input type="text" asp-for="CreatePoll.CreateOpinionTwo" name="CreateOpinionTwo" class="form-control" placeholder="Enter Opinion Two">
 
                 </div>
             </div>
