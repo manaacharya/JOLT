@@ -33,6 +33,7 @@ namespace UnitTests.Pages.Error
             {
                 // Set the Page Context
                 PageContext = TestHelper.PageContext,
+
                 // Set the Temp Data
                 TempData = TestHelper.TempData,
             };
@@ -64,6 +65,7 @@ namespace UnitTests.Pages.Error
             // ----------------- Assert -----------------
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
             //check activityID is correct 
             Assert.AreEqual(activity.Id, PageModel.RequestId);
         }
