@@ -1,5 +1,6 @@
 ﻿@page
-@model PollsPageModel
+@using ContosoCrafts.WebSite.Models
+@model ContosoCrafts.WebSite.Pages.PollsPageModel
 @{
     ViewData["Title"] = "Polls Page";
 }
@@ -16,6 +17,64 @@
             <a class="btn btn-info" asp-page="/Poll/Create"> <i class="fa fa-plus"></i> Create Poll</a>
             <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
 
+            @{
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <br />
+
+                            <div class="row">
+
+                                <div class="col-auto">
+
+                                    <table class="table">
+
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="color: #ffffff">Title</th>
+                                                <th scope="col" style="color: #ffffff">Description</th>
+                                                <th scope="col" style="color: #ffffff">Opinion name</th>
+                                                <th scope="col" style="color: #ffffff">Opinion count</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody style="color: #ffffff">
+
+                                            @{
+
+                                                foreach (PollModel poll in Model.Polls)
+                                                {
+                                                    <tr>
+                                                        <th> @poll.Title </th>
+                                                        <th> @poll.Description </th>
+                                                        <th>
+                                                            @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
+                                                            {
+                                                                @poll.OpinionItems.ToList()[i].OpinionName <br />
+
+
+                                                            }
+                                                        </th>
+                                                        <th>
+                                                            @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
+                                                            {
+                                                                @poll.OpinionItems.ToList()[i].NumCounts <br />
+                                                            }
+                                                        </th>
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
 
     </div>
