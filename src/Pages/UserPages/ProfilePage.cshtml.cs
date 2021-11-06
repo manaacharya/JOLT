@@ -54,6 +54,7 @@ namespace ContosoCrafts.WebSite.Pages
 
             //create userService object 
             UserServices = userService;
+
         }
 
         /// <summary>
@@ -61,11 +62,13 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+
             //cookie username 
             var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
  
             //userModel object of cookie username stored 
             UserModel = UserServices.GetUser(cookieValue.ToString());
+
         }
         
         /// <summary>
@@ -75,10 +78,13 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
+
             if (UpdateUser == null)
             {
+
                 //back to profile page 
                 return RedirectToPage("ProfilePage");
+
             }
 
             //userservice object 
@@ -86,10 +92,12 @@ namespace ContosoCrafts.WebSite.Pages
 
             if (updateStatus == null)
             {
+
                 // Error Updating User
                 Message = $"Error Updating {UpdateUser.UpdateName}";
 
                 return RedirectToPage("ProfilePage");
+
             }
 
             // Updated Cookie To User Name
@@ -107,6 +115,7 @@ namespace ContosoCrafts.WebSite.Pages
 
             //redirect back to profile page 
             return RedirectToPage("ProfilePage");
+
         }
 
         /// <summary>
@@ -116,6 +125,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPostDeleteProfile(int id)
         {
+
             //result of userID using userservices 
             bool result = UserServices.DeleteData(id);
 
@@ -126,6 +136,7 @@ namespace ContosoCrafts.WebSite.Pages
 
                 //return back to profilepage 
                 return RedirectToPage("ProfilePage"); 
+
             }
 
             //message to confirm user is deleted 
@@ -138,10 +149,8 @@ namespace ContosoCrafts.WebSite.Pages
             return Redirect("/Index"); //RedirectToPage("/Pages/Index");
             //RedirectToPage("./Index");
 
-
         }
               
     }
-
 
 }
