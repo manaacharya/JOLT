@@ -112,9 +112,13 @@ namespace UnitTests.Pages.Users
             PageModel.BindUser = new UserModel()
             {
                 UserID = userID,
+
                 Username = "User@@@", //should only contain numbers and letter
+
                 Password = "TestValidpassword", //password is less than 6
+
                 Email = "TestvalidEmail@gmail.com",
+
                 Location = "TestvalidLocation"
             };
 
@@ -139,8 +143,10 @@ namespace UnitTests.Pages.Users
             // ----------------- Arrange -----------------
 
             var oldCount = TestHelper.UserService.GetUsers().Count();
+
             // Random object instance creation
             Random rnd = new Random();
+
             int userID = rnd.Next(1, 999999);
 
             // UserModel instance created
@@ -185,6 +191,7 @@ namespace UnitTests.Pages.Users
 
             // Random object instance creation
             Random rnd = new Random();
+
             int userID = rnd.Next(1, 999999);
 
             // UserModel instance created
@@ -228,6 +235,7 @@ namespace UnitTests.Pages.Users
 
             // Random object instance creation
             Random rnd = new Random();
+
             int userID = rnd.Next(1, 999999);
 
             // UserModel instance created
@@ -244,6 +252,7 @@ namespace UnitTests.Pages.Users
 
                 //email
                 Email = "TestvalidEmail@gmail.com",
+
                 Location = "TestInvalidLocation!!!!" //should only contain letters
             };
 
