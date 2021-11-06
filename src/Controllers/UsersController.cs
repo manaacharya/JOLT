@@ -48,9 +48,7 @@ namespace ContosoCrafts.WebSite.Controllers
             //store users in list 
            Users = UserService.GetUsers();
             //return list of users 
-            return Users; 
-            
+            return Users;     
         }
-
     }
 }
