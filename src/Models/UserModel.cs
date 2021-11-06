@@ -59,7 +59,5 @@ namespace ContosoCrafts.WebSite.Models
         /// <returns></returns>
         public override string ToString()
             => JsonSerializer.Serialize<UserModel>(this);
-
- 
     }
 }
