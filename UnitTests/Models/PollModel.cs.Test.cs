@@ -11,7 +11,8 @@ using ContosoCrafts.WebSite.Models;
 using System.Text.Json;
 
 namespace UnitTests.Models
-{   /// <summary>
+{   
+    /// <summary>
     /// Tests all basic functions in PollModel.cs
     /// </summary>
     class PollModelTest
