@@ -84,7 +84,7 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-        public PollModel CreatePoll(PollModel newPoll, int userID)
+        public PollModel CreatePoll(CreatePollModel newPoll, int userID)
         {
             var poll = new PollModel()
             {
@@ -92,11 +92,13 @@ namespace ContosoCrafts.WebSite.Services
 
                 PollID = GetPolls().Count(),
 
-                Title = newPoll.Title,
+                Title = newPoll.CreateTitle,
 
-                Description = newPoll.Description,
+                Description = newPoll.CreateDescription,
 
-                OpinionItems = newPoll.OpinionItems
+                OpinionItems = new List<OpinionItem> () {
+                    new OpinionItem(newPoll.CreateOpinionOne, 0), new OpinionItem(newPoll.CreateOpinionTwo, 0)
+                }
             };
 
             // Get Poll Data Set
