@@ -49,12 +49,10 @@ namespace ContosoCrafts.WebSite.Pages
         public ProfilePageModel(ILogger<ProfilePageModel> logger,
             JsonFileUserService userService)
         {
-           
             _logger = logger;
 
             //create userService object 
             UserServices = userService;
-
         }
 
         /// <summary>
@@ -68,7 +66,6 @@ namespace ContosoCrafts.WebSite.Pages
  
             //userModel object of cookie username stored 
             UserModel = UserServices.GetUser(cookieValue.ToString());
-
         }
         
         /// <summary>
@@ -115,7 +112,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             //redirect back to profile page 
             return RedirectToPage("ProfilePage");
-
         }
 
         /// <summary>
@@ -148,9 +144,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             return Redirect("/Index"); //RedirectToPage("/Pages/Index");
             //RedirectToPage("./Index");
-
         }
-              
     }
-
 }
