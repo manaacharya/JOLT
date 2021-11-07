@@ -10,6 +10,9 @@ using NUnit.Framework;
 
 namespace UnitTests.Services
 {
+    /// <summary>
+    /// Unit Test Class for Poll Services
+    /// </summary>
     public class JsonFilePollService
     {
         #region TestSetup
@@ -24,6 +27,9 @@ namespace UnitTests.Services
 
         #region GetPoll
 
+        /// <summary>
+        /// Test for Getting Poll with Valid Poll ID
+        /// </summary>
         [Test]
         public void GetPoll_ValidID_Should_Return_PollModel()
         {
@@ -48,6 +54,9 @@ namespace UnitTests.Services
             Assert.AreEqual(true, getModel.Title.Equals("Aerospace company"));
         }
 
+        /// <summary>
+        /// Test for Getting Poll with InValid Poll ID
+        /// </summary>
         [Test]
         public void GetPoll_InValidID_Should_Return_Null()
         {
@@ -69,7 +78,9 @@ namespace UnitTests.Services
             Assert.AreEqual(null, getModel);
         }
 
-
+        /// <summary>
+        /// Test for Getting Poll with Valid Title
+        /// </summary>
         [Test]
         public void GetPoll_ValidTitle_Should_Return_PollModel()
         {
@@ -94,6 +105,9 @@ namespace UnitTests.Services
             Assert.AreEqual(true, getModel.Title.Equals("Aerospace company"));
         }
 
+        /// <summary>
+        /// Test for Getting Poll with Invalid Title
+        /// </summary>
         [Test]
         public void GetPoll_InValidTitle_Should_Return_Null()
         {
@@ -119,6 +133,9 @@ namespace UnitTests.Services
 
         #region PollExist
 
+        /// <summary>
+        /// Test for Checking If Poll Exist with Valid ID
+        /// </summary>
         [Test]
         public void PollExist_ValidID_Should_Return_True()
         {
@@ -139,6 +156,9 @@ namespace UnitTests.Services
             
         }
 
+        /// <summary>
+        /// Test for Checking if Poll Exists with InValid ID
+        /// </summary>
         [Test]
         public void PollExist_InValidID_Should_Return_False()
         {
@@ -158,7 +178,9 @@ namespace UnitTests.Services
             Assert.AreEqual(false, getResult);
         }
 
-
+        /// <summary>
+        /// Test for Checking if Poll Exist With Valid Title
+        /// </summary>
         [Test]
         public void PollExist_ValidTitle_Should_Return_True()
         {
@@ -177,6 +199,9 @@ namespace UnitTests.Services
             Assert.AreEqual(true, getResult);
         }
 
+        /// <summary>
+        /// Test for Checking if Poll Exist with InValid Title
+        /// </summary>
         [Test]
         public void PollExist_InValidTitle_Should_Return_False()
         {
@@ -199,6 +224,9 @@ namespace UnitTests.Services
 
         #region CreatePoll
 
+        /// <summary>
+        /// Test for Creating Valid Poll That Doesn't Exist Already in DataSet
+        /// </summary>
         [Test]
         public void CreatePoll_ValidPollCreationModel_Should_Return_PollModel()
         {
@@ -241,6 +269,9 @@ namespace UnitTests.Services
             Assert.AreEqual(true, getOpinionOne.OpinionName.Equals(createPoll.CreateOpinionOne));
         }
 
+        /// <summary>
+        /// Test for Creating Valid Poll That Already Exist in Poll Dataset
+        /// </summary>
         [Test]
         public void CreatePoll_ValidPollCreationModel_DuplicatePoll_Should_Return_Null()
         {
