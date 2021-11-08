@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
 
@@ -45,7 +43,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Valid_UserModel_Should_Update_User()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             //use existing userID
             int userID = 862765;
 
@@ -70,13 +68,13 @@ namespace UnitTests.Pages.Users
 
             PageModel.PageContext.HttpContext.Response.Cookies.Append("nameCookie", "craigs34");
 
-            // --------------------- Act -----------------
+            // Act
             // Fetch result from Post
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ---- Assert ----
+            //Assert
             //check page is profile page 
             Assert.AreEqual(true, result.PageName.Contains("ProfilePage"));
 
@@ -90,16 +88,16 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_ModelState_Should_Return_Page()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
 
             // Force an invalid error state
             PageModel.ModelState.AddModelError("no update", "No Updates Made");
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from Post
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Assert -----------------
+            // Assert
             //check that model state is not valid 
             Assert.AreEqual(false, PageModel.ModelState.IsValid);
         }
@@ -110,7 +108,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_UserModel_Should_Return_Page()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // invalid id variable
             int invalidID = 999999;
 
@@ -133,13 +131,13 @@ namespace UnitTests.Pages.Users
                 UpdateLocation = "Bogus"
             };
 
-            // ----------------- Act -----------------
+            //Act
             // Fetch result from Post
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            // Assert
             //fetch error message
             var errorMessage = PageModel.Message;
 
