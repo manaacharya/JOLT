@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
-
 using System;
 using System.Linq;
 using ContosoCrafts.WebSite.Models;
@@ -53,7 +51,7 @@ namespace UnitTests.Pages.Users
 
             // Random object instance creation
             Random rnd = new Random();
-            
+
             // userID variable with random number
             int userID = rnd.Next(1, 999999);
 
@@ -266,5 +264,5 @@ namespace UnitTests.Pages.Users
         }
         #endregion OnPost
     }
-    
+
 }

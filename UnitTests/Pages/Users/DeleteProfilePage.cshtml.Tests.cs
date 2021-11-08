@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
-using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UnitTests.Pages.Users
@@ -46,15 +42,15 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Valid_UserModel_Should_Delete_UserObject()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // Valid id variable
             int userID = 343386;
             
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost
             var result = PageModel.OnPostDeleteProfile(userID) as RedirectToPageResult;
 
-            // ----------------- Assert -----------------
+            // Assert
             //check modelstate 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
@@ -71,17 +67,17 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_UserModel_Should_Return_Page()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
 
             int invalidId = -93939;
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost
             var result = PageModel.OnPostDeleteProfile(invalidId) as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            // Assert
             //check page is profilepage
             Assert.AreEqual("ProfilePage", result.PageName);
 
