@@ -47,6 +47,25 @@ namespace UnitTests.Pages.Polls
         /// <summary>
         /// Test OnPost yields valid results 
         /// </summary>
+
+        #region OnGet
+
+        [Test]
+        public void OnGet_Returns_Valid_PollsList()
+        {
+            // Arrange
+
+            //Act
+            PageModel.OnGet();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
+            Assert.AreEqual(true, PageModel.Polls.Any());
+        }
+        #endregion OnGet
+
         [Test]
         #region OnPost
         public void OnPost_Valid()

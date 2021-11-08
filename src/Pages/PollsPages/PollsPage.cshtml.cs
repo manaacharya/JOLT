@@ -19,7 +19,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <summary>
         /// Poll Services
         /// </summary>
-        public JsonFilePollService PollServices { get; set; }
+        public JsonFilePollService PollServices { get;  }
 
         /// <summary>
         /// List of Polls
