@@ -38,14 +38,15 @@ namespace UnitTests.Controllers.Users
     [Test]
     public void Get_Valid_Should_Return_Users()
     {
-        // ----------------- Arrange -----------------
+        //Arrange 
 
-        // ----------------- Act -----------------
+        //Act
 
         // Fetch result from OnGet()
         var Users = usersController.Get();
       
-        // ----------------- Assert -----------------
+        //Assert
+
         //check model state 
         Assert.AreEqual(true, usersController.ModelState.IsValid);
 
