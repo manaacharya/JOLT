@@ -42,12 +42,17 @@
 
                                             @{
 
+                                                // Iterates over every poll in the polls list
                                                 foreach (PollModel poll in Model.Polls)
                                                 {
+                                                   
                                                     <tr>
+                                                        <!-- Print poll -->
                                                         <th> @poll.Title </th>
+                                                        <!-- Print description -->
                                                         <th> @poll.Description </th>
                                                         <th>
+                                                            <!-- Print all opinion names for current poll -->
                                                             @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
                                                             {
                                                                 @poll.OpinionItems.ToList()[i].OpinionName <br />
@@ -56,6 +61,7 @@
                                                             }
                                                         </th>
                                                         <th>
+                                                            <!-- Print all num count for current poll -->
                                                             @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
                                                             {
                                                                 @poll.OpinionItems.ToList()[i].NumCounts <br />
