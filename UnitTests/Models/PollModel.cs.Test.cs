@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Models;
-using System.Text.Json;
 
 namespace UnitTests.Models
 {   
@@ -58,9 +51,11 @@ namespace UnitTests.Models
                 //opinion items are list of items 
                 OpinionItems = new List<OpinionItem>() { exampleOptionName }
             };
-            // ----------------- Act -----------------
+            //Arrange
 
-            // ----------------- Assert -----------------
+            //Act
+
+            //Assert
             //check poll id has been created & correct id
             Assert.AreEqual(1, testPollModel.PollID);
 
