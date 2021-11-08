@@ -1,13 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
-using ContosoCrafts.WebSite.Models;
-using Microsoft.AspNetCore.Mvc;
-
 
 namespace UnitTests.Pages.Users
 {
@@ -48,19 +42,19 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnGet_Valid_Should_Return_UserModel()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // valid key variable
             string key = "lakers34";
             // Create Cookie with key-value pair
             TestHelper.UserService.CreateCookie("nameCookie", key);
 
-            // ----------------- Act -----------------
+            // Act
 
             PageModel.OnGet();
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ----------------- Assert -----------------
+            // Assert
 
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
