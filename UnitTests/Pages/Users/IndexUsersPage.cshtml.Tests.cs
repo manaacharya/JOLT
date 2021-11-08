@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
@@ -43,14 +41,14 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnGet_Valid_Should_Return_Users()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
 
-            // ----------------- Act -----------------
+            // Act
 
             // Fetch result from OnGet()
             UsersPageModel.OnGet();
 
-            // ----------------- Assert -----------------
+            // Assert
 
             //check model state is valid 
             Assert.AreEqual(true, UsersPageModel.ModelState.IsValid);
