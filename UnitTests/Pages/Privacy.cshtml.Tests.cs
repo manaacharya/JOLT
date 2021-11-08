@@ -1,11 +1,6 @@
-using System.Diagnostics;
-
 using Microsoft.Extensions.Logging;
-
 using NUnit.Framework;
-
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
 
 namespace UnitTests.Pages.Privacy
@@ -50,14 +45,14 @@ namespace UnitTests.Pages.Privacy
         [Test]
         public void OnGet_Valid_Activity_Set_Should_Return_RequestId()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
 
             //fetch onget
             PageModel.OnGet();
 
-            // ----------------- Reset -----------------
+            //Reset 
 
-            // ----------------- Assert -----------------
+            //Assert 
             //check model state is valid
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
         }
