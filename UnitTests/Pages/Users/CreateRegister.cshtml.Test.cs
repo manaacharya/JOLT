@@ -7,9 +7,7 @@ using ContosoCrafts.WebSite.Pages;
 using System;
 using System.Linq;
 using ContosoCrafts.WebSite.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 namespace UnitTests.Pages.Users
@@ -49,7 +47,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Valid_UserModel_Should_Add_New_Record()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // oldCount variable for total numbers of Users
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
@@ -78,13 +76,13 @@ namespace UnitTests.Pages.Users
                 Location = "TestValidLocation"
             };
 
-            // ----------------- Act -----------------
+            //Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            //Assert
 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
@@ -98,7 +96,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_UserModel_Name_Should_Not_Add_New_Record()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
             // oldCount variable for total numbers of Users
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
@@ -123,13 +121,13 @@ namespace UnitTests.Pages.Users
             };
 
 
-            // ----------------- Act -----------------
+            //Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            //Assert
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
@@ -140,7 +138,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_UserModel_Password_Should_Not_Add_New_Record()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
 
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
@@ -169,13 +167,13 @@ namespace UnitTests.Pages.Users
             };
 
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            //Assert
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
@@ -186,7 +184,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_UserModel_Email_Should_Not_Add_New_Record()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
             // Random object instance creation
@@ -213,13 +211,13 @@ namespace UnitTests.Pages.Users
                 Location = "TestvalidLocation"
             };
 
-            // ----------------- Act -----------------
+            //Act
             // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            //Assert
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
@@ -230,7 +228,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_InValid_Location_Should_Not_Add_New_Record()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
             // Random object instance creation
@@ -256,13 +254,13 @@ namespace UnitTests.Pages.Users
                 Location = "TestInvalidLocation!!!!" //should only contain letters
             };
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            //Reset
 
-            // ----------------- Assert -----------------
+            //Assert
             // Confirm that no new recorded was added
             Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
         }
