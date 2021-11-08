@@ -1,20 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-
-
 using ContosoCrafts.WebSite.Models;
-using ContosoCrafts.WebSite.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 
 namespace UnitTests.Pages.Users
 {
@@ -54,7 +44,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Valid_Username_Valid_Password_Should_Return_Login_Welcome()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
             int userID = 157465;
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
@@ -65,12 +55,12 @@ namespace UnitTests.Pages.Users
                 //password 
                 Password = "dscWTr"
             };
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
 
-            // ----------------- Assert -----------------
+            // Assert
             //check message is empty 
             Assert.AreEqual(true, String.IsNullOrEmpty(PageModel.Msg));
 
@@ -87,19 +77,19 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Null_Username_Null_Password_Should_Display_Error()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
             };
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ----------------- Assert -----------------
+            // Assert
             //check message 
             Assert.AreEqual("No Empty Entry", PageModel.Msg);
 
@@ -113,7 +103,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Valid_Username_Incorrect_Password_Should_Display_Error()
         {
-            // ----------------- Arrange -----------------
+            //Arrange-
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
@@ -124,13 +114,13 @@ namespace UnitTests.Pages.Users
                 Password = "INCORRECT_PASSWORD"
             };
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ----------------- Assert -----------------
+            // Assert
 
             //check message for incorrect password 
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
@@ -145,7 +135,7 @@ namespace UnitTests.Pages.Users
         [Test]
         public void OnPost_Incorrect_Username_Incorrect_Password_Should_Display_Error()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
             // UserLoginModel instance created 
             PageModel.UserInput_test = new UserLoginModel()
             {
@@ -156,13 +146,13 @@ namespace UnitTests.Pages.Users
                 Password = "INCORRECT_PASSWORD"
             };
 
-            // ----------------- Act -----------------
+            // Act
             // Fetch result from OnPost()
             var result = PageModel.OnPost() as RedirectToPageResult;
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ----------------- Assert -----------------
+            // Assert
             //check message is inocrrect password/username 
             Assert.AreEqual("Invalid Username or Password", PageModel.Msg);
 
