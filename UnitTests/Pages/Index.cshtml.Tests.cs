@@ -1,11 +1,6 @@
-using System.Linq;
-
 using Microsoft.Extensions.Logging;
-
 using Moq;
-
 using NUnit.Framework;
-
 using ContosoCrafts.WebSite.Pages;
 
 namespace UnitTests.Pages.Index
@@ -45,13 +40,13 @@ namespace UnitTests.Pages.Index
         [Test]
         public void OnGet_Valid_Should_Return_Products()
         {
-            // ----------------- Arrange -----------------
+            //Arrange
 
-            // ----------------- Act -----------------
+            //Act
             //fetch onget 
             PageModel.OnGet();
 
-            // ----------------- Assert -----------------
+            // Assert
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
             
