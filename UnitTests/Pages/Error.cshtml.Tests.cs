@@ -1,11 +1,7 @@
 using System.Diagnostics;
-
 using Microsoft.Extensions.Logging;
-
 using NUnit.Framework;
-
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
 
 namespace UnitTests.Pages.Error
@@ -49,20 +45,20 @@ namespace UnitTests.Pages.Error
         [Test]
         public void OnGet_Valid_Activity_Set_Should_Return_RequestId()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
 
             Activity activity = new Activity("activity");
             activity.Start();
 
-            // ----------------- Act -----------------
+            // Act
             //fetch OnGet()
             PageModel.OnGet();
 
-            // ----------------- Reset -----------------
+            //Reset
             //Reset activty - stop 
             activity.Stop();
 
-            // ----------------- Assert -----------------
+            // Assert
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
@@ -76,15 +72,15 @@ namespace UnitTests.Pages.Error
         [Test]
         public void OnGet_InValid_Activity_Null_Should_Return_TraceIdentifier()
         {
-            // ----------------- Arrange -----------------
+            // Arrange
 
-            // ----------------- Act -----------------
+            // Act
             //Fetch Onget
             PageModel.OnGet();
 
-            // ----------------- Reset -----------------
+            // Reset
 
-            // ----------------- Assert -----------------
+            // Assert
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
