@@ -61,7 +61,11 @@ namespace UnitTests.Pages.Polls
             // Reset
 
             // Assert
+
+            // 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            // 
             Assert.AreEqual(true, PageModel.Polls.Any());
         }
         #endregion OnGet
@@ -70,12 +74,15 @@ namespace UnitTests.Pages.Polls
         #region OnPost
         public void OnPost_Valid()
         {
-            // ----------------- Arrange -----------------
-            // ----------------- Act -----------------
+            //  Arrange 
+
+            //  Act 
+
             // Fetch result from OnPost()
             var result = PageModel.OnPostGuidelines() as RedirectToPageResult;
 
-            // ----------------- Assert -----------------
+            //  Assert
+
             //check return null when OnPost
             Assert.AreEqual(null, result);
         }
