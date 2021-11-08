@@ -87,7 +87,5 @@ namespace UnitTests.Pages.Polls
         }
 
         #endregion OnPost
-
-
     }
 }
