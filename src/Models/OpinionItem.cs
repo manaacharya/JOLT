@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace ContosoCrafts.WebSite.Models
 {
     public class OpinionItem
@@ -30,6 +26,7 @@ namespace ContosoCrafts.WebSite.Models
         {
             //set opinionname as parameter, name must match attribute (camelCase)
             this.OpinionName = opinionName;
+
             //set numcounts as parameter, name must match attribute (camelCase)
             this.NumCounts = numCounts;
         }
