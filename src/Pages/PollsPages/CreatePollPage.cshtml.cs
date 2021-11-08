@@ -110,7 +110,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             }
 
             // Was Succesfull, Print A Message of Success
-            Message = $"Awesome {pollCreationStatus.Title} Created: Make Another Poll";
+            Message = $"Awesome! \n '{pollCreationStatus.Title}' Created \n  Please Make Another Poll";
 
             // Redirect To This Page
             return Page();
