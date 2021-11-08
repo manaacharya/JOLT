@@ -45,7 +45,7 @@ namespace UnitTests.Pages.Polls
         #region OnGet
 
         /// <summary>
-        /// 
+        /// check if OnGet() returns the correct message
         /// </summary>
         [Test]
         public void OnGet_Valid_Should_Generate_Welcome_Message()
@@ -62,6 +62,7 @@ namespace UnitTests.Pages.Polls
 
             // check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
             // check whether messag was created
             Assert.AreEqual(true, PageModel.Message.Equals($"Welcome :  Create Your Amazing Poll"));
         }
@@ -70,7 +71,7 @@ namespace UnitTests.Pages.Polls
         #region OnPost
 
         /// <summary>
-        /// 
+        /// Checks if OnPost() creates a valid poll item
         /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_ValidUser_Should_Create_Poll()
@@ -104,7 +105,8 @@ namespace UnitTests.Pages.Polls
         }
 
         /// <summary>
-        /// 
+        /// checks if invalid user can create a poll
+        /// stays in the same page if the user is invalid
         /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_InValidUser_Should_Return_Page()
@@ -131,12 +133,14 @@ namespace UnitTests.Pages.Polls
             // Reset
 
             // Assert
+
             // Confirm Page Redirection
             Assert.AreEqual(true, pageResult.PageName.Contains("PollsPage"));
         }
 
         /// <summary>
-        /// 
+        /// check if a valid user can create a duplicate poll
+        /// if it happens, a error message is displayed
         /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_DuplicatePoll_ValidUser_Should_Return_Message()
@@ -167,6 +171,7 @@ namespace UnitTests.Pages.Polls
             var pageResult = PageModel.OnPost() as RedirectToPageResult;
 
             // Reset
+
             // Assert
 
             // Duplicate Entry Was Caught
