@@ -1,62 +1,50 @@
 ﻿@page
 @using ContosoCrafts.WebSite.Models
 @model ContosoCrafts.WebSite.Pages.UsersPageModel
-    <style>
-        body {
-            padding-top: 50px;
-            padding-bottom: 20px;
-            background-image: url('../images/mt_rainer_background.jpeg');
-            background-color: #343a40;
-            background-blend-mode: overlay;
-            color: #fff;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            /* Margin bottom by auto height */
-            margin: auto;
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
 
 @{
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <body style="background-image: url('../images/mt_rainer_background.jpeg'); background-color: #343a40; background-blend-mode: overlay;">
 
-                <h3> Other Users </h3>
-                <div class="row">
 
-                    <div class="col-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
 
-                        <table class="table">
+                    <h3> Other Users </h3>
+                    <div class="row">
 
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="color: #ffffff">User Name</th>
-                                    <th scope="col" style="color: #ffffff">Email</th>
-                                    <th scope="col" style="color: #ffffff">Location</th>
-                                </tr>
-                            </thead>
+                        <div class="col-auto">
 
-                            <tbody style="color: #ffffff">
+                            <table class="table">
 
-                                @{
-                                    foreach (UserModel people in Model.Users)
-                                    {
-                                        <tr>
-                                            <th> @people.Username </th>
-                                            <th> @people.Email </th>
-                                            <th> @people.Location </th>
-                                        </tr>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="color: #ffffff">User Name</th>
+                                        <th scope="col" style="color: #ffffff">Email</th>
+                                        <th scope="col" style="color: #ffffff">Location</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody style="color: #ffffff">
+
+                                    @{
+                                        foreach (UserModel people in Model.Users)
+                                        {
+                                            <tr>
+                                                <th> @people.Username </th>
+                                                <th> @people.Email </th>
+                                                <th> @people.Location </th>
+                                            </tr>
+                                        }
                                     }
-                                }
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <br />
                 </div>
-                <br />
             </div>
         </div>
-    </div>
+    </body>
 }
