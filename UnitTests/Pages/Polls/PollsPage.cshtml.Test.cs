@@ -1,19 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
 using ContosoCrafts.WebSite.Pages;
-
-using System;
-using System.Collections.Generic;
 using System.Linq;
-
-
-using ContosoCrafts.WebSite.Models;
-using ContosoCrafts.WebSite.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace UnitTests.Pages.Polls
 {   
@@ -23,6 +14,7 @@ namespace UnitTests.Pages.Polls
     class PollsPageTest
     {
         #region TestSetup
+
         //create PollsPagemodel object 
         public static PollsPageModel PageModel;
 
@@ -42,14 +34,15 @@ namespace UnitTests.Pages.Polls
                 PageContext = TestHelper.PageContext
             };
         }
+
         #endregion TestSetup
 
-        /// <summary>
-        /// Test OnPost yields valid results 
-        /// </summary>
 
         #region OnGet
 
+        /// <summary>
+        /// Test OnGet(), check if the result is valid
+        /// </summary>
         [Test]
         public void OnGet_Returns_Valid_PollsList()
         {
@@ -62,16 +55,22 @@ namespace UnitTests.Pages.Polls
 
             // Assert
 
-            // 
+            // check if the page model is valid
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
-            // 
+            // check if there is any polls fetch from the PollService
             Assert.AreEqual(true, PageModel.Polls.Any());
         }
+
         #endregion OnGet
 
-        [Test]
+        
         #region OnPost
+
+        /// <summary>
+        /// Test OnPost(), check if the result is valid
+        /// </summary>
+        [Test]
         public void OnPost_Valid()
         {
             //  Arrange 
@@ -86,6 +85,7 @@ namespace UnitTests.Pages.Polls
             //check return null when OnPost
             Assert.AreEqual(null, result);
         }
+
         #endregion OnPost
 
 

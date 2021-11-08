@@ -44,6 +44,9 @@ namespace UnitTests.Pages.Polls
 
         #region OnGet
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void OnGet_Valid_Should_Generate_Welcome_Message()
         {
@@ -66,6 +69,9 @@ namespace UnitTests.Pages.Polls
 
         #region OnPost
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_ValidUser_Should_Create_Poll()
         {
@@ -97,6 +103,9 @@ namespace UnitTests.Pages.Polls
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_InValidUser_Should_Return_Page()
         {
@@ -126,6 +135,9 @@ namespace UnitTests.Pages.Polls
             Assert.AreEqual(true, pageResult.PageName.Contains("PollsPage"));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void OnPost_ValidCreateModel_DuplicatePoll_ValidUser_Should_Return_Message()
         {
