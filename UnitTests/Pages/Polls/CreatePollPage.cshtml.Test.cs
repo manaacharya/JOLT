@@ -100,7 +100,7 @@ namespace UnitTests.Pages.Polls
             // Assert
                         
             // Confirm Poll is Updated
-            Assert.AreEqual(true, PageModel.Message.Equals("Awesome Valid New Poll Created: Make Another Poll"));
+            Assert.AreEqual(true, PageModel.Message.Equals("Awesome! 'Valid New Poll' Created."));
 
         }
 
