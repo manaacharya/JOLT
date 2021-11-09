@@ -90,6 +90,15 @@ namespace ContosoCrafts.WebSite.Pages
                 return Page();
             }
 
+            // Check whether User Already Exists
+            var getUser = UserService.GetUser(BindUser.Username);
+
+            if(getUser != null)
+            {
+                // Redirect to Log In. If User with the same Name Alreay Exists
+                return RedirectToPage("./LoginFolder/login");
+            }
+
             //create data using userinformation 
             UserService.CreateData(BindUser);
 
