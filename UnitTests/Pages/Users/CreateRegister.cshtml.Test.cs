@@ -88,6 +88,36 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual(oldCount + 1, TestHelper.UserService.GetUsers().Count());
         }
 
+        [Test]
+        public void OnPost_ValidDuplicate_UserModel_Should_Return_Page()
+        {
+            // Arrange
+
+            // Create Bind User Object
+            PageModel.BindUser = new UserModel()
+            {
+                // A User with this Username Already Exists in User Database/Dataset
+                Username = "edwin",
+                Password = "DuplicatePassword",
+                Email = "email@gmail.com",
+                Location = "USA"
+            };
+
+            // Act
+
+            // Fetch result from OnPost()
+            var getResult = PageModel.OnPost() as RedirectToPageResult;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
+            // Confirm Page Redirection
+            Assert.AreEqual(true, getResult.PageName.Contains("login"));
+
+        }
+
+
         /// <summary>
         /// Test for OnPost InValid UserModel
         /// </summary>
