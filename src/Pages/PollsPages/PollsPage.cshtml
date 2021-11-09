@@ -17,67 +17,45 @@
             <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage"> <i class="fa fa-plus"></i> Create Poll</a>
             <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
 
+            <hr />
+
             @{
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <br />
 
-                            <div class="row">
+                        @{ 
+                            foreach(PollModel poll in Model.Polls)
+                            {
+                                <div class="col-6">
+                                    <div class="card text-white bg-dark mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title" > @poll.Title</h5>
+                                            <h3 class="card-subtitle">  @poll.Description </h3>
 
-                                <div class="col-auto">
-
-                                    <table class="table">
-
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" style="color: #ffffff">Title</th>
-                                                <th scope="col" style="color: #ffffff">Description</th>
-                                                <th scope="col" style="color: #ffffff">Opinion name</th>
-                                                <th scope="col" style="color: #ffffff">Opinion count</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody style="color: #ffffff">
-
-                                            @{
-
-                                                // Iterates over every poll in the polls list
-                                                foreach (PollModel poll in Model.Polls)
-                                                {
-                                                   
-                                                    <tr>
-                                                        <!-- Print poll -->
-                                                        <th> @poll.Title </th>
-                                                        <!-- Print description -->
-                                                        <th> @poll.Description </th>
-                                                        <th>
-                                                            <!-- Print all opinion names for current poll -->
-                                                            @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
-                                                            {
-                                                                @poll.OpinionItems.ToList()[i].OpinionName <br />
-
-
-                                                            }
-                                                        </th>
-                                                        <th>
-                                                            <!-- Print all num count for current poll -->
-                                                            @for (int i = 0; i < poll.OpinionItems.ToList().Count; i++)
-                                                            {
-                                                                @poll.OpinionItems.ToList()[i].NumCounts <br />
-                                                            }
-                                                        </th>
-
-                                                    </tr>
-                                                }
+                                            @foreach(OpinionItem item in poll.OpinionItems.ToList())
+                                            {
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                            <label>@item.OpinionName</label>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <label>Votes: @item.NumCounts</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             }
+                                            <hr />
+                                            <a class="btn btn-primary">Submit Vote</a>
+                                        </div>
 
-                                        </tbody>
-                                    </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <br />
-                        </div>
+
+                            }
+                        }
+
                     </div>
                 </div>
             }
