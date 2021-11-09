@@ -88,6 +88,9 @@ namespace UnitTests.Pages.Users
             Assert.AreEqual(oldCount + 1, TestHelper.UserService.GetUsers().Count());
         }
 
+        /// <summary>
+        /// Test for Duplicate Registration 
+        /// </summary>
         [Test]
         public void OnPost_ValidDuplicate_UserModel_Should_Return_Page()
         {
