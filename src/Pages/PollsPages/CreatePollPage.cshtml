@@ -5,6 +5,13 @@
     <div class="container">
         <h3 class="clearfix">@Model.Message</h3>
 
+        @{ 
+            if(Model.Message.Substring(0,7) == "Awesome")
+            {
+                <h3 class="clearfix"> Nice Create Another Poll </h3>
+            }
+        }
+
         <hr />
 
         <form method="post" asp-page="CreatePollPage">
