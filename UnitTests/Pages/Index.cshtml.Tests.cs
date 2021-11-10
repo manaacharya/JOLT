@@ -53,7 +53,7 @@ namespace UnitTests.Pages.Index
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
             // Making Sure It Went to the PollsPage
-            Assert.AreEqual(true, pageResult.PageName.Contains("PollsPage"));
+            Assert.AreEqual(true, pageResult.PageName.Contains("./PollsPages/PollsPage"));
 
         }
         #endregion OnGet
