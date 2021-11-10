@@ -1,0 +1,34 @@
+﻿@page "{CommentId}/{ProductId}"
+
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.DeleteCommentModel
+
+@{
+    ViewData["Title"] = "Delete Comment";
+}
+
+<h1>Delete Comment</h1>
+
+<div class="container">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(x => x.CommentId)
+        @Html.HiddenFor(x => x.ProductId)
+
+        <div class="form-group">
+            @Html.DisplayFor(x => x.CommentText)<br />
+        </div>
+
+        <h1>Confirm Delete of this item?</h1>
+
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-primary" />
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
