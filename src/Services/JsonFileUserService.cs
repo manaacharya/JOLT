@@ -52,7 +52,6 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
-
             //create file reader for Json file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
@@ -97,7 +96,7 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>false if the cookie exitst, true otherwise</returns>
         public bool CreateCookie(string key, string value)
         {
             // Do Key Exists ?
@@ -135,9 +134,7 @@ namespace ContosoCrafts.WebSite.Services
                 return null;
 
             }
-
-            // return result
-            return result;
+            return result; // return result
         }
 
         /// <summary>
