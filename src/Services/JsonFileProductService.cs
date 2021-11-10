@@ -114,8 +114,6 @@ namespace ContosoCrafts.WebSite.Services
             productData.Quantity = data.Quantity;
             productData.Price = data.Price;
 
-            productData.CommentList = data.CommentList;
-
             SaveData(products);
 
             return productData;
