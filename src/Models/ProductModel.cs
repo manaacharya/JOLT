@@ -31,7 +31,7 @@ namespace ContosoCrafts.WebSite.Models
         // Store the Comments entered by the users on this product
         public List<CommentModel> CommentList { get; set; } = new List<CommentModel>();
 
-        public override string ToString() => JsonSerializer.Serialize<ProductModel>(this);
+        //public override string ToString() => JsonSerializer.Serialize<ProductModel>(this);
 
 
     }
