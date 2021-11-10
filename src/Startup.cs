@@ -31,7 +31,7 @@ namespace ContosoCrafts.WebSite
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            // services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
+            services.AddTransient<JsonFileProductService>(); // connect to JsonFileProductService
             services.AddTransient<JsonFileUserService>(); // connect to JsonFileUserService 
 
             services.AddTransient<JsonFilePollService>();
