@@ -4,6 +4,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+
+using ContosoCrafts.WebSite.Models;
+using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
@@ -21,28 +32,21 @@ namespace ContosoCrafts.WebSite.Pages
         /// Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
-        public IndexModel(ILogger<IndexModel> logger, JsonFilePollService pollService)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            PollServices = pollService;
         }
         /// <summary>
-        /// Poll Services
-        /// </summary>
-        public JsonFilePollService PollServices { get; }
-
-        /// <summary>
-        /// List of Polls
-        /// </summary>
-        public IEnumerable<PollModel> Polls { get; set; }
-
+      
 
         /// <summary>
         /// initializes a list of all
         /// </summary>
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            Polls = PollServices.GetPolls();
+
+            return RedirectToPage("/PollsPages/PollsPages");
+
         }
 
     }
