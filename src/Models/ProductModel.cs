@@ -29,7 +29,7 @@ namespace ContosoCrafts.WebSite.Models
         public int Price { get; set; }
 
         // Store the Comments entered by the users on this product
-       // public List<CommentModel> CommentList { get; set; } = new List<CommentModel>();
+        public List<CommentModel> CommentList { get; set; } = new List<CommentModel>();
 
         public override string ToString() => JsonSerializer.Serialize<ProductModel>(this);
 
