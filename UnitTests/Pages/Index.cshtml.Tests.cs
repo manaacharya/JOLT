@@ -3,6 +3,8 @@ using Moq;
 using NUnit.Framework;
 using ContosoCrafts.WebSite.Pages;
 
+using Microsoft.AspNetCore.Mvc;
+
 namespace UnitTests.Pages.Index
 {
     /// <summary>
@@ -44,12 +46,15 @@ namespace UnitTests.Pages.Index
 
             //Act
             //fetch onget 
-            PageModel.OnGet();
+            var pageResult = PageModel.OnGet() as RedirectToPageResult;
 
             // Assert
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-            
+
+            // Making Sure It Went to the PollsPage
+            Assert.AreEqual(true, pageResult.PageName.Contains("PollsPage"));
+
         }
         #endregion OnGet
     }
