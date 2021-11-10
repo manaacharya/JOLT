@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using ContosoCrafts.WebSite.Models;
+using ContosoCrafts.WebSite.Services;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace ContosoCrafts.WebSite.Pages
 {
@@ -12,23 +15,35 @@ namespace ContosoCrafts.WebSite.Pages
         //create log category for IndexModel  
         private readonly ILogger<IndexModel> _logger;
 
+
         /// <summary>
         /// Initalize logger obeject and add productServices
         /// Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, JsonFilePollService pollService)
         {
-            _logger = logger;  
+            _logger = logger;
+            PollServices = pollService;
         }
-
-                       
         /// <summary>
-        /// Dispaly all products on OnGet of homepage
+        /// Poll Services
+        /// </summary>
+        public JsonFilePollService PollServices { get; }
+
+        /// <summary>
+        /// List of Polls
+        /// </summary>
+        public IEnumerable<PollModel> Polls { get; set; }
+
+
+        /// <summary>
+        /// initializes a list of all
         /// </summary>
         public void OnGet()
         {
-
+            Polls = PollServices.GetPolls();
         }
+
     }
 }
