@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Component\" />
+    <Folder Include="Component\PollPage\" />
   </ItemGroup>
 
 </Project>
