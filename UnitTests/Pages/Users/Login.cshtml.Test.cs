@@ -47,7 +47,7 @@ namespace UnitTests.Pages.Users
             //Arrange
             int userID = 157465;
             // UserLoginModel instance created 
-            PageModel.UserInput_test = new UserLoginModel()
+            PageModel.UserLoginInput = new UserLoginModel()
             {
                 //username
                 Username = "lakers34",
@@ -79,7 +79,7 @@ namespace UnitTests.Pages.Users
         {
             // Arrange
             // UserLoginModel instance created 
-            PageModel.UserInput_test = new UserLoginModel()
+            PageModel.UserLoginInput = new UserLoginModel()
             {
             };
 
@@ -105,7 +105,7 @@ namespace UnitTests.Pages.Users
         {
             //Arrange-
             // UserLoginModel instance created 
-            PageModel.UserInput_test = new UserLoginModel()
+            PageModel.UserLoginInput = new UserLoginModel()
             {
                 //username 
                 Username = "lakers34",
@@ -137,7 +137,7 @@ namespace UnitTests.Pages.Users
         {
             // Arrange
             // UserLoginModel instance created 
-            PageModel.UserInput_test = new UserLoginModel()
+            PageModel.UserLoginInput = new UserLoginModel()
             {
                 //incorrect username 
                 Username = "INCORRECT_USERNAME",

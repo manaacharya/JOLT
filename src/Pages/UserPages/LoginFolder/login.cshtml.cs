@@ -36,7 +36,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// helper class for user input
         /// </summary>
         [BindProperty]
-        public Models.UserLoginModel UserInput_test { get; set; }
+        public Models.UserLoginModel UserLoginInput { get; set; }
 
         
         /// <summary>
@@ -45,19 +45,19 @@ namespace ContosoCrafts.WebSite.Pages
         public IActionResult OnPost()
         {
 
-            if (UserInput_test.Username != null && UserInput_test.Password != null)
+            if (UserLoginInput.Username != null && UserLoginInput.Password != null)
             {
                 //set inputverified to false 
                 bool InputVerified = false;
 
-                InputVerified = UserService.IsCorrectPassword(UserInput_test.Username, UserInput_test.Password);
+                InputVerified = UserService.IsCorrectPassword(UserLoginInput.Username, UserLoginInput.Password);
 
                 if (InputVerified)
                 {
                     //create cookie with username 
-                    UserService.CreateCookie("nameCookie", UserInput_test.Username);
+                    UserService.CreateCookie("nameCookie", UserLoginInput.Username);
 
-                    //Response.Cookies.Append("nameCookie", UserInput_test.username); // Cookies Creation -- Edwin
+                    //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
                     return RedirectToPage("Login_Welcome");
                  }
 
