@@ -10,41 +10,36 @@
             <div class="row">
                 <div class="col-12">
 
-                    <h3> Other Users </h3>
-                    <div class="row">
+                    <h3> Here is other user:  </h3>
 
-                        <div class="col-auto">
 
-                            <table class="table">
-
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="color: #ffffff">User Name</th>
-                                        <th scope="col" style="color: #ffffff">Email</th>
-                                        <th scope="col" style="color: #ffffff">Location</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody style="color: #ffffff">
-
-                                    @{
-                                        foreach (UserModel people in Model.Users)
-                                        {
-                                            <tr>
-                                                <th> @people.Username </th>
-                                                <th> @people.Email </th>
-                                                <th> @people.Location </th>
-                                            </tr>
-                                        }
-                                    }
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                         @foreach (UserModel people in Model.Users)
+                         {
+                         <div class="col-6">
+                         <div class="card text-white bg-dark mb-3">
+                         <div class="card-body">
+                         </div>
+                         </div>
+                         </div>
+                         }
                     <br />
                 </div>
             </div>
         </div>
     </body>
 }
+@*
+    <tbody style="color: #ffffff">
+    @{
+
+            foreach (UserModel people in Model.Users)
+            {
+                <tr>
+                    <th> @people.Username </th>
+                    <th> @people.Email </th>
+                    <th> @people.Location </th>
+                </tr>
+            }
+        }
+    </tbody>
+*@
