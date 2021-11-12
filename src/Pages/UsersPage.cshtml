@@ -3,43 +3,46 @@
 @model ContosoCrafts.WebSite.Pages.UsersPageModel
 
 @{
+    ViewData["Title"] = "User Page";
+}
+
+@{
     <body style="background-image: url('../images/mt_rainer_background.jpeg'); background-color: #343a40; background-blend-mode: overlay;">
-
-
         <div class="container">
+
             <div class="row">
+
                 <div class="col-12">
 
-                    <h3> Here is other user:  </h3>
+                    <h1>@ViewData["Title"]</h1>
+                    <p>This page will display all our users.</p>
+                    <hr />
 
+                    @{
+                        <div class="container">
+                            <div class="form-row">
+                                @{
+                                    foreach (UserModel user in Model.Users)
+                                    {
+                                        <div class="align-content-lg-stretch">
+                                            <div class="card text-white bg-dark mb-3">
+                                                <div class="card-body">
+                                                    <h4 class="card-title"> @user.Username</h4>
+                                                    <h5 class="card-subtitle">  Location: @user.Location </h5>
+                                                    <h6 class="card-deck"> Email: @user.Email</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
 
-                         @foreach (UserModel people in Model.Users)
-                         {
-                         <div class="col-6">
-                         <div class="card text-white bg-dark mb-3">
-                         <div class="card-body">
-                         </div>
-                         </div>
-                         </div>
-                         }
-                    <br />
+                            </div>
+                        </div>
+                    }
                 </div>
+
             </div>
+
         </div>
     </body>
 }
-@*
-    <tbody style="color: #ffffff">
-    @{
-
-            foreach (UserModel people in Model.Users)
-            {
-                <tr>
-                    <th> @people.Username </th>
-                    <th> @people.Email </th>
-                    <th> @people.Location </th>
-                </tr>
-            }
-        }
-    </tbody>
-*@
