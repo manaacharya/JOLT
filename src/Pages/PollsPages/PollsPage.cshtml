@@ -19,20 +19,19 @@
 
             <hr />
 
-            @{
+            
                 <div class="container">
                     <div class="row">
-
                         @{ 
-                            foreach(PollModel poll in Model.Polls)
-                            {
+                         foreach (PollModel poll in Model.Polls)
+                         {
                                 <div class="col-6">
                                     <div class="card text-white bg-dark mb-3">
                                         <div class="card-body">
                                             <h5 class="card-title" > @poll.Title</h5>
                                             <h3 class="card-subtitle">  @poll.Description </h3>
 
-                                            @foreach(OpinionItem item in poll.OpinionItems.ToList())
+                                            @foreach (OpinionItem item in poll.OpinionItems.ToList())
                                             {
                                                 <div class="card-body">
                                                     <div class="row">
@@ -51,12 +50,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            }
-                        }
-
+                             }
+                         }
                     </div>
                 </div>
-            }
+            
         </div>
 
     </div>
