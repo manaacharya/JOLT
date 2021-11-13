@@ -63,12 +63,22 @@
 
                                             }
 
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                   @* <label>Author Name: @Model.UserService.GetUser(poll.UserID)</label>*@
-                                                </div>
-                                            </div>
                                         </div>
+
+                                        @{
+                                            var getAuthor = @Model.UserService.GetUser(poll.UserID);
+
+                                            // Author No Longer Exists: Account Was Deleted
+                                            if (getAuthor == null)
+                                            {
+                                                <label>Author No Longer Exists</label>
+                                            }
+                                            else
+                                            {
+                                                <label>Author Name: @getAuthor.Username</label>
+                                                <label>Author Location: @getAuthor.Location</label>
+                                            }
+                                        }
                                         <hr />
                                         <a class="btn btn-outline-success">Submit Vote</a>
                                         <a class="btn btn-outline-primary">Edit Poll</a>
