@@ -16,7 +16,7 @@ namespace UnitTests.Pages.Polls
         #region TestSetup
 
         //create PollsPagemodel object 
-        public static PollsPageModel PageModel;
+        public static IndexPollsPageModel PageModel;
 
         /// <summary>
         /// create test logger and PageContect object for testing 
@@ -25,13 +25,14 @@ namespace UnitTests.Pages.Polls
         public void TestInitialize()
         {
             //logger object
-            var MockLoggerDirect = Mock.Of<ILogger<PollsPageModel>>();
+            var MockLoggerDirect = Mock.Of<ILogger<IndexPollsPageModel>>();
 
             //assign logger to PageModel 
-            PageModel = new PollsPageModel(MockLoggerDirect, TestHelper.PollService)
+            PageModel = new IndexPollsPageModel(MockLoggerDirect, TestHelper.PollService, TestHelper.UserService)
             {
                 //create PageContext object 
                 PageContext = TestHelper.PageContext
+
             };
         }
 
@@ -44,7 +45,7 @@ namespace UnitTests.Pages.Polls
         /// Test OnGet(), check if the result is valid
         /// </summary>
         [Test]
-        public void OnGet_Returns_Valid_PollsList()
+        public void OnGet_Valid_Should_Polls()
         {
             // Arrange
 
@@ -60,6 +61,9 @@ namespace UnitTests.Pages.Polls
 
             // check if there is any polls fetch from the PollService
             Assert.AreEqual(true, PageModel.Polls.Any());
+
+            // Check Message for User
+            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll"));
         }
 
         #endregion OnGet
