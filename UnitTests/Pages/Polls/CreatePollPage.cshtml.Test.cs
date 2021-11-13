@@ -135,7 +135,7 @@ namespace UnitTests.Pages.Polls
             // Assert
 
             // Confirm Page Redirection
-            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll");
+            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll"));
         }
 
         /// <summary>
