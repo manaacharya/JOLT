@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-using ContosoCrafts.WebSite.Pages;
+using ContosoCrafts.WebSite.Pages.PollsPages;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
