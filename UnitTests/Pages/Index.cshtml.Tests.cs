@@ -40,7 +40,7 @@ namespace UnitTests.Pages.Index
         /// Test for OnGet() Valid Products
         /// </summary>
         [Test]
-        public void OnGet_Valid_Should_Return_Products()
+        public void OnGet_Valid_Should_Return_Page()
         {
             //Arrange
 
@@ -53,7 +53,7 @@ namespace UnitTests.Pages.Index
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
             // Making Sure It Went to the PollsPage
-            Assert.AreEqual(true, pageResult.PageName.Contains("./PollsPages/PollsPage"));
+            Assert.AreEqual(true, pageResult.PageName.Contains("./PollsPages/IndexPollsPage"));
 
         }
         #endregion OnGet
