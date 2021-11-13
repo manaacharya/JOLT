@@ -49,6 +49,9 @@ namespace UnitTests.Pages.Polls
         {
             // Arrange
 
+            // Valid User Cookie
+            PageModel.CookieNameValue = "viner765";
+
             //Act
             PageModel.OnGet();
 
