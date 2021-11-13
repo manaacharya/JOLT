@@ -6,7 +6,7 @@ using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
 using System.Collections.Generic;
 
-namespace ContosoCrafts.WebSite.Pages
+namespace ContosoCrafts.WebSite.Pages.PollsPages
 {
     /// <summary>
     /// PollPage model for displaying polls
