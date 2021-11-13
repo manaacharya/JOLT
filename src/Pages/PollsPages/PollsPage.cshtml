@@ -11,53 +11,75 @@
 
         <div class="col-12">
 
-            <h1>@ViewData["Title"]</h1>
-            <p>This page will display all active polls created by our users.</p>
+            <h1>Submit Your Votes Now !!</h1>
 
-            <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage"> <i class="fa fa-plus"></i> Create Poll</a>
+
+            @{
+                // Check if CookieNameValue is Null
+                if (Model.CookieNameValue == null)
+                {
+                    // Disable Button
+                    <p>@Model.Message</p>
+                    <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Create Poll</a>
+
+                }
+                else
+                {
+                    // User is Logged In
+                    // Enable Button
+                    <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
+                }
+            }
+
             <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
 
             <hr />
 
-            
-                <div class="container">
-                    <div class="row">
-                        @{ 
-                         foreach (PollModel poll in Model.Polls)
-                         {
-                                <div class="col-4">
-                                    <div class="card text-white bg-dark mb-3">
+
+            <div class="container">
+                <div class="row">
+                    @{
+                        foreach (PollModel poll in Model.Polls)
+                        {
+                            <div class="col-4">
+                                <div class="card text-white bg-dark mb-3">
+                                    <div class="card-body">
+                                        <h2 class="card-title"> @poll.Title</h2>
+                                        <hr />
+                                        <p class="card-subtitle">  @poll.Description </p>
                                         <div class="card-body">
-                                            <h2 class="card-title" > @poll.Title</h2>
-                                            <hr />
-                                            <p class="card-subtitle">  @poll.Description </p>
-                                            <div class="card-body">
-                                                @foreach (OpinionItem item in poll.OpinionItems.ToList())
-                                                {
+                                            @foreach (OpinionItem item in poll.OpinionItems.ToList())
+                                            {
 
-                                                    <div class="row">
-                                                        <div class="col-auto">
-                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                                            <label>@item.OpinionName</label>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <label>Votes: @item.NumCounts</label>
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                        <label>@item.OpinionName</label>
                                                     </div>
+                                                    <div class="col-auto">
+                                                        <label>Votes: @item.NumCounts</label>
+                                                    </div>
+                                                </div>
 
-                                                }
+                                            }
+
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                   @* <label>Author Name: @Model.UserService.GetUser(poll.UserID)</label>*@
+                                                </div>
                                             </div>
-                                            <hr />
-                                            <a class="btn btn-outline-success">Submit Vote</a>
-                                            <a class="btn btn-outline-primary">Edit Poll</a>
                                         </div>
+                                        <hr />
+                                        <a class="btn btn-outline-success">Submit Vote</a>
+                                        <a class="btn btn-outline-primary">Edit Poll</a>
                                     </div>
                                 </div>
-                             }
-                         }
-                    </div>
+                            </div>
+                        }
+                    }
                 </div>
-            
+            </div>
+
         </div>
 
     </div>
