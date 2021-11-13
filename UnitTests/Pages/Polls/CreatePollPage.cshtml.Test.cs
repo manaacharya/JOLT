@@ -74,7 +74,7 @@ namespace UnitTests.Pages.Polls
         /// Checks if OnPost() creates a valid poll item
         /// </summary>
         [Test]
-        public void OnPost_ValidCreateModel_ValidUser_Should_Create_Poll()
+        public void OnPost_ValidPollModel_ValidUser_Should_Create_Poll()
         {
             // Arrange
 
@@ -109,7 +109,7 @@ namespace UnitTests.Pages.Polls
         /// stays in the same page if the user is invalid
         /// </summary>
         [Test]
-        public void OnPost_ValidCreateModel_InValidUser_Should_Return_Page()
+        public void OnPost_InValidUser_Should_Return_Message()
         {
             // Arrange
 
@@ -127,15 +127,15 @@ namespace UnitTests.Pages.Polls
 
             // Act
 
-            // Fetch Result from OnPost
-            var pageResult = PageModel.OnPost() as RedirectToPageResult;
+            // OnPost
+            PageModel.OnPost();
 
             // Reset
 
             // Assert
 
             // Confirm Page Redirection
-            Assert.AreEqual(true, pageResult.PageName.Contains("PollsPage"));
+            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll");
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace UnitTests.Pages.Polls
         /// if it happens, a error message is displayed
         /// </summary>
         [Test]
-        public void OnPost_ValidCreateModel_DuplicatePoll_ValidUser_Should_Return_Message()
+        public void OnPost_ValidExistingPollName_ValidUser_Should_Return_Message()
         {
             // Arrange
 
