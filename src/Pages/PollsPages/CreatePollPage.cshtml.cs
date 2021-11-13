@@ -83,8 +83,10 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             // Check if User Exists
             if(getUser == null)
             {
+                // Message to Display
+                Message = $"Must Be Logged In To Create Poll";
                 // Redirect to Page
-                return RedirectToPage("PollsPage");
+                return Page();
             }
 
             // Pass CreatePollModel and UserID to CreatePoll Service and Fetch the Result
