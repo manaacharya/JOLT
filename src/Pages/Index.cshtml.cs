@@ -45,7 +45,7 @@ namespace ContosoCrafts.WebSite.Pages
         public IActionResult OnGet()
         {
 
-            return RedirectToPage("./PollsPages/PollsPage");
+            return RedirectToPage("./PollsPages/IndexPollsPage");
 
         }
 
