@@ -11,7 +11,7 @@ namespace UnitTests.Pages.Polls
     /// <summary>
     /// PollPageTest tests all code in PollsPage.cshtml
     /// </summary>
-    class PollsPageTest
+    class IndexPollsPageTest
     {
         #region TestSetup
 
