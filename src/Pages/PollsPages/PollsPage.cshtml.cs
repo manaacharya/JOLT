@@ -22,6 +22,21 @@ namespace ContosoCrafts.WebSite.Pages
         public JsonFilePollService PollServices { get;  }
 
         /// <summary>
+        /// User Services
+        /// </summary>
+        public JsonFileUserService UserService { get; }
+
+        /// <summary>
+        /// Message To Display 
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// String to Hold Cookie Value acquired from User Services
+        /// </summary>
+        public string CookieNameValue { get; set; }
+
+        /// <summary>
         /// List of Polls
         /// </summary>
         public IEnumerable<PollModel> Polls { get; set; }
@@ -32,12 +47,18 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="logger"></param>
         /// <param name="pollService"></param>
         public PollsPageModel(ILogger<PollsPageModel> logger,
-            JsonFilePollService pollService)
+            JsonFilePollService pollService, JsonFileUserService userService)
         {
             _logger = logger;
 
-            //Pollservice object 
+            // Initialize attribute Pollservice  
             PollServices = pollService;
+
+            // Initialize attribute UserService
+            UserService = userService;
+
+            // Initialize attribute CookieNameValue
+            CookieNameValue = UserService.GetCookieValue("nameCookie");
         }
 
         /// <summary>
@@ -45,6 +66,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+            Message = "Must Be Logged In To Create Poll";
             Polls = PollServices.GetPolls();
         }
 
