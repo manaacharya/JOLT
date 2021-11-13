@@ -65,6 +65,10 @@ namespace UnitTests.Pages.Polls
             // check if there is any polls fetch from the PollService
             Assert.AreEqual(true, PageModel.Polls.Any());
 
+            // Assert Cookie Value
+
+            Assert.AreEqual(true, PageModel.CookieNameValue.Equals("viner765"));
+
             // Check Message for User
             Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll"));
         }
