@@ -11,10 +11,10 @@ namespace ContosoCrafts.WebSite.Pages
     /// <summary>
     /// PollPage model for displaying polls
     /// </summary>
-    public class PollsPageModel : PageModel
+    public class IndexPollsPageModel : PageModel
     {
         // logger logs the information ex system info, error
-        private readonly ILogger<PollsPageModel> _logger;
+        private readonly ILogger<IndexPollsPageModel> _logger;
 
         /// <summary>
         /// Poll Services
@@ -46,7 +46,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="pollService"></param>
-        public PollsPageModel(ILogger<PollsPageModel> logger,
+        public IndexPollsPageModel(ILogger<IndexPollsPageModel> logger,
             JsonFilePollService pollService, JsonFileUserService userService)
         {
             _logger = logger;
