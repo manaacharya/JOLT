@@ -25,15 +25,16 @@
                         @{ 
                          foreach (PollModel poll in Model.Polls)
                          {
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="card text-white bg-dark mb-3">
                                         <div class="card-body">
-                                            <h5 class="card-title" > @poll.Title</h5>
-                                            <h3 class="card-subtitle">  @poll.Description </h3>
+                                            <h2 class="card-title" > @poll.Title</h2>
+                                            <hr />
+                                            <p class="card-subtitle">  @poll.Description </p>
+                                            <div class="card-body">
+                                                @foreach (OpinionItem item in poll.OpinionItems.ToList())
+                                                {
 
-                                            @foreach (OpinionItem item in poll.OpinionItems.ToList())
-                                            {
-                                                <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
@@ -43,10 +44,12 @@
                                                             <label>Votes: @item.NumCounts</label>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            }
+
+                                                }
+                                            </div>
                                             <hr />
-                                            <a class="btn btn-primary">Submit Vote</a>
+                                            <a class="btn btn-outline-success">Submit Vote</a>
+                                            <a class="btn btn-outline-primary">Edit Poll</a>
                                         </div>
                                     </div>
                                 </div>
