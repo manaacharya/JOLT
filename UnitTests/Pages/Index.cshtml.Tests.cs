@@ -2,9 +2,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using ContosoCrafts.WebSite.Pages;
-using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
 
 namespace UnitTests.Pages.Index
 {
