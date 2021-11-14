@@ -361,7 +361,7 @@ namespace UnitTests.Services
 
         #endregion GetOpinion
 
-        #region UpdatePollModelOpinion
+        #region UpdateOpinionVote
 
         [Test]
         public void UpdatePollModelOpinion_InValid_PollId_Valid_OpinionTitle_Should_Return_False()
@@ -374,7 +374,7 @@ namespace UnitTests.Services
             // Act
 
             // Fetch result
-            var getResult = TestHelper.PollService.UpdatePollModelOpinion(pollID, "Airbus");
+            var getResult = TestHelper.PollService.UpdateOpinionVote(pollID, "Airbus");
 
             // Reset
 
@@ -398,7 +398,7 @@ namespace UnitTests.Services
             // Act
 
             // Fetch result
-            var getResult = TestHelper.PollService.UpdatePollModelOpinion(pollID, opinionTitle);
+            var getResult = TestHelper.PollService.UpdateOpinionVote(pollID, opinionTitle);
 
             // Reset
 
@@ -408,6 +408,6 @@ namespace UnitTests.Services
             Assert.AreEqual(false, getResult);
         }
 
-        #endregion UpdatePollModelOpinion
+        #endregion UpdateOpinionVote
     }
 }
