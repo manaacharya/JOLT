@@ -174,22 +174,87 @@ ul {
 }
 /*Backgrounds*/
 .bg-navbar {
-    background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
-    background: -o-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
-    background: -moz-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #66bfbf 60%);
+    background: -o-linear-gradient(110deg, #b9dbdf 60%, #66bfbf 60%);
+    background: -moz-linear-gradient(110deg, #b9dbdf 60%, #66bfbf 60%);
     /* change gradient of header*/
-    background: linear-gradient(110deg, #b9dbdf 75%, #189AB4 60%);
+    background: linear-gradient(110deg, #b9dbdf 75%, #66bfbf 60%);
 }
 
 .bg-footer {
-    
-    background: -webkit-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
-    background: -o-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
-    background: -moz-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
+    background: -webkit-linear-gradient(110deg, #66bfbf 60%, #b9dbdf 60%);
+    background: -o-linear-gradient(110deg, #66bfbf 60%, #b9dbdf 60%);
+    background: -moz-linear-gradient(110deg, #66bfbf 60%, #b9dbdf 60%);
     /* change gradient of footer*/
-    background: linear-gradient(110deg, #189AB4 75%, #b9dbdf 60%);
+    background: linear-gradient(110deg, #66bfbf 75%, #b9dbdf 60%);
 }
 
 .bg-footer div {
     color: white;
 }
+
+/*User Table Section*/
+section.table {
+    height: 100vh;
+}
+
+#sTable tr:nth-child(odd) {
+    background-color: #eaf6f6;
+}
+#sTable tr:nth-child(even) {
+    background-color: #fcfefe;
+}
+
+    #sTable tr:nth-child(odd):hover {
+        background-color: rgb(110 210 216 / 0.40);
+    }
+
+#sTable tr:nth-child(even):hover {
+    background-color: #e5e7e7;
+}
+#sTable tr:last-child {
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: rgb(92, 92, 92);
+    box-shadow: 0px 7px 20px rgb(148, 148, 148);
+    
+}
+#sTable {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+#sTable,
+th {
+    border-collapse: collapse;
+    font-family: "Open Sans", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    background-color: #f2f4f4;
+    padding: 12px;
+    font-size: 1.2rem;
+    padding-left: 15px;
+}
+
+th {
+    background-color: #66bfbf;
+}
+
+tr {
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+    height: 60px;
+    padding: 30px
+}
+
+#sTable td{
+   padding-left: 15px;
+}
+/*End of User Table Section*/
