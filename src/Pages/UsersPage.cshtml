@@ -20,24 +20,47 @@
 
                     @{
                         <div class="container">
-                            <div class="form-row">
-                                @{
-                                    foreach (UserModel user in Model.Users)
-                                    {
-                                        <div class="align-content-lg-stretch">
-                                            <div class="card text-white bg-dark mb-3">
-                                                <div class="card-body">
-                                                    <h4 class="card-title"> @user.Username</h4>
-                                                    <h5 class="card-subtitle">  Location: @user.Location </h5>
-                                                    <h6 class="card-deck"> Email: @user.Email</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
+                           
+
+
+                                <table id="sTable" width="100%">
+                                    <!-- table head-->
+                                    <thead>
+                                        <!--table row -->
+                                        <tr>
+                                            <!-- table header cell element-->
+                                            <th>#</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Location</th>
+
+                                        </tr>
+                                    </thead>
+                                    <!--table body -->
+                                    <tbody>
+                                        <!-- Table row -->
+                                        @{
+                                            var i = 1;
+                                            foreach (UserModel user in Model.Users)
+                                            {
+                                                <tr>
+                                                    <td id="rowId">@i</td>
+                                                    <td>@user.Username</td>
+                                                    <td>@user.Email</td>
+                                                    <td>@user.Location</td>
+                                                </tr>
+                                                i++;
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+
+
+
 
                             </div>
-                        </div>
+                        
                     }
                 </div>
 
