@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace UnitTests.Component.PollsComponent
 {
-    class IndexPollsList:BunitTestContext
+    class IndexPollsLists:BunitTestContext
     {
         #region TestSetup
 
