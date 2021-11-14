@@ -4,127 +4,65 @@
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
 
-@{
-    // Check if We Are Logged In
-    IsLoggedIn();
-}
 
 <div class="container">
-
     <div class="row">
+        @{
+            var pollList = PollService.GetPolls().ToList();
+            foreach (PollModel poll in pollList)
+            {
 
-        <div class="col-12">
+                <div class="col-4">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                            <h2 class="card-title"> @poll.Title</h2>
+                            <hr />
+                            <p class="card-subtitle">  @poll.Description </p>
+                            <div class="card-body">
+                                @foreach (OpinionItem item in poll.OpinionItems.ToList())
+                                {
+                                    //opinion = item.OpinionName;
 
-            <h1>Submit Your Votes Now !!</h1>
+                                    <div class="row">
+                                        <div class="col-auto">
 
+                                            <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@opinion">
 
-            <div class="container">
-
-                <div class="row">
-
-
-                    @if (CookieNameValue == null)
-                    {
-                        // Disable Button
-                        <p>@Message</p>
-
-                        <div class="col">
-
-                            <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Create Poll</a>
-                        </div>
-
-                    }
-                    else
-                    {
-                        // User is Logged In
-                        // Enable Button
-                        <div class="col">
-                            <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
-                        </div>
-
-                    }
-
-                    <div class="col">
-                        <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <hr />
-
-
-            <div class="container">
-                <div class="row">
-                    @{
-                        var pollList = PollService.GetPolls().ToList();
-                        foreach (PollModel poll in pollList)
-                        {
-                           
-                            <div class="col-4">
-                                <div class="card text-white bg-dark mb-3">
-                                    <div class="card-body">
-                                        <h2 class="card-title"> @poll.Title</h2>
-                                        <hr />
-                                        <p class="card-subtitle">  @poll.Description </p>
-                                        <div class="card-body">
-                                            @foreach (OpinionItem item in poll.OpinionItems.ToList())
-                                            {
-                                                //opinion = item.OpinionName;
-
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                      
-                                                        <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@opinion">
-                                                       
-                                                        <label>@item.OpinionName</label>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <label>Votes: @item.NumCounts</label>
-                                                    </div>
-                                                </div>
-
-                                            }
-
+                                            <label>@item.OpinionName</label>
                                         </div>
-
-                                        @{
-                                            var getAuthor = UserService.GetUser(poll.UserID);
-
-                                            // Author No Longer Exists: Account Was Deleted
-                                            if (getAuthor == null)
-                                            {
-                                                <label>Author No Longer Exists</label>
-                                            }
-                                            else
-                                            {
-                                                <label>Author Name: @getAuthor.Username</label>
-                                                <label>Author Location: @getAuthor.Location</label>
-                                            }
-                                        }
-                                        <hr />
-                                        <button @onclick="(e => SubmitVote(PollID, opinion))" class="btn btn-outline-success">Submit Vote</button>
-                                        <a class="btn btn-outline-primary">Edit Poll</a>
+                                        <div class="col-auto">
+                                            <label>Votes: @item.NumCounts</label>
+                                        </div>
                                     </div>
-                                </div>
+
+                                }
+
                             </div>
-                        }
-                    }
+
+                            @{
+                                var getAuthor = UserService.GetUser(poll.UserID);
+
+                                // Author No Longer Exists: Account Was Deleted
+                                if (getAuthor == null)
+                                {
+                                    <label>Author No Longer Exists</label>
+                                }
+                                else
+                                {
+                                    <label>Author Name: @getAuthor.Username</label>
+                                    <label>Author Location: @getAuthor.Location</label>
+                                }
+                            }
+                            <hr />
+                            <button @onclick="(e => SubmitVote(PollID, opinion))" class="btn btn-outline-success">Submit Vote</button>
+                            <a class="btn btn-outline-primary">Edit Poll</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-        </div>
-
+            }
+        }
     </div>
-
 </div>
-
-
-
 
 
 @code {
@@ -132,33 +70,22 @@
     int PollID = -99;
     string opinion = "";
 
-    string CookieNameValue = "";
-    string Message = "";
 
-    void IsLoggedIn()
-    {
-        CookieNameValue = UserService.GetCookieValue("nameCookie");
-
-        if (CookieNameValue == null)
-        {
-            Message = "Must Be Logged In To Create Poll";
-        }
-    }
 
     void UpdateOpinionInput(string inputValue, int inputID)
     {
         opinion = inputValue;
         PollID = inputID;
     }
-    
-    bool SubmitVote (int pollidInput, string opinionInput)
+
+    bool SubmitVote(int pollidInput, string opinionInput)
     {
-        if(opinionInput == null)
+        if (opinionInput == null)
         {
             return false;
         }
 
-        if(pollidInput < 0)
+        if (pollidInput < 0)
         {
             return false;
         }
