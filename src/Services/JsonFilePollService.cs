@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-
 using System.IO;
 using System.Text.Json;
-
 using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Hosting;
 
@@ -94,7 +90,7 @@ namespace ContosoCrafts.WebSite.Services
             // Get list of Polls
             List<PollModel> polls = GetPolls().ToList();
 
-            // Return Poll found by Poll ID
+            // Return Poll found by Poll ID, returns null if ID not found
             return polls.Find(x => x.PollID == pollID);
         }
 
