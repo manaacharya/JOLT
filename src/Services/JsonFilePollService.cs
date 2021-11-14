@@ -180,26 +180,25 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool UpdatePollModelOpinion(int pollID, string opinionTitle)
         {
-            // Poll ID must be greater than -1 
-            if(pollID < 0)
-            {
-                return false;
-            }
-
-            // Title cannot be null
-            if(opinionTitle == "")
-            {
-                return false;
-            }
-            
+                       
             // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
 
             // Get Poll Model based on Poll ID
             PollModel pollModel = GetPoll(pollID);
 
+            if(pollModel == null)
+            {
+                return false;
+            }
+
             // Get Opinion Item based on Title and Poll Model
             OpinionItem opinion = GetOpinion(opinionTitle, pollModel);
+
+            if(opinion == null)
+            {
+                return false;
+            }
 
             // Remove PollModel from Dataset
             getPolls.RemoveAll(x => x.PollID.Equals(pollID));
