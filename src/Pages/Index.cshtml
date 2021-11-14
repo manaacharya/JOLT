@@ -23,7 +23,7 @@
                     // Disable Button
                     <p>@Model.Message</p>
                     <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Create Poll</a>
-                    <a href="#" class="btn btn-outline-success" aria-disabled="true"> Go to Profile </a>
+                    <a href="#" class="btn btn-info disabled" aria-disabled="true"> Go to Profile </a>
 
                 }
                 else
@@ -32,7 +32,7 @@
                     // Enable Button
                     <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
 
-                    <a class="btn btn-outline-success" asp-page="/UserPages/ProfilePage"> Go to Profile </a>
+                    <a class="btn btn-outline-success" asp-page="/UserPages/ProfilePage" aria-disabled="false"> Go to Profile </a>
                 }
             }
 
