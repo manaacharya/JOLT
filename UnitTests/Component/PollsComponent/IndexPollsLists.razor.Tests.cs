@@ -25,7 +25,7 @@ namespace UnitTests.Component.PollsComponent
         {
             // Arrange
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
-            Services.AddSingleton<JsonFileProductService>(TestHelper.ProductService);
+            Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
 
             // Act
             var page = RenderComponent<IndexPollsList>();
@@ -34,7 +34,7 @@ namespace UnitTests.Component.PollsComponent
             var result = page.Markup;
 
             // Assert
-            Assert.AreEqual(true, result.Contains("The Quantified Cactus: An Easy Plant Soil Moisture Sensor"));
+            Assert.AreEqual(true, result.Contains("Submit Your Votes Now !!"));
         }
 
         #region IsLoggedIn
