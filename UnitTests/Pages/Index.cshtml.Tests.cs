@@ -2,7 +2,8 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using ContosoCrafts.WebSite.Pages;
-
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UnitTests.Pages.Index
@@ -27,7 +28,7 @@ namespace UnitTests.Pages.Index
             var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
 
             // Index Model instance created with logging attribute passed in constructor
-            PageModel = new IndexModel(MockLoggerDirect)
+            PageModel = new IndexModel(MockLoggerDirect, TestHelper.PollService, TestHelper.UserService)
             {
             };
         }
@@ -40,20 +41,20 @@ namespace UnitTests.Pages.Index
         /// Test for OnGet() Valid Products
         /// </summary>
         [Test]
-        public void OnGet_Valid_Should_Return_Page()
+        public void OnGet_Valid_Should_Get_Polls ()
         {
             //Arrange
 
             //Act
             //fetch onget 
-            var pageResult = PageModel.OnGet() as RedirectToPageResult;
+            PageModel.OnGet();
 
             // Assert
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
             // Making Sure It Went to the PollsPage
-            Assert.AreEqual(true, pageResult.PageName.Contains("./PollsPages/IndexPollsPage"));
+            Assert.AreEqual(true, PageModel.PollModels.ToList().Any());
 
         }
         #endregion OnGet
