@@ -55,9 +55,9 @@ namespace ContosoCrafts.WebSite.Services
                       (jsonFileReader.ReadToEnd(),
                       new JsonSerializerOptions
                       {
-                        //make case insensitive
-                        PropertyNameCaseInsensitive = true
-                      });
+                          //make case insensitive
+                          PropertyNameCaseInsensitive = true
+                      }).OrderBy(x => x.PollID);
             }
         }
 
@@ -79,11 +79,11 @@ namespace ContosoCrafts.WebSite.Services
                         //make indented 
                         Indented = true
                     }),
-                    polls 
+                    polls
                 );
             }
         }
-        
+
         /// <summary>
         /// Return a PollModel based on ID
         /// </summary>
@@ -120,7 +120,7 @@ namespace ContosoCrafts.WebSite.Services
         public bool PollExist(string inputTitle)
         {
             // Fetch A Given Poll
-            if(GetPoll(inputTitle) == null)
+            if (GetPoll(inputTitle) == null)
             {
                 // return false for Poll Don't Exists
                 return false;
@@ -148,6 +148,57 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+
+        public OpinionItem GetOpinion(string name, PollModel pollModel)
+        {
+            List<OpinionItem> getOpinions = pollModel.OpinionItems.ToList();
+
+            if (getOpinions == null)
+            {
+                return null;
+            }
+
+            if (name == null)
+            {
+                return null;
+            }
+
+            OpinionItem opinion = getOpinions.Find(x => x.OpinionName.Equals(name));
+
+            return opinion;
+        }
+
+        public bool UpdatePollModelOpinion(int pollID, string opinionTitle)
+        {
+            List<PollModel> getPolls = GetPolls().ToList();
+
+            PollModel pollModel = GetPoll(pollID);
+
+            OpinionItem opinion = GetOpinion(opinionTitle, pollModel);
+
+            // Remove PollModel from Dataset
+            getPolls.RemoveAll(x => x.PollID.Equals(pollID));
+
+            // Remove Opinion Item from Poll Model
+            pollModel.OpinionItems.ToList().Remove(opinion);
+
+            // Update Opinion Counter
+            opinion.NumCounts += 1;
+
+            // Add Updated Opinion to PollModel
+            pollModel.OpinionItems.ToList().Add(opinion);
+
+            // Add PollModel to Dataset
+            getPolls.Add(pollModel);
+
+
+            // Save DataSet
+            SavePollData(getPolls);
+
+            return true;
+        }
+
+
         /// <summary>
         /// Creates and Add New Poll Model to Polls Json Dataset/Database.
         /// </summary>
@@ -158,9 +209,9 @@ namespace ContosoCrafts.WebSite.Services
         {
             // Boolean for Duplicate Poll Existance 
             bool pollExists = PollExist(newPoll.CreateTitle);
-            
+
             // True for Duplicate
-            if(pollExists)
+            if (pollExists)
             {
                 // Return Null
                 return null;
@@ -173,7 +224,7 @@ namespace ContosoCrafts.WebSite.Services
                 PollID = GetPolls().Count(),
                 Title = newPoll.CreateTitle,
                 Description = newPoll.CreateDescription,
-                OpinionItems = new List<OpinionItem> () {
+                OpinionItems = new List<OpinionItem>() {
                     new OpinionItem(newPoll.CreateOpinionOne, 0), new OpinionItem(newPoll.CreateOpinionTwo, 0)
                 }
             };
