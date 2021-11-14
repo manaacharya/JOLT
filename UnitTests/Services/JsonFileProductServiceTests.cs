@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-using NUnit.Framework;
-
-using ContosoCrafts.WebSite.Pages.Product;
+﻿using NUnit.Framework;
 using ContosoCrafts.WebSite.Models;
 using System.Linq;
 
