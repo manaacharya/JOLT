@@ -180,13 +180,14 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool UpdateOpinionVote(int pollID, string opinionTitle)
         {
-                       
+            
             // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
 
             // Get Poll Model based on Poll ID
             PollModel pollModel = GetPoll(pollID);
 
+            // Return null if Poll doesn't exist
             if(pollModel == null)
             {
                 return false;
@@ -195,6 +196,7 @@ namespace ContosoCrafts.WebSite.Services
             // Get Opinion Item based on Title and Poll Model
             OpinionItem opinion = GetOpinion(opinionTitle, pollModel);
 
+            // Return null if Opinion Doesn't Exist
             if(opinion == null)
             {
                 return false;
