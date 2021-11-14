@@ -354,11 +354,60 @@ namespace UnitTests.Services
 
             // Reset
 
-            // Arrange
+            // Assert
             Assert.AreEqual(null, getOpinionResult);
         }
 
 
         #endregion GetOpinion
+
+        #region UpdatePollModelOpinion
+
+        [Test]
+        public void UpdatePollModelOpinion_InValid_PollId_Valid_OpinionTitle_Should_Return_False()
+        {
+            // Assert
+            
+            // invalid ID
+            var pollID = -999;
+
+            // Act
+
+            // Fetch result
+            var getResult = TestHelper.PollService.UpdatePollModelOpinion(pollID, "Airbus");
+
+            // Reset
+
+            // Assert
+
+            // Validate result
+            Assert.AreEqual(false, getResult);
+        }
+
+        [Test]
+        public void UpdatePollModelOpinion_Valid_PollId_InValid_OpinionTitle_Should_Return_False()
+        {
+            // Assert
+
+            // valid id
+            var pollID = 1;
+
+            // invalid title
+            var opinionTitle = "93383828992";
+
+            // Act
+
+            // Fetch result
+            var getResult = TestHelper.PollService.UpdatePollModelOpinion(pollID, opinionTitle);
+
+            // Reset
+
+            // Assert
+
+            // Validate result
+            Assert.AreEqual(false, getResult);
+        }
+
+        #endregion UpdatePollModelOpinion
     }
 }
