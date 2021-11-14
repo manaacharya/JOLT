@@ -27,7 +27,7 @@ namespace UnitTests.Models
         #region Test
         public void Create_Valid_Poll_Should_Get_All_Public_Attributes()
         {
-            // ------------------------- Arrange -------------------------
+            // Arrange
            
             //create new opinion item 
             OpinionItem exampleOptionName =
