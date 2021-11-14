@@ -26,7 +26,7 @@
                                     <div class="row">
                                         <div class="col-auto">
 
-                                            <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="@item.OpinionName" id="@item.OpinionName" value="@opinion">
+                                            <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="@item.OpinionName" id="@item.OpinionName" value="@Opinion">
 
                                             <label>@item.OpinionName</label>
                                         </div>
@@ -50,7 +50,7 @@
                                 }
                             }
                             <hr />
-                            <button @onclick="(e => SubmitVote(PollID, opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Submit Vote</button>
+                            <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Submit Vote</button>
                             <a class="btn btn-outline-primary">Edit Poll</a>
                         </div>
                     </div>
@@ -63,24 +63,44 @@
 
 @code {
 
+    /// <summary>
+    /// Poll ID Attribute
+    /// </summary>
     int PollID = -99;
-    string opinion = "";
 
+    /// <summary>
+    /// Opinion Attribute
+    /// </summary>
+    string Opinion = "";
 
-
+    /// <summary>
+    /// Update PollID and opinion attributes
+    /// </summary>
+    /// <param name="inputValue"></param>
+    /// <param name="inputID"></param>
     void UpdateOpinionInput(string inputValue, int inputID)
     {
-        opinion = inputValue;
+        // Update opinion 
+        Opinion = inputValue;
+        // Update PollID
         PollID = inputID;
     }
 
+    /// <summary>
+    /// Submit Vote to be Incremented 
+    /// </summary>
+    /// <param name="pollidInput"></param>
+    /// <param name="opinionInput"></param>
+    /// <returns></returns>
     bool SubmitVote(int pollidInput, string opinionInput)
     {
+        // Validate Poll ID Input 
         if (pollidInput < 0)
         {
             return false;
         }
 
+        // Send it to Poll Services and Return the Result
         return PollService.UpdateOpinionVote(pollidInput, opinionInput);
     }
 }
