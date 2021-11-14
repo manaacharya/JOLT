@@ -6,8 +6,51 @@
     ViewData["Title"] = "Home page";
 }
 
-<!--Adding Razor Page for Polls-->
-@(await Html.RenderComponentAsync<IndexPollsList>(RenderMode.ServerPrerendered))
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <h1>Submit Your Votes Now !!</h1>
+
+
+            @{
+                // Check if CookieNameValue is Null
+                if (Model.CookieNameValue == null)
+                {
+                    // Disable Button
+                    <p>@Model.Message</p>
+                    <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Create Poll</a>
+
+                }
+                else
+                {
+                    // User is Logged In
+                    // Enable Button
+                    <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
+                }
+            }
+
+            <a asp-page="/PollsPages/GuidelinePage" class="btn btn-info">Guidelines</a>
+
+            <hr />
+
+            <!--Adding Razor Page for Polls-->
+            @(await Html.RenderComponentAsync<IndexPollsList>(RenderMode.ServerPrerendered))
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
 
 
 <script src="_framework/blazor.server.js"></script>
