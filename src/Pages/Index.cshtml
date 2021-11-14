@@ -1,18 +1,13 @@
 ﻿@page
+@using ContosoCrafts.WebSite.Component.PollPage
 @model ContosoCrafts.WebSite.Pages.IndexModel
 
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="container">
-    <div class="row">
-      <div class=" col">
-        <h3>This is Index </h3>
-      </div>
-    </div>
-</div>
+<!--Adding Razor Page for Polls-->
+@(await Html.RenderComponentAsync<IndexPollsList>(RenderMode.ServerPrerendered))
 
-<br />
 
 <script src="_framework/blazor.server.js"></script>
