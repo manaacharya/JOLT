@@ -144,32 +144,71 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
-
+        /// <summary>
+        /// Get OpinionItem from a Poll Model based on Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pollModel"></param>
+        /// <returns></returns>
         public OpinionItem GetOpinion(string name, PollModel pollModel)
         {
-            List<OpinionItem> getOpinions = pollModel.OpinionItems.ToList();
-
-            if (getOpinions == null)
+            // Check if Poll Model is Null 
+            if(pollModel == null)
             {
                 return null;
             }
 
+            // Check if Name of Opinion was provided
             if (name == null)
             {
+                // No Name was provided
                 return null;
             }
 
+            // List of Opinions currently in Poll Model 
+            List<OpinionItem> getOpinions = pollModel.OpinionItems.ToList();
+
+            // Check if List is Empty
+            if (getOpinions == null)
+            {
+                // List is empty, no opinion to return
+                return null;
+            }
+
+            // Fetch Opinion that matches a specific name
             OpinionItem opinion = getOpinions.Find(x => x.OpinionName.Equals(name));
 
+            // return the opinion
             return opinion;
         }
 
+        /// <summary>
+        /// Update Vote Of Opinion 
+        /// </summary>
+        /// <param name="pollID"></param>
+        /// <param name="opinionTitle"></param>
+        /// <returns></returns>
         public bool UpdatePollModelOpinion(int pollID, string opinionTitle)
         {
+            // Poll ID must be greater than -1 
+            if(pollID < 0)
+            {
+                return false;
+            }
+
+            // Title cannot be null
+            if(opinionTitle == "")
+            {
+                return false;
+            }
+            
+            // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
 
+            // Get Poll Model based on Poll ID
             PollModel pollModel = GetPoll(pollID);
 
+            // Get Opinion Item based on Title and Poll Model
             OpinionItem opinion = GetOpinion(opinionTitle, pollModel);
 
             // Remove PollModel from Dataset
@@ -186,7 +225,6 @@ namespace ContosoCrafts.WebSite.Services
 
             // Add PollModel to Dataset
             getPolls.Add(pollModel);
-
 
             // Save DataSet
             SavePollData(getPolls);
