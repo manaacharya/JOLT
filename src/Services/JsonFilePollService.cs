@@ -165,18 +165,8 @@ namespace ContosoCrafts.WebSite.Services
                 return null;
             }
 
-            // List of Opinions currently in Poll Model 
-            List<OpinionItem> getOpinions = pollModel.OpinionItems.ToList();
-
-            // Check if List is Empty
-            if (getOpinions == null)
-            {
-                // List is empty, no opinion to return
-                return null;
-            }
-
             // Fetch Opinion that matches a specific name
-            OpinionItem opinion = getOpinions.Find(x => x.OpinionName.Equals(name));
+            OpinionItem opinion = pollModel.OpinionItems.ToList().Find(x => x.OpinionName.Equals(name));
 
             // return the opinion
             return opinion;
