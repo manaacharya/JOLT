@@ -178,7 +178,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="pollID"></param>
         /// <param name="opinionTitle"></param>
         /// <returns></returns>
-        public bool UpdatePollModelOpinion(int pollID, string opinionTitle)
+        public bool UpdateOpinionVote(int pollID, string opinionTitle)
         {
                        
             // Get List of Polls from Data-Set
