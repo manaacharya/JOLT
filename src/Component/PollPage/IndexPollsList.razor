@@ -64,8 +64,7 @@
                         var pollList = PollService.GetPolls().ToList();
                         foreach (PollModel poll in pollList)
                         {
-                            PollID = poll.PollID;
-
+                           
                             <div class="col-4">
                                 <div class="card text-white bg-dark mb-3">
                                     <div class="card-body">
@@ -75,12 +74,13 @@
                                         <div class="card-body">
                                             @foreach (OpinionItem item in poll.OpinionItems.ToList())
                                             {
-                                                opinion = item.OpinionName;
-                                                
+                                                //opinion = item.OpinionName;
+
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        
-                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@opinion">
+                                                      
+                                                        <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@opinion">
+                                                       
                                                         <label>@item.OpinionName</label>
                                                     </div>
                                                     <div class="col-auto">
@@ -145,11 +145,12 @@
         }
     }
 
-    void UpdateOpinionInput(string inputValue)
+    void UpdateOpinionInput(string inputValue, int inputID)
     {
         opinion = inputValue;
+        PollID = inputID;
     }
-
+    
     bool SubmitVote (int pollidInput, string opinionInput)
     {
         if(opinionInput == null)
