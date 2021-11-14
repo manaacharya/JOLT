@@ -34,7 +34,7 @@ namespace UnitTests.Component.PollsComponent
             var result = page.Markup;
 
             // Assert
-            Assert.AreEqual(true, result.Contains("Submit Your Votes Now !!"));
+            Assert.AreEqual(true, result.Contains("Aerospace company"));
         }
 
         #region IsLoggedIn
