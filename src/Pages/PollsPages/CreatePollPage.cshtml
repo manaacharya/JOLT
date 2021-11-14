@@ -6,6 +6,11 @@
         <h3 class="clearfix">@Model.Message</h3>
 
         @{ 
+            if(Model.Message.Equals("Must Be Logged In To Create Poll"))
+            {
+                 <a asp-page="/UserPages/LoginFolder/login">Go To LogIn Page</a>
+            }
+
             if(Model.Message.Substring(0,7) == "Awesome")
             {
                 <h3 class="clearfix"> Nice Create Another Poll </h3>
