@@ -43,17 +43,27 @@ namespace UnitTests.Pages.Index
         {
             //Arrange
 
+            // Valid User Cookie
+            PageModel.CookieNameValue = "viner765";
+
             //Act
-            //fetch onget 
+
+            // fetch onget 
             PageModel.OnGet();
 
             // Assert
-            //check model state is valid 
+
+            // check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
             // Making Sure It Went to the PollsPage
             Assert.AreEqual(true, PageModel.PollModels.ToList().Any());
 
+            // Assert Cookie Value
+            Assert.AreEqual(true, PageModel.CookieNameValue.Equals("viner765"));
+
+            // Check Message for User
+            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll"));
         }
         #endregion OnGet
     }
