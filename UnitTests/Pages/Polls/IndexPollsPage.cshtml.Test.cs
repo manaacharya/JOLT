@@ -5,7 +5,6 @@ using ContosoCrafts.WebSite.Pages.PollsPages;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace UnitTests.Pages.Polls
 {   
     /// <summary>
