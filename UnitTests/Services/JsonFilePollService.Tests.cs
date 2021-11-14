@@ -300,5 +300,65 @@ namespace UnitTests.Services
         }
 
         #endregion CreatePoll
+
+        #region GetOpinion
+
+        [Test]
+        public void GetOpinion_Valid_PollModel_Valid_OpinionTitle_Should_Return_OpinionItem()
+        {
+            // Arrange
+            var getPollModel = TestHelper.PollService.GetPoll("Aerospace company");
+
+            var opinionTitle = "Airbus";
+
+            // Act
+
+            var getOpinionResult = TestHelper.PollService.GetOpinion(opinionTitle, getPollModel);
+
+            // Reset
+
+            // Assert
+
+            // Check title Name are valid
+            Assert.AreEqual(true, getOpinionResult.OpinionName.Equals(opinionTitle));
+            // Check Votes for Opinion
+            Assert.AreEqual(true, (getOpinionResult.NumCounts > -1));
+        }
+
+        [Test]
+        public void GetOpinion_InValid_PollModel_Valid_OpinionTitle_Should_Return_Null()
+        {
+            // Arrange
+
+            var pollModel = TestHelper.PollService.GetPoll("Invalid Name NUll");
+            var opinionTitle = "Airbus";
+
+            // Act
+
+            var getOpinionResult = TestHelper.PollService.GetOpinion(opinionTitle, pollModel);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(null, getOpinionResult);
+        }
+
+        [Test]
+        public void GetOpinion_Valid_PollModel_InValid_OpinionTitle_Should_Return_Null()
+        {
+            // Arrange
+            var pollModel = TestHelper.PollService.GetPoll("Aerospace company");
+
+            // Act
+            var getOpinionResult = TestHelper.PollService.GetOpinion(null, pollModel);
+
+            // Reset
+
+            // Arrange
+            Assert.AreEqual(null, getOpinionResult);
+        }
+
+
+        #endregion GetOpinion
     }
 }
