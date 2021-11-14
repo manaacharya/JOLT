@@ -20,20 +20,48 @@ namespace ContosoCrafts.WebSite.Pages
         //create log category for IndexModel  
         private readonly ILogger<IndexModel> _logger;
 
+        /// <summary>
+        /// Poll Services
+        /// </summary>
         public JsonFilePollService PollServices { get; }
+
+        /// <summary>
+        /// User Services
+        /// </summary>
         public JsonFileUserService UserService { get; }
+
+        /// <summary>
+        /// String to Hold Cookie Value acquired from User Services
+        /// </summary>
+        public string CookieNameValue { get; set; }
+
+        /// <summary>
+        /// List of Polls
+        /// </summary>
         public IEnumerable<PollModel> PollModels { get; set; }
 
         /// <summary>
-        /// Initalize logger obeject and add productServices
-        /// Soon to be changed to polls 
+        /// Message To Display 
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        ///  Initalize logger obeject and add productServices
+        ///  Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
+        /// <param name="jsonFilePollService"></param>
+        /// <param name="jsonFileUser"></param>
         public IndexModel(ILogger<IndexModel> logger, JsonFilePollService jsonFilePollService, JsonFileUserService jsonFileUser)
         {
             _logger = logger;
             PollServices = jsonFilePollService;
             UserService = jsonFileUser;
+
+            // Message attribute
+            Message = "Must Be Logged In To Create Poll";
+            // Initialize attribute CookieNameValue
+            CookieNameValue = UserService.GetCookieValue("nameCookie");
         }      
 
         /// <summary>
