@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using Moq;
-
-using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Mvc;
 using ContosoCrafts.WebSite.Pages.PollsPages;
