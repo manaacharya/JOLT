@@ -303,16 +303,23 @@ namespace UnitTests.Services
 
         #region GetOpinion
 
+        /// <summary>
+        /// Test for Getting Opinon with Valid Poll Model and Title
+        /// </summary>
         [Test]
         public void GetOpinion_Valid_PollModel_Valid_OpinionTitle_Should_Return_OpinionItem()
         {
             // Arrange
+            
+            // Get Poll Model
             var getPollModel = TestHelper.PollService.GetPoll("Aerospace company");
 
+            // Valid Title
             var opinionTitle = "Airbus";
 
             // Act
-
+            
+            // Fetch result 
             var getOpinionResult = TestHelper.PollService.GetOpinion(opinionTitle, getPollModel);
 
             // Reset
@@ -325,36 +332,54 @@ namespace UnitTests.Services
             Assert.AreEqual(true, (getOpinionResult.NumCounts > -1));
         }
 
+        /// <summary>
+        /// Test for Getting Opinion with Invalid Poll Model and Valid Title
+        /// </summary>
         [Test]
         public void GetOpinion_InValid_PollModel_Valid_OpinionTitle_Should_Return_Null()
         {
             // Arrange
 
+            // Invalid Poll Model
             var pollModel = TestHelper.PollService.GetPoll("Invalid Name NUll");
+
+            // Valid Title
             var opinionTitle = "Airbus";
 
             // Act
 
+            // Fetch Result
             var getOpinionResult = TestHelper.PollService.GetOpinion(opinionTitle, pollModel);
 
             // Reset
 
             // Assert
+            
+            // Check result from Fetch
             Assert.AreEqual(null, getOpinionResult);
         }
 
+        /// <summary>
+        /// Test for Getting Opinion with Valid Poll Model and InValid Opinion Title
+        /// </summary>
         [Test]
         public void GetOpinion_Valid_PollModel_InValid_OpinionTitle_Should_Return_Null()
         {
             // Arrange
+            
+            // Valid Poll Model
             var pollModel = TestHelper.PollService.GetPoll("Aerospace company");
 
             // Act
+
+            // Fetch Result with null for Title
             var getOpinionResult = TestHelper.PollService.GetOpinion(null, pollModel);
 
             // Reset
 
             // Assert
+
+            // Check result from Fetch
             Assert.AreEqual(null, getOpinionResult);
         }
 
@@ -363,12 +388,15 @@ namespace UnitTests.Services
 
         #region UpdateOpinionVote
 
+        /// <summary>
+        /// Test for Updating Opinion Vote with Valid Title and Invalid Poll ID
+        /// </summary>
         [Test]
-        public void UpdatePollModelOpinion_InValid_PollId_Valid_OpinionTitle_Should_Return_False()
+        public void UpdateOpinionVote_InValid_PollId_Valid_OpinionTitle_Should_Return_False()
         {
             // Assert
             
-            // invalid ID
+            // Invalid ID
             var pollID = -999;
 
             // Act
@@ -380,19 +408,22 @@ namespace UnitTests.Services
 
             // Assert
 
-            // Validate result
+            // Validate And Check result from Fetch
             Assert.AreEqual(false, getResult);
         }
 
+        /// <summary>
+        /// Test for Updating Opinion Vote with Valid Poll ID and Invalid Title
+        /// </summary>
         [Test]
-        public void UpdatePollModelOpinion_Valid_PollId_InValid_OpinionTitle_Should_Return_False()
+        public void UpdateOpinionVote_Valid_PollId_InValid_OpinionTitle_Should_Return_False()
         {
             // Assert
 
-            // valid id
+            // Valid Id
             var pollID = 1;
 
-            // invalid title
+            // Invalid Title
             var opinionTitle = "93383828992";
 
             // Act
@@ -404,7 +435,7 @@ namespace UnitTests.Services
 
             // Assert
 
-            // Validate result
+            // Validate And Check result from Fetch
             Assert.AreEqual(false, getResult);
         }
 
