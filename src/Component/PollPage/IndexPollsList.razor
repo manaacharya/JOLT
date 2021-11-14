@@ -64,6 +64,8 @@
                         var pollList = PollService.GetPolls().ToList();
                         foreach (PollModel poll in pollList)
                         {
+                            PollID = poll.PollID;
+
                             <div class="col-4">
                                 <div class="card text-white bg-dark mb-3">
                                     <div class="card-body">
@@ -73,10 +75,12 @@
                                         <div class="card-body">
                                             @foreach (OpinionItem item in poll.OpinionItems.ToList())
                                             {
-
+                                                opinion = item.OpinionName;
+                                                
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                        
+                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@opinion">
                                                         <label>@item.OpinionName</label>
                                                     </div>
                                                     <div class="col-auto">
@@ -103,7 +107,7 @@
                                             }
                                         }
                                         <hr />
-                                        <a class="btn btn-outline-success">Submit Vote</a>
+                                        <button @onclick="(e => SubmitVote(PollID, opinion))" class="btn btn-outline-success">Submit Vote</button>
                                         <a class="btn btn-outline-primary">Edit Poll</a>
                                     </div>
                                 </div>
@@ -125,7 +129,7 @@
 
 @code {
 
-    int PollID = 0;
+    int PollID = -99;
     string opinion = "";
 
     string CookieNameValue = "";
@@ -139,5 +143,26 @@
         {
             Message = "Must Be Logged In To Create Poll";
         }
+    }
+
+    void UpdateOpinionInput(string inputValue)
+    {
+        opinion = inputValue;
+    }
+
+    bool SubmitVote (int pollidInput, string opinionInput)
+    {
+        if(opinionInput == null)
+        {
+            return false;
+        }
+
+        if(pollidInput < 0)
+        {
+            return false;
+        }
+
+
+        return PollService.UpdatePollModelOpinion(pollidInput, opinionInput);
     }
 }
