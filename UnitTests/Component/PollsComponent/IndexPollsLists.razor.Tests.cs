@@ -1,6 +1,6 @@
 ﻿using Bunit;
 using NUnit.Framework;
-using ContosoCrafts.WebSite.Component;
+using ContosoCrafts.WebSite.Component.PollPage;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoCrafts.WebSite.Services;
 using System.Linq;
@@ -37,7 +37,12 @@ namespace UnitTests.Component.PollsComponent
             Assert.AreEqual(true, result.Contains("The Quantified Cactus: An Easy Plant Soil Moisture Sensor"));
         }
 
+        #region IsLoggedIn
 
+       /* [Test]
+        public void IsLoggedIn_*/
+
+        #endregion IsLoggedIn
 
     }
 }
