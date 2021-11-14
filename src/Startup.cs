@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace ContosoCrafts.WebSite
 {
@@ -71,12 +70,6 @@ namespace ContosoCrafts.WebSite
 
                 endpoints.MapBlazorHub();
 
-                // endpoints.MapGet("/products", (context) => 
-                // {
-                //     var products = app.ApplicationServices.GetService<JsonFileProductService>().GetProducts();
-                //     var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
-                //     return context.Response.WriteAsync(json);
-                // });
             });
         }
     }
