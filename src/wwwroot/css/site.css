@@ -180,10 +180,11 @@ ul {
     /* change gradient of header*/
     background: linear-gradient(110deg, #b9dbdf 75%, #189AB4 60%);
 }
+
 .bg-footer {
-    background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
-    background: -o-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
-    background: -moz-linear-gradient(110deg, #b9dbdf 60%, #189AB4 60%);
+    background: -webkit-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
+    background: -o-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
+    background: -moz-linear-gradient(110deg, #189AB4 60%, #b9dbdf 60%);
     /* change gradient of footer*/
-    background: linear-gradient(110deg, #b9dbdf 75%, #189AB4 60%);
+    background: linear-gradient(110deg, #189AB4 75%, #b9dbdf 60%);
 }
