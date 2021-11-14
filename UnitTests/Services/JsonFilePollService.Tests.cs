@@ -2,7 +2,6 @@
 using ContosoCrafts.WebSite.Models;
 using NUnit.Framework;
 
-
 namespace UnitTests.Services
 {
     /// <summary>
