@@ -21,7 +21,7 @@ namespace ContosoCrafts.WebSite.Pages
         private readonly ILogger<IndexModel> _logger;
 
         public JsonFilePollService PollServices { get; }
-
+        public JsonFileUserService UserService { get; }
         public IEnumerable<PollModel> PollModels { get; set; }
 
         /// <summary>
@@ -29,10 +29,11 @@ namespace ContosoCrafts.WebSite.Pages
         /// Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
-        public IndexModel(ILogger<IndexModel> logger, JsonFilePollService jsonFilePollService)
+        public IndexModel(ILogger<IndexModel> logger, JsonFilePollService jsonFilePollService, JsonFileUserService jsonFileUser)
         {
             _logger = logger;
             PollServices = jsonFilePollService;
+            UserService = jsonFileUser;
         }      
 
         /// <summary>
