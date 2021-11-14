@@ -1,9 +1,7 @@
-﻿using Bunit;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ContosoCrafts.WebSite.Component.PollPage;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoCrafts.WebSite.Services;
-using System.Linq;
 
 
 namespace UnitTests.Component.PollsComponent
@@ -38,9 +36,6 @@ namespace UnitTests.Component.PollsComponent
         }
 
         #region IsLoggedIn
-
-       /* [Test]
-        public void IsLoggedIn_*/
 
         #endregion IsLoggedIn
 
