@@ -1,20 +1,14 @@
-﻿using ContosoCrafts.WebSite.Models;
-using ContosoCrafts.WebSite.Services;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
+
+
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
@@ -26,27 +20,27 @@ namespace ContosoCrafts.WebSite.Pages
         //create log category for IndexModel  
         private readonly ILogger<IndexModel> _logger;
 
+        public JsonFilePollService PollServices { get; }
+
+        public IEnumerable<PollModel> PollModels { get; set; }
 
         /// <summary>
         /// Initalize logger obeject and add productServices
         /// Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, JsonFilePollService jsonFilePollService)
         {
             _logger = logger;
-        }
-        /// <summary>
-      
+            PollServices = jsonFilePollService;
+        }      
 
         /// <summary>
         /// initializes a list of all
         /// </summary>
-        public IActionResult OnGet()
+        public void OnGet()
         {
-
-            return RedirectToPage("./PollsPages/IndexPollsPage");
-
+            PollModels = PollServices.GetPolls();
         }
 
     }
