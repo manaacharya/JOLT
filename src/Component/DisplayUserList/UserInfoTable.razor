@@ -1,0 +1,53 @@
+﻿@using ContosoCrafts.WebSite.Models
+@using ContosoCrafts.WebSite.Services;
+@inject JsonFileUserService UserService
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>User Information</h1>
+            <p>This page will display all our users.</p>
+            <hr />
+
+            @{
+                <div class="container">
+                    <table id="sTable" width="100%">
+                        <!-- table head-->
+                        <thead>
+                            <!--table row -->
+                            <tr>
+                                <!-- table header cell element-->
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Location</th>
+
+                            </tr>
+                        </thead>
+                        <!--table body -->
+                        <tbody>
+                            <!-- Table row -->
+                            @{
+                                var i = 1;
+                                foreach (UserModel user in UserService.GetUsers())
+                                {
+                                    <tr>
+                                        <td id="rowId">@i</td>
+                                        <td>@user.Username</td>
+                                        <td>@user.Email</td>
+                                        <td>@user.Location</td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

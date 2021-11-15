@@ -1,5 +1,4 @@
 ﻿@page
-
 @using ContosoCrafts.WebSite.Component.DisplayUserList
 @model ContosoCrafts.WebSite.Pages.UsersPageModel
 
@@ -9,39 +8,6 @@
 
 @{
     <body style="background-image: url('../images/mt_rainer_background.jpeg'); background-color: #343a40; background-blend-mode: overlay;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>@ViewData["Title"]</h1>
-                    <p>This page will display all our users.</p>
-                    <hr />
-
-                    @{
-                        <div class="container">
-                            <table id="sTable" width="100%">
-                                <!-- table head-->
-                                <thead>
-                                    <!--table row -->
-                                    <tr>
-                                        <!-- table header cell element-->
-                                        <th>#</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Location</th>
-
-                                    </tr>
-                                </thead>
-                                <!--table body -->
-                                <tbody>
-                                    <!-- Table row -->
-                                    @*@(await Html.RenderComponentAsync<UserInfo>(RenderMode.ServerPrerendered))*@
-                                    @(await Html.RenderComponentAsync<UserInfo>(RenderMode.ServerPrerendered))
-                                </tbody>
-                            </table>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
+        @(await Html.RenderComponentAsync<UserInfoTable>(RenderMode.ServerPrerendered))
     </body>
 }
