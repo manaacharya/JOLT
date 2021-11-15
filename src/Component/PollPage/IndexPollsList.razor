@@ -64,23 +64,27 @@
                                         //hide progress bar
                                         showProgress = true;
 
-                                        //update to non zero number to avoid division by zero
+                                        //update current totalVotes to non zero number to avoid division by zero
                                         totalVotes = 1;
 
                                     }
-
 
                                     //Opinion1 percentage
                                     opinion1Ratio = (counts[0] / totalVotes) * 100;
 
                                     //convert ratio into usable string
                                     opinion1Percentage = opinion1Ratio.ToString() + "%";
+                                    @*opinion1Percentage = "50%";*@
+
+
 
                                     //Opinion2 percentage
                                     opinion2Ratio = (counts[1] / totalVotes) * 100;
 
                                     //convert ratio into usable string
                                     opinion2Percentage = opinion2Ratio.ToString() + "%";
+                                    @*opinion2Percentage = "70%";*@
+
                                     }
 
 
@@ -95,7 +99,7 @@
 
                                 </div>
                                 <div class="progress" hidden="@showProgress">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinionPercentages[0];" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinionPercentages[0]</div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinion1Percentage;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinion1Percentage</div>
                                 </div>
                                 <div class="col-auto">
                                     <label>Votes: @poll.OpinionItems.ElementAt(0).NumCounts</label>
@@ -109,7 +113,7 @@
 
                                 </div>
                                 <div class="progress" hidden="@showProgress">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinion1Ratio%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinion2Ratio%</div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinion2Percentage;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinion2Percentage</div>
                                 </div>
                                 <div class="col-auto">
                                     <label>Votes: @poll.OpinionItems.ElementAt(1).NumCounts</label>
