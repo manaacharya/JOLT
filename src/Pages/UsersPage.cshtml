@@ -1,5 +1,6 @@
 ﻿@page
-@using ContosoCrafts.WebSite.Models
+
+@using ContosoCrafts.WebSite.Component.DisplayUserList
 @model ContosoCrafts.WebSite.Pages.UsersPageModel
 
 @{
@@ -17,38 +18,27 @@
 
                     @{
                         <div class="container">
-                                <table id="sTable" width="100%">
-                                    <!-- table head-->
-                                    <thead>
-                                        <!--table row -->
-                                        <tr>
-                                            <!-- table header cell element-->
-                                            <th>#</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Location</th>
+                            <table id="sTable" width="100%">
+                                <!-- table head-->
+                                <thead>
+                                    <!--table row -->
+                                    <tr>
+                                        <!-- table header cell element-->
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Location</th>
 
-                                        </tr>
-                                    </thead>
-                                    <!--table body -->
-                                    <tbody>
-                                        <!-- Table row -->
-                                        @{
-                                            var i = 1;
-                                            foreach (UserModel user in Model.Users)
-                                            {
-                                                <tr>
-                                                    <td id="rowId">@i</td>
-                                                    <td>@user.Username</td>
-                                                    <td>@user.Email</td>
-                                                    <td>@user.Location</td>
-                                                </tr>
-                                                i++;
-                                            }
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </tr>
+                                </thead>
+                                <!--table body -->
+                                <tbody>
+                                    <!-- Table row -->
+                                    @*@(await Html.RenderComponentAsync<UserInfo>(RenderMode.ServerPrerendered))*@
+                                    @(await Html.RenderComponentAsync<UserInfo>(RenderMode.ServerPrerendered))
+                                </tbody>
+                            </table>
+                        </div>
                     }
                 </div>
             </div>
