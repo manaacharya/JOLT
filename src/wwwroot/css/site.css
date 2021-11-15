@@ -258,3 +258,9 @@ tr {
    padding-left: 15px;
 }
 /*End of User Table Section*/
+
+/*Progress Bar*/
+.progress{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
