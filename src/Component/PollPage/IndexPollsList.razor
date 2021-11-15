@@ -19,23 +19,107 @@
                             <hr />
                             <p class="card-subtitle">  @poll.Description </p>
                             <div class="card-body">
-                                @foreach (OpinionItem item in poll.OpinionItems.ToList())
-                                {
-                                    //opinion = item.OpinionName;
+                                @{
+                                    // variable that keeps count of the total votes
+                                    var totalVotes = 0;
 
-                                    <div class="row">
-                                        <div class="col-auto">
+                                    // variable that keeps track of opinion 1 ratio
+                                    int opinion1Ratio = poll.OpinionItems.ElementAt(0).NumCounts;
 
-                                            <input @onchange="(e) => UpdateOpinionInput(item.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="@item.OpinionName" id="@item.OpinionName" value="@Opinion">
+                                    // string that keeps track of opinion 1 percentage
+                                    string opinion1Percentage = "";
 
-                                            <label>@item.OpinionName</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <label>Votes: @item.NumCounts</label>
-                                        </div>
-                                    </div>
+                                    // int that keeps track of opinion 2 ratio
+                                    int opinion2Ratio = poll.OpinionItems.ElementAt(1).NumCounts;
+
+                                    // string that keeps track of opinion 2 percentage
+                                    string opinion2Percentage ="";
+
+                                    //bool to show progress bars
+                                    bool showProgress = false;
+
+                                    //current list of counts
+                                    List<int> counts = new List<int>();
+
+                                    //list of Opinion Percentages
+                                    List<string> opinionPercentages = new List<string>();
+
 
                                 }
+
+                                @foreach (OpinionItem item in poll.OpinionItems.ToList())
+                                {
+                                    //add current vote coun to "counts"
+                                    counts.Add(item.NumCounts);
+
+                                    // sum the totalCount
+                                    totalVotes = totalVotes + item.NumCounts;
+
+                                }
+
+                                @{
+                                    //Make sure that totalVotes is not 0
+                                    @if (totalVotes == 0)
+                                    {
+                                        //hide progress bar
+                                        showProgress = true;
+
+                                        //update to non zero number to avoid division by zero
+                                        totalVotes = 1;
+
+                                    }
+
+
+                                    //Opinion1 percentage
+                                    opinion1Ratio = (counts[0] / totalVotes) * 100;
+
+                                    //convert ratio into usable string
+                                    opinion1Percentage = opinion1Ratio.ToString() + "%";
+
+                                    //Opinion2 percentage
+                                    opinion2Ratio = (counts[1] / totalVotes) * 100;
+
+                                    //convert ratio into usable string
+                                    opinion2Percentage = opinion2Ratio.ToString() + "%";
+                                    
+
+
+                                    @*Console.WriteLine(totalVotes);
+                                    opinionPercentages = PollService.getOpinionPercentageList(counts, totalVotes);
+                                    Console.WriteLine(opinionPercentages);*@
+                                    }
+
+
+                                  
+
+                                <!--First Opinion-->
+                                <div class="col-auto">
+
+                                    <input @onchange="(e) => UpdateOpinionInput(poll.OpinionItems.ElementAt(0).OpinionName, poll.PollID)" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@poll.OpinionItems.ElementAt(0).OpinionName">
+
+                                    <label>@poll.OpinionItems.ElementAt(0).OpinionName</label>
+
+                                </div>
+                                <div class="progress" hidden="@showProgress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinionPercentages[0];" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinionPercentages[0]</div>
+                                </div>
+                                <div class="col-auto">
+                                    <label>Votes: @poll.OpinionItems.ElementAt(0).NumCounts</label>
+                                </div>
+                                <!--Second Opinion-->
+                                <div class="col-auto">
+
+                                    <input @onchange="(e) => UpdateOpinionInput(poll.OpinionItems.ElementAt(1).OpinionName, poll.PollID)" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="@poll.OpinionItems.ElementAt(1).OpinionName">
+
+                                    <label>@poll.OpinionItems.ElementAt(1).OpinionName</label>
+
+                                </div>
+                                <div class="progress" hidden="@showProgress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: @opinion1Ratio%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@opinion2Ratio%</div>
+                                </div>
+                                <div class="col-auto">
+                                    <label>Votes: @poll.OpinionItems.ElementAt(1).NumCounts</label>
+                                </div>
 
                             </div>
 
