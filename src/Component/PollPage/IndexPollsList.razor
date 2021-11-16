@@ -24,7 +24,7 @@
                                 @foreach (OpinionItem items in poll.OpinionItems)
                                 {
                                     <div class="col-auto">
-                                        <input @onchange="(e) => UpdateOpinionInput(items.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="@items.OpinionName" id="@items.OpinionName" value="@items.OpinionName">
+                                        <input @onchange="(e) => UpdateOpinionInput(items.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="itemButtons" id="@items.OpinionName" value="@items.OpinionName">
                                         <label>@items.OpinionName</label>
                                     </div>
                                     <div class="col-auto">
