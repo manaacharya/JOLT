@@ -131,7 +131,7 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="poll"></param>
         /// <returns></returns>
-        public int getTotalVotes(PollModel poll)
+        public int GetTotalVotes(PollModel poll)
         {
             // votes counter Attribute
             int votesCounter = 0;
