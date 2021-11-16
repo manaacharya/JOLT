@@ -1,16 +1,15 @@
 ﻿using Bunit;
 using NUnit.Framework;
-using ContosoCrafts.WebSite.Component;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoCrafts.WebSite.Services;
-using System.Linq;
+using ContosoCrafts.WebSite.Component.DisplayUserList;
 
 namespace UnitTests.Component.DisplayUserList
 {
     /// <summary>
     /// Tests UserInfoTable Razor Page
     /// </summary>
-    class UserInfoTable : BunitTestContext
+    class UserInfoTableTest : BunitTestContext
     {
         #region TestSetup
 
@@ -34,21 +33,18 @@ namespace UnitTests.Component.DisplayUserList
         {
             // Arrange
 
-            // Poll Service Singleton Initiation
-            Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
-
             // User Service Singleton Initiation
             Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
 
             // Act
             // Render Page Component
-            // var page = RenderComponent<UserInfoTable>();
-            // var result = page.Markup;
+            var page = RenderComponent<UserInfoTable>();
+            var result = page.Markup;
 
             // Assert
 
             // Component Checklist
-            // Assert.Equals(true, result.Contains("Jason"));
+            Assert.Equals(true, result.Contains("Jason"));
         }
 
         #endregion DefaultTest
