@@ -44,7 +44,7 @@ namespace UnitTests.Component.DisplayUserList
             // Assert
 
             // Component Checklist
-            Assert.Equals(true, result.Contains("Jason"));
+            Assert.AreEqual(true, result.Contains("Jason"));
         }
 
         #endregion DefaultTest
