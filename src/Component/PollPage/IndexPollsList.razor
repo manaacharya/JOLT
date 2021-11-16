@@ -35,7 +35,9 @@
                                                 percentage = (items.NumCounts * 100) / opinionVoteCount;
                                             }
 
-                                            <label>Percentage : @percentage % </label>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
+                                            </div>
                                             <label>Votes : @items.NumCounts</label>
                                         }
                                     </div>
