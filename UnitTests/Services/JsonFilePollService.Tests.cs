@@ -418,7 +418,7 @@ namespace UnitTests.Services
         [Test]
         public void UpdateOpinionVote_Valid_PollId_InValid_OpinionTitle_Should_Return_False()
         {
-            // Assert
+            // Arrange
 
             // Valid Id
             var pollID = 1;
@@ -440,5 +440,32 @@ namespace UnitTests.Services
         }
 
         #endregion UpdateOpinionVote
+
+        #region getTotalVotes
+
+        /// <summary>
+        /// Test for Invalid Poll Model Submission
+        /// </summary>
+        [Test]
+        public void GetTotalVotes_InValid_PollModel_Should_Return_Zero()
+        {
+            // Arrange
+
+
+
+            // Act
+
+            // Fetch Result from Service
+            var getResult = TestHelper.PollService.GetTotalVotes(null);
+
+            // Reset
+
+            // Assert
+
+            // Check result should be zero ?
+            Assert.AreEqual(0, getResult);
+        }
+
+        #endregion GetTotalVotes
     }
 }
