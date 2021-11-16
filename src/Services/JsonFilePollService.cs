@@ -126,20 +126,31 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
         
+        /// <summary>
+        /// Get Total Numbers of Votes Of all Opinions In A Poll
+        /// </summary>
+        /// <param name="poll"></param>
+        /// <returns></returns>
         public int getTotalVotes(PollModel poll)
         {
+            // votes counter Attribute
             int votesCounter = 0;
 
+            // Check to see whether Poll is Null
             if(poll == null)
             {
+                // Return votesCounter
                 return votesCounter;
             }
 
+            // Iterate through Loop
             foreach(OpinionItem items in poll.OpinionItems)
             {
+                // Sum Up the Votes in a Poll
                 votesCounter += items.NumCounts;
             }
 
+            // Return Sum
             return votesCounter;
         }
 
