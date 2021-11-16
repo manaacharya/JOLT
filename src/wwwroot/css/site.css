@@ -264,3 +264,13 @@ tr {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+
+/*Modal*/
+.modal-body{
+    color: black;
+}
+
+.modal-title{
+    color: black !important;
+}
