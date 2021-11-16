@@ -1,6 +1,9 @@
 ﻿
 namespace ContosoCrafts.WebSite.Models
 {
+    /// <summary>
+    /// Two opinion items in each poll, each has a specific number count
+    /// </summary>
     public class OpinionItem
     {
         /// <summary>
