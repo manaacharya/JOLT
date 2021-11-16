@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-
 using Microsoft.AspNetCore.Mvc;
-
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
+
 /// <summary>
 /// Controller for userServices, will be implemented in CRUDI operations for
 /// user. 
