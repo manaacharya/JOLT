@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
+/// <summary>
+/// Class for holding cookies used to remember user login 
+/// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
     /// <summary>
