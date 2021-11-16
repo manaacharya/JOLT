@@ -125,6 +125,23 @@ namespace ContosoCrafts.WebSite.Services
             // return True , for Poll Exists
             return true;
         }
+        
+        public int getTotalVotes(PollModel poll)
+        {
+            int votesCounter = 0;
+
+            if(poll == null)
+            {
+                return votesCounter;
+            }
+
+            foreach(OpinionItem items in poll.OpinionItems)
+            {
+                votesCounter += items.NumCounts;
+            }
+
+            return votesCounter;
+        }
 
         /// <summary>
         /// Checks And Return True if Poll Exist by ID, False Otherwise 
