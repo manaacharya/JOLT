@@ -11,7 +11,7 @@
             var pollList = PollService.GetPolls().ToList();
             foreach (PollModel poll in pollList)
             {
-                int opinionVoteCount = PollService.getTotalVotes(poll);
+                int opinionVoteCount = PollService.GetTotalVotes(poll);
 
                 <div class="col-4">
                     <div class="card text-white bg-dark mb-3">
