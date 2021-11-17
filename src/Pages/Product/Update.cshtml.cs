@@ -47,13 +47,16 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <returns></returns>
         public IActionResult OnPost()
         {
+            //if model state invalde 
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            //add product to database
             ProductService.UpdateData(Product);
 
+            //return to main page 
             return RedirectToPage("./Index");
         }
     }
