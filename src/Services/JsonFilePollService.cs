@@ -58,7 +58,7 @@ namespace ContosoCrafts.WebSite.Services
                       {
                           //make case insensitive
                           PropertyNameCaseInsensitive = true
-                      }).OrderBy(x => x.PollID);
+                      });
             }
         }
 
