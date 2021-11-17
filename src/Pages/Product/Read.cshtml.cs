@@ -30,12 +30,17 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public IActionResult OnGet(string id)
         {
+            //find product via id 
             Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
+
+            //if no product
             if (Product == null)
             {
+                //redirect to main page
                 return RedirectToPage("./Index");
             }
 
+            //return page
             return Page();
         }
     }
