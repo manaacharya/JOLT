@@ -69,6 +69,7 @@ namespace UnitTests.Pages.Users
         {
             // Arrange
 
+            //create invalid id 
             int invalidId = -93939;
 
             // Act
@@ -83,9 +84,7 @@ namespace UnitTests.Pages.Users
 
             //check that message is not deleted 
             Assert.AreEqual("User Not Deleted", PageModel.Message);
-
         }
-
         #endregion OnPostDeleteProfile 
     }
 };
