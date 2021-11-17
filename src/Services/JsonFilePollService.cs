@@ -218,7 +218,7 @@ namespace ContosoCrafts.WebSite.Services
             List<PollModel> getPolls = GetPolls().ToList();
 
             // Get Poll Model based on Poll ID
-            PollModel pollModel = GetPoll(pollID);
+            PollModel pollModel = getPolls.Find(x => x.PollID.Equals(pollID));
 
             // Return null if Poll doesn't exist
             if(pollModel == null)
@@ -227,7 +227,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             // Get Opinion Item based on Title and Poll Model
-            OpinionItem opinion = GetOpinion(opinionTitle, pollModel);
+            OpinionItem opinion = pollModel.OpinionItems.ToList().Find(x => x.OpinionName.Equals(opinionTitle));  //GetOpinion(opinionTitle, pollModel);
 
             // Return null if Opinion Doesn't Exist
             if(opinion == null)
@@ -282,7 +282,7 @@ namespace ContosoCrafts.WebSite.Services
                 UserID = userID,
 
                 //poll id
-                PollID = GetPolls().Count(),
+                PollID = GetPolls().Count() + 1,
 
                 //title of poll
                 Title = newPoll.CreateTitle,
