@@ -1,5 +1,4 @@
-﻿using Bunit;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoCrafts.WebSite.Services;
 using ContosoCrafts.WebSite.Component.DisplayUserList;
@@ -26,7 +25,7 @@ namespace UnitTests.Component.DisplayUserList
         #region DefaultTest
 
         /// <summary>
-        /// 
+        /// test all users 
         /// </summary>
         [Test]
         public void Default_Get_Should_Return_All_Users()
@@ -39,6 +38,8 @@ namespace UnitTests.Component.DisplayUserList
             // Act
             // Render Page Component
             var page = RenderComponent<UserInfoTable>();
+
+            //page markup
             var result = page.Markup;
 
             // Assert
