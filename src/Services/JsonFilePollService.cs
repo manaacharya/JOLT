@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace ContosoCrafts.WebSite.Services
 {
@@ -265,6 +266,9 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns>PollModel</returns>
         public PollModel CreatePoll(CreatePollModel newPoll, int userID)
         {
+            // Random Instance Created
+            Random rnD = new Random();
+
             // Boolean for Duplicate Poll Existance 
             bool pollExists = PollExist(newPoll.CreateTitle);
 
@@ -282,7 +286,7 @@ namespace ContosoCrafts.WebSite.Services
                 UserID = userID,
 
                 //poll id
-                PollID = GetPolls().Count() + 1,
+                PollID = rnD.Next(1, 999999),
 
                 //title of poll
                 Title = newPoll.CreateTitle,
