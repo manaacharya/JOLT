@@ -4,6 +4,9 @@ using NUnit.Framework;
 
 namespace UnitTests
 {
+    /// <summary>
+    /// Text fixture class 
+    /// </summary>
     [SetUpFixture]
     class TestFixture
     {
@@ -29,6 +32,7 @@ namespace UnitTests
             // var DataWebPath = "../../../../src/bin/Debug/net5.0/wwwroot/data";
             var dataWebPath = "../../../../src/wwwroot/data";
 
+            //directory 
             var dataUTDirectory = "wwwroot";
 
             var dataUTPath = dataUTDirectory + "/data";
@@ -47,14 +51,20 @@ namespace UnitTests
 
             foreach (var filename in filePaths)
             {
+                //filepath name
                 string originalFilePathName = filename.ToString();
 
+                //new path name 
                 var newFilePathName = originalFilePathName.Replace(dataWebPath, dataUTPath);
 
+                //copy file path name 
                 File.Copy(originalFilePathName, newFilePathName);
             }
         }
 
+        /// <summary>
+        /// Run after any test empty 
+        /// </summary>
         [OneTimeTearDown]
         public void RunAfterAnyTests()
         {
