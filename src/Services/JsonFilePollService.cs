@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace ContosoCrafts.WebSite.Services
 {
+    /// <summary>
+    /// Services and defensive programming for poll related methods 
+    /// </summary>
     public class JsonFilePollService
     {
 
@@ -30,8 +33,10 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         private string JsonFileName
         {
+            //get 
             get
             {
+                //return file path 
                 return Path.Combine(WebHostEnvironment.WebRootPath,
               "data", "polls.json");
             }
@@ -273,12 +278,24 @@ namespace ContosoCrafts.WebSite.Services
             // Instantiate a new Poll Model, with attributes
             var poll = new PollModel()
             {
+                //userid
                 UserID = userID,
+
+                //poll id
                 PollID = GetPolls().Count(),
+
+                //title of poll
                 Title = newPoll.CreateTitle,
+
+                //description of poll
                 Description = newPoll.CreateDescription,
+
+                //new list of opinion items
                 OpinionItems = new List<OpinionItem>() {
-                    new OpinionItem(newPoll.CreateOpinionOne, 0), new OpinionItem(newPoll.CreateOpinionTwo, 0)
+                    //first opinion
+                    new OpinionItem(newPoll.CreateOpinionOne, 0),
+                    //second opinion
+                    new OpinionItem(newPoll.CreateOpinionTwo, 0)
                 }
             };
 
