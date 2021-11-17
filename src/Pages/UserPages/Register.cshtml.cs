@@ -105,7 +105,5 @@ namespace ContosoCrafts.WebSite.Pages
 
             return RedirectToPage("./ProfilePage");
         }
-
     }
-
 }
