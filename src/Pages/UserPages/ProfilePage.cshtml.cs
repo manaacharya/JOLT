@@ -7,7 +7,7 @@ using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
-    /// 
+    /// Methods for profile page 
     /// </summary>
     public class ProfilePageModel : PageModel
     {
