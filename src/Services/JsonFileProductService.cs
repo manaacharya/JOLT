@@ -7,24 +7,43 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace ContosoCrafts.WebSite.Services
 {
+    /// <summary>
+    /// Methods for all Product related services 
+    /// </summary>
     public class JsonFileProductService
     {
+        /// <summary>
+        /// WebHostEnvironment knows where the  data file is stored at
+        /// </summary>
+        /// <param name="webHostEnvironment"></param>
         public JsonFileProductService(IWebHostEnvironment webHostEnvironment)
         {
             WebHostEnvironment = webHostEnvironment;
         }
 
+        /// <summary>
+        /// WebHostEnvironment knows where the  data file is stored at
+        /// </summary>
         public IWebHostEnvironment WebHostEnvironment { get; }
 
+        /// <summary>
+        /// specify file path to retrieve from
+        /// </summary>
         private string JsonFileName
         {
             get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json"); }
         }
 
+        /// <summary>
+        /// Get all data for products
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ProductModel> GetAllData()
         {
+            //jsonfile reader
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
+                //return data
                 return JsonSerializer.Deserialize<ProductModel[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
@@ -50,10 +69,12 @@ namespace ContosoCrafts.WebSite.Services
                 return false;
             }
 
+            //all product data
             var products = GetAllData();
 
             // Look up the product, if it does not exist, return
             var data = products.FirstOrDefault(x => x.Id.Equals(productId));
+            //if no data
             if (data == null)
             {
                 return false;
@@ -96,24 +117,41 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="data"></param>
         public ProductModel UpdateData(ProductModel data)
         {
+            //product data
             var products = GetAllData();
+
+            //find specific product
             var productData = products.FirstOrDefault(x => x.Id.Equals(data.Id));
+
+            //if specific product does not exist
             if (productData == null)
             {
                 return null;
             }
 
             // Update the data to the new passed in values
+            //title
             productData.Title = data.Title;
+
+            //description
             productData.Description = data.Description.Trim();
+
+            //url
             productData.Url = data.Url;
+
+            //image
             productData.Image = data.Image;
 
+            //quantity
             productData.Quantity = data.Quantity;
+
+            //price
             productData.Price = data.Price;
 
+            //update database
             SaveData(products);
 
+            //return updated database
             return productData;
         }
 
@@ -122,15 +160,20 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         private void SaveData(IEnumerable<ProductModel> products)
         {
-
+            //output stream
             using (var outputStream = File.Create(JsonFileName))
             {
+                //serialize productmodel 
                 JsonSerializer.Serialize<IEnumerable<ProductModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
+                        //skip valdiation
                         SkipValidation = true,
+
+                        //indent
                         Indented = true
                     }),
+                    //products
                     products
                 );
             }
@@ -143,21 +186,36 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public ProductModel CreateData()
         {
+            //create new product 
             var data = new ProductModel()
             {
+                //id of product
                 Id = System.Guid.NewGuid().ToString(),
+
+                //title 
                 Title = "Enter Title",
+
+                //product description
                 Description = "Enter Description",
+
+                //url
                 Url = "Enter URL",
+
+                //image
                 Image = "",
             };
 
-            // Get the current set, and append the new record to it becuase IEnumerable does not have Add
+            // Get the current set, and append the new record to it
+            // becuase IEnumerable does not have Add
             var dataSet = GetAllData();
+
+            //add data to set
             dataSet = dataSet.Append(data);
 
+            //update database
             SaveData(dataSet);
 
+            //return updated database
             return data;
         }
 
@@ -169,14 +227,18 @@ namespace ContosoCrafts.WebSite.Services
         {
             // Get the current set, and append the new record to it
             var dataSet = GetAllData();
+
+            //find product via id 
             var data = dataSet.FirstOrDefault(m => m.Id.Equals(id));
 
+            //create new dataset
             var newDataSet = GetAllData().Where(m => m.Id.Equals(id) == false);
 
+            //update database
             SaveData(newDataSet);
 
+            //return database
             return data;
         }
-
     }
 }
