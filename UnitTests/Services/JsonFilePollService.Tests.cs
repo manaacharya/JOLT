@@ -274,9 +274,16 @@ namespace UnitTests.Services
             // Instance of CreatePollModel created
             CreatePollModel createPoll = new CreatePollModel()
             {
+                //title
                 CreateTitle = "Duplicate Poll To Be",
+
+                //description
                 CreateDescription = "What is your favorite Duplicate Poll",
+
+                //opinion 1
                 CreateOpinionOne = "Poll 1",
+
+                //opinion 2
                 CreateOpinionTwo = "Poll 2"
             };
 
@@ -450,8 +457,6 @@ namespace UnitTests.Services
         public void GetTotalVotes_InValid_PollModel_Should_Return_Zero()
         {
             // Arrange
-
-
 
             // Act
 
