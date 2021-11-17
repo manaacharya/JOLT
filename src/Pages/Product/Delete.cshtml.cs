@@ -52,8 +52,10 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
+            //find product and deletes
             ProductService.DeleteData(Product.Id);
 
+            //redirect to main page
             return RedirectToPage("./Index");
         }
     }
