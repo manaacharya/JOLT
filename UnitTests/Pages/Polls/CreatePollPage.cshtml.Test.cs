@@ -7,6 +7,9 @@ using ContosoCrafts.WebSite.Pages.PollsPages;
 
 namespace UnitTests.Pages.Polls
 {
+    /// <summary>
+    /// Unit test for create poll page
+    /// </summary>
     class CreatePollPage
     {
         #region TestSetup
@@ -24,7 +27,8 @@ namespace UnitTests.Pages.Polls
             var MockLoggerDirect = Mock.Of<ILogger<CreatePollPageModel>>();
 
             // Profile Model instance created with logging attribute passed in constructor
-            PageModel = new CreatePollPageModel(MockLoggerDirect, TestHelper.UserService, TestHelper.PollService)
+            PageModel = new CreatePollPageModel(MockLoggerDirect,
+                TestHelper.UserService, TestHelper.PollService)
             {
                 // Set the Page Context
                 PageContext = TestHelper.PageContext
@@ -45,7 +49,6 @@ namespace UnitTests.Pages.Polls
             // Arrange
            
             // Act
-
             PageModel.OnGet();
 
             // Reset
@@ -76,9 +79,16 @@ namespace UnitTests.Pages.Polls
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                //title
                 CreateTitle = "Valid New Poll",
+
+                //description
                 CreateDescription = "What is your favorite Valid Poll",
+
+                //opinion 1
                 CreateOpinionOne = "Valid Soccer Teams",
+
+                //opinion 2
                 CreateOpinionTwo = "Valid Movies Cinema"
             };
 
@@ -111,9 +121,16 @@ namespace UnitTests.Pages.Polls
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                //title
                 CreateTitle = "New Poll",
+
+                //description
                 CreateDescription = "What is your favorite Poll",
+
+                //opinion 1
                 CreateOpinionOne = "Soccer Teams",
+
+                //opinion 2
                 CreateOpinionTwo = "Movies Cinema"
             };
 
@@ -127,7 +144,8 @@ namespace UnitTests.Pages.Polls
             // Assert
 
             // Confirm Page Redirection
-            Assert.AreEqual(true, PageModel.Message.Equals("Must Be Logged In To Create Poll"));
+            Assert.AreEqual(true,
+                PageModel.Message.Equals("Must Be Logged In To Create Poll"));
         }
 
         /// <summary>
@@ -145,9 +163,16 @@ namespace UnitTests.Pages.Polls
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                //title
                 CreateTitle = "New Poll",
+
+                //description
                 CreateDescription = "What is your favorite Poll",
+
+                //opinion 1
                 CreateOpinionOne = "Soccer Teams",
+
+                //opinion 2
                 CreateOpinionTwo = "Movies Cinema"
             };
 
