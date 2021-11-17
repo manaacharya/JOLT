@@ -140,14 +140,19 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
+                //user id
                 UserID = userID,
 
+                //username
                 Username = "User@@@", //should only contain numbers and letter
 
+                //password
                 Password = "TestValidpassword", //password is less than 6
 
+                //email
                 Email = "TestvalidEmail@gmail.com",
 
+                //location
                 Location = "TestvalidLocation"
             };
 
@@ -282,6 +287,7 @@ namespace UnitTests.Pages.Users
                 //email
                 Email = "TestvalidEmail@gmail.com",
 
+                //location
                 Location = "TestInvalidLocation!!!!" //should only contain letters
             };
 
@@ -297,5 +303,4 @@ namespace UnitTests.Pages.Users
         }
         #endregion OnPost
     }
-
 }
