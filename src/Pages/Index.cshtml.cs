@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
 
-
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
@@ -50,12 +49,18 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="jsonFileUser"></param>
         public IndexModel(ILogger<IndexModel> logger, JsonFilePollService jsonFilePollService, JsonFileUserService jsonFileUser)
         {
+            //create logger
             _logger = logger;
+
+            //create pollservices 
             PollServices = jsonFilePollService;
+
+            //create userservices
             UserService = jsonFileUser;
 
             // Message attribute
             Message = "Must Be Logged In To Create Poll";
+
             // Initialize attribute CookieNameValue
             CookieNameValue = UserService.GetCookieValue("nameCookie");
         }      
@@ -67,6 +72,5 @@ namespace ContosoCrafts.WebSite.Pages
         {
             PollModels = PollServices.GetPolls();
         }
-
     }
 }
