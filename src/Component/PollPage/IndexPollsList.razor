@@ -11,79 +11,54 @@
             var pollList = PollService.GetPolls().ToList();
             foreach (PollModel poll in pollList)
             {
-                var getAuthor = UserService.GetUser(poll.UserID);
-
                 int opinionVoteCount = PollService.GetTotalVotes(poll);
 
                 <div class="col-4">
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
                             <h2 class="card-title"> @poll.Title</h2>
-
-                            @if (getAuthor != null)
-                            {
-                                <h6 class="card-subtitle text-muted">Author Name: @getAuthor.Username</h6>
-                            }
-
                             <hr />
-                            <p class="card-text">  @poll.Description </p>
+                            <p class="card-subtitle">  @poll.Description </p>
+                            <div class="card-body">
 
-                            <hr />
-                            <!-- Button trigger modal -->
-                            <button type="button" name="modalBtn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter-@poll.PollID">
-                                View Poll
-                            </button>
-                            <a class="btn btn-outline-primary">Edit Poll</a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter-@poll.PollID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">@poll.Title</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>@poll.Description</p>
-                                            @foreach (OpinionItem items in poll.OpinionItems)
-                                            {
-                                                <div class="col-auto">
-                                                    <input @onchange="(e) => UpdateOpinionInput(items.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="itemButtons" id="@items.OpinionName" value="@items.OpinionName">
-                                                    <label>@items.OpinionName</label>
-                                                </div>
-                                                <div class="col-auto">
-                                                    @{
-                                                        double percentage = 0;
-                                                        if (opinionVoteCount != 0)
-                                                        {
-                                                            percentage = (items.NumCounts * 100) / opinionVoteCount;
-                                                        }
-
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
-                                                        </div>
-                                                        <label>Votes : @items.NumCounts</label>
-                                                    }
-                                                </div>
-
-                                            }
-                                            <br />
-                                            @{
-
-                                                // Author No Longer Exists: Account Was Deleted
-                                                if (getAuthor != null)
-                                                {
-                                                    <label>Author Name: @getAuthor.Username</label> <br />
-                                                    <label>Author Location: @getAuthor.Location</label>
-                                                }
-                                            }
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Submit Vote</button>
-                                        </div>
+                                @foreach (OpinionItem items in poll.OpinionItems)
+                                {
+                                    <div class="col-auto">
+                                        <input @onchange="(e) => UpdateOpinionInput(items.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="itemButtons" id="@items.OpinionName" value="@items.OpinionName">
+                                        <label>@items.OpinionName</label>
                                     </div>
-                                </div>
+                                    <div class="col-auto">
+                                        @{
+                                            double percentage = 0;
+                                            if (opinionVoteCount != 0)
+                                            {
+                                                percentage = (items.NumCounts * 100) / opinionVoteCount;
+                                            }
+
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
+                                            </div>
+                                            <label>Votes : @items.NumCounts</label>
+                                        }
+                                    </div>
+
+                                }
+
                             </div>
+
+                            @{
+                                var getAuthor = UserService.GetUser(poll.UserID);
+
+                                // Author No Longer Exists: Account Was Deleted
+                                if (getAuthor != null)
+                                {
+                                    <label>Author Name: @getAuthor.Username</label>
+                                    <label>Author Location: @getAuthor.Location</label>
+                                }
+                            }
+                            <hr />
+                            <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Submit Vote</button>
+                            <a class="btn btn-outline-primary">Edit Poll</a>
                         </div>
                     </div>
                 </div>
