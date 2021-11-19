@@ -95,15 +95,17 @@ namespace ContosoCrafts.WebSite.Pages
                 return RedirectToPage("./LoginFolder/login");
             }
 
-            //create data using userinformation 
-            UserService.CreateData(BindUser);
+            //create User using User Information 
+            UserModel userModel =  UserService.CreateData(BindUser);
 
-            //new nameCookie to username 
-            UserService.CreateCookie("nameCookie", BindUser.Username);
+            if(userModel == null)
+            {
+                // Something Went Wrong With Registration Service to Create User
+                return Page();
+            }
 
-            //Response.Cookies.Append("nameCookie", BindUser.Username);
-
-            return RedirectToPage("./ProfilePage");
+            // Redirect to Login Welcome
+            return RedirectToPage("./LoginFolder/Login_Welcome", userModel.Username);
         }
     }
 }
