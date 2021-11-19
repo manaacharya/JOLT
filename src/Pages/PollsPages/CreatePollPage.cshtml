@@ -2,6 +2,8 @@
 @model ContosoCrafts.WebSite.Pages.PollsPages.CreatePollPageModel
 @{
 
+    string getCookieValue = HttpContext.Request.Cookies["nameCookie"];
+
     <div class="container">
         <h3 class="clearfix">@Model.Message</h3>
 
@@ -20,6 +22,9 @@
         <hr />
 
         <form method="post" asp-page="CreatePollPage">
+
+            <input type="text" asp-for="CreatePoll.AuthorName" name="AuthorName" value="@getCookieValue" hidden />
+
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" asp-for="CreatePoll.CreateTitle" name="CreateTitle" class="form-control" placeholder="Enter Title" required>
