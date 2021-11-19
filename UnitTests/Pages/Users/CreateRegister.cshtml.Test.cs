@@ -92,7 +92,7 @@ namespace UnitTests.Pages.Users
         /// Test for Duplicate Registration 
         /// </summary>
         [Test]
-        public void OnPost_ValidDuplicate_UserModel_Should_Return_Page()
+        public void OnPost_ValidExisting_UserModel_Should_Return_Page()
         {
             // Arrange
 
