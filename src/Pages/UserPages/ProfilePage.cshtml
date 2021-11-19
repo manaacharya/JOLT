@@ -5,13 +5,26 @@
 @model ContosoCrafts.WebSite.Pages.ProfilePageModel
 
 @{
-    //var cookieValue = Request.Cookies["nameCookie"];
 
-    //int id = 947498;
+    var sample = Request.QueryString.Value;
 
-    //UserModel user = UserService.GetUser(cookieValue.ToString());
+    string getCookieValue = HttpContext.Request.Cookies["nameCookie"];
 
-    //Model.UpdateUser.UpdateID = user.userID;
+    if (sample != "")
+    {
+        HttpContext.Response.Cookies.Delete("nameCookie");
+
+        string cookieValue = sample.Substring(9, (sample.Length - 9));
+
+        HttpContext.Response.Cookies.Append("nameCookie", cookieValue);
+
+        getCookieValue = cookieValue;
+    }
+
+    UserModel getUser = UserService.GetUser(getCookieValue);
+
+
+    int fiv = 9;
 
     <h3 class="clearfix">@Model.Message</h3>
 
@@ -20,7 +33,7 @@
         <div class="row">
 
             <div class="col-12">
-                <h3> Welcome @Model.UserModel.Username </h3>
+                <h3> Welcome @getUser.Username </h3>
             </div>
 
             <div class="col-12">
@@ -37,19 +50,19 @@
                     <div class="row" style="font-size:20px">
 
                         <div class="col-6"> User ID:   </div>
-                        <div class="col-6"> @Model.UserModel.UserID  </div>
+                        <div class="col-6"> @getUser.UserID  </div>
 
                         <div class="col-6"> User Name:  </div>
-                        <div class="col-6"> @Model.UserModel.Username  </div>
+                        <div class="col-6"> @getUser.Username  </div>
 
                         <div class="col-6"> User Email:  </div>
-                        <div class="col-6"> @Model.UserModel.Email  </div>
+                        <div class="col-6"> @getUser.Email  </div>
 
                         <div class="col-6"> User Password:  </div>
-                        <div class="col-6"> @Model.UserModel.Password  </div>
+                        <div class="col-6"> @getUser.Password  </div>
 
                         <div class="col-6"> User Location:  </div>
-                        <div class="col-6"> @Model.UserModel.Location  </div>
+                        <div class="col-6"> @getUser.Location  </div>
 
                     </div>
 
@@ -63,23 +76,23 @@
 
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">User Name</label>
-                            <input type="hidden" asp-for="UpdateUser.UpdateID" name="UpdateID" value="@Model.UserModel.UserID" class="form-control" placeholder="@Model.UserModel.UserID" />
-                            <input type="text" asp-for="UpdateUser.UpdateName" name="UpdateName" value="@Model.UserModel.Username" class="form-control" placeholder="@Model.UserModel.Username">
+                            <input type="hidden" asp-for="UpdateUser.UpdateID" name="UpdateID" value="@getUser.UserID" class="form-control" placeholder="@getUser.UserID" />
+                            <input type="text" asp-for="UpdateUser.UpdateName" name="UpdateName" value="@getUser.Username" class="form-control" placeholder="@getUser.Username">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">User Email</label>
-                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateEmail" value="@Model.UserModel.Email" class="form-control" placeholder="@Model.UserModel.Email">
+                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateEmail" value="@getUser.Email" class="form-control" placeholder="@getUser.Email">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">User Password</label>
-                            <input type="text" asp-for="UpdateUser.UpdatePassword" name="UpdatePassword" value="@Model.UserModel.Password" class="form-control" placeholder="@Model.UserModel.Password">
+                            <input type="text" asp-for="UpdateUser.UpdatePassword" name="UpdatePassword" value="@getUser.Password" class="form-control" placeholder="@getUser.Password">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">User Location</label>
-                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateLocation" value="@Model.UserModel.Location" class="form-control" placeholder="@Model.UserModel.Location">
+                            <input type="text" asp-for="UpdateUser.UpdateEmail" name="UpdateLocation" value="@getUser.Location" class="form-control" placeholder="@getUser.Location">
                         </div>
 
                         <div class="col-auto">
@@ -97,7 +110,7 @@
             <div class="col-auto">
 
                 <form method="post" asp-page-handler="DeleteProfile">
-                    <button value="@Model.UserModel.UserID" name="id" type="submit" class="btn btn-primary">Delete Profile</button>
+                    <button value="@getUser.UserID" name="id" type="submit" class="btn btn-primary">Delete Profile</button>
                 </form>
 
             </div>
