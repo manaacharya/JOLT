@@ -13,13 +13,6 @@ namespace ContosoCrafts.WebSite.Services
     /// </summary>
     public class JsonFileUserService
     {
-        /// <summary>
-        /// Static PollingCookieModel instance created 
-        /// </summary>
-        public static PollingCookieModel pollingCookieModel = new PollingCookieModel()
-        {
-            CookieCollection = new Dictionary<string, string>()
-        };
 
         /// <summary>
         /// Constructor For JsonFileUserService 
@@ -89,62 +82,6 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-        /// <summary>
-        /// Create and add a cookie with key-value pair
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns>false if the cookie exitst, true otherwise</returns>
-        public bool CreateCookie(string key, string value)
-        {
-            // Do Key Exists ?
-            if (pollingCookieModel.CookieCollection.ContainsKey(key) == true)
-            {
-                // Not Successfully Added
-                // A key with the same name exists
-                return false;
-            }
-            // Add key-value pair to Cookie Collection
-            pollingCookieModel.CookieCollection.Add(key, value);
-
-            // Successfully Added
-            return true;
-        }
-
-        /// <summary>
-        /// Get the Value of a Cookie with Key
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public string GetCookieValue(string key)
-        {
-            // result attribute
-            string result = null;
-
-            // Find cookie from dictionary and insert into result the value
-            pollingCookieModel.CookieCollection.TryGetValue(key, out result);
-
-            // result will be null, if key doesn't exist
-            if (result == null)
-            {
-
-                // return null
-                return null;
-
-            }
-            return result; // return result
-        }
-
-        /// <summary>
-        /// Delete a Key-Value pair from Dictionary Collection
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public bool DeleteCookie(string key)
-        {
-            // Finds and Remove Cookie (key-value pair) from dictionary
-            return pollingCookieModel.CookieCollection.Remove(key);
-        }
 
         /// <summary>
         ///  Service To Update a User Account
