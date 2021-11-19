@@ -4,6 +4,9 @@
 
 @{
     ViewData["Title"] = "Home page";
+
+    // Get Cookie Value
+    string getCookieValue = HttpContext.Request.Cookies["nameCookie"];
 }
 
 
@@ -18,7 +21,7 @@
 
             @{
                 // Check if CookieNameValue is Null
-                if (Model.CookieNameValue == null)
+                if (getCookieValue == "")
                 {
                     // Disable Button
                     <p style="color:red;"> @Model.Message</p>
