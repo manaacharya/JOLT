@@ -43,10 +43,6 @@ namespace UnitTests.Pages.Users
         public void OnGet_Valid_Should_Return_UserModel()
         {
             // Arrange
-            // valid key variable
-            string key = "lakers34";
-            // Create Cookie with key-value pair
-            TestHelper.UserService.CreateCookie("nameCookie", key);
 
             // Act
 
@@ -58,12 +54,6 @@ namespace UnitTests.Pages.Users
 
             //check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-
-            //check correct username 
-            Assert.AreEqual("lakers34", PageModel.UserModel.Username);
-
-            //check correct location 
-            Assert.AreEqual("Egypt", PageModel.UserModel.Location);
 
         }
 
