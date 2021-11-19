@@ -123,7 +123,7 @@ namespace ContosoCrafts.WebSite.Pages
             //message to confirm user is deleted 
             Message = $"User deleted.";
 
-            return Redirect("/LoginFolder/login"); 
+            return Redirect("/UserPages/LoginFolder/login"); 
         }
     }
 }
