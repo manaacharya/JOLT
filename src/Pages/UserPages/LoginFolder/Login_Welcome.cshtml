@@ -5,6 +5,15 @@
 
 @{
     ViewData["Title"] = "Login_Welcome";
+
+    var sample = Request.QueryString.Value;
+
+    if (sample != null)
+    {
+        string cookieValue = sample.Substring(9, (sample.Length - 9));
+
+        HttpContext.Response.Cookies.Append("nameCookie", cookieValue);
+    }
 }
 
 
