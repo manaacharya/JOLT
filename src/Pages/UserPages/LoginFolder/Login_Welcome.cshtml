@@ -1,17 +1,19 @@
 ﻿@page
 
-
 @model ContosoCrafts.WebSite.Pages.Login_WelcomeModel
 
 @{
     ViewData["Title"] = "Login_Welcome";
 
+    // Get the Query String
     var sample = Request.QueryString.Value;
 
     if (sample != null)
     {
+        // Extract Query with UserName
         string cookieValue = sample.Substring(9, (sample.Length - 9));
 
+        // Make that extraction a Cookie Value
         HttpContext.Response.Cookies.Append("nameCookie", cookieValue);
     }
 }
