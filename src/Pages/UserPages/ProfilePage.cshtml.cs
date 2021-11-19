@@ -25,10 +25,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public JsonFileUserService UserServices { get; set; }
 
-        /// <summary>
-        /// get and set usermodel 
-        /// </summary>
-        public UserModel UserModel  { get; set; }
 
         /// <summary>
         /// get and set updateusermodel 
