@@ -74,11 +74,13 @@ namespace UnitTests.Pages.Polls
             // Arrange
 
             // Valid Author of Poll
-            PageModel.CookieNameValue = "viner765";
 
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                // Author
+                AuthorName = "viner765",
+
                 //title
                 CreateTitle = "Valid New Poll",
 
@@ -116,11 +118,13 @@ namespace UnitTests.Pages.Polls
             // Arrange
 
             // Invalid Author of Poll : Author Doesn't Exist any Database
-            PageModel.CookieNameValue = "fakename";
 
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                // Author
+                AuthorName = "fakename",
+
                 //title
                 CreateTitle = "New Poll",
 
@@ -157,12 +161,12 @@ namespace UnitTests.Pages.Polls
         {
             // Arrange
 
-            // Valid Author of Poll
-            PageModel.CookieNameValue = "viner765";
-
             // Poll Model created with attributes
             PageModel.CreatePoll = new CreatePollModel()
             {
+                // Author
+                AuthorName = "viner765",
+
                 //title
                 CreateTitle = "New Poll",
 
@@ -177,7 +181,7 @@ namespace UnitTests.Pages.Polls
             };
 
             // Get User
-            var getUser = TestHelper.UserService.GetUser(PageModel.CookieNameValue);
+            var getUser = TestHelper.UserService.GetUser(PageModel.CreatePoll.AuthorName);
 
             // Add new Poll
             TestHelper.PollService.CreatePoll(PageModel.CreatePoll, getUser.UserID);
