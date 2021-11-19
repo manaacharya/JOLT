@@ -55,10 +55,10 @@ namespace ContosoCrafts.WebSite.Pages
                 if (InputVerified)
                 {
                     //create cookie with username 
-                    UserService.CreateCookie("nameCookie", UserLoginInput.Username);
+                    //UserService.CreateCookie("nameCookie", UserLoginInput.Username);
 
                     //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
-                    return RedirectToPage("Login_Welcome");
+                    return RedirectToPage("Login_Welcome", UserLoginInput.Username);
                  }
 
                  else
