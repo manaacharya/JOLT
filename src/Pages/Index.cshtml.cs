@@ -46,9 +46,6 @@ namespace ContosoCrafts.WebSite.Pages
             //create pollservices 
             PollServices = jsonFilePollService;
 
-            //create userservices
-            UserService = jsonFileUser;
-
             // Message attribute
             Message = "Must Be Logged In To Create Poll";
 
