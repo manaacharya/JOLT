@@ -31,11 +31,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         /// JsonFilePollService to access, get, set Poll Services
         /// </summary>
         public JsonFilePollService PollService { get; set; }
-
-        /// <summary>
-        /// String to Hold Cookie Value acquired from User Services
-        /// </summary>
-        public string CookieNameValue { get; set; }
+                
 
         /// <summary>
         /// Model for Holding Attributes/ variable to Create a Poll
