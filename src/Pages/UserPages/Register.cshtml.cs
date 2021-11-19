@@ -97,12 +97,7 @@ namespace ContosoCrafts.WebSite.Pages
 
             //create User using User Information 
             UserModel userModel =  UserService.CreateData(BindUser);
-
-            if(userModel == null)
-            {
-                // Something Went Wrong With Registration Service to Create User
-                return Page();
-            }
+                        
 
             // Redirect to Login Welcome
             return RedirectToPage("./LoginFolder/Login_Welcome", userModel.Username);
