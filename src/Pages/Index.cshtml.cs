@@ -25,10 +25,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public JsonFileUserService UserService { get; }
 
-        /// <summary>
-        /// String to Hold Cookie Value acquired from User Services
-        /// </summary>
-        public string CookieNameValue { get; set; }
 
         /// <summary>
         /// List of Polls
@@ -61,8 +57,6 @@ namespace ContosoCrafts.WebSite.Pages
             // Message attribute
             Message = "Must Be Logged In To Create Poll";
 
-            // Initialize attribute CookieNameValue
-            CookieNameValue = UserService.GetCookieValue("nameCookie");
         }      
 
         /// <summary>
