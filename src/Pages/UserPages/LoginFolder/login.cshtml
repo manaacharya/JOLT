@@ -3,6 +3,9 @@
 @model ContosoCrafts.WebSite.Pages.LoginPageModel
 
 @{
+
+    HttpContext.Response.Cookies.Delete("nameCookie");
+
     ViewData["Title"] = "Login";
 }
 
