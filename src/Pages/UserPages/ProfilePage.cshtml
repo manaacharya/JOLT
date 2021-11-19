@@ -6,25 +6,32 @@
 
 @{
 
+    // Check Query String
     var sample = Request.QueryString.Value;
 
+    // Get Cookie from Request
     string getCookieValue = HttpContext.Request.Cookies["nameCookie"];
 
     if (sample != "")
     {
+        // After an Update Have been Performed 
+
+        // Delete Existing Cookie
         HttpContext.Response.Cookies.Delete("nameCookie");
 
+        // Extract the new updated UserName
         string cookieValue = sample.Substring(9, (sample.Length - 9));
 
+        // Create Cookie
         HttpContext.Response.Cookies.Append("nameCookie", cookieValue);
 
+        // Set getCookieValue to new Updated Cookie Value
         getCookieValue = cookieValue;
     }
 
+    // Get the User
     UserModel getUser = UserService.GetUser(getCookieValue);
 
-
-    int fiv = 9;
 
     <h3 class="clearfix">@Model.Message</h3>
 
