@@ -57,10 +57,10 @@ namespace ContosoCrafts.WebSite.Pages
         {
 
             //cookie username 
-            var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
+            //var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
  
             //userModel object of cookie username stored 
-            UserModel = UserServices.GetUser(cookieValue.ToString());
+            //UserModel = UserServices.GetUser(cookieValue.ToString());
         }
         
         /// <summary>
@@ -74,8 +74,8 @@ namespace ContosoCrafts.WebSite.Pages
             if (UpdateUser == null)
             {
 
-                //back to profile page 
-                return RedirectToPage("ProfilePage");
+                //Back to Index page 
+                return RedirectToPage("/Index");
 
             }
 
@@ -88,25 +88,15 @@ namespace ContosoCrafts.WebSite.Pages
                 // Error Updating User
                 Message = $"Error Updating {UpdateUser.UpdateName}";
 
-                return RedirectToPage("ProfilePage");
+                return Page(); //RedirectToPage("ProfilePage");
 
             }
-
-            // Updated Cookie To User Name
-            //Response.Cookies.Delete("nameCookie");
-            UserServices.DeleteCookie("nameCookie");
-
-            //cookie username updated to new update 
-
-            UserServices.CreateCookie("nameCookie", UpdateUser.UpdateName);
-
-            //Response.Cookies.Append("nameCookie", UpdateUser.UpdateName);
 
             //Message to confirm update is successful 
             Message = $"Update Successful to {UpdateUser.UpdateID}, Name: {UpdateUser.UpdateName}";
 
             //redirect back to profile page 
-            return RedirectToPage("ProfilePage");
+            return RedirectToPage("ProfilePage", UpdateUser.UpdateName);
         }
 
         /// <summary>
@@ -133,12 +123,7 @@ namespace ContosoCrafts.WebSite.Pages
             //message to confirm user is deleted 
             Message = $"User deleted.";
 
-            //Delete cookie
-            //Response.Cookies.Delete("nameCookie");
-            UserServices.DeleteCookie("nameCookie");
-
-            return Redirect("/Index"); //RedirectToPage("/Pages/Index");
-            //RedirectToPage("./Index");
+            return Redirect("/LoginFolder/login"); 
         }
     }
 }
