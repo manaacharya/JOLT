@@ -20,8 +20,8 @@
 
 
             @{
-                // Check if CookieNameValue is Null
-                if (getCookieValue == "")
+                // Check if CookieNameValue is Null And Disable Buttons
+                if (getCookieValue == null)
                 {
                     // Disable Button
                     <p style="color:red;"> @Model.Message</p>
@@ -31,8 +31,7 @@
                 }
                 else
                 {
-                    // User is Logged In
-                    // Enable Button
+                    // User is Logged In  Enable Button
                     <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
 
                     <a class="btn btn-outline-success" asp-page="/UserPages/ProfilePage" aria-disabled="false"> Go to Profile </a>
