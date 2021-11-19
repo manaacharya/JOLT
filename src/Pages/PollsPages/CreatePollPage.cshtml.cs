@@ -56,7 +56,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             _logger = logger;
             UserServices = userService;
             PollService = pollService;
-            CookieNameValue = UserServices.GetCookieValue("nameCookie");
+            //CookieNameValue = UserServices.GetCookieValue("nameCookie");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         public void OnGet()
         {
             // Message to Diplay in Html
-            Message = $"Welcome {CookieNameValue}:  Create Your Amazing Poll";
+            Message = $"Welcome :  Create Your Amazing Poll";
         }
 
         /// <summary>
