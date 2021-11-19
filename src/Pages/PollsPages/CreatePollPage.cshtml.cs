@@ -75,7 +75,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         public IActionResult OnPost()
         {
             // Get User based on Name (Cookie Value)
-            UserModel getUser = UserServices.GetUser(CookieNameValue);
+            UserModel getUser = UserServices.GetUser(CreatePoll.AuthorName);
 
             // Check if User Exists
             if(getUser == null)
