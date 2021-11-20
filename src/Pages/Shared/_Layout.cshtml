@@ -58,41 +58,55 @@
                             <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" asp-page="/UserPages/Register"> <i class="fa fa-user-plus"></i> Register</a>
-                        </li>&nbsp; &nbsp;
 
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary" asp-page="/UserPages/LoginFolder/Login"> User Login</a>
-                        </li>
 
                         @{
                             var cookie = Html.Raw(HttpContextAccessor.HttpContext.Request.Cookies["nameCookie"]).ToString();
 
-                            if (cookie.ToString() != null)
+                            if (cookie.ToString() == "")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" style="color:#ffffff; font-size:large;" asp-area="" asp-page="/UserPages/ProfilePage">@cookie</a>
+                                    <a class="btn btn-outline-primary" asp-page="/UserPages/Register"> <i class="fa fa-user-plus"></i> Register</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    &nbsp;&nbsp;
+                                    <a class="btn btn-outline-primary" asp-page="/UserPages/LoginFolder/Login"> User Login</a>
                                 </li>
                             }
+
+                            if (cookie.ToString() != "")
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link" style="font-weight:800;" ; font-size:large;" asp-area="" asp-page="/UserPages/ProfilePage">@cookie.ToUpper()</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-danger" asp-page="/UserPages/LoginFolder/Login"> Log Out</a>
+                                </li>
+
+                            }
+
+
                         }
 
                     </ul>
 
                 </div>
 
-            </div>      
+            </div>
 
         </nav>
 
     </header>
-  
+
     <main role="main" class="pb-3">
 
         @RenderBody()
 
     </main>
-    
+
     <br />
 
     <hr />
