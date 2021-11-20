@@ -30,6 +30,7 @@ namespace ContosoCrafts.WebSite.Models
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6,
             ErrorMessage = "* Must be at least 6 characters long")]
+        [RegularExpression("^[\\sa-zA-Z0-9,!#%@&()-+]*$", ErrorMessage = "* password can only contain English letters, digits 0-9, or special characters")]
         public string Password { get; set; }
 
         /// <summary>
