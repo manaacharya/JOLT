@@ -13,7 +13,9 @@ namespace UnitTests.Pages.Index
     {
         #region TestSetup
 
-        // Index Model static field/attribute
+        /// <summary>
+        /// Index Model static field/attribute
+        /// </summary>
         public static IndexModel PageModel;
 
         /// <summary>
