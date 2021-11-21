@@ -110,16 +110,15 @@ namespace UnitTests.Pages.Users
 
             // Fetch result from OnPost()
             var getResult = PageModel.OnPost() as RedirectToPageResult;
-
+            var message = PageModel.DuplicateUserPrompt;
             // Reset
 
             // Assert
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-
+            Assert.AreEqual("Username Already Exist, Log in with your username?", message);
             // Confirm Page Redirection
             // Assert.AreEqual(true, getResult.PageName.Contains("/Register"));
-            Assert.AreEqual(null, getResult.PageName);
-
+           
         }
 
 
