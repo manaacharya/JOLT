@@ -14,14 +14,6 @@ namespace UnitTests
 
     /// <summary>
     /// Helper to hold the web start settings
-    ///
-    /// HttpClient
-    /// 
-    /// Action Contect
-    /// 
-    /// The View Data and Teamp Data
-    /// 
-    /// The Product Service
     /// </summary>
     public static class TestHelper
     {
@@ -125,6 +117,7 @@ namespace UnitTests
             //product services 
             JsonFileProductService productService;
 
+            //product service Json
             productService = new JsonFileProductService(TestHelper.MockWebHostEnvironment.Object);
 
             // User Services
