@@ -18,6 +18,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="productService"></param>
         public ReadModel(JsonFileProductService productService)
         {
+            //set product service
             ProductService = productService;
         }
 
