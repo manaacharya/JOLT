@@ -13,7 +13,9 @@ namespace ContosoCrafts.WebSite.Pages
     /// </summary>
     public class RegisterModel : PageModel
     {
-        //log category RegisterModel 
+        /// <summary>
+        /// log category RegisterModel
+        /// </summary>
         private readonly ILogger<RegisterModel> _logger;
 
 
@@ -30,9 +32,10 @@ namespace ContosoCrafts.WebSite.Pages
         // The data to show, bind to it for the post
         public RegisterModel(ILogger<RegisterModel> logger, JsonFileUserService userService)
         {
+            //setting logger
             _logger = logger;
 
-            //userservice object 
+            //userservice object
             UserService = userService;
         }
 
@@ -100,7 +103,7 @@ namespace ContosoCrafts.WebSite.Pages
 
             if(getUser != null)
             {
-                // Redirect to Log In. If User with the same Name Alreay Exists
+                //Redirect to Log In. If User with the same Name Alreay Exists
                 return RedirectToPage("./LoginFolder/login");
             }
 
