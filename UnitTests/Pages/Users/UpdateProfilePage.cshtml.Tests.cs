@@ -13,7 +13,9 @@ namespace UnitTests.Pages.Users
     class UpdateProfilePage
     {
         #region TestSetup
-        // ProfilePage Model static field/attribute
+        /// <summary>
+        /// ProfilePage Model static field/attribute
+        /// </summary>
         public static ProfilePageModel PageModel;
 
         /// <summary>
