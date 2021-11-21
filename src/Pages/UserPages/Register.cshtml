@@ -7,7 +7,6 @@
 @inject JsonFileUserService UserService
 
 @model ContosoCrafts.WebSite.Pages.RegisterModel
-
 @*@model RegisterModel*@
 
 @{
@@ -46,7 +45,7 @@
                                         @Html.EditorFor(model => model.BindUser.Email, new { htmlAttributes = new { id = "email", @class = "form-control", placeholder = "Email" } })
                                     </div>
 
-                                    <span confirmPasswordError="emailError" asp-validation-for="BindUser.Email" class="text-danger"></span>
+                                    <span id="emailError" asp-validation-for="BindUser.Email" class="text-danger"></span>
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
 
@@ -102,56 +101,52 @@
 
         $("#username, #password, #email, #confirmPassword, #location").on('change keyup keypress keypress blur', function (e) {
 
-            var isEmpty = false
+            var noEmpty = false
 
-            var isPassMatch = false
+            var passMatch = false
 
-            var isError = false
+            var noError = false
 
-            //check if there are any errors existing enable button, otherwise disable button
-            if ($('#usernameError').html() != '' || $('#emailError').html() != '' || $('#passwordError').html() != '' || $('#confirmPasswordError').html() != '' || $('#locationError').html() != '') {
-                //No error
-                isError = false
-            }
-            else {
+            $('#submitRegistration').prop('disabled', true);
 
-                //error
-                isError = true
-            }
+            $('#confirmPasswordError').html('* Passwords do not match');
 
             //check if there are any empty fields existing enable button, otherwise disable button
-            if ($('#username').val() == '' || $('#email').val() == '' || $('#password').val() == '' || $('#confirmPassword').val() == '' || $('#location').val() == '') {
+            if ($('#username').val() != '' && $('#email').val() != '' && $('#password').val() != '' && $('#confirmPassword').val() != '' && $('#location').val() != '') {
 
-                isEmpty = true
-            }
+                //all fields not empty
+                noEmpty = true
+           }
 
-            else {
-
-                isEmpty = false
-            }
 
             //Check if confirm password == password, if not, disable button
-            if (($("#confirmPassword").val() != $("#password").val()) && $("#confirmPassword").val() != '') {
+            if (($("#confirmPassword").val() == $("#password").val())) {
 
-                isPassMatch = true
+                //passwords do match
+                passMatch = true
 
-                $('#confirmPasswordError').html('* Passwords do not match');
-            } else {
+                $('#confirmPasswordError').html('');
+           }
 
-                isPassMatch = false
-
+            // if both password and confirm password are empty, do not show error yet
+            if ($("#confirmPassword").val() == '' && $('#password').val() == '') {
+                //password fields still empty
                 $('#confirmPasswordError').html('');
             }
 
+            //check if there are any errors existing enable button, otherwise disable button
+            if ($('#usernameError').html() == '' && $('#emailError').html() == '' && $('#passwordError').html() == '' && $('#confirmPasswordError').html() == '' && $('#locationError').html() == '') {
+
+                //No errors in all fields
+                noError = true
+            }
 
             //check if the button should ultimately be enabled or disabled
-            if (isEmpty || isPassMatch || isError) {
+            if (noEmpty == true && passMatch == true && noError == true) {
 
-                $('#submitRegistration').prop('disabled', true);
-
-            } else {
-
+                //all fields are error free
                 $('#submitRegistration').prop('disabled', false);
+
             }
         });
     });
