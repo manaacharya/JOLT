@@ -222,5 +222,117 @@
         "NumCounts": 0
       }
     ]
+  },
+  {
+    "PollID": 440870,
+    "UserID": 197213,
+    "Title": " Billie Eilish\u2018s future or Madonna\u2019s legacy",
+    "Description": "Would you rather have Billie Eilish\u2018s future or Madonna\u2019s legacy?",
+    "OpinionItems": [
+      {
+        "OpinionName": " Billie Eilish\u2018s future",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Madonna\u2019s legacy",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 504612,
+    "UserID": 197213,
+    "Title": "short vs long life",
+    "Description": "Would you rather die in 20 years with no regrets or live to 100 with a lot of regrets?",
+    "OpinionItems": [
+      {
+        "OpinionName": "die in 20 years with no regrets",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "live to 100 with a lot of regrets",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 66814,
+    "UserID": 197213,
+    "Title": "Time with Ariana Grande or Rihanna?",
+    "Description": "Would you rather have a sing-off with Ariana Grande or a dance-off with Rihanna?",
+    "OpinionItems": [
+      {
+        "OpinionName": "Ariana Grande",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Rihanna?",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 114598,
+    "UserID": 197213,
+    "Title": "royalty 1,000 years ago or an average person today",
+    "Description": "Would you rather be royalty 1,000 years ago or an average person today?",
+    "OpinionItems": [
+      {
+        "OpinionName": "royalty 1,000 years ago",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "an average person today",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 306412,
+    "UserID": 197213,
+    "Title": "Tell or Not Tell",
+    "Description": "You are at your best friend\u0027s wedding just an hour before the ceremony is to start. Earlier that day, you came across definitive proof that your best friend\u0027s spouse-to-be is having an affair with the best man/maid of honor. What do you do? ",
+    "OpinionItems": [
+      {
+        "OpinionName": "Tell your best friend ",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Not  Tel your best friend",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 462124,
+    "UserID": 197213,
+    "Title": "watch a movie or the sunset?",
+    "Description": "Would you rather go watch a movie or go watch the sunset?",
+    "OpinionItems": [
+      {
+        "OpinionName": "movie! ",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "sunset! ",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 815278,
+    "UserID": 197213,
+    "Title": "Date Someone With No Emotions Or Date A Compulsive Liar?",
+    "Description": "Would You Rather Date Someone With No Emotions Or Date A Compulsive Liar?",
+    "OpinionItems": [
+      {
+        "OpinionName": "Someone With No Emotions",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Compulsive Liar",
+        "NumCounts": 0
+      }
+    ]
   }
 ]
