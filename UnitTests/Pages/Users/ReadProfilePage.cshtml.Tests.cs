@@ -12,7 +12,9 @@ namespace UnitTests.Pages.Users
     {
 
         #region TestSetup
-        // Read - ProfilePage Model static field/attribute
+        /// <summary>
+        /// Read - ProfilePage Model static field/attribute
+        /// </summary>
         public static ProfilePageModel PageModel;
 
         /// <summary>
