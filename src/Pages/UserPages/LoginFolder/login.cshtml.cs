@@ -48,37 +48,29 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public IActionResult OnPost()
         {
-            if (UserLoginInput.Username != null || UserLoginInput.Password != null)
+            if (UserLoginInput.Username == null || UserLoginInput.Password == null)
             {
-                //set inputverified to false 
-                bool InputVerified = false;
-
-                //check if pass is correct
-                InputVerified = UserService.IsCorrectPassword(UserLoginInput.Username, UserLoginInput.Password);
-
-                if (InputVerified)
-                {
-                    //create cookie with username 
-                    //UserService.CreateCookie("nameCookie", UserLoginInput.Username);
-
-                    //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
-                    return RedirectToPage("Login_Welcome", UserLoginInput.Username);
-                 }
-
-                 
-                    //message incorrect password
-                    Msg = "Invalid Username or Password";
-
-                    //redirect to page 
-                    return Page();
-                  
+                // null input exists 
+                Msg = "No Empty Entry";
+                // redirect to the same page 
+                return Page();
             }
 
-            //null input exists 
-            Msg = "No Empty Entry";
+            // set inputverified to false 
+            bool InputVerified = false;
+            // verify the input
+            InputVerified = UserService.IsCorrectPassword
+                (UserLoginInput.Username, UserLoginInput.Password);
 
-            //redirect to page 
-            return Page();
+            if (!InputVerified)
+            {
+                //message incorrect password
+                Msg = "Invalid Username or Password";
+                //redirect to the same page 
+                return Page();
+            }
+            //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
+            return RedirectToPage("Login_Welcome", UserLoginInput.Username);
         }
     }
 }
