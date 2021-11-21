@@ -25,6 +25,16 @@ namespace ContosoCrafts.WebSite.Pages
         public JsonFileUserService UserService { get; set; }
 
         /// <summary>
+        /// A message for user to see when username already exists
+        /// </summary>
+        public string DuplicateUserPrompt { get; set; }
+
+        /// <summary>
+        /// Show the link for login if true
+        /// </summary>
+        public bool ShowLoginLink { get; set;}
+
+        /// <summary>
         /// Defualt Construtor
         /// </summary>
         /// <param name="logger"></param>
@@ -35,8 +45,16 @@ namespace ContosoCrafts.WebSite.Pages
             //setting logger
             _logger = logger;
 
+<<<<<<< Updated upstream
             //userservice object
+=======
+            //default 
+            ShowLoginLink = false;
+
+            //userservice object 
+>>>>>>> Stashed changes
             UserService = userService;
+
         }
 
         /// <summary>
@@ -103,8 +121,13 @@ namespace ContosoCrafts.WebSite.Pages
 
             if(getUser != null)
             {
-                //Redirect to Log In. If User with the same Name Alreay Exists
-                return RedirectToPage("./LoginFolder/login");
+                DuplicateUserPrompt = "Username Already Exist, Log in with it?";
+                ShowLoginLink = true;
+                // stay at the same page
+                return Page();
+                // Redirect to Log In. If User with the same Name Alreay Exists
+                // return RedirectToPage("./LoginFolder/login");
+
             }
 
             //create User using User Information 
