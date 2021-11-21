@@ -11,7 +11,9 @@ namespace ContosoCrafts.WebSite.Pages.Product
     /// </summary>
     public class UpdateModel : PageModel
     {
-        // Data middletier
+        /// <summary>
+        /// Data middletier
+        /// </summary>
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
@@ -21,6 +23,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="productService"></param>
         public UpdateModel(JsonFileProductService productService)
         {
+            //set product service
             ProductService = productService;
         }
 
@@ -35,6 +38,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public void OnGet(string id)
         {
+            //get product record on based Id
             Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
         }
 
