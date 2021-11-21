@@ -12,7 +12,9 @@ namespace UnitTests.Pages.Error
     public class ErrorTests
     {
         #region TestSetup
-        // Error Model static field/attribute
+        /// <summary>
+        /// Error Model static field/attribute
+        /// </summary>
         public static ErrorModel PageModel;
 
         /// <summary>
