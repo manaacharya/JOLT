@@ -6,7 +6,7 @@ namespace ContosoCrafts.WebSite.Pages
 {
 
     /// <summary>
-    /// Creatiin of ErrorModel class to handle errors 
+    /// Create of ErrorModel class to handle errors 
     /// </summary>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
