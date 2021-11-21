@@ -12,7 +12,9 @@ namespace UnitTests.Pages.Privacy
     {
         #region TestSetup
 
-        // Privacy Model static field/attribute
+        /// <summary>
+        /// Privacy Model static field/attribute
+        /// </summary>
         public static PrivacyModel PageModel;
 
         /// <summary>
