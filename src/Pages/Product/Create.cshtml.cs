@@ -32,6 +32,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public IActionResult OnGet()
         {
+            //get all product records
             Product = ProductService.CreateData();
 
             // Redirect the webpage to the Update page populated with the data so the user can fill in the fields
