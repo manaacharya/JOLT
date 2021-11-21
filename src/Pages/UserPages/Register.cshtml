@@ -1,4 +1,6 @@
-﻿@page
+﻿
+
+@page
 
 @using ContosoCrafts.WebSite.Models
 
@@ -100,11 +102,11 @@
 
         $("#username, #password, #email, #confirmPassword, #location").on('change keyup keypress keypress blur', function (e) {
 
-            var noEmpty = false
+            var isEmpty = true
 
-            var passMatch = false
+            var passwordConfirmed = false
 
-            var noError = false
+            var Error = true
 
             $('#submitRegistration').prop('disabled', true);
 
@@ -114,7 +116,7 @@
             if ($('#username').val() != '' && $('#email').val() != '' && $('#password').val() != '' && $('#confirmPassword').val() != '' && $('#location').val() != '') {
 
                 //all fields not empty
-                noEmpty = true
+                isEmpty = false
            }
 
 
@@ -122,7 +124,7 @@
             if (($("#confirmPassword").val() == $("#password").val())) {
 
                 //passwords do match
-                passMatch = true
+                passwordConfirmed = true
 
                 $('#confirmPasswordError').html('');
            }
@@ -137,11 +139,11 @@
             if ($('#usernameError').html() == '' && $('#emailError').html() == '' && $('#passwordError').html() == '' && $('#confirmPasswordError').html() == '' && $('#locationError').html() == '') {
 
                 //No errors in all fields
-                noError = true
+                Error = false
             }
 
             //check if the button should ultimately be enabled or disabled
-            if (noEmpty == true && passMatch == true && noError == true) {
+            if (isEmpty == false && passwordConfirmed == true && Error == false) {
 
                 //all fields are error free
                 $('#submitRegistration').prop('disabled', false);
