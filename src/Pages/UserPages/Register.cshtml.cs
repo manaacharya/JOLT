@@ -48,6 +48,9 @@ namespace ContosoCrafts.WebSite.Pages
             //default 
             ShowLoginLink = false;
 
+            // default 
+            DuplicateUserPrompt = "";
+
             UserService = userService;
 
         }
@@ -116,10 +119,8 @@ namespace ContosoCrafts.WebSite.Pages
 
             if(getUser != null)
             {
-                DuplicateUserPrompt = "Username Already Exist, Log in with it?";
+                DuplicateUserPrompt = "Username Already Exist, Log in with your username?";
                 ShowLoginLink = true;
-                // stay at the same page
-                // return RedirectToPage("./Register");
                 return Page();
                 // Redirect to Log In. If User with the same Name Alreay Exists
                 // return RedirectToPage("./LoginFolder/login");
