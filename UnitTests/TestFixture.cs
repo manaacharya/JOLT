@@ -16,18 +16,13 @@ namespace UnitTests
         // Path to the data folder for the content
         public static string DataContentRootPath = "./data/";
 
+        /// <summary>
+        /// This is run before any tests occur 
+        /// </summary>
         [OneTimeSetUp]
         public void RunBeforeAnyTests()
         {
             // Run this code once when the test harness starts up.
-
-            // This will copy over the latest version of the database files
-
-            // C:\repos\5110\ClassBaseline\UnitTests\bin\Debug\net5.0\wwwroot\data
-            // C:\repos\5110\ClassBaseline\src\wwwroot\data
-            // C:\repos\5110\ClassBaseline\src\bin\Debug\net5.0\wwwroot\data
-
-
 
             // var DataWebPath = "../../../../src/bin/Debug/net5.0/wwwroot/data";
             var dataWebPath = "../../../../src/wwwroot/data";
@@ -35,6 +30,7 @@ namespace UnitTests
             //directory 
             var dataUTDirectory = "wwwroot";
 
+            //add forward slash to dataUTDirectory string
             var dataUTPath = dataUTDirectory + "/data";
 
             // Delete the Detination folder
