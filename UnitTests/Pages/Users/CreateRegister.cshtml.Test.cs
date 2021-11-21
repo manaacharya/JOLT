@@ -115,8 +115,10 @@ namespace UnitTests.Pages.Users
 
             // Assert
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
             // Confirm Page Redirection
-            Assert.AreEqual(true, getResult.PageName.Contains("login"));
+            // Assert.AreEqual(true, getResult.PageName.Contains("/Register"));
+            Assert.AreEqual(null, getResult.PageName);
 
         }
 
