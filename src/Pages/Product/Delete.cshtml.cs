@@ -40,6 +40,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public void OnGet(string id)
         {
+            //search for product based on id
             Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
         }
 
