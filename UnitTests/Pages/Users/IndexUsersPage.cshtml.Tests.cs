@@ -12,7 +12,9 @@ namespace UnitTests.Pages.Users
     class IndexUsersPage
     {
         #region TestSetup
-        // Users Page Model static field/attribute
+        /// <summary>
+        /// Users Page Model static field/attribute
+        /// </summary>
         public static UsersPageModel UsersPageModel;
 
         /// <summary>
