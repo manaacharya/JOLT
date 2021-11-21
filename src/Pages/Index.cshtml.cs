@@ -12,7 +12,9 @@ namespace ContosoCrafts.WebSite.Pages
     /// </summary>
     public class IndexModel : PageModel
     {
-        //create log category for IndexModel  
+        /// <summary>
+        /// Setting logger
+        /// </summary>
         private readonly ILogger<IndexModel> _logger;
 
         /// <summary>
@@ -56,6 +58,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+            //get all polls
             PollModels = PollServices.GetPolls();
         }
     }
