@@ -19,8 +19,6 @@ namespace ContosoCrafts.WebSite.Models
         /// required to min 6 characters and field is required for login 
         /// </summary>
         [Required(ErrorMessage = "* This field is required")]
-        [DataType(DataType.Password)]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "* Must be at least 6 characters long")]
         public string Password { get; set; }
     }
 }
