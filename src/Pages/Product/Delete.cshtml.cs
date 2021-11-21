@@ -23,6 +23,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="productService"></param>
         public DeleteModel(JsonFileProductService productService)
         {
+            //set product service
             ProductService = productService;
         }
 
