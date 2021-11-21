@@ -48,7 +48,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public IActionResult OnPost()
         {
-            if (UserLoginInput.Username == null || UserLoginInput.Password == null)
+            if (UserLoginInput.Username != null || UserLoginInput.Password != null)
             {
                 //set inputverified to false 
                 bool InputVerified = false;
@@ -65,14 +65,13 @@ namespace ContosoCrafts.WebSite.Pages
                     return RedirectToPage("Login_Welcome", UserLoginInput.Username);
                  }
 
-                 else
-                 {
+                 
                     //message incorrect password
                     Msg = "Invalid Username or Password";
 
                     //redirect to page 
                     return Page();
-                  }
+                  
             }
 
             //null input exists 
