@@ -18,6 +18,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="webHostEnvironment"></param>
         public JsonFileProductService(IWebHostEnvironment webHostEnvironment)
         {
+            //create webHostEnvironment
             WebHostEnvironment = webHostEnvironment;
         }
 
@@ -100,7 +101,11 @@ namespace ContosoCrafts.WebSite.Services
 
             // Add the Rating to the Array
             var ratings = data.Ratings.ToList();
+
+            // add rating to list
             ratings.Add(rating);
+            
+            //convert list to array
             data.Ratings = ratings.ToArray();
 
             // Save the data back to the data store
