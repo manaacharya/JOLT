@@ -30,6 +30,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// </summary>
         public void OnGet()
         {
+            //get all product records
             Products = ProductService.GetAllData();
         }
     }
