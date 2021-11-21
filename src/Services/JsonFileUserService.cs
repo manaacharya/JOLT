@@ -20,6 +20,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="webHostEnvironment"></param>
         public JsonFileUserService(IWebHostEnvironment webHostEnvironment)
         {
+            //create WebHostEnvironment
             WebHostEnvironment = webHostEnvironment;
         }
 
@@ -91,6 +92,7 @@ namespace ContosoCrafts.WebSite.Services
         {
             UserModel userModel = GetUser(updateUser.UpdateID);
 
+            //ensure user user model is not null
             if (userModel == null)
             {
                 return null;
@@ -110,15 +112,18 @@ namespace ContosoCrafts.WebSite.Services
             userModel.Location = updateUser.UpdateLocation;
 
             // Find User from DataSet and Overwrite
-
             List<UserModel> userModels = GetUsers().ToList();
 
+            //Remove all users with current id
             userModels.RemoveAll(x => x.UserID == userModel.UserID);
+
+            //add user to user model
             userModels.Add(userModel);
 
-            //save data into database 
+            //save data into database
             SaveData(userModels);
 
+            //return user model
             return userModel;
         }
 
