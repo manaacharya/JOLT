@@ -36,7 +36,8 @@
                                         @{
                                             if (Model.ShowLoginLink)
                                             {
-                                                @Model.DuplicateUserPrompt
+                                                
+                                                <span>@Model.DuplicateUserPrompt</span>
                                                 <a asp-page="./LoginFolder/login">Click To Login</a>
                                             }
                                         }
