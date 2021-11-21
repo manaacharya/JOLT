@@ -10,7 +10,9 @@ namespace ContosoCrafts.WebSite.Pages.Product
     /// </summary>
     public class CreateModel : PageModel
     {
-        // Data middle tier
+        /// <summary>
+        /// Data middle tier
+        /// </summary>
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
