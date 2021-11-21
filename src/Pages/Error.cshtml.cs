@@ -11,14 +11,15 @@ namespace ContosoCrafts.WebSite.Pages
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
     {
-        //stashing time
-
         /// <summary>
         /// method to get and set userID 
         /// </summary>
         public string RequestId { get; set; }
 
-        //bool if RequestId is empty or not 
+
+        /// <summary>
+        ///bool if RequestId is empty or not 
+        /// </summary>
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         //create log category for ErrorModel 
@@ -30,6 +31,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <param name="logger"></param>
         public ErrorModel(ILogger<ErrorModel> logger)
         {
+            //setting logger
             _logger = logger;
         }
 
@@ -38,6 +40,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+            //get requested onGet()
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
