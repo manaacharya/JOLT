@@ -170,10 +170,11 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
-        /// FX: Get the password of a user(given an user entry is found)
+        /// Get the password of a user(given an user entry is found)
         /// </summary>
         /// <param name="userName"></param>
-        /// <returns></returns>
+        /// <returns>userpassword if the user eixst; null otherwise
+        /// </returns>
         public string GetPassWord(string userName)
         {
             var getUser = GetUser(userName);
@@ -195,7 +196,10 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        /// <returns></returns>
+        /// <returns>true if password is correct
+        ///         false if password is incorrect or 
+        ///         username does not exist
+        /// </returns>
         public bool IsCorrectPassword(string userName, string userPassword)
         {
             // try
@@ -227,7 +231,7 @@ namespace ContosoCrafts.WebSite.Services
         /// After create the user can update to set values
         /// </summary>
         /// <param name="user"></param>
-        /// <returns></returns>
+        /// <returns>newly created data</returns>
         public UserModel CreateData(UserModel user)
         {
             // Random Instance Created
@@ -263,7 +267,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <summary>
         /// Remove the item from the system
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">true if sucess; otherwise false(when user id does not exist)</param>
         public bool DeleteData(int id)
         {
             // Get User By ID
