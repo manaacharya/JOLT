@@ -40,6 +40,7 @@ namespace ContosoCrafts.WebSite.Pages
         public ProfilePageModel(ILogger<ProfilePageModel> logger,
             JsonFileUserService userService)
         {
+            //set logger
             _logger = logger;
 
             //create userService object 
@@ -84,6 +85,7 @@ namespace ContosoCrafts.WebSite.Pages
                 // Error Updating User
                 Message = $"Error Updating {UpdateUser.UpdateName}";
 
+                //return to page
                 return Page(); //RedirectToPage("ProfilePage");
 
             }
@@ -119,6 +121,7 @@ namespace ContosoCrafts.WebSite.Pages
             //message to confirm user is deleted 
             Message = $"User deleted.";
 
+            //return to page
             return Redirect("/UserPages/LoginFolder/login"); 
         }
     }
