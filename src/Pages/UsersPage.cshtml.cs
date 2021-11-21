@@ -33,6 +33,7 @@ namespace ContosoCrafts.WebSite.Pages
         public UsersPageModel(ILogger<UsersPageModel> logger,
             JsonFileUserService userService)
         { 
+            //create logger
             _logger = logger;
 
             //Userservice object 
@@ -44,6 +45,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
+            //get all user records
             Users = UserServices.GetUsers();
         }
      }
