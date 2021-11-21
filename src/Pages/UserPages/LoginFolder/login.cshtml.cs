@@ -5,6 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ContosoCrafts.WebSite.Pages
 {
+    /// <summary>
+    /// This is the login model for loggin in
+    /// </summary>
     public class LoginPageModel : PageModel
     {
         // logger logs the information ex system info, error 
@@ -18,6 +21,7 @@ namespace ContosoCrafts.WebSite.Pages
         public LoginPageModel(ILogger<LoginPageModel> logger,
             JsonFileUserService userService)
         {
+            //set logger
             _logger = logger;
 
             //Userservice object
@@ -46,27 +50,36 @@ namespace ContosoCrafts.WebSite.Pages
         {
             if (UserLoginInput.Username == null || UserLoginInput.Password == null)
             {
-                // null input exists 
-                Msg = "No Empty Entry";
-                // redirect to the same page 
-                return Page();
+                //set inputverified to false 
+                bool InputVerified = false;
+
+                //check if pass is correct
+                InputVerified = UserService.IsCorrectPassword(UserLoginInput.Username, UserLoginInput.Password);
+
+                if (InputVerified)
+                {
+                    //create cookie with username 
+                    //UserService.CreateCookie("nameCookie", UserLoginInput.Username);
+
+                    //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
+                    return RedirectToPage("Login_Welcome", UserLoginInput.Username);
+                 }
+
+                 else
+                 {
+                    //message incorrect password
+                    Msg = "Invalid Username or Password";
+
+                    //redirect to page 
+                    return Page();
+                  }
             }
 
-            // set inputverified to false 
-            bool InputVerified = false;
-            // verify the input
-            InputVerified = UserService.IsCorrectPassword
-                (UserLoginInput.Username, UserLoginInput.Password);
+            //null input exists 
+            Msg = "No Empty Entry";
 
-            if(!InputVerified)
-            {
-                //message incorrect password
-                Msg = "Invalid Username or Password";
-                //redirect to the same page 
-                return Page();
-            }
-            //Response.Cookies.Append("nameCookie", UserLoginInput.username); // Cookies Creation -- Edwin
-            return RedirectToPage("Login_Welcome", UserLoginInput.Username);
+            //redirect to page 
+            return Page();
         }
     }
 }
