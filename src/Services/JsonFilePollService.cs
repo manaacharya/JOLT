@@ -257,7 +257,14 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
-        public bool addOpinion(int pollID, CreatePollModel newPoll)
+        /// <summary>
+        /// Add opinion, two at a time to a poll 
+        /// </summary>
+        /// <param name="pollID"></param>
+        /// <param name="opinionOne"></param>
+        /// <param name="opinionTwo"></param>
+        /// <returns></returns>
+        public bool addOpinion(int pollID, string opinionOne, string opinionTwo)
         {
             // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
@@ -274,9 +281,9 @@ namespace ContosoCrafts.WebSite.Services
             //create new opinion items
             var OpinionItems = new List<OpinionItem>() {
                     //first opinion
-                    new OpinionItem(newPoll.CreateOpinionOne, 0),
+                    new OpinionItem(opinionOne, 0),
                     //second opinion
-                    new OpinionItem(newPoll.CreateOpinionTwo, 0)
+                    new OpinionItem(opinionTwo, 0)
                 };
             //Add new opinion items to poll item 
             pollModel.OpinionItems.Concat(OpinionItems);
