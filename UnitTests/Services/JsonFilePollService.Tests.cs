@@ -472,5 +472,27 @@ namespace UnitTests.Services
         }
 
         #endregion GetTotalVotes
+
+        #region addOpinion
+
+        [Test]
+        public void AddOpinion_InValid_PollModel_Should_Return_Zero()
+        {
+            // Arrange
+            int pollId = 9999;
+
+            //Act
+            var result = TestHelper.PollService.addOpinion(pollId, null);
+
+            //Rest
+
+            //Assert
+
+            //Check result is false
+            Assert.AreEqual(false, result);
+
+        }
+
+        #endregion addOpinion 
     }
 }
