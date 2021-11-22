@@ -1,6 +1,4 @@
-﻿
-
-@page
+﻿@page
 
 @using ContosoCrafts.WebSite.Models
 
@@ -13,10 +11,23 @@
 @{
 
     ViewData["Title"] = "Register";
-
 }
 
 <div class="container">
+
+    @{
+        if (Model.ShowLoginLink)
+        {
+            <h3 class="clearfix">@Model.DuplicateUserPrompt</h3>
+
+            <a asp-page="/UserPages/LoginFolder/login"> Go To Login Page
+            </a>
+
+            <br />
+        }
+
+    }
+
     <div class="row">
         <div class="container">
             <div class="row">
@@ -36,7 +47,7 @@
                                         @{
                                             if (Model.ShowLoginLink)
                                             {
-                                                
+
                                                 <p>@Model.DuplicateUserPrompt</p>
                                                 <a asp-page="./LoginFolder/login">Click To Login</a>
                                             }
@@ -124,7 +135,7 @@
 
                 //all fields not empty
                 isEmpty = false
-           }
+            }
 
 
             //Check if confirm password == password, if not, disable button
@@ -134,7 +145,7 @@
                 passwordConfirmed = true
 
                 $('#confirmPasswordError').html('');
-           }
+            }
 
             // if both password and confirm password are empty, do not show error yet
             if ($("#confirmPassword").val() == '' && $('#password').val() == '') {
