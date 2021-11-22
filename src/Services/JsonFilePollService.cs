@@ -265,6 +265,12 @@ namespace ContosoCrafts.WebSite.Services
             // Get Poll Model based on Poll ID
             PollModel pollModel = getPolls.Find(x => x.PollID.Equals(pollID));
 
+            //if poll does not exist, return false
+            if (pollModel == null)
+            {
+                return false; 
+            }
+
             //create new opinion items
             var OpinionItems = new List<OpinionItem>() {
                     //first opinion
