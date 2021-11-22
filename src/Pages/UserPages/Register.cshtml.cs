@@ -49,7 +49,7 @@ namespace ContosoCrafts.WebSite.Pages
             ShowLoginLink = false;
 
             // default 
-            DuplicateUserPrompt = "";
+            DuplicateUserPrompt = generatePrompt(ShowLoginLink);
 
             UserService = userService;
 
@@ -71,7 +71,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPost()
         {
-            // Create a Regex for checking if username contains only number or letters
+            /*// Create a Regex for checking if username contains only number or letters
             Regex usernameRg = new Regex(@"^[a-zA-Z0-9]+$");
 
             // Create a Regex for checking valid email format
@@ -82,7 +82,6 @@ namespace ContosoCrafts.WebSite.Pages
 
             // Create a Regex for checking that only letters are in string
             Regex passwordRg = new Regex(@"^[\\sa-zA-Z0-9,!#%@&()-+]*$");
-
 
             //use regular expression to check if username contains only number or letters
             if (usernameRg.IsMatch(BindUser.Username) == false)
@@ -112,19 +111,18 @@ namespace ContosoCrafts.WebSite.Pages
             if (passwordRg.IsMatch(BindUser.Password) == false)
             {
                 return Page();
-            }
+            }*/
 
             // Check whether User Already Exists
             var getUser = UserService.GetUser(BindUser.Username);
 
             if(getUser != null)
             {
-                DuplicateUserPrompt = "Username Already Exist, Log in with your username?";
                 ShowLoginLink = true;
+                DuplicateUserPrompt = generatePrompt(ShowLoginLink);
                 return Page();
                 // Redirect to Log In. If User with the same Name Alreay Exists
                 // return RedirectToPage("./LoginFolder/login");
-
             }
 
             //create User using User Information 
@@ -134,5 +132,13 @@ namespace ContosoCrafts.WebSite.Pages
             // Redirect to Login Welcome
             return RedirectToPage("./LoginFolder/Login_Welcome", userModel.Username);
         }
+
+        public string generatePrompt(bool ShowLink)
+        {
+            if (!ShowLink) return "";
+            return "Username Already Exist, Log in with your username?";
+        }
     }
+
+    
 }
