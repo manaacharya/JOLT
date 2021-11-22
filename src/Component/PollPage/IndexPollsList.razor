@@ -5,6 +5,8 @@
 @inject JsonFileUserService UserService
 
 
+<h3>@PrototypeMessage</h3>
+
 <div class="container">
     <div class="row">
         @{
@@ -59,7 +61,7 @@
                             <hr />
                             <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Submit Vote</button>
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button @onclick="(e => CapturedPoll(poll.PollID, poll.Title))" name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 Add Opinions
                             </button>
 
@@ -70,47 +72,51 @@
                     </div>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@poll.Title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
 
-                                <label>Opinion One</label>
-
-                                <input type="text" />
-
-                                <label>Opinion Two</label>
-
-                                <input type="text" />
+            }
 
 
-                                <label>Opinion Three</label>
 
-                                <input type="text" />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">@PollTitle</h5>
+                            <button type="button" id="sTableBtn" name="sTableBtn" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
-                                <br />
-                                <button> Submit Opinions @poll.PollID</button>
+                            <label>Opinion One</label>
+
+                            <input type="text" />
+
+                            <label>Opinion Two</label>
+
+                            <input type="text" />
 
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <label>Opinion Three</label>
+
+                            <input type="text" />
+
+                            <br />
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="CloseBtn" name="CloseBtn"class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" @onclick="(e => PrintMessage(PollID,PollTitle))" id="submitOpinionsBtn" name="submitOpinionsBtn" class="btn btn-primary">Add Opinions</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
 
-            }
+
         }
     </div>
 </div>
@@ -127,6 +133,23 @@
     /// Opinion Attribute
     /// </summary>
     string Opinion = "";
+
+    string PollTitle = "";
+
+    string PrototypeMessage = "";
+
+
+    void CapturedPoll(int id, string title)
+    {
+        PollID = id;
+        PollTitle = title;
+    }
+
+
+    void PrintMessage(int id, string Title)
+    {
+        PrototypeMessage = PollID + "HAVE A TITLE " + PollTitle;
+    }
 
     /// <summary>
     /// Update PollID and opinion attributes
