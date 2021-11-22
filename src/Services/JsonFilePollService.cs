@@ -257,6 +257,36 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        public bool addOpinion(int pollID, CreatePollModel newPoll)
+        {
+            // Get List of Polls from Data-Set
+            List<PollModel> getPolls = GetPolls().ToList();
+
+            // Get Poll Model based on Poll ID
+            PollModel pollModel = getPolls.Find(x => x.PollID.Equals(pollID));
+
+            //create new opinion items
+            var OpinionItems = new List<OpinionItem>() {
+                    //first opinion
+                    new OpinionItem(newPoll.CreateOpinionOne, 0),
+                    //second opinion
+                    new OpinionItem(newPoll.CreateOpinionTwo, 0)
+                };
+            //Add new opinion items to poll item 
+            pollModel.OpinionItems.Concat(OpinionItems);
+
+            //Remove old poll model 
+            getPolls.RemoveAll(x => x.PollID == pollModel.PollID);
+
+            //Add now updated data set
+            getPolls.Add(pollModel);
+
+            // Save DataSet
+            SavePollData(getPolls);
+
+            return true;
+        }
+
 
         /// <summary>
         /// Creates and Add New Poll Model to Polls Json Dataset/Database.
