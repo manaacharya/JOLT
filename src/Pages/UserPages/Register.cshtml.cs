@@ -80,11 +80,17 @@ namespace ContosoCrafts.WebSite.Pages
             // Create a Regex for checking that only letters are in string
             Regex locationRg = new Regex(@"^[a-zA-Z' ']+$");
 
-            /*// Create a Regex for checking that only letters are in string
-            Regex passwordRg = new Regex(@"^[\\sa-zA-Z0-9,!#%@&()-+]*$");*/
+            // Create a Regex for checking that only letters are in string
+            Regex passwordRg = new Regex(@"^[\\sa-zA-Z0-9,!#%@&()-+]*$");
 
             //use regular expression to check if username contains only number or letters
             if (usernameRg.IsMatch(BindUser.Username) == false)
+            {
+                return Page();
+            }
+
+            //check if password is not valid
+            if (passwordRg.IsMatch(BindUser.Password) == false)
             {
                 return Page();
             }
@@ -107,11 +113,7 @@ namespace ContosoCrafts.WebSite.Pages
                 return Page();
             }
 
-            /*//check if password is not valid
-            if (passwordRg.IsMatch(BindUser.Password) == false)
-            {
-                return Page();
-            }*/
+            
 
             // Check whether User Already Exists
             var getUser = UserService.GetUser(BindUser.Username);
