@@ -43,16 +43,6 @@
                                     <div class="input-group mb-3">
                                         @Html.EditorFor(model => model.BindUser.Username, new { htmlAttributes = new { id = "username", @class = "form-control", placeholder = "Username" } })
                                     </div>
-                                    <div>
-                                        @{
-                                            if (Model.ShowLoginLink)
-                                            {
-
-                                                <p>@Model.DuplicateUserPrompt</p>
-                                                <a asp-page="./LoginFolder/login">Click To Login</a>
-                                            }
-                                        }
-                                    </div>
                                     <span id="usernameError" asp-validation-for="BindUser.Username" class="text-danger"></span>
                                 </div>
 
