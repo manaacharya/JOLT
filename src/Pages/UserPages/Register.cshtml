@@ -11,17 +11,17 @@
 @{
 
     ViewData["Title"] = "Register";
+    bool showLink = Model.ShowLoginLink;
 }
 
 <div class="container">
 
     @{
-        if (Model.ShowLoginLink)
+        if (showLink)
         {
             <h3 class="clearfix">@Model.DuplicateUserPrompt</h3>
 
-            <a asp-page="/UserPages/LoginFolder/login"> Go To Login Page
-            </a>
+            <a asp-page="/UserPages/LoginFolder/login"> Go To Login </a>
 
             <br />
         }
