@@ -115,10 +115,7 @@ namespace UnitTests.Pages.Users
 
             // Assert
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
-            Assert.AreEqual("Username Already Exist, Log in with your username?", message);
-            // Confirm Page Redirection
-            // Assert.AreEqual(true, getResult.PageName.Contains("/Register"));
-           
+            Assert.AreEqual("Username Already Exist, Log in with your username?", message);           
         }
 
 
@@ -187,19 +184,21 @@ namespace UnitTests.Pages.Users
             // UserModel instance created
             PageModel.BindUser = new UserModel()
             {
-                //id 
+                // id 
                 UserID = userID,
 
-                //username 
+                // username 
                 Username = "TestValidUsername",
 
-                //password to fail 
-                Password = "pass", //password should be more than 6
+                // password to fail 
+                // Valid passwords are more than 6 and all English characters
+                Password = "日本語", 
+                // Password = "~!@#@#$#%%$^&$#%%^$%#$%^$#$",
 
-                //email 
+                // email 
                 Email = "TestvalidEmail@gmail.com",
 
-                //location 
+                // location 
                 Location = "TestvalidLocation"
             };
 
@@ -212,7 +211,8 @@ namespace UnitTests.Pages.Users
 
             //Assert
             // Confirm that no new recorded was added
-            Assert.AreEqual(oldCount, TestHelper.UserService.GetUsers().Count());
+            var currentCount = TestHelper.UserService.GetUsers().Count();
+            Assert.AreEqual(oldCount, currentCount);
         }
 
         /// <summary>
