@@ -36,7 +36,7 @@
             <div class="row">
 
                 <div class="col-auto">
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <canvas id="myReadChart" width="400" height="400"></canvas>
 
                 </div>
 
@@ -58,20 +58,16 @@
 
     var getColors = [];
 
-    function ExtractLabelVotes(size)
-    {
-        for (var i = 0; i < size; i++)
-        {
+    function ExtractLabelVotes(size) {
+        for (var i = 0; i < size; i++) {
             getlabels[i] = opinionObject[i].OpinionName;
             getVotes[i] = opinionObject[i].NumCounts;
         }
     }
 
-    function GenerateRandomColors(size)
-    {
+    function GenerateRandomColors(size) {
 
-        for (var i = 0; i < size; i++)
-        {
+        for (var i = 0; i < size; i++) {
             var red = Math.floor(Math.random() * 254);
             var green = Math.floor(Math.random() * 254);
             var blue = Math.floor(Math.random() * 254);
@@ -82,8 +78,8 @@
     }
 
 
+    const ctx = document.getElementById('myReadChart');
 
-    const ctx = document.getElementById('myChart');
 
     var dataJson = document.getElementById('opinionsJson').value;
 
@@ -109,16 +105,22 @@
 
 
     const myChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             labels: getlabels,
             datasets: [{
-                label: '# Votes',
+                label: '# of Votes',
                 data: getVotes,
                 backgroundColor: getColors,
                 hoverOffset: 4
             }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
-
 </script>
