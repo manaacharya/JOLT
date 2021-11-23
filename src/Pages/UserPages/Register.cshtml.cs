@@ -18,7 +18,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         private readonly ILogger<RegisterModel> _logger;
 
-
         /// <summary>
         /// Data middletier
         /// </summary>
@@ -33,6 +32,12 @@ namespace ContosoCrafts.WebSite.Pages
         /// Show the link for login if true
         /// </summary>
         public bool ShowLoginLink { get; set;}
+
+        /// <summary>
+        /// Usermodel object BindUser  
+        /// </summary>
+        [BindProperty]
+        public UserModel BindUser{ get; set; }
 
         /// <summary>
         /// Defualt Construtor
@@ -54,13 +59,6 @@ namespace ContosoCrafts.WebSite.Pages
             UserService = userService;
 
         }
-
-        /// <summary>
-        /// Usermodel object BindUser  
-        /// </summary>
-        [BindProperty]
-        public UserModel BindUser{ get; set; }
-
 
         /// <summary>
         /// Post the model back to the page
@@ -112,8 +110,6 @@ namespace ContosoCrafts.WebSite.Pages
             {
                 return Page();
             }
-
-            
 
             // Check whether User Already Exists
             var getUser = UserService.GetUser(BindUser.Username);
