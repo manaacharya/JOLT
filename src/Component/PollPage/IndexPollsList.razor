@@ -1,11 +1,10 @@
 ﻿@using ContosoCrafts.WebSite.Models
 @using ContosoCrafts.WebSite.Services
-@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web  
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
 
 
-<h3>@PrototypeMessage</h3>
 
 <div class="container">
     <div class="row">
@@ -75,8 +74,6 @@
 
             }
 
-
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -89,66 +86,58 @@
                         </div>
                         <div class="modal-body">
 
-                            <label>Opinion One</label>
+                            <label>Opinion One </label>
 
-                            <input type="text" />
-
-                            <label>Opinion Two</label>
-
-                            <input type="text" />
-
-
-                            <label>Opinion Three</label>
-
-                            <input type="text" />
+                            <input value="@OpinionOne" id="opinionOneInput" @onchange="@((ChangeEventArgs __e) => OpinionOne = __e.Value.ToString())" />
 
                             <br />
 
+                            <label>Opinion Two</label>
+
+                            <input value="@OpinionTwo" id="opinionTwoInput" @onchange="@((ChangeEventArgs __e) => OpinionTwo = __e.Value.ToString())" />
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="CloseBtn" name="CloseBtn"class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" @onclick="(e => PrintMessage(PollID,PollTitle))" id="submitOpinionsBtn" name="submitOpinionsBtn" class="btn btn-primary">Add Opinions</button>
+                            <button type="button" id="CloseBtn" name="CloseBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" @onclick="(e => SubmitAddOpinion(PollID,OpinionOne, OpinionTwo))" id="submitOpinionsBtn" data-dismiss="modal" name="submitOpinionsBtn" class="btn btn-primary">Add Opinions</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         }
     </div>
 </div>
 
-
 @code {
 
-    /// <summary>
+  
     /// Poll ID Attribute
-    /// </summary>
     int PollID = -99;
 
-    /// <summary>
-    /// Opinion Attribute
-    /// </summary>
+    //opinion attribute
     string Opinion = "";
 
+    //new opinion one 
+    string OpinionOne = "";
+
+    //new opinion two 
+    string OpinionTwo = "";
+
+    //title of poll
     string PollTitle = "";
 
-    string PrototypeMessage = "";
-
-
+    /// <summary>
+    /// method to capture current poll that is being examined by user
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="title"></param>
     void CapturedPoll(int id, string title)
     {
+        //poll id
         PollID = id;
+
+        //poll title
         PollTitle = title;
-    }
-
-
-    void PrintMessage(int id, string Title)
-    {
-        PrototypeMessage = PollID + "HAVE A TITLE " + PollTitle;
     }
 
     /// <summary>
@@ -180,5 +169,29 @@
 
         // Send it to Poll Services and Return the Result
         return PollService.UpdateOpinionVote(pollidInput, opinionInput);
+    }
+
+    bool SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
+    {
+        //validate poll id input
+        if (pollID < 0)
+        {
+            return false;
+        }
+
+        //Send to Poll Services and return result
+        bool result = PollService.addOpinion(pollID, opinionItemOne, opinionItemTwo);
+
+        //check that result is finished 
+        if (result == true)
+        {
+            //Reset opinions 
+            OpinionOne = String.Empty;
+
+            //reset opinion two 
+            OpinionTwo = String.Empty;
+        }
+
+        return result;
     }
 }
