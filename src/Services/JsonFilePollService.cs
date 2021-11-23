@@ -277,20 +277,19 @@ namespace ContosoCrafts.WebSite.Services
             {
                 return false; 
             }
+            //remove old poll model 
+            getPolls.Remove(pollModel);
 
             //create new opinion items
-            var OpinionItems = new List<OpinionItem>() {
-                    //first opinion
-                    new OpinionItem(opinionOne, 0),
-                    //second opinion
-                    new OpinionItem(opinionTwo, 0)
-                };
+            List<OpinionItem> getOpinions = pollModel.OpinionItems.ToList();
+
+            //add new opinion items to list 
+            getOpinions.Add(new OpinionItem(opinionOne, 0));
+            getOpinions.Add(new OpinionItem(opinionTwo, 0));
+
             //Add new opinion items to poll item 
-            pollModel.OpinionItems.Concat(OpinionItems);
-
-            //Remove old poll model 
-            getPolls.RemoveAll(x => x.PollID == pollModel.PollID);
-
+            pollModel.OpinionItems = getOpinions; 
+ 
             //Add now updated data set
             getPolls.Add(pollModel);
 
