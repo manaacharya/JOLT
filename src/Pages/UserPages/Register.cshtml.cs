@@ -137,6 +137,4 @@ namespace ContosoCrafts.WebSite.Pages
             return "Username Already Exist, Log in with your username?";
         }
     }
-
-    
 }
