@@ -102,25 +102,17 @@
     // Debugging
     console.log(getColors);
 
-
-
     const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
             labels: getlabels,
             datasets: [{
-                label: '# of Votes',
+                label: '# Votes',
                 data: getVotes,
                 backgroundColor: getColors,
                 hoverOffset: 4
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
     });
+
 </script>
