@@ -87,6 +87,17 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
+        /// Serialize a Opinion Item Collection to Json
+        /// </summary>
+        /// <param name="opinions"></param>
+        /// <returns></returns>
+        public string GetOpinionsJsons(IEnumerable<OpinionItem> opinions)
+        {
+            // Return Json Data
+            return JsonSerializer.Serialize<IEnumerable<OpinionItem>>(opinions);
+        }
+
+        /// <summary>
         /// Return a PollModel based on ID
         /// </summary>
         /// <param name="pollID"></param>
