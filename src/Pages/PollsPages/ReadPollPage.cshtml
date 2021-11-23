@@ -1,4 +1,124 @@
 ﻿@page
 @model ContosoCrafts.WebSite.Pages.PollsPages.ReadPollPageModel
 @{
+    ViewData["Title"] = "Read Poll";
+
+    <input id="opinionsJson" value="@Model.OpinionJsonData" hidden />
 }
+
+
+
+<body style=" background-image:none !important; background-color: rgb(36 36 36 / 0.48) !important;">
+
+    <div class="container">
+
+        <div class="row">
+            <h3>@Model.PollModel.Title  Visualization</h3>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h5>Poll Title: </h5>
+                <h5>@Model.PollModel.Title</h5>
+            </div>
+            <div class="col-6">
+                <h5>Poll Description: </h5>
+                <h5>@Model.PollModel.Description</h5>
+            </div>
+            <div class="col-6">
+                <h5>Author: </h5>
+                <h5>@Model.Author.Username</h5>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <br />
+            <div class="row">
+
+                <div class="col-auto">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    var getlabels = [];
+
+    var getVotes = [];
+
+    var getColors = [];
+
+    function ExtractLabelVotes(size)
+    {
+        for (var i = 0; i < size; i++)
+        {
+            getlabels[i] = opinionObject[i].OpinionName;
+            getVotes[i] = opinionObject[i].NumCounts;
+        }
+    }
+
+    function GenerateRandomColors(size)
+    {
+
+        for (var i = 0; i < size; i++)
+        {
+            var red = Math.floor(Math.random() * 254);
+            var green = Math.floor(Math.random() * 254);
+            var blue = Math.floor(Math.random() * 254);
+
+            getColors[i] = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+        }
+    }
+
+
+
+    const ctx = document.getElementById('myChart');
+
+    var dataJson = document.getElementById('opinionsJson').value;
+
+    var opinionObject = JSON.parse(dataJson);
+
+
+    // Dissect Json Object
+    ExtractLabelVotes(opinionObject.length);
+
+    // Get Random COlor
+    GenerateRandomColors(opinionObject.length);
+
+
+    // Debugging
+    console.log(dataJson);
+    // Debugging
+    console.log(getlabels);
+    // Debugging
+    console.log(getVotes);
+    // Debugging
+    console.log(getColors);
+
+
+
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: getlabels,
+            datasets: [{
+                label: '# Votes',
+                data: getVotes,
+                backgroundColor: getColors,
+                hoverOffset: 4
+            }]
+        }
+    });
+
+</script>
