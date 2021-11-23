@@ -482,7 +482,7 @@ namespace UnitTests.Services
             int pollId = 9999;
 
             //Act
-            var result = TestHelper.PollService.addOpinion(pollId, null);
+            var result = TestHelper.PollService.addOpinion(pollId, "","");
 
             //Rest
 
