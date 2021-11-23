@@ -104,7 +104,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPostDeleteProfile(int id)
         {
-
             //result of userID using userservices 
             bool result = UserServices.DeleteData(id);
 
@@ -115,7 +114,6 @@ namespace ContosoCrafts.WebSite.Pages
 
                 //return back to profilepage 
                 return RedirectToPage("ProfilePage"); 
-
             }
 
             //message to confirm user is deleted 
