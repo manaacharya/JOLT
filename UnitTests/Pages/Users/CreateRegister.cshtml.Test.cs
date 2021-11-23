@@ -170,7 +170,7 @@ namespace UnitTests.Pages.Users
         /// Test for OnPost Invalid UserModel password
         /// </summary>
         [Test]
-        public void OnPost_InValid_UserModel_Password_Should_Not_Add_New_Record()
+        public void OnPost_UserModel_Password_With_Invalid_Characters_Should_Not_Add_New_Record()
         {
             //Arrange
 
@@ -192,8 +192,7 @@ namespace UnitTests.Pages.Users
 
                 // password to fail 
                 // Valid passwords are more than 6 and all English characters
-                Password = "日本語", 
-                // Password = "~!@#@#$#%%$^&$#%%^$%#$%^$#$",
+                Password = "~!@#@#$#%%$^&$#%%^$%#$%^$#$",
 
                 // email 
                 Email = "TestvalidEmail@gmail.com",
@@ -202,6 +201,52 @@ namespace UnitTests.Pages.Users
                 Location = "TestvalidLocation"
             };
 
+            // Act
+            // Fetch result from OnPost
+            var result = PageModel.OnPost() as RedirectToPageResult;
+
+            //Reset
+
+            //Assert
+            // Confirm that no new recorded was added
+            var currentCount = TestHelper.UserService.GetUsers().Count();
+            Assert.AreEqual(oldCount, currentCount);
+        }
+
+        /// <summary>
+        /// Test for OnPost Invalid UserModel password
+        /// </summary>
+        [Test]
+        public void OnPost__Length_Less_Than_6_Password_Should_Not_Add_New_Record()
+        {
+            //Arrange
+
+            var oldCount = TestHelper.UserService.GetUsers().Count();
+
+            // Random object instance creation
+            Random rnd = new Random();
+
+            int userID = rnd.Next(1, 999999);
+
+            // UserModel instance created
+            PageModel.BindUser = new UserModel()
+            {
+                // id 
+                UserID = userID,
+
+                // username 
+                Username = "TestValidUsername",
+
+                // password to fail 
+                // Valid passwords are more than 6 and all English characters
+                Password = "abc",
+
+                // email 
+                Email = "TestvalidEmail@gmail.com",
+
+                // location 
+                Location = "TestvalidLocation"
+            };
 
             // Act
             // Fetch result from OnPost
