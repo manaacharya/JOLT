@@ -187,12 +187,15 @@ namespace UnitTests.Component.PollsComponent
 
         #region AddPoll
 
+
         /// <summary>
         /// Unit for Adding a Opinion to a Poll
         /// </summary>
         [Test]
         public void AddPoll_Should_Return_PopUp()
         {
+            // Arrange
+
             // Poll Service Singleton Initiation
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
             // User Service Singleton Initiation
@@ -211,7 +214,21 @@ namespace UnitTests.Component.PollsComponent
             // trigger button
             button.Click();
 
-            //  End Of Modal Button
+
+            // Input tag
+            var inputList = page.FindAll("input");
+
+            // Add Values to Input
+            var inputidOne = "OpinionOneInput";
+            var inputidTwo = "OpinonTwoInput";
+
+            // Find one that matches the Id
+            var input = inputList.First(m => m.Id.Contains(inputidOne));
+            var inputTwo = inputList.First(m => m.Id.Contains(inputidTwo));
+
+            // Add Values to INputs
+            input.Change("Sample");
+            inputTwo.Change("Sample2");
 
             // Submiting Opinions
             // Get all buttons from html
@@ -220,6 +237,7 @@ namespace UnitTests.Component.PollsComponent
             // find button
             var getButton = buttonsList.First(x => x.Id.Equals("submitOpinionsBtn"));
 
+            // Act
 
             // trigger button
             getButton.Click();
@@ -233,7 +251,7 @@ namespace UnitTests.Component.PollsComponent
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
         }
 
-        #endregion MessagePrototype
+        #endregion AddPoll
 
     }
 }
