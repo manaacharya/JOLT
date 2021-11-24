@@ -473,7 +473,7 @@ namespace UnitTests.Services
 
         #endregion GetTotalVotes
 
-        #region addOpinion
+        #region AddOpinion
        
         [Test]
         public void AddOpinion_InValid_PollModel_Should_Return_Zero()
@@ -482,7 +482,7 @@ namespace UnitTests.Services
             int pollId = 9999;
 
             //Act
-            var result = TestHelper.PollService.addOpinion(pollId, "","");
+            var result = TestHelper.PollService.AddOpinion(pollId, "","");
 
             //Rest
 
@@ -500,7 +500,7 @@ namespace UnitTests.Services
             int pollId = 4;
 
             //Act 
-            var result = TestHelper.PollService.addOpinion(pollId, "Grass", "Sand");
+            var result = TestHelper.PollService.AddOpinion(pollId, "Grass", "Sand");
 
             //Reset
 
@@ -510,6 +510,6 @@ namespace UnitTests.Services
             Assert.AreEqual(true, result);
         }
         
-        #endregion addOpinion 
+        #endregion AddOpinion 
     }
 }
