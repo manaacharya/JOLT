@@ -16,7 +16,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
-        /// Defualt Construtor
+        /// Default Constructor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="productService"></param>
@@ -38,7 +38,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
             //get all product records
             Product = ProductService.CreateData();
 
-            // Redirect the webpage to the Update page populated with the data so the user can fill in the fields
+            // Redirect the web page to the Update page populated with the data so the user can fill in the fields
             return RedirectToPage("./Update", new { Id = Product.Id });
         }
     }
