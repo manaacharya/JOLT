@@ -22,28 +22,30 @@
                             <p class="card-subtitle">  @poll.Description </p>
                             <div class="card-body">
 
-                                @foreach (OpinionItem items in poll.OpinionItems)
+                                @foreach (OpinionItem item in poll.OpinionItems)
                                 {
                                     <div class="col-auto">
-                                        <input @onchange="(e) => UpdateOpinionInput(items.OpinionName, poll.PollID)" class="form-check-input" type="radio" name="itemButtons" id="@items.OpinionName" value="@items.OpinionName">
-                                        <label>@items.OpinionName</label>
+                                        <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
+                                               class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
+                                        <label>@item.OpinionName</label>
                                     </div>
                                     <div class="col-auto">
                                         @{
                                             double percentage = 0;
                                             if (opinionVoteCount != 0)
                                             {
-                                                percentage = (items.NumCounts * 100) / opinionVoteCount;
+                                                percentage = (item.NumCounts * 100) / opinionVoteCount;
                                             }
 
                                             <div class="progress">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%"
+                                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
                                             </div>
-                                            <label>Votes : @items.NumCounts</label>
+                                            <label>Votes : @item.NumCounts</label>
                                         }
                                     </div>
 
-                                            }
+                                }
 
                             </div>
 
@@ -64,7 +66,8 @@
                                 Add Opinions
                             </button>
 
-                            <br /><br />
+                            <br />
+                            <br />
 
                             <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">View Graphics</a>
 
@@ -73,7 +76,7 @@
                 </div>
 
 
-                                }
+            }
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,13 +92,13 @@
 
                             <label>Opinion One </label>
 
-                            <input id="OpinionOneInput" value="@OpinionOne" @onchange="(e => OpinionOne = e.Value.ToString())"/>
-                            
+                            <input id="OpinionOneInput" value="@OpinionOne" @onchange="(e => OpinionOne = e.Value.ToString())" />
+
                             <br />
 
                             <label>Opinion Two</label>
 
-                            <input id="OpinonTwoInput" value="@OpinionTwo"  @onchange="(e => OpinionTwo = e.Value.ToString())" />
+                            <input id="OpinonTwoInput" value="@OpinionTwo" @onchange="(e => OpinionTwo = e.Value.ToString())" />
 
                         </div>
                         <div class="modal-footer">
@@ -117,10 +120,10 @@
     //opinion attribute
     string Opinion = "";
 
-    //new opinion one 
+    //new opinion one
     string OpinionOne = "";
 
-    //new opinion two 
+    //new opinion two
     string OpinionTwo = "";
 
     //title of poll
@@ -141,11 +144,11 @@
     }
 
     /// <summary>
-    /// Update PollID and opinion attributes
+    /// Select PollID and opinion attributes
     /// </summary>
     /// <param name="inputValue"></param>
     /// <param name="inputID"></param>
-    void UpdateOpinionInput(string inputValue, int inputID)
+    void SelectOpinionItem(string inputValue, int inputID)
     {
         // Update opinion
         Opinion = inputValue;
@@ -173,7 +176,7 @@
     }
 
     /// <summary>
-    /// Submit New Opinions To be Added 
+    /// Submit New Opinions To be Added
     /// </summary>
     /// <param name="pollID"></param>
     /// <param name="opinionItemOne"></param>
@@ -181,17 +184,17 @@
     /// <returns></returns>
     bool SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
     {
-        
+
         //Send to Poll Services and return result
         bool result = PollService.AddOpinion(pollID, opinionItemOne, opinionItemTwo);
 
-        //check that result is finished 
+        //check that result is finished
         if (result == true)
         {
-            //Reset opinions 
+            //Reset opinions
             OpinionOne = String.Empty;
 
-            //reset opinion two 
+            //reset opinion two
             OpinionTwo = String.Empty;
         }
 
