@@ -277,7 +277,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="opinionOne"></param>
         /// <param name="opinionTwo"></param>
         /// <returns></returns>
-        public bool addOpinion(int pollID, string opinionOne, string opinionTwo)
+        public bool AddOpinion(int pollID, string opinionOne, string opinionTwo)
         {
             // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
