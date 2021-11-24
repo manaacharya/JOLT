@@ -39,16 +39,14 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
-        ///  Deserialize a Json of User to List
+        ///  De-serialize a JSON of User to List
         /// </summary>
         /// <returns></returns>
         public IEnumerable<UserModel> GetUsers()
         {
-            //create file reader for Json file 
+            //create file reader for JSON file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-
-                // Deserialize Json to List
               return JsonSerializer.Deserialize<UserModel[]>
                     (jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
@@ -67,7 +65,7 @@ namespace ContosoCrafts.WebSite.Services
         {
             using (var outputStream = File.Create(JsonFileName))
             {
-                // Serialize Collection to Json
+                // Serialize Collection to JSON
                 JsonSerializer.Serialize<IEnumerable<UserModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
@@ -92,14 +90,14 @@ namespace ContosoCrafts.WebSite.Services
         {
             UserModel userModel = GetUser(updateUser.UpdateID);
 
-            //ensure user user model is not null
+            //ensure user model is not null
             if (userModel == null)
             {
                 return null;
             }
 
             // Modify The User Object
-            //username 
+            //user name 
             userModel.Username = updateUser.UpdateName;
 
             //email
@@ -140,7 +138,7 @@ namespace ContosoCrafts.WebSite.Services
             // Fetch User By ID
             var getUser = getuserList.Find(x => x.UserID == id);
 
-            // Condition For User Existance
+            // Condition For User Existence
             if (getUser == null)
             {
                 // User Doesn't Exist
@@ -163,7 +161,7 @@ namespace ContosoCrafts.WebSite.Services
             // Fetch User By Name
             var getUser = GetUsers().ToList().Find(x => x.Username == name);
 
-            // Condition For User Existance
+            // Condition For User Existence
             if (getUser == null)
             {
                 // User Doesn't Exist
@@ -178,13 +176,13 @@ namespace ContosoCrafts.WebSite.Services
         /// Get the password of a user(given an user entry is found)
         /// </summary>
         /// <param name="userName"></param>
-        /// <returns>userpassword if the user eixst; null otherwise
+        /// <returns>user's password if the user exists; null otherwise
         /// </returns>
         public string GetPassWord(string userName)
         {
             var getUser = GetUser(userName);
 
-            // Condition For User Existance
+            // Condition For User Existence
             if (getUser == null)
             {
                 // User Doesn't Exist
@@ -212,7 +210,7 @@ namespace ContosoCrafts.WebSite.Services
             // Fetch User
             var getUser = GetUser(userName);
 
-            // Condition For User Existance
+            // Condition For User Existence
             if (getUser == null)
             {
                 // User Doesn't Exist
@@ -257,13 +255,13 @@ namespace ContosoCrafts.WebSite.Services
                 Location = user.Location,
             };
 
-            //object Getusers 
+            // user list
             var dataSet = GetUsers();
 
             // Add to Dataset
             dataSet = dataSet.Append(data);
 
-            // Convert List into Json Dataset
+            // Convert List into JSON Dataset
             SaveData(dataSet);
 
             return data;
@@ -272,7 +270,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <summary>
         /// Remove the item from the system
         /// </summary>
-        /// <param name="id">true if sucess; otherwise false(when user id does not exist)</param>
+        /// <param name="id">true if success; otherwise false(when user id does not exist)</param>
         public bool DeleteData(int id)
         {
             // Get User By ID
