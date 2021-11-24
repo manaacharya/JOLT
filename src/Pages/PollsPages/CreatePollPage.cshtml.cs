@@ -82,8 +82,10 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
                 return Page();
             }
 
-            // Pass CreatePollModel and UserID to CreatePoll Service and Fetch the Result
-            PollModel pollCreationStatus = PollService.CreatePoll(CreatePoll, getUser.UserID);
+            // Pass CreatePollModel and UserID to
+            // CreatePoll Service and Fetch the Result
+            PollModel pollCreationStatus =
+                PollService.CreatePoll(CreatePoll, getUser.UserID);
 
             // Clear the Model State
             ModelState.Clear();
