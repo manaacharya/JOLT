@@ -29,7 +29,7 @@
                     <a href="#" class="btn btn-info disabled" aria-disabled="true"> Go to Profile </a>
 
                 }
-                else
+                if(getCookieValue != null)
                 {
                     // User is Logged In  Enable Button
                     <a class="btn btn-info" asp-page="/PollsPages/CreatePollPage" aria-disabled="false">Create Poll</a>
