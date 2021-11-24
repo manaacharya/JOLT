@@ -37,7 +37,6 @@ namespace UnitTests.Pages.Polls
 
         #endregion TestSetup
 
-
         #region OnGet
 
         /// <summary>
@@ -57,8 +56,17 @@ namespace UnitTests.Pages.Polls
 
             // Assert
 
-            // Assert Page Redirection
-            Assert.AreEqual(true, pageresult.PageName.Contains("ReadPollPage"));
+            // Check Model State
+            Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            // Check Whether Author was retrieved
+            Assert.AreEqual(true, PageModel.Author.Username.Equals("edwin"));
+
+            // Check OpinionJsonData is Not Empty
+            Assert.AreEqual(true, PageModel.OpinionJsonData.Contains("Boeing"));
+
+            // Assert Page No Redirection
+            Assert.AreEqual(null, pageresult);
         }
 
         /// <summary>
@@ -79,9 +87,8 @@ namespace UnitTests.Pages.Polls
             // Assert
 
             // Assert Page Redirection
-            Assert.AreEqual(true, pageresult.PageName.Contains("Index"));
+            Assert.AreEqual(true, pageresult.PageName.Contains("/Index"));
         }
-
 
         #endregion OnGet
 
