@@ -239,7 +239,9 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             // Get Opinion Item based on Title and Poll Model
-            OpinionItem opinion = pollModel.OpinionItems.ToList().Find(x => x.OpinionName.Equals(opinionTitle));  //GetOpinion(opinionTitle, pollModel);
+            OpinionItem opinion =
+                pollModel.OpinionItems.ToList().Find(x =>
+                x.OpinionName.Equals(opinionTitle)); 
 
             // Return null if Opinion Doesn't Exist
             if(opinion == null)
@@ -309,7 +311,6 @@ namespace ContosoCrafts.WebSite.Services
 
             return true;
         }
-
 
         /// <summary>
         /// Creates and Add New Poll Model to Polls Json Dataset/Database.
