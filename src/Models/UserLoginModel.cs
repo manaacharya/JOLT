@@ -8,14 +8,14 @@ namespace ContosoCrafts.WebSite.Models
     public class  UserLoginModel
     {
         /// <summary>
-        /// get and set username method for username in userservices
+        /// get and set user name method for user name in user services
         /// required field for login 
         /// </summary>
         [Required(ErrorMessage = "* This field is required")]
         public string Username { get; set; }
 
         /// <summary>
-        /// get and set method for password in userservices 
+        /// get and set method for password in user services 
         /// required to min 6 characters and field is required for login 
         /// </summary>
         [Required(ErrorMessage = "* This field is required")]
