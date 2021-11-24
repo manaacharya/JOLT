@@ -28,7 +28,7 @@ namespace UnitTests.Component.DisplayUserList
         /// test all users 
         /// </summary>
         [Test]
-        public void Default_Get_Should_Return_All_Users()
+        public void OnGet_Valid_Should_Return_All_Users()
         {
             // Arrange
 
