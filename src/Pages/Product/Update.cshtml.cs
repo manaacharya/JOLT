@@ -12,12 +12,12 @@ namespace ContosoCrafts.WebSite.Pages.Product
     public class UpdateModel : PageModel
     {
         /// <summary>
-        /// Data middletier
+        /// Data middle tier
         /// </summary>
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
-        /// Defualt Construtor
+        /// Default Constructor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="productService"></param>
@@ -51,7 +51,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <returns></returns>
         public IActionResult OnPost()
         {
-            //if model state invalde 
+            //if model state invalid 
             if (!ModelState.IsValid)
             {
                 return Page();
