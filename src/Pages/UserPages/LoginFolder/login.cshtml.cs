@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
-    /// This is the login model for loggin in
+    /// This is the login model for logging in
     /// </summary>
     public class LoginPageModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace ContosoCrafts.WebSite.Pages
             //set logger
             _logger = logger;
 
-            //Userservice object
+            //User service object
             UserService = userService;
         }
 
@@ -56,7 +56,7 @@ namespace ContosoCrafts.WebSite.Pages
                 return Page();
             }
 
-            // set inputverified to false 
+            // set input verified to false 
             bool InputVerified = false;
             // verify the input
             InputVerified = UserService.IsCorrectPassword
