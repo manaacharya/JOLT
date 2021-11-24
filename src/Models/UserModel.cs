@@ -17,7 +17,8 @@ namespace ContosoCrafts.WebSite.Models
         /// <summary>
         /// get set string username of user specific to ID 
         /// </summary>
-        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "* Must only include letters or numbers")]
+        [RegularExpression("^[a-zA-Z0-9]+$",
+            ErrorMessage = "* Must only include letters or numbers")]
         [Required(ErrorMessage = "* This field is required")]
         public string Username { get; set; }
 
@@ -30,7 +31,9 @@ namespace ContosoCrafts.WebSite.Models
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6,
             ErrorMessage = "* Must be at least 6 characters long")]
-        [RegularExpression("^[\\sa-zA-Z0-9,!#%@&()-+]*$", ErrorMessage = "* password can only contain English letters, digits 0-9, or special characters")]
+        [RegularExpression("^[\\sa-zA-Z0-9,!#%@&()-+]*$",
+            ErrorMessage = "* password can only contain English letters, " +
+            "digits 0-9, or special characters")]
         public string Password { get; set; }
 
         /// <summary>
@@ -38,7 +41,8 @@ namespace ContosoCrafts.WebSite.Models
         /// required field 
         /// </summary>
         [EmailAddress(ErrorMessage = "* Enter a valid email")]
-        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "* Must be an email address")]
+        [RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+            ErrorMessage = "* Must be an email address")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "* This field is required")]
         public string Email { get; set; }
@@ -48,7 +52,8 @@ namespace ContosoCrafts.WebSite.Models
         /// required field
         /// can only use characters 
         /// </summary>
-        [RegularExpression("^[a-zA-Z' ']+$", ErrorMessage = "* Location can only have letters")]
+        [RegularExpression("^[a-zA-Z' ']+$",
+            ErrorMessage = "* Location can only have letters")]
         [Required(ErrorMessage = "* This field is required")]
         public string Location { get; set; }
 
