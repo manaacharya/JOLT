@@ -191,7 +191,7 @@ namespace UnitTests.Component.PollsComponent
         #region MessagePrototype
 
         [Test]
-        public void TestMessage()
+        public void AddPoll_Should_Return_PopUp()
         {
 
             // Poll Service Singleton Initiation
@@ -236,7 +236,7 @@ namespace UnitTests.Component.PollsComponent
             // Assert
 
             // Component Checklist
-            Assert.AreEqual(true, pageMarkup.Contains("Opinion Three"));
+            Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
 
 
         }
