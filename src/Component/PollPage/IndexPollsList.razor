@@ -10,25 +10,29 @@
     <div class="row">
         @{
             var pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
+            @* render all polls *@
             foreach (PollModel poll in pollList)
             {
                 int opinionVoteCount = PollService.GetTotalVotes(poll);
+                showAddOpinionPrompt[poll.PollID] = false; // not show prompt when first render
 
                 <div class="col-lg-4">
                     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
                                 <div class="card-body">
-                                    <h2 class="card-title"> @poll.Title</h2>
-                                    <hr />
+                                    <h2 class="card-title"> @poll.Title</h2> <hr />
                                     <p class="card-subtitle">  @poll.Description </p>
                                     <div class="card-body">
-
+                                        @* render each opinion*@
                                         @foreach (OpinionItem item in poll.OpinionItems)
                                         {
+                                            @* handle selection of each opinion *@
                                             <div class="col-auto">
                                                 <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
                                                        class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
                                                 <label>@item.OpinionName</label>
                                             </div>
+
+                                            @* show percentages of each opinion*@
                                             <div class="col-auto">
                                                 @{
                                                     double percentage = 0;
@@ -44,11 +48,10 @@
                                                         <label>Votes : @item.NumCounts</label>
                                                 }
                                             </div>
-
                                         }
-
                                     </div>
 
+                                    @* show poller's info if the poller exist in database'*@
                                     @{
                                         var getAuthor = UserService.GetUser(poll.UserID);
 
@@ -61,6 +64,7 @@
                                     }
                                     <hr />
 
+
                                     @*Submit Vote for a particular opinion*@
                                     <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
 
@@ -71,9 +75,16 @@
                                     </button>
                                     <br /><br />
 
+                                    @* show user prompt*@
+                                    @{
+                                        if (showAddOpinionPrompt[poll.PollID])
+                                        {
+                                            <p> You have to type stuffs in those boxes to add new opinions</p>
+                                        }
+                                    }
+
                                     @*Show visualization of a poll's opinion distribution*@
                                     <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
-
                                 </div>
                     </div>
                 </div>
@@ -98,6 +109,7 @@
 
                             <label>New Opinion Two</label>
                             <input id="OpinonTwoInput" value="@OpinionTwo" @onchange="(e => OpinionTwo = e.Value.ToString())" />
+
                         </div>
 
                         <div class="modal-footer">
@@ -128,6 +140,10 @@
 
     //title of poll
     string PollTitle = "";
+
+    // comment
+    // bool showAddOpinionPrompt = false;
+    Dictionary<int, bool> showAddOpinionPrompt = new Dictionary<int, bool>();
 
     /// <summary>
     /// method to capture current poll that is being examined by user
@@ -184,20 +200,27 @@
     /// <returns></returns>
     bool SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
     {
-
+        if (opinionItemOne == "" || opinionItemTwo == "")
+        {
+            showAddOpinionPrompt[pollID] = true;
+            return false;
+        }
         //Send to Poll Services and return result
         bool result = PollService.AddOpinion(pollID, opinionItemOne, opinionItemTwo);
+
+        showAddOpinionPrompt[pollID] = !result; // reassign based result
 
         //check that result is finished
         if (result == true)
         {
-            //Reset opinions
-            OpinionOne = String.Empty;
+            OpinionOne = String.Empty; //Reset opinion one
 
-            //reset opinion two
-            OpinionTwo = String.Empty;
+            OpinionTwo = String.Empty; //reset opinion two
         }
 
         return result;
     }
+
+
+
 }
