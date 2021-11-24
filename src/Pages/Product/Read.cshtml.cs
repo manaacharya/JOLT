@@ -11,11 +11,11 @@ namespace ContosoCrafts.WebSite.Pages.Product
     /// </summary>
     public class ReadModel : PageModel
     {
-        // Data middletier
+        // Data middle tier
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
-        /// Defualt Construtor
+        /// Default Constructor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="productService"></param>
