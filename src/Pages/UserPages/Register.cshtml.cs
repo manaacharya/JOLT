@@ -19,12 +19,12 @@ namespace ContosoCrafts.WebSite.Pages
         private readonly ILogger<RegisterModel> _logger;
 
         /// <summary>
-        /// Data middletier
+        /// Data middle tier
         /// </summary>
         public JsonFileUserService UserService { get; set; }
 
         /// <summary>
-        /// A message for user to see when username already exists
+        /// A message for user to see when user name already exists
         /// </summary>
         public string DuplicateUserPrompt { get; set; }
 
@@ -34,13 +34,13 @@ namespace ContosoCrafts.WebSite.Pages
         public bool ShowLoginLink { get; set;}
 
         /// <summary>
-        /// Usermodel object BindUser  
+        /// User model object BindUser  
         /// </summary>
         [BindProperty]
         public UserModel BindUser{ get; set; }
 
         /// <summary>
-        /// Defualt Construtor
+        /// Default Constructor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="userService"></param>
@@ -81,7 +81,7 @@ namespace ContosoCrafts.WebSite.Pages
             // Create a Regex for checking that only letters are in string
             Regex passwordRg = new Regex(@"^[\\sa-zA-Z0-9,!#%@&()-+]*$");
 
-            //use regular expression to check if username contains only number or letters
+            //use regular expression to check if user name contains only number or letters
             if (usernameRg.IsMatch(BindUser.Username) == false)
             {
                 return Page();
@@ -119,7 +119,7 @@ namespace ContosoCrafts.WebSite.Pages
                 ShowLoginLink = true;
                 DuplicateUserPrompt = generatePrompt(ShowLoginLink);
                 return Page();
-                // Redirect to Log In. If User with the same Name Alreay Exists
+                // Redirect to Log In. If User with the same Name Already Exists
                 // return RedirectToPage("./LoginFolder/login");
             }
 
