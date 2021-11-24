@@ -43,7 +43,7 @@ namespace UnitTests.Pages.Polls
         /// Unit Test for OnGet on Valid ID
         /// </summary>
         [Test]
-        public void OnGet_ValidId_Should_Return_Page()
+        public void OnGet_Valid_Id_Vaild_Should_Return_Page()
         {
             // Arrange
             // valid id
@@ -73,7 +73,7 @@ namespace UnitTests.Pages.Polls
         /// Unit Test for OnGet on Invalid ID
         /// </summary>
         [Test]
-        public void OnGet_InValidId_Should_Return_Page()
+        public void OnGet_InValid_Id_Invalid_Should_Return_Page()
         {
             // Arrange
             // invalid ID
