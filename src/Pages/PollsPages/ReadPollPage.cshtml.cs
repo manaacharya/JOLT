@@ -34,7 +34,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         public PollModel PollModel { get; private set; }
 
         /// <summary>
-        /// Opinion Items Json Holder
+        /// Opinion Items JSON Holder
         /// </summary>
         public string OpinionJsonData { get; private set; }
 
@@ -56,10 +56,10 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             //create logger
             _logger = logger;
 
-            //assign pollservices 
+            //assign poll services 
             PollServices = jsonFilePollService;
 
-            // assign userservices
+            // assign user services
             UserService = jsonFileUserService;
         }
 
@@ -80,7 +80,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             // Get A Poll
             PollModel = PollServices.GetPoll(id);
 
-            // Get the OpinionItems as Json
+            // Get the OpinionItems as JSON 
             OpinionJsonData =
                 PollServices.GetOpinionsJsons(PollModel.OpinionItems);
 
