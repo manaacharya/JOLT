@@ -1,4 +1,6 @@
-﻿
+﻿/// <summary>
+/// Class to store opinions
+/// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
     /// <summary>
