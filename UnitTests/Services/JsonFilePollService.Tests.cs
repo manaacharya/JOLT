@@ -476,7 +476,7 @@ namespace UnitTests.Services
         #region AddOpinion
        
         [Test]
-        public void AddOpinion_InValid_PollModel_Should_Return_Zero()
+        public void AddOpinion_InValid_PollModel_Should_Return_False()
         {
             // Arrange
             int pollId = 9999;
@@ -494,7 +494,7 @@ namespace UnitTests.Services
         }
 
         [Test]
-        public void AddOpinion_Valid_PollID_Updates_Opinions()
+        public void AddOpinion_Valid_PollID_Should_Return_True()
         {
             //Arrange
             int pollId = 4;
