@@ -5,7 +5,6 @@
 /// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
-
     /// <summary>
     /// Class for polls for users to vote and partcipate in
     /// </summary>
