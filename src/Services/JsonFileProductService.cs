@@ -168,11 +168,11 @@ namespace ContosoCrafts.WebSite.Services
             //output stream
             using (var outputStream = File.Create(JsonFileName))
             {
-                //serialize productmodel 
+                //serialize product model 
                 JsonSerializer.Serialize<IEnumerable<ProductModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
-                        //skip valdiation
+                        //skip validation
                         SkipValidation = true,
 
                         //indent
@@ -203,7 +203,7 @@ namespace ContosoCrafts.WebSite.Services
                 //product description
                 Description = "Enter Description",
 
-                //url
+                //URL
                 Url = "Enter URL",
 
                 //image
@@ -211,7 +211,7 @@ namespace ContosoCrafts.WebSite.Services
             };
 
             // Get the current set, and append the new record to it
-            // becuase IEnumerable does not have Add
+            // because IEnumerable does not have Add
             var dataSet = GetAllData();
 
             //add data to set
