@@ -202,8 +202,8 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns>true if password is correct
-        ///         false if password is incorrect or 
-        ///         username does not exist
+        /// false if password is incorrect or 
+        /// username does not exist
         /// </returns>
         public bool IsCorrectPassword(string userName, string userPassword)
         {
