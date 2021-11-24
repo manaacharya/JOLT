@@ -60,7 +60,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         /// </summary>
         public void OnGet()
         {
-            // Message to Diplay in Html
+            // Message to Display in HTML
             Message = $"Welcome :  Create Your Amazing Poll";
         }
 
@@ -90,13 +90,13 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             // Clear the Model State
             ModelState.Clear();
 
-            // Reset CreatePollModel attributes before redirecing back to the Page
+            // Reset CreatePollModel attributes before redirecting back to the Page
             CreatePoll.CreateTitle = String.Empty;
             CreatePoll.CreateDescription = String.Empty;
             CreatePoll.CreateOpinionOne = String.Empty;
             CreatePoll.CreateOpinionTwo = String.Empty;
 
-            // Check if Poll Creation and Addition to Poll DataSet was succesful
+            // Check if Poll Creation and Addition to Poll DataSet was successful
             if(pollCreationStatus == null)
             {
                 // Wasn't Successful , Display Error Message
@@ -106,7 +106,7 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
                 return Page();
             }
 
-            // Was Succesfull, Print A Message of Success
+            // Successful, Print A Message of Success
             Message = $"Awesome! '{pollCreationStatus.Title}' Created.";
 
             // Redirect To This Page
