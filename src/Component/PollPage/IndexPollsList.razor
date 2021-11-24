@@ -89,13 +89,13 @@
 
                             <label>Opinion One </label>
 
-                            <input value="@OpinionOne" id="opinionOneInput" @onchange="@((ChangeEventArgs __e) => OpinionOne = __e.Value.ToString())" />
-
+                            <input id="OpinionOneInput" value="@OpinionOne" @onchange="(e => OpinionOne = e.Value.ToString())"/>
+                            
                             <br />
 
                             <label>Opinion Two</label>
 
-                            <input value="@OpinionTwo" id="opinionTwoInput" @onchange="@((ChangeEventArgs __e) => OpinionTwo = __e.Value.ToString())" />
+                            <input id="OpinonTwoInput" value="@OpinionTwo"  @onchange="(e => OpinionTwo = e.Value.ToString())" />
 
                         </div>
                         <div class="modal-footer">
@@ -174,12 +174,7 @@
 
     bool SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
     {
-        //validate poll id input
-        if (pollID < 0)
-        {
-            return false;
-        }
-
+        
         //Send to Poll Services and return result
         bool result = PollService.addOpinion(pollID, opinionItemOne, opinionItemTwo);
 
