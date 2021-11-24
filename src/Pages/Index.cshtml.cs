@@ -34,7 +34,7 @@ namespace ContosoCrafts.WebSite.Pages
         public string Message { get; set; }
 
         /// <summary>
-        ///  Initalize logger obeject and add productServices
+        ///  Initialize logger object and add productServices
         ///  Soon to be changed to polls 
         /// </summary>
         /// <param name="logger"></param>
@@ -45,7 +45,7 @@ namespace ContosoCrafts.WebSite.Pages
             //create logger
             _logger = logger;
 
-            //create pollservices 
+            //create poll services 
             PollServices = jsonFilePollService;
 
             // Message attribute
