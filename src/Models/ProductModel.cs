@@ -35,7 +35,9 @@ namespace ContosoCrafts.WebSite.Models
         /// <summary>
         /// title of each product, has max and min length of string
         /// </summary>
-        [StringLength(maximumLength: 33, MinimumLength = 1, ErrorMessage = "The Title should have a length of more than {2} and less than {1}")]
+        [StringLength(maximumLength: 33, MinimumLength = 1,
+            ErrorMessage = "The Title should have a length of " +
+            "more than {2} and less than {1}")]
         public string Title { get; set; }
 
         /// <summary>
@@ -56,7 +58,8 @@ namespace ContosoCrafts.WebSite.Models
         /// <summary>
         /// set and get price of each product, with a max and min range
         /// </summary>
-        [Range(-1, 100, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Range(-1, 100, ErrorMessage = "Value for {0} " +
+            "must be between {1} and {2}.")]
         public int Price { get; set; }
      
     }
