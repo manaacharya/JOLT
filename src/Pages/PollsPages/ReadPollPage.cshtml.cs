@@ -49,7 +49,9 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
         /// <param name="logger"></param>
         /// <param name="jsonFilePollService"></param>
         /// <param name="jsonFileUserService"></param>
-        public ReadPollPageModel(ILogger<ReadPollPageModel> logger, JsonFilePollService jsonFilePollService, JsonFileUserService jsonFileUserService)
+        public ReadPollPageModel(ILogger<ReadPollPageModel>
+            logger, JsonFilePollService jsonFilePollService,
+            JsonFileUserService jsonFileUserService)
         {
             //create logger
             _logger = logger;
@@ -79,7 +81,8 @@ namespace ContosoCrafts.WebSite.Pages.PollsPages
             PollModel = PollServices.GetPoll(id);
 
             // Get the OpinionItems as Json
-            OpinionJsonData = PollServices.GetOpinionsJsons(PollModel.OpinionItems);
+            OpinionJsonData =
+                PollServices.GetOpinionsJsons(PollModel.OpinionItems);
 
             // Get the Author or User of the Poll
             Author = UserService.GetUser(PollModel.UserID);
