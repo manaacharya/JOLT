@@ -3,7 +3,6 @@
 /// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
-    
     /// <summary>
     /// Model for handling the update of users in database user.json
     /// User must alread exist for update
