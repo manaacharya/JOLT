@@ -4,6 +4,9 @@ using Moq;
 using ContosoCrafts.WebSite.Pages;
 using Microsoft.AspNetCore.Mvc;
 
+/// <summary>
+/// Testing for Delete functions of user 
+/// </summary>
 namespace UnitTests.Pages.Users
 {
     /// <summary>
@@ -89,4 +92,4 @@ namespace UnitTests.Pages.Users
         }
         #endregion OnPostDeleteProfile 
     }
-};
+}

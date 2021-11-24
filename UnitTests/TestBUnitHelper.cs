@@ -1,6 +1,9 @@
 ﻿using Bunit;
 using NUnit.Framework;
 
+/// <summary>
+/// Test context for unit testing 
+/// </summary>
 namespace UnitTests
 {
     /// <summary>
@@ -8,11 +11,15 @@ namespace UnitTests
     /// </summary>
     public abstract class BunitTestContext : TestContextWrapper
     {
-        // The Setup sets the context
+        /// <summary>
+        /// The Setup sets the context
+        /// </summary>
         [SetUp]
         public void Setup() => TestContext = new Bunit.TestContext();
 
-        // When done displose removes it, to free up system resources
+        /// <summary>
+        /// When done displose removes it, to free up system resources
+        /// </summary>
         [TearDown]
         public void TearDown() => TestContext.Dispose();
     }

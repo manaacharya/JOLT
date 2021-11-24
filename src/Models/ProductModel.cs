@@ -1,6 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
 
+/// <summary>
+/// Model for products 
+/// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
     /// <summary>

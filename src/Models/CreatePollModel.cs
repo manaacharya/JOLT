@@ -1,4 +1,6 @@
-﻿
+﻿/// <summary>
+/// Model for creating a poll
+/// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
     /// <summary>

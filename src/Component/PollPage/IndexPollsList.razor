@@ -1,6 +1,5 @@
 ﻿@using ContosoCrafts.WebSite.Models
-@using ContosoCrafts.WebSite.Services
-@using Microsoft.AspNetCore.Components.Web  
+@using ContosoCrafts.WebSite.Services 
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
 
@@ -43,7 +42,7 @@
                                         }
                                     </div>
 
-                                }
+                                            }
 
                             </div>
 
@@ -73,7 +72,7 @@
                 </div>
 
 
-            }
+                                }
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,7 +110,6 @@
 
 @code {
 
-  
     /// Poll ID Attribute
     int PollID = -99;
 
@@ -150,6 +148,7 @@
     {
         // Update opinion
         Opinion = inputValue;
+
         // Update PollID
         PollID = inputID;
     }

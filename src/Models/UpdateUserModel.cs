@@ -1,4 +1,6 @@
-﻿
+﻿/// <summary>
+/// Model for the updating users, used in profile page
+/// </summary>
 namespace ContosoCrafts.WebSite.Models
 {
     

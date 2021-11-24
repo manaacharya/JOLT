@@ -4,9 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 namespace ContosoCrafts.WebSite.Pages
 {
-
     /// <summary>
-    /// Create of ErrorModel class to handle errors 
+    /// Error model class created to handle errors in website
     /// </summary>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
