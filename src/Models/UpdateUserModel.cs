@@ -5,7 +5,7 @@ namespace ContosoCrafts.WebSite.Models
 {
     /// <summary>
     /// Model for handling the update of users in database user.json
-    /// User must alread exist for update
+    /// User must already exist for update
     /// </summary>
     public class UpdateUserModel
     {
