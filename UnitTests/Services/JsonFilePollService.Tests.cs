@@ -492,6 +492,23 @@ namespace UnitTests.Services
             Assert.AreEqual(false, result);
 
         }
+
+        [Test]
+        public void AddOpinion_Valid_PollID_Updates_Opinions()
+        {
+            //Arrange
+            int pollId = 4;
+
+            //Act 
+            var result = TestHelper.PollService.addOpinion(pollId, "Grass", "Sand");
+
+            //Reset
+
+            //Assert
+
+            //check result is true
+            Assert.AreEqual(true, result);
+        }
         
         #endregion addOpinion 
     }
