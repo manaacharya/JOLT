@@ -142,7 +142,6 @@ namespace UnitTests.Component.PollsComponent
         public void SubmitVote_Valid_OpinionName_Valid_PollId_Should_Count_Vote()
         {
             // Arrange
-
             // Poll Service Singleton Initiation
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
             // User Service Singleton Initiation
@@ -186,14 +185,14 @@ namespace UnitTests.Component.PollsComponent
 
         #endregion SubmitVote
 
-        // Sample Unit Test
+        #region AddPoll
 
-        #region MessagePrototype
-
+        /// <summary>
+        /// Unit for Adding a Opinion to a Poll
+        /// </summary>
         [Test]
         public void AddPoll_Should_Return_PopUp()
         {
-
             // Poll Service Singleton Initiation
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
             // User Service Singleton Initiation
@@ -202,7 +201,6 @@ namespace UnitTests.Component.PollsComponent
             // Page Component Rendering
             var page = RenderComponent<IndexPollsList>();
 
-
             // Modal Button 
             // Get all buttons from html
             var buttonsList = page.FindAll("button");
@@ -210,25 +208,21 @@ namespace UnitTests.Component.PollsComponent
             // Find one that matches the "voteBtn"
             var button = buttonsList.First(x => x.Id.Contains("AddOpinionsBtn"));
 
-
+            // trigger button
             button.Click();
 
-
             //  End Of Modal Button
-
 
             // Submiting Opinions
             // Get all buttons from html
             buttonsList = page.FindAll("button");
 
+            // find button
             var getButton = buttonsList.First(x => x.Id.Equals("submitOpinionsBtn"));
 
 
+            // trigger button
             getButton.Click();
-
-            // End of Submiting Opinions
-
-
 
             // Just some Page MarkUps
             var pageMarkup = page.Markup;
@@ -237,8 +231,6 @@ namespace UnitTests.Component.PollsComponent
 
             // Component Checklist
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
-
-
         }
 
         #endregion MessagePrototype
