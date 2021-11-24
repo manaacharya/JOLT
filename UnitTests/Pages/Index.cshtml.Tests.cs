@@ -41,7 +41,7 @@ namespace UnitTests.Pages.Index
         /// Test for OnGet() Valid Products
         /// </summary>
         [Test]
-        public void OnGet_Valid_Should_Get_Polls ()
+        public void OnGet_Valid_Should_Return_Polls ()
         {
             //Arrange
 
