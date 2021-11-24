@@ -2,6 +2,9 @@
 using ContosoCrafts.WebSite.Models;
 using System.Text.Json;
 
+/// <summary>
+/// Unit test for user services 
+/// </summary>
 namespace UnitTests.Services
 {
     /// <summary>
@@ -108,7 +111,6 @@ namespace UnitTests.Services
             Assert.AreEqual(true, getResult.Password.Equals(updateUserModel.UpdatePassword));
 
         }
-
         #endregion UpdateProfile
 
         #region GetUser
@@ -452,9 +454,6 @@ namespace UnitTests.Services
             Assert.AreEqual(true, userModel.ToString().Equals(correctResult));
 
         }
-
         #endregion ToString
-
-        
     }
 }
