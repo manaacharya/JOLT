@@ -12,12 +12,12 @@ namespace ContosoCrafts.WebSite.Pages.Product
     public class DeleteModel : PageModel
     {
         /// <summary>
-        /// Data middletier
+        /// Data middle-tier
         /// </summary>
         public JsonFileProductService ProductService { get; }
 
         /// <summary>
-        /// Defualt Construtor
+        /// Default Constructor
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="productService"></param>
