@@ -91,13 +91,13 @@ namespace ContosoCrafts.WebSite
             //endpoints
             app.UseEndpoints(endpoints =>
             {
-                //razorpages 
+                //razor pages 
                 endpoints.MapRazorPages();
 
                 //controllers
                 endpoints.MapControllers();
 
-                //blazorhub
+                //blazor hub
                 endpoints.MapBlazorHub();
 
             });

@@ -58,7 +58,7 @@ namespace UnitTests.Pages.Polls
             // check model state is valid 
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
 
-            // check whether messag was created
+            // check whether message was created
             Assert.AreEqual(true, PageModel.Message.Equals($"Welcome :  Create Your Amazing Poll"));
         }
         #endregion OnGet
