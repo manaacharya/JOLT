@@ -21,13 +21,13 @@ namespace ContosoCrafts.WebSite.Pages
         private readonly ILogger<ProfilePageModel> _logger;
 
         /// <summary>
-        /// JsonFileUserService for to get and set userservices 
+        /// JsonFileUserService for to get and set user services 
         /// </summary>
         public JsonFileUserService UserServices { get; set; }
 
 
         /// <summary>
-        /// get and set updateusermodel 
+        /// get and set update user model 
         /// </summary>
         [BindProperty]
         public UpdateUserModel UpdateUser { get; set; }
@@ -53,15 +53,15 @@ namespace ContosoCrafts.WebSite.Pages
         public void OnGet()
         {
 
-            //cookie username 
+            //cookie user name 
             //var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
  
-            //userModel object of cookie username stored 
+            //userModel object of cookie user name stored 
             //UserModel = UserServices.GetUser(cookieValue.ToString());
         }
         
         /// <summary>
-        /// After, username is updated to new username, password, email
+        /// After, user name is updated to new user name, password, email
         /// and location 
         /// </summary>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace ContosoCrafts.WebSite.Pages
 
             }
 
-            //userservice object 
+            //user service object 
             var updateStatus = UserServices.UpdateProfile(UpdateUser);
 
             if (updateStatus == null)
@@ -104,7 +104,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public IActionResult OnPostDeleteProfile(int id)
         {
-            //result of userID using userservices 
+            //result of userID using user services 
             bool result = UserServices.DeleteData(id);
 
             if(result == false)
@@ -112,7 +112,7 @@ namespace ContosoCrafts.WebSite.Pages
                 //message to confirm user deleted 
                 Message = $"User Not Deleted";
 
-                //return back to profilepage 
+                //return back to profile page 
                 return RedirectToPage("ProfilePage"); 
             }
 
