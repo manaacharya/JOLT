@@ -52,12 +52,17 @@
 
 <script>
 
+    // Array to Place Labels
     var getlabels = [];
 
+    // Array to Place Votes
     var getVotes = [];
 
+    // Array to Place Colors
     var getColors = [];
 
+    /// Function to Extract the OpinionNames and Votes from Json Object
+    /// param : size 
     function ExtractLabelVotes(size) {
         for (var i = 0; i < size; i++) {
             getlabels[i] = opinionObject[i].OpinionName;
@@ -65,33 +70,39 @@
         }
     }
 
+    /// Function to Generate Random Colors
+    /// param : size 
     function GenerateRandomColors(size) {
 
         for (var i = 0; i < size; i++) {
+
+            // Random Red
             var red = Math.floor(Math.random() * 254);
+            // Random Green
             var green = Math.floor(Math.random() * 254);
+            // Random Blue
             var blue = Math.floor(Math.random() * 254);
 
+            // Generate String of Random Colors
             getColors[i] = 'rgb(' + red + ',' + green + ',' + blue + ')';
 
         }
     }
 
-
+    // Get the Canvas by ID
     const ctx = document.getElementById('myReadChart');
 
-
+    // Get the Parse Json Input Data by ID
     var dataJson = document.getElementById('opinionsJson').value;
 
+    // Deserialize Json Object
     var opinionObject = JSON.parse(dataJson);
-
 
     // Dissect Json Object
     ExtractLabelVotes(opinionObject.length);
 
     // Get Random COlor
     GenerateRandomColors(opinionObject.length);
-
 
     // Debugging
     console.log(dataJson);
@@ -102,6 +113,7 @@
     // Debugging
     console.log(getColors);
 
+    // Constant Chart Instance, which will be a DoughNut
     const myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
