@@ -15,7 +15,7 @@ namespace ContosoCrafts.WebSite.Models
         public int UserID { get; set; }
 
         /// <summary>
-        /// get set string username of user specific to ID 
+        /// get set string user name of user specific to ID 
         /// </summary>
         [RegularExpression("^[a-zA-Z0-9]+$",
             ErrorMessage = "* Must only include letters or numbers")]
@@ -58,8 +58,8 @@ namespace ContosoCrafts.WebSite.Models
         public string Location { get; set; }
 
         /// <summary>
-        /// toString methof of user object
-        /// includes userID, username, password, email and location
+        /// toString method f of user object
+        /// includes userID, user name, password, email and location
         /// </summary>
         /// <returns></returns>
         public override string ToString()
