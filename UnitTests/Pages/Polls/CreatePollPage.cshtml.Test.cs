@@ -69,7 +69,7 @@ namespace UnitTests.Pages.Polls
         /// Checks if OnPost() creates a valid poll item
         /// </summary>
         [Test]
-        public void OnPost_ValidPollModel_ValidUser_Should_Create_Poll()
+        public void OnPost_Valid_PollModel_Valid_User_Valid_Should_Create_Poll()
         {
             // Arrange
 
@@ -113,7 +113,7 @@ namespace UnitTests.Pages.Polls
         /// stays in the same page if the user is invalid
         /// </summary>
         [Test]
-        public void OnPost_InValidUser_Should_Return_Message()
+        public void OnPost_InValid_User_Invalid_Should_Return_Prompt_Message()
         {
             // Arrange
 
@@ -157,7 +157,7 @@ namespace UnitTests.Pages.Polls
         /// if it happens, a error message is displayed
         /// </summary>
         [Test]
-        public void OnPost_ValidExistingPollName_ValidUser_Should_Return_Message()
+        public void OnPost_Valid_PollName_Valid_User_valid_Should_Return_Prompt_Message()
         {
             // Arrange
 
