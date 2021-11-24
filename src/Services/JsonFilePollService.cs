@@ -44,15 +44,15 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
-        /// Deserialize a Json of Polls to List
+        /// De-serialize a JSON of Polls to List
         /// </summary>
         /// <returns></returns>
         public IEnumerable<PollModel> GetPolls()
         {
-            //create file reader for Json file 
+            //create file reader for JSON file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-                // Deserialize Json to List
+                // De-serialize JSON to List
                 return JsonSerializer.Deserialize<PollModel[]>
                       (jsonFileReader.ReadToEnd(),
                       new JsonSerializerOptions
@@ -71,7 +71,7 @@ namespace ContosoCrafts.WebSite.Services
         {
             using (var outputStream = File.Create(JsonFileName))
             {
-                // Serialize Collection to Json
+                // Serialize Collection to JSON
                 JsonSerializer.Serialize<IEnumerable<PollModel>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
@@ -87,13 +87,13 @@ namespace ContosoCrafts.WebSite.Services
         }
 
         /// <summary>
-        /// Serialize a Opinion Item Collection to Json
+        /// Serialize a Opinion Item Collection to JSON
         /// </summary>
         /// <param name="opinions"></param>
         /// <returns></returns>
         public string GetOpinionsJsons(IEnumerable<OpinionItem> opinions)
         {
-            // Return Json Data
+            // Return JSON Data
             return JsonSerializer.Serialize<IEnumerable<OpinionItem>>(opinions);
         }
 
@@ -323,7 +323,7 @@ namespace ContosoCrafts.WebSite.Services
             // Random Instance Created
             Random rnD = new Random();
 
-            // Boolean for Duplicate Poll Existance 
+            // Boolean for Duplicate Poll Existence 
             bool pollExists = PollExist(newPoll.CreateTitle);
 
             // True for Duplicate
@@ -336,7 +336,7 @@ namespace ContosoCrafts.WebSite.Services
             // Instantiate a new Poll Model, with attributes
             var poll = new PollModel()
             {
-                //userid
+                //user id
                 UserID = userID,
 
                 //poll id
@@ -363,7 +363,7 @@ namespace ContosoCrafts.WebSite.Services
             // Add New Poll to Data Set
             dataSet = dataSet.Append(poll);
 
-            // Convert List into Json DataSet
+            // Convert List into JSON DataSet
             SavePollData(dataSet);
 
             // Return the Instantiated Poll Model 
