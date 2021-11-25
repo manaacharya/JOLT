@@ -4,7 +4,7 @@
 }
 
 .fa-star {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
@@ -21,26 +21,27 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .card-columns .card-img {
-  height: 330px;
-  vertical-align: bottom;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  opacity: .8;
+    height: 330px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: .8;
 }
 
 .modal .card-img {
-  height: 500px;
-  vertical-align: bottom;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+    height: 500px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .card-columns .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
 }
+
 .card-footer {
     background: #e5e5e5;
 }
@@ -69,20 +70,24 @@ a {
     background-color: #189AB4;
     border-color: #189AB4;
 }
-.btn-primary:hover {
-    color: #fff;
-    background-color: #189AB4;
-    border-color: #189AB4;
-}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #189AB4;
+        border-color: #189AB4;
+    }
+
 .btn-outline-primary {
     color: #2b2b2b;
     border-color: #2b2b2b;
 }
+
     .btn-outline-primary:hover {
         color: #189AB4;
         border-color: #189AB4;
-        background-color:rgb(240 248 255 / 0.00)
+        background-color: rgb(240 248 255 / 0.00)
     }
+
     .btn-outline-primary:active {
         color: #189AB4;
         border-color: #189AB4;
@@ -98,42 +103,45 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 hr {
     border-top: 1px solid white;
 }
-h5{
-    color:#fff !important;
+
+h5 {
+    color: #fff !important;
 }
 
 h3 {
@@ -141,7 +149,6 @@ h3 {
 }
 
 body {
-   
     padding-bottom: 20px;
     background-image: url('../images/background_Picture1.jpg');
     background-color: #272b35;
@@ -154,20 +161,25 @@ body {
     margin: auto;
     font-family: 'Roboto', sans-serif;
 }
+
 p {
     font-family: 'Roboto', sans-serif;
 }
+
 h5 {
     font-family: 'Roboto', sans-serif;
     color: #2b2b2b
 }
+
 h1, h2, h3, h4, h6 {
     font-family: 'Roboto', sans-serif;
     color: #b9dbdf
 }
+
 ul {
     font-family: 'Roboto', sans-serif;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -176,6 +188,26 @@ ul {
     line-height: 60px; /* Vertically center the text there */
     font-family: 'Roboto', sans-serif;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: left;
+}
+
+    .flex-container > a {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: white;
+    }
+
+        .flex-container > a:hover {
+            color: rgba(0, 0, 0, 0.5);
+            transition: 0.2s ease-in-out;
+            text-decoration: none;
+        }
+
 /*Backgrounds*/
 .bg-navbar {
     background: -webkit-linear-gradient(110deg, #b9dbdf 60%, #66bfbf 60%);
@@ -194,7 +226,7 @@ ul {
 }
 
 .bg-footer div {
-    color: white;
+        color: white;
 }
 
 /*User Table Section*/
@@ -205,17 +237,19 @@ section.table {
 #sTable tr:nth-child(odd) {
     background-color: #eaf6f6;
 }
+
 #sTable tr:nth-child(even) {
     background-color: #fcfefe;
 }
 
-    #sTable tr:nth-child(odd):hover {
-        background-color: rgb(110 210 216 / 0.40);
-    }
+#sTable tr:nth-child(odd):hover {
+    background-color: rgb(110 210 216 / 0.40);
+}
 
 #sTable tr:nth-child(even):hover {
     background-color: #e5e7e7;
 }
+
 #sTable tr:last-child {
     border-bottom-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
@@ -226,13 +260,14 @@ table {
     border-spacing: 0;
     color: rgb(92, 92, 92);
     box-shadow: 0px 7px 20px rgb(148, 148, 148);
-    
 }
+
 #sTable {
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
 }
+
 #sTable,
 th {
     border-collapse: collapse;
@@ -258,26 +293,27 @@ tr {
     padding: 30px
 }
 
-#sTable td{
-   padding-left: 15px;
+#sTable td {
+    padding-left: 15px;
 }
 /*End of User Table Section*/
 
 /*Progress Bar*/
-.progress{
+.progress {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 
 /*Modal*/
-.modal-body{
+.modal-body {
     color: black;
 }
 
-.modal-title{
+.modal-title {
     color: black !important;
 }
+
 .modal-body-content {
     color: black !important;
 }
