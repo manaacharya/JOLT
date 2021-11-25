@@ -1,41 +1,9 @@
 [
   {
-    "PollID": 1,
-    "UserID": 163958,
-    "Title": "Aerospace company",
-    "Description": "Aerospace companies with the best aircrafts",
-    "OpinionItems": [
-      {
-        "OpinionName": "Boeing",
-        "NumCounts": 0
-      },
-      {
-        "OpinionName": "Airbus",
-        "NumCounts": 0
-      }
-    ]
-  },
-  {
-    "PollID": 2,
-    "UserID": 588571,
-    "Title": "What is the best scripting language? ",
-    "Description": "chose the best over-all scripting language ",
-    "OpinionItems": [
-      {
-        "OpinionName": "Python",
-        "NumCounts": 0
-      },
-      {
-        "OpinionName": "JavaScript",
-        "NumCounts": 0
-      }
-    ]
-  },
-  {
     "PollID": 3,
     "UserID": 588571,
-    "Title": "Favorite genre of video game",
-    "Description": "What genre of video game is your personal favorite",
+    "Title": "Genre of Video Game",
+    "Description": "What is your favorite genre of video game?",
     "OpinionItems": [
       {
         "OpinionName": "FPS",
@@ -50,8 +18,8 @@
   {
     "PollID": 4,
     "UserID": 588571,
-    "Title": "Laptop OS of Your Choice? ",
-    "Description": "What OS do you have on your laptop",
+    "Title": "Laptop OS",
+    "Description": "What OS do you have on your laptop?",
     "OpinionItems": [
       {
         "OpinionName": "Window",
@@ -64,42 +32,10 @@
     ]
   },
   {
-    "PollID": 5,
-    "UserID": 588571,
-    "Title": "Favorite Sauce for the Fries",
-    "Description": "What sauce would you like to dip your fries into? ",
-    "OpinionItems": [
-      {
-        "OpinionName": "Ranch",
-        "NumCounts": 0
-      },
-      {
-        "OpinionName": "Ketchup",
-        "NumCounts": 0
-      }
-    ]
-  },
-  {
-    "PollID": 6,
-    "UserID": 588571,
-    "Title": "I-5 or I-405 during commute? ",
-    "Description": "During your commute, which interstate do usually you take? ",
-    "OpinionItems": [
-      {
-        "OpinionName": "I-5",
-        "NumCounts": 0
-      },
-      {
-        "OpinionName": "I-405",
-        "NumCounts": 0
-      }
-    ]
-  },
-  {
     "PollID": 7,
     "UserID": 588571,
-    "Title": "Best active CSGO Awper? ",
-    "Description": "Who\u0027s the best CSGO active Awper? ",
+    "Title": "Best Active CSGO Awper",
+    "Description": "Who's the best CSGO active Awper? ",
     "OpinionItems": [
       {
         "OpinionName": "S1mple",
@@ -130,7 +66,7 @@
   {
     "PollID": 9,
     "UserID": 588571,
-    "Title": "Wonder Woman  vs Captain Marvel",
+    "Title": "Wonder Woman vs Captain Marvel",
     "Description": "Would you rather team up with Wonder Woman or Captain Marvel?",
     "OpinionItems": [
       {
@@ -146,11 +82,11 @@
   {
     "PollID": 10,
     "UserID": 588571,
-    "Title": "Forced to sing along vs Dance to every single song you hear",
-    "Description": "Would you rather be forced to sing along or dance to every single song you hear?",
+    "Title": "Sing-a-long vs Dance",
+    "Description": "Would you rather be forced to sing-a-long or dance to every single song you hear?",
     "OpinionItems": [
       {
-        "OpinionName": "Forced to sing along",
+        "OpinionName": "Forced to sing-a-long",
         "NumCounts": 0
       },
       {
@@ -162,8 +98,8 @@
   {
     "PollID": 11,
     "UserID": 588571,
-    "Title": "Find true love today vs Win a billion dollar lottery next year",
-    "Description": "Would you rather Find true love today or  Win a billion dollar lottery next year? ",
+    "Title": "True Love or Money",
+    "Description": "Would you rather find true love today or win a billion dollar lottery next year? ",
     "OpinionItems": [
       {
         "OpinionName": "Find true love today",
@@ -178,8 +114,8 @@
   {
     "PollID": 12,
     "UserID": 588571,
-    "Title": "Annoying boss vs Mother-in-law",
-    "Description": "Would you rather work an overtime shift with your annoying boss or spend full day with your mother-in-law",
+    "Title": "Annoying Boss or Mother-in-law",
+    "Description": "Would you rather work an overtime shift with your annoying boss or spend full day with your mother-in-law?",
     "OpinionItems": [
       {
         "OpinionName": "Annoying boss ",
@@ -211,7 +147,7 @@
     "PollID": 14,
     "UserID": 163958,
     "Title": "Best Planet",
-    "Description": "What is your favorite  Planet In the Milky Way Galaxy",
+    "Description": "What is your favorite planet in the Milky Way Galaxy?",
     "OpinionItems": [
       {
         "OpinionName": "Earth",
@@ -226,15 +162,15 @@
   {
     "PollID": 440870,
     "UserID": 197213,
-    "Title": " Billie Eilish\u2018s future or Madonna\u2019s legacy",
-    "Description": "Would you rather have Billie Eilish\u2018s future or Madonna\u2019s legacy?",
+    "Title": " Billie Eilish vs Madonna",
+    "Description": "Is Madonna's legacy or Billie Eilish's future potential more impressive?",
     "OpinionItems": [
       {
-        "OpinionName": " Billie Eilish\u2018s future",
+        "OpinionName": " Billie Eilish's future",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Madonna\u2019s legacy",
+        "OpinionName": "Madonna's legacy",
         "NumCounts": 0
       }
     ]
@@ -242,15 +178,15 @@
   {
     "PollID": 504612,
     "UserID": 197213,
-    "Title": "short vs long life",
-    "Description": "Would you rather die in 20 years with no regrets or live to 100 with a lot of regrets?",
+    "Title": "Short Bliss or Long Life",
+    "Description": "Would you rather live a long life filled with regrets or a short one with no regrets?",
     "OpinionItems": [
       {
-        "OpinionName": "die in 20 years with no regrets",
+        "OpinionName": "Die in 20 years with no regrets",
         "NumCounts": 0
       },
       {
-        "OpinionName": "live to 100 with a lot of regrets",
+        "OpinionName": "Live to 100 with a lot of regrets",
         "NumCounts": 0
       }
     ]
@@ -258,15 +194,15 @@
   {
     "PollID": 66814,
     "UserID": 197213,
-    "Title": "Time with Ariana Grande or Rihanna?",
-    "Description": "Would you rather have a sing-off with Ariana Grande or a dance-off with Rihanna?",
+    "Title": "Ariana Grande vs Rihanna?",
+    "Description": "Would you rather have a duet with Ariana Grande or a dance party with Rihanna?",
     "OpinionItems": [
       {
         "OpinionName": "Ariana Grande",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Rihanna?",
+        "OpinionName": "Rihanna",
         "NumCounts": 0
       }
     ]
@@ -274,15 +210,15 @@
   {
     "PollID": 114598,
     "UserID": 197213,
-    "Title": "royalty 1,000 years ago or an average person today",
+    "Title": "Ancient Royalty or Average Modern Person ",
     "Description": "Would you rather be royalty 1,000 years ago or an average person today?",
     "OpinionItems": [
       {
-        "OpinionName": "royalty 1,000 years ago",
+        "OpinionName": "Royalty 1,000 years ago",
         "NumCounts": 0
       },
       {
-        "OpinionName": "an average person today",
+        "OpinionName": "An average person today",
         "NumCounts": 0
       }
     ]
@@ -291,14 +227,14 @@
     "PollID": 306412,
     "UserID": 197213,
     "Title": "Tell or Not Tell",
-    "Description": "You are at your best friend\u0027s wedding just an hour before the ceremony is to start. Earlier that day, you came across definitive proof that your best friend\u0027s spouse-to-be is having an affair with the best man/maid of honor. What do you do? ",
+    "Description": "You are at your best friend's wedding just an hour before the ceremony is to start. Earlier that day, you came across definitive proof that your best friend's future spouse is having an affair. What do you do? ",
     "OpinionItems": [
       {
         "OpinionName": "Tell your best friend ",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Not  Tel your best friend",
+        "OpinionName": "Don't tell your best friend",
         "NumCounts": 0
       }
     ]
@@ -306,15 +242,15 @@
   {
     "PollID": 462124,
     "UserID": 197213,
-    "Title": "watch a movie or the sunset?",
+    "Title": "Movie or Sunset?",
     "Description": "Would you rather go watch a movie or go watch the sunset?",
     "OpinionItems": [
       {
-        "OpinionName": "movie! ",
+        "OpinionName": "Movie",
         "NumCounts": 0
       },
       {
-        "OpinionName": "sunset! ",
+        "OpinionName": "Sunset",
         "NumCounts": 0
       }
     ]
@@ -322,15 +258,111 @@
   {
     "PollID": 815278,
     "UserID": 197213,
-    "Title": "Date Someone With No Emotions Or Date A Compulsive Liar?",
-    "Description": "Would You Rather Date Someone With No Emotions Or Date A Compulsive Liar?",
+    "Title": "Emotionless Partner Or A Compulsive Liar?",
+    "Description": "Would you rather date someone who is emotionally absent or someone who is a compulsive liar?",
     "OpinionItems": [
       {
-        "OpinionName": "Someone With No Emotions",
+        "OpinionName": "Emotionally absent",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Compulsive Liar",
+        "OpinionName": "Compulsive liar",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 2,
+    "UserID": 588571,
+    "Title": "Scripting Language ",
+    "Description": "Chose the best over-all scripting language.",
+    "OpinionItems": [
+      {
+        "OpinionName": "Python",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "JavaScript",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "C++",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "R",
+        "NumCounts": 3
+      }
+    ]
+  },
+  {
+    "PollID": 1,
+    "UserID": 163958,
+    "Title": "Aerospace company",
+    "Description": "Which aerospace company makes the best aircrafts?",
+    "OpinionItems": [
+      {
+        "OpinionName": "Boeing",
+        "NumCounts": 2
+      },
+      {
+        "OpinionName": "Airbus",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "NASA",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "SpaceX",
+        "NumCounts": 1
+      }
+    ]
+  },
+  {
+    "PollID": 5,
+    "UserID": 588571,
+    "Title": "Dipping Sauce",
+    "Description": "What sauce would you like to dip your fries into?",
+    "OpinionItems": [
+      {
+        "OpinionName": "Ranch",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Ketchup",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "BBQ ",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "Honey Mustard",
+        "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 6,
+    "UserID": 588571,
+    "Title": "Washington Interstate",
+    "Description": "During your commute, which interstate do usually you take?",
+    "OpinionItems": [
+      {
+        "OpinionName": "I-5",
+        "NumCounts": 0
+      },
+      {
+        "OpinionName": "I-405",
+        "NumCounts": 2
+      },
+      {
+        "OpinionName": "I-90",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "202",
         "NumCounts": 0
       }
     ]
