@@ -45,6 +45,10 @@ for details on configuring this project to bundle and minify static web assets. 
     background: #e5e5e5;
 }
 
+.row {
+    margin-left: 45px;
+}
+
 
 a.navbar-brand {
     white-space: normal;
