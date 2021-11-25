@@ -278,3 +278,6 @@ tr {
 .modal-title{
     color: black !important;
 }
+.modal-body-content {
+    color: black !important;
+}
