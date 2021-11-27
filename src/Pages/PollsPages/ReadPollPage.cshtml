@@ -8,41 +8,66 @@
 
 
 
-<body style=" background-image:none !important; background-color: rgb(36 36 36 / 0.48) !important;">
+<body style=" background-image:none !important; background-color:#33344a !important;">
 
     <div class="container">
 
         <div class="row">
-            <h3>@Model.PollModel.Title  Visualization</h3>
+            <div class="col">
+                <h3>@Model.PollModel.Title  Visualization</h3>
+            </div>
+            <div class="col-sm-12">
+                <hr />
+            </div>
+            <div class="col-sm-12">
+                <label>Poll Title: </label>
+                <label>@Model.PollModel.Title</label>
+
+            </div>
+            <div class="col-sm-12">
+                <label>Poll Description: </label>
+                <label>@Model.PollModel.Description</label>
+            </div>
+            <div class="col-sm-12">
+                <label>Author: </label>
+                <label>@Model.Author.Username</label>
+
+                <hr />
+
+            </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <h5>Poll Title: </h5>
-                <h5>@Model.PollModel.Title</h5>
-            </div>
-            <div class="col-6">
-                <h5>Poll Description: </h5>
-                <h5>@Model.PollModel.Description</h5>
-            </div>
-            <div class="col-6">
-                <h5>Author: </h5>
-                <h5>@Model.Author.Username</h5>
-            </div>
-        </div>
-        <hr />
 
         <div class="row">
-            <br />
-            <div class="row">
 
-                <div class="col-auto">
-                    <canvas id="myReadChart" width="400" height="400"></canvas>
+            <div class="col-sm-12">
+                <label> "It is Time to Make Your Choice : Now Choose" Green Goblin to Spiderman Bridge Scene (2002) </label>
+                <label> "It is Time to Choose a Chart: Now Choose" Poller Bear to You</label>
+            </div>
 
+            <div class="col-sm-12">
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary" onclick="ViewPieChart();" name="viewPieChart" id="viewPieChart">Pie Chart</button>
+                    <button type="button" class="btn btn-secondary" onclick="ViewBarChart();" name="viewBarChart" id="viewBarChart"> Bar Chart</button>
+                    <button type="button" class="btn btn-secondary" onclick="ConfigureSwap();" name="swapVotesPercentages" id="swapVotesPercentages">Configure Votes/Percentages</button>
                 </div>
 
             </div>
 
+            <div class="col-sm-12">
+                <hr />
+            </div>
 
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-auto" >
+
+                <canvas id="myReadChart" width="700" height="600"></canvas>
+
+            </div>
 
         </div>
 
@@ -51,6 +76,7 @@
 </body>
 
 <script>
+
 
     // Array to Place Labels
     var getlabels = [];
@@ -61,17 +87,56 @@
     // Array to Place Colors
     var getColors = [];
 
-    /// Function to Extract the OpinionNames and Votes from Json Object
-    /// param : size 
+    // Array of Vote in Percentages
+    var getVotesPercent = [];
+
+
+    // Sum of Total Votes
+    var totalVotes = 0;
+
+    // boolean for swap
+    // 0 for Raw Get Votes
+    // 1 for Raw Get Percentages
+    var swapVp = 1;
+
+    // Chart Parameters Attributes
+    // Default Type  Pie Chart
+    var chartType = 'doughnut';
+
+    // Default Data  Get Votes
+    var chartData = getVotes;
+
+    // Default Chart Label
+    var chartLabel = '# of Votes';
+
+    // Chart Instance for Canvas
+    var myChart;
+
+
+    /// Function to Extract the OpinionNames and Votes including total numbers of Votes from Json Object
+    /// param : size
     function ExtractLabelVotes(size) {
         for (var i = 0; i < size; i++) {
             getlabels[i] = opinionObject[i].OpinionName;
             getVotes[i] = opinionObject[i].NumCounts;
+
+            // Sum up Votes
+            totalVotes += opinionObject[i].NumCounts;
+        }
+    }
+
+    function GenerateVotePercentages(size) {
+
+        for (var i = 0; i < size; i++) {
+
+            var percent = (opinionObject[i].NumCounts * 100) / totalVotes;
+
+            getVotesPercent[i] = percent;
         }
     }
 
     /// Function to Generate Random Colors
-    /// param : size 
+    /// param : size
     function GenerateRandomColors(size) {
 
         for (var i = 0; i < size; i++) {
@@ -89,6 +154,137 @@
         }
     }
 
+    /// Function : Changed Chart to a DoughNut
+    /// return : void
+    function ViewPieChart() {
+
+        // Chart Type to DoughNut
+        chartType = 'doughnut';
+
+        // Destory Previous Chart Instance
+        myChart.destroy();
+
+        // Draw The Chart
+        DrawChart();
+    }
+
+    /// Function : Change Chart to Bar Graph
+    /// return : void
+    function ViewBarChart() {
+
+        // Chart Type to Bar Graph
+        chartType = 'bar';
+
+        // Destory Previous Chart Instance
+        myChart.destroy();
+
+        // Draw the Chart
+        DrawChart();
+    }
+
+
+    // Function : Swap Between Percentages and Actual Number of Votes
+    // return : void
+    function ConfigureSwap() {
+
+        // 0 Swap to Raw Actual Number of Votes
+        // 1 Swap to Percentages Per Votes
+
+        // Check swapVp
+        if (swapVp == 0) {
+
+            // ChartData to getVotes 
+            chartData = getVotes;
+
+            // Change Label of Chart 
+            chartLabel = '# of Votes';
+        }
+
+        if (swapVp == 1) {
+
+            // Chart Data to getVotesPercent
+            chartData = getVotesPercent;
+
+            // Change Label of Chart
+            chartLabel = '% of Votes';
+        }
+
+        // Destory Prevous Instance
+        myChart.destroy();
+
+        // Draw Chart With Updates to Data
+        DrawChart();
+
+        // Increment swapVP counter
+        swapVp += 1;
+
+        // Find Mod of swapVp % 2, after increment
+        // 1 % 2 = 1
+        // 2 % 2 = 0
+
+        swapVp = swapVp % 2;
+
+    }
+
+    /// Function : Draws a Chart
+    /// return : void
+    function DrawChart() {
+
+        // Constant Chart Instance, which will be a DoughNut
+        myChart = new Chart(ctx, {
+            type: chartType,
+            data: {
+                labels: getlabels,
+                datasets: [{
+                    label: chartLabel,
+                    data: chartData,
+                    backgroundColor: getColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: { size: 16 },
+                            color: 'rgba(255,255,255, 1)',
+                        }
+                    },
+                    title: {
+                        // Styling of the Graph' Title
+                        display: true,
+                        text: ('Visualization of ' + chartLabel),
+                        font: { size: 16 },
+                        color: 'rgba(255,255,255, 1)',
+                        padding: {
+                            bottom: 10
+                        }
+                    }
+                },
+                scales: {
+                    // Styling of the Graph/Chart axis
+                    x: {
+                        ticks: {
+                            // X-axis text white with size 14
+                            color: 'white', font: { size: 14 },
+                        }
+                    },
+                    y: {
+                        ticks: {
+                             // Y-axis text white with size 14
+                            color: 'white', font: { size: 14 },
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    
+
     // Get the Canvas by ID
     const ctx = document.getElementById('myReadChart');
 
@@ -104,27 +300,26 @@
     // Get Random COlor
     GenerateRandomColors(opinionObject.length);
 
-    // Debugging
-    console.log(dataJson);
-    // Debugging
-    console.log(getlabels);
-    // Debugging
-    console.log(getVotes);
-    // Debugging
-    console.log(getColors);
+    // Get the Percetanges 
+    GenerateVotePercentages(opinionObject.length);
 
-    // Constant Chart Instance, which will be a DoughNut
-    const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: getlabels,
-            datasets: [{
-                label: '# Votes',
-                data: getVotes,
-                backgroundColor: getColors,
-                hoverOffset: 4
-            }]
-        }
-    });
+
+    // Debugging - View in Browser (Inspect)
+    console.log(dataJson);
+    // Debugging - View in Browser (Inspect)
+    console.log(getlabels);
+    // Debugging - View in Browser (Inspect)
+    console.log(getVotes);
+    // Debugging - View in Browser (Inspect)
+    console.log(getColors);
+    // Debugging - View in Browser (Inspect)
+    console.log(getVotesPercent);
+    // Debugging - View in Browser (Inspect)
+    console.log("Total Numbers of Votes\t" + totalVotes);
+
+
+    // Draw the Chart
+    DrawChart();
+
 
 </script>
