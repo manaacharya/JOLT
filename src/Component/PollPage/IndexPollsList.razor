@@ -4,10 +4,13 @@
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
 
+@*Comment out Sections : Delete Before Submission
+    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
+      <div class="row poll-row">*@
 
 
 <div class="container">
-    <div class="row poll-row">
+    <div class="row">
         @{
             var pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
             @* render all polls *@
@@ -17,75 +20,80 @@
                 showAddOpinionPrompt[poll.PollID] = false; // not show prompt when first render
 
                 <div class="col-sm-6">
-                    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-                                <div class="card-body">
-                                    <h2 class="card-title"> @poll.Title</h2> <hr />
-                                    <p class="card-subtitle">  @poll.Description </p>
-                                    <div class="card-body">
-                                        @* render each opinion*@
-                                        @foreach (OpinionItem item in poll.OpinionItems)
-                                        {
-                                            @* handle selection of each opinion *@
-                                            <div class="col-auto">
-                                                <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
-                                                       class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
-                                                <label>@item.OpinionName</label>
-                                            </div>
-
-                                            @* show percentages of each opinion*@
-                                            <div class="col-auto">
-                                                @{
-                                                    double percentage = 0;
-                                                    if (opinionVoteCount != 0)
-                                                    {
-                                                        percentage = (item.NumCounts * 100) / opinionVoteCount;
-                                                    }
-
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%"
-                                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
-                                                        </div>
-                                                        <label>Votes : @item.NumCounts</label>
-                                                }
-                                            </div>
-                                        }
+                    <div class="card text-white bg-dark mb-3" style="width: 30rem;">
+                        <div class="card-body">
+                            <h2 class="card-title"> @poll.Title</h2> <hr />
+                            <p class="card-subtitle">  @poll.Description </p>
+                            <div class="card-body">
+                                @* render each opinion*@
+                                @foreach (OpinionItem item in poll.OpinionItems)
+                                {
+                                    @* handle selection of each opinion *@
+                                    <div class="col-auto">
+                                        <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
+                                               class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
+                                        <label>@item.OpinionName</label>
                                     </div>
 
-                                    @* show poller's info if the poller exist in database'*@
-                                    @{
-                                        var getAuthor = UserService.GetUser(poll.UserID);
+                                    @* show percentages of each opinion*@
+                                    <div class="col-auto">
+                                        @{
+                                            double percentage = 0;
+                                            if (opinionVoteCount != 0)
+                                            {
+                                                percentage = (item.NumCounts * 100) / opinionVoteCount;
+                                            }
 
-                                        // if Author No Longer Exists(Account Was Deleted), does not show author info
-                                        if (getAuthor != null)
-                                        {
-                                            <label>Poller Name: @getAuthor.Username</label>
-                                            <label>Poller Location: @getAuthor.Location</label>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%"
+                                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
+                                                </div>
+                                                <label>Votes : @item.NumCounts</label>
                                         }
-                                    }
-                                    <hr />
+                                    </div>
+                                }
+                            </div>
+
+                            @* show poller's info if the poller exist in database'*@
+                            @{
+                                var getAuthor = UserService.GetUser(poll.UserID);
+
+                                // if Author No Longer Exists(Account Was Deleted), does not show author info
+                                if (getAuthor != null)
+                                {
+                                    <div class="col-auto">
+                                        <label>Poller Name: @getAuthor.Username</label>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <label>Poller Location: @getAuthor.Location</label>
+                                    </div>
+                                }
+                            }
+                            <hr />
 
 
-                                    @*Submit Vote for a particular opinion*@
-                                    <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
+                            @*Submit Vote for a particular opinion*@
+                            <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
 
-                                    @*Select the Poll and Pops up poll edit modal*@
-                                    <button @onclick="(e => SelectPoll(poll.PollID, poll.Title))"
-                                            name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Add Opinions
-                                    </button>
-                                    <br /><br />
+                            @*Select the Poll and Pops up poll edit modal*@
+                            <button @onclick="(e => SelectPoll(poll.PollID, poll.Title))"
+                                    name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Add Opinions
+                            </button>
+                            <br /><br />
 
-                                    @* show user prompt*@
-                                    @{
-                                        if (showAddOpinionPrompt[poll.PollID])
-                                        {
-                                            <p> You have to type stuffs in those boxes to add new opinions</p>
-                                        }
-                                    }
+                            @* show user prompt*@
+                            @{
+                                if (showAddOpinionPrompt[poll.PollID])
+                                {
+                                    <p> You have to type stuffs in those boxes to add new opinions</p>
+                                }
+                            }
 
-                                    @*Show visualization of a poll's opinion distribution*@
-                                    <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
-                                </div>
+                            @*Show visualization of a poll's opinion distribution*@
+                            <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
+                        </div>
                     </div>
                 </div>
 
@@ -114,8 +122,10 @@
 
                         <div class="modal-footer">
                             <button type="button" id="CloseBtn" name="CloseBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" @onclick="(e => SubmitAddOpinion(PollID,OpinionOne, OpinionTwo))" id="submitOpinionsBtn" 
-                                    data-dismiss="modal" name="submitOpinionsBtn" class="btn btn-primary">Add Opinions</button>
+                            <button type="button" @onclick="(e => SubmitAddOpinion(PollID,OpinionOne, OpinionTwo))" id="submitOpinionsBtn"
+                                    data-dismiss="modal" name="submitOpinionsBtn" class="btn btn-primary">
+                                Add Opinions
+                            </button>
                         </div>
                     </div>
                 </div>
