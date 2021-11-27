@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Read Poll";
 
+    // string polurl =  //Request.Host.ToString(); // Request.Scheme; // Request.Path.ToString();
+
+    string pollurl = "Something";
+
     <input id="opinionsJson" value="@Model.OpinionJsonData" hidden />
 }
 
@@ -11,6 +15,10 @@
 <body style=" background-image:none !important; background-color:#33344a !important;">
 
     <div class="container">
+
+        <div id="urlLink" class="alert alert-success" role="alert" style="display:none;">
+            @pollurl
+        </div>
 
         <div class="row">
             <div class="col">
@@ -47,6 +55,7 @@
             <div class="col-sm-12">
 
                 <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary" onclick="GetPageLink();" name="getPageLink" id="getPageLink"> Copy Link </button>
                     <button type="button" class="btn btn-secondary" onclick="ViewPieChart();" name="viewPieChart" id="viewPieChart">Pie Chart</button>
                     <button type="button" class="btn btn-secondary" onclick="ViewBarChart();" name="viewBarChart" id="viewBarChart"> Bar Chart</button>
                     <button type="button" class="btn btn-secondary" onclick="ConfigureSwap();" name="swapVotesPercentages" id="swapVotesPercentages">Configure Votes/Percentages</button>
@@ -113,6 +122,16 @@
     var myChart;
 
 
+    function GetPageLink() 
+    {
+        var elem = document.getElementById('urlLink');
+       
+        elem.style.visibility = 'visible';
+        elem.style.display = 'block';
+
+        console.log(elem);
+    }
+
     /// Function to Extract the OpinionNames and Votes including total numbers of Votes from Json Object
     /// param : size
     function ExtractLabelVotes(size) {
@@ -125,12 +144,16 @@
         }
     }
 
+    /// Function: Calculate the Percentages for the Opinions Items
+    ///
     function GenerateVotePercentages(size) {
 
         for (var i = 0; i < size; i++) {
 
+            // Percentage of a Opinion
             var percent = (opinionObject[i].NumCounts * 100) / totalVotes;
 
+            // Add the Percent to Array
             getVotesPercent[i] = percent;
         }
     }
