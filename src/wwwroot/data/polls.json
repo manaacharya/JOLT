@@ -35,7 +35,7 @@
     "PollID": 7,
     "UserID": 588571,
     "Title": "Best Active CSGO Awper",
-    "Description": "Who's the best CSGO active Awper? ",
+    "Description": "Who\u0027s the best CSGO active Awper? ",
     "OpinionItems": [
       {
         "OpinionName": "S1mple",
@@ -163,14 +163,14 @@
     "PollID": 440870,
     "UserID": 197213,
     "Title": " Billie Eilish vs Madonna",
-    "Description": "Is Madonna's legacy or Billie Eilish's future potential more impressive?",
+    "Description": "Is Madonna\u0027s legacy or Billie Eilish\u0027s future potential more impressive?",
     "OpinionItems": [
       {
-        "OpinionName": " Billie Eilish's future",
+        "OpinionName": " Billie Eilish\u0027s future",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Madonna's legacy",
+        "OpinionName": "Madonna\u0027s legacy",
         "NumCounts": 0
       }
     ]
@@ -227,14 +227,14 @@
     "PollID": 306412,
     "UserID": 197213,
     "Title": "Tell or Not Tell",
-    "Description": "You are at your best friend's wedding just an hour before the ceremony is to start. Earlier that day, you came across definitive proof that your best friend's future spouse is having an affair. What do you do? ",
+    "Description": "You are at your best friend\u0027s wedding just an hour before the ceremony is to start. Earlier that day, you came across definitive proof that your best friend\u0027s future spouse is having an affair. What do you do? ",
     "OpinionItems": [
       {
         "OpinionName": "Tell your best friend ",
         "NumCounts": 0
       },
       {
-        "OpinionName": "Don't tell your best friend",
+        "OpinionName": "Don\u0027t tell your best friend",
         "NumCounts": 0
       }
     ]
@@ -279,43 +279,19 @@
     "OpinionItems": [
       {
         "OpinionName": "Python",
-        "NumCounts": 1
+        "NumCounts": 0
       },
       {
         "OpinionName": "JavaScript",
-        "NumCounts": 1
+        "NumCounts": 0
       },
       {
-        "OpinionName": "C++",
-        "NumCounts": 1
+        "OpinionName": "C\u002B\u002B",
+        "NumCounts": 0
       },
       {
         "OpinionName": "R",
-        "NumCounts": 3
-      }
-    ]
-  },
-  {
-    "PollID": 1,
-    "UserID": 163958,
-    "Title": "Aerospace company",
-    "Description": "Which aerospace company makes the best aircrafts?",
-    "OpinionItems": [
-      {
-        "OpinionName": "Boeing",
-        "NumCounts": 2
-      },
-      {
-        "OpinionName": "Airbus",
-        "NumCounts": 1
-      },
-      {
-        "OpinionName": "NASA",
-        "NumCounts": 1
-      },
-      {
-        "OpinionName": "SpaceX",
-        "NumCounts": 1
+        "NumCounts": 0
       }
     ]
   },
@@ -355,15 +331,39 @@
       },
       {
         "OpinionName": "I-405",
-        "NumCounts": 2
+        "NumCounts": 0
       },
       {
         "OpinionName": "I-90",
-        "NumCounts": 1
+        "NumCounts": 0
       },
       {
         "OpinionName": "202",
         "NumCounts": 0
+      }
+    ]
+  },
+  {
+    "PollID": 1,
+    "UserID": 163958,
+    "Title": "Aerospace company",
+    "Description": "Which aerospace company makes the best aircrafts?",
+    "OpinionItems": [
+      {
+        "OpinionName": "Boeing",
+        "NumCounts": 1
+      },
+      {
+        "OpinionName": "Airbus",
+        "NumCounts": 2
+      },
+      {
+        "OpinionName": "NASA",
+        "NumCounts": 3
+      },
+      {
+        "OpinionName": "SpaceX",
+        "NumCounts": 4
       }
     ]
   }
