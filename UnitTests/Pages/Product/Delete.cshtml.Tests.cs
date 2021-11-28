@@ -84,6 +84,9 @@ namespace UnitTests.Pages.Product.Delete
             Assert.AreEqual(null, TestHelper.ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(pageModel.Product.Id)));
         }
 
+        /// <summary>
+        /// Test to check invalid model 
+        /// </summary>
         [Test]
         public void OnPost_InValid_Model_NotValid_Return_Page()
         {
