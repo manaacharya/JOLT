@@ -475,6 +475,9 @@ namespace UnitTests.Services
 
         #region AddOpinion
 
+        /// <summary>
+        /// Test if you can add invalid opinions to an invalid poll id 
+        /// </summary>
         [Test]
         public void AddOpinion_InValid_PollID_InValidOpinion_Should_Return_False()
         {
@@ -493,6 +496,9 @@ namespace UnitTests.Services
 
         }
 
+        /// <summary>
+        /// Test if you can add valid poll opinions to an invalid id 
+        /// </summary>
         [Test]
         public void AddOpinion_InValid_PollID_ValidOpinions_Should_Return_False()
         {
