@@ -279,6 +279,18 @@ namespace ContosoCrafts.WebSite.Services
         /// <returns></returns>
         public bool AddOpinion(int pollID, string opinionOne, string opinionTwo)
         {
+            // Make sure Opinion are Not Null
+            if(opinionOne == "")
+            {
+                return false;
+            }
+
+            // Make sure Opinion are Not Null
+            if (opinionTwo == "")
+            {
+                return false;
+            }
+
             // Get List of Polls from Data-Set
             List<PollModel> getPolls = GetPolls().ToList();
 
