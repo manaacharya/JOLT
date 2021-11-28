@@ -8,6 +8,7 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
       <div class="row poll-row">*@
 
+@PrintMessage
 
 <div class="container">
     <div class="row">
@@ -17,8 +18,7 @@
             foreach (PollModel poll in pollList)
             {
                 int opinionVoteCount = PollService.GetTotalVotes(poll);
-                showAddOpinionPrompt[poll.PollID] = false; // not show prompt when first render
-
+                
                 <div class="col-sm-6">
                     <div class="card text-white bg-dark mb-3" style="width: 30rem;">
                         <div class="card-body">
@@ -83,14 +83,6 @@
                             </button>
                             <br /><br />
 
-                            @* show user prompt*@
-                            @{
-                                if (showAddOpinionPrompt[poll.PollID])
-                                {
-                                    <p> You have to type stuffs in those boxes to add new opinions</p>
-                                }
-                            }
-
                             @*Show visualization of a poll's opinion distribution*@
                             <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
                         </div>
@@ -151,9 +143,11 @@
     //title of poll
     string PollTitle = "";
 
+    string PrintMessage = "";
+
     // comment
     // bool showAddOpinionPrompt = false;
-    Dictionary<int, bool> showAddOpinionPrompt = new Dictionary<int, bool>();
+    //Dictionary<int, bool> showAddOpinionPrompt = new Dictionary<int, bool>();
 
     /// <summary>
     /// method to capture current poll that is being examined by user
@@ -208,29 +202,23 @@
     /// <param name="opinionItemOne"></param>
     /// <param name="opinionItemTwo"></param>
     /// <returns></returns>
-    bool SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
+    void SubmitAddOpinion(int pollID, string opinionItemOne, string opinionItemTwo)
     {
-        if (opinionItemOne == "" || opinionItemTwo == "")
-        {
-            showAddOpinionPrompt[pollID] = true;
-            return false;
-        }
+
         //Send to Poll Services and return result
         bool result = PollService.AddOpinion(pollID, opinionItemOne, opinionItemTwo);
 
-        showAddOpinionPrompt[pollID] = !result; // reassign based result
+        // Reset Strings
+        OpinionOne = String.Empty; //Reset opinion one
 
-        //check that result is finished
-        if (result == true)
+        OpinionTwo = String.Empty; //reset opinion two
+
+        if(result == false)
         {
-            OpinionOne = String.Empty; //Reset opinion one
-
-            OpinionTwo = String.Empty; //reset opinion two
+            PrintMessage = "Error With Addition of Opinions Try Again";
         }
 
-        return result;
     }
-
 
 
 }
