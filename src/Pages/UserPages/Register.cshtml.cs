@@ -131,6 +131,11 @@ namespace ContosoCrafts.WebSite.Pages
             return RedirectToPage("./LoginFolder/Login_Welcome", userModel.Username);
         }
 
+        /// <summary>
+        /// If username already exists, prompt is created to log in
+        /// </summary>
+        /// <param name="ShowLink"></param>
+        /// <returns></returns>
         public string generatePrompt(bool ShowLink)
         {
             if (!ShowLink) return "";
