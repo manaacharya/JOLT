@@ -150,12 +150,13 @@ h3 {
 
 body {
     padding-bottom: 20px;
-    background-image: url('../images/background_Picture1.jpg');
+    background-image: url('../images/geometric_background.jpeg');
+    height: 100%;
     background-color: #272b35;
     background-blend-mode: overlay;
     color: #fff;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
     /* Margin bottom by auto height */
     margin: auto;
