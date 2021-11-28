@@ -16,7 +16,8 @@
     pollUrl += Request.QueryString.ToString();
 
     // Intent To Tweet
-    string twitterUrl = "https://twitter.com/intent/tweet?url=" + pollUrl;
+    string twitterUrl = "https://twitter.com/intent/tweet?url=" + "Poller Bear. See Poll Analysis for " +  Model.PollModel.Title +
+        " at "+ pollUrl;
 
     // Documentation for Twitter
     // https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
