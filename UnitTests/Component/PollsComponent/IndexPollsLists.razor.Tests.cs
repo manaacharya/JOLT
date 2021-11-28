@@ -89,7 +89,7 @@ namespace UnitTests.Component.PollsComponent
             // Assert
 
             // Component Checklist
-            Assert.AreEqual(true, pageMarkup.Contains("Aerospace companies with the best aircrafts"));
+            Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
         }
 
         #endregion UpdateOpinionInput
@@ -132,7 +132,7 @@ namespace UnitTests.Component.PollsComponent
             // Assert
 
             // Component Checklist
-            Assert.AreEqual(true, pageMarkup.Contains("Aerospace companies with the best aircrafts"));
+            Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
         }
 
         /// <summary>
@@ -180,19 +180,65 @@ namespace UnitTests.Component.PollsComponent
             // Assert
 
             // Component Checklist
-            Assert.AreEqual(true, pageMarkup.Contains("Aerospace companies with the best aircrafts"));
+            Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
         }
 
         #endregion SubmitVote
 
         #region AddPoll
+        
+        [Test]
+        public void AddPolls_InValidOpinions_Valid_PollId_Should_Return_Error_Message()
+        {
+            // Arrange
+
+            // Poll Service Singleton Initiation
+            Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
+            // User Service Singleton Initiation
+            Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
+
+            // Page Component Rendering
+            var page = RenderComponent<IndexPollsList>();
+
+            // Modal Button 
+            // Get all buttons from html
+            var buttonsList = page.FindAll("button");
+
+            // Find one that matches the "voteBtn"
+            var button = buttonsList.First(x => x.Id.Contains("AddOpinionsBtn"));
+
+            // trigger button
+            button.Click();
+
+
+            // Submiting Opinions
+            // Get all buttons from html
+            buttonsList = page.FindAll("button");
+
+            // find button
+            var getButton = buttonsList.First(x => x.Id.Equals("submitOpinionsBtn"));
+
+            // Act
+
+            // trigger button
+            getButton.Click();
+
+            // Reset
+
+            // Get Page MarkUp
+            var pageMarkup = page.Markup;
+
+            // Assert
+
+            Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
+        }
 
 
         /// <summary>
         /// Unit for Adding a Opinion to a Poll
         /// </summary>
         [Test]
-        public void AddPoll_Should_Return_PopUp()
+        public void AddPoll_ValidOpinions_Valid_PollId_Should_Return_Add_Opinions()
         {
             // Arrange
 
