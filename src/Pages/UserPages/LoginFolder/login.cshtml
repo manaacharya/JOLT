@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label asp-for="UserLoginInput.Password">Password</label>
                     <div class="input-group mb-3">
-                        @Html.EditorFor(model => model.UserLoginInput.Password, new { htmlAttributes = new { id = "password", @class = "form-control", placeholder = "Password" } })
+                        @Html.EditorFor(model => model.UserLoginInput.Password, new { htmlAttributes = new { type ="password", id = "password", @class = "form-control", placeholder = "Password" } })
                     </div>
                     <span id="usernameError" asp-validation-for="UserLoginInput.Password" class="text-danger"></span>
                 </div>
