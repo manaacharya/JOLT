@@ -54,7 +54,7 @@ namespace ContosoCrafts.WebSite.Pages
             ShowLoginLink = false;
 
             // default 
-            DuplicateUserPrompt = generatePrompt(ShowLoginLink);
+            DuplicateUserPrompt = GeneratePrompt(ShowLoginLink);
 
             UserService = userService;
 
@@ -117,7 +117,7 @@ namespace ContosoCrafts.WebSite.Pages
             if(getUser != null)
             {
                 ShowLoginLink = true;
-                DuplicateUserPrompt = generatePrompt(ShowLoginLink);
+                DuplicateUserPrompt = GeneratePrompt(ShowLoginLink);
                 return Page();
                 // Redirect to Log In. If User with the same Name Already Exists
                 // return RedirectToPage("./LoginFolder/login");
