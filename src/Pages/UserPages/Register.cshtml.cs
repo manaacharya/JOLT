@@ -136,7 +136,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         /// <param name="ShowLink"></param>
         /// <returns></returns>
-        public string generatePrompt(bool ShowLink)
+        public string GeneratePrompt(bool ShowLink)
         {
             if (!ShowLink) return "";
             return "Username Already Exist, Log in with your username?";
