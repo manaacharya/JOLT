@@ -20,6 +20,9 @@ namespace ContosoCrafts.WebSite.Models
         /// </summary>
         public int NumCounts { get; set; }
 
+        /// <summary>
+        /// empty Contrstuctor for opinionitem
+        /// </summary>
         public OpinionItem() { }
 
         /// <summary>
