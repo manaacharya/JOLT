@@ -3,11 +3,26 @@
 @{
     ViewData["Title"] = "Read Poll";
 
-    // string polurl =  //Request.Host.ToString(); // Request.Scheme; // Request.Path.ToString();
+    // Get Scheme of page : HTTPS
+    string pollUrl = Request.Scheme.ToString() + "://";
 
-    string pollurl = "Something";
+    // Get The Host Domain
+    pollUrl += Request.Host.ToString();
+
+    // Get the Path to Page
+    pollUrl += Request.Path.ToString();
+
+    // Get Attributes or Parameters of Page
+    pollUrl += Request.QueryString.ToString();
+
+    // Intent To Tweet
+    string twitterUrl = "https://twitter.com/intent/tweet?url=" + pollUrl;
+
+    // Documentation for Twitter
+    // https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
 
     <input id="opinionsJson" value="@Model.OpinionJsonData" hidden />
+    <input id="urlPollLink" value="@pollUrl" hidden />
 }
 
 
@@ -17,7 +32,17 @@
     <div class="container">
 
         <div id="urlLink" class="alert alert-success" role="alert" style="display:none;">
-            @pollurl
+
+            <div class="row">
+                <a>Url Copied: @pollUrl</a>
+            </div>
+           
+            <div class="row">
+                <a href="@twitterUrl">
+                    <input class="btn btn-outline-success" value="Share To Twitter " />
+                </a>
+            </div>
+
         </div>
 
         <div class="row">
@@ -122,14 +147,27 @@
     var myChart;
 
 
+    /// Function : Make the Url Poll Visible
+    /// return : void
     function GetPageLink() 
     {
+        var urlPoll = document.getElementById('urlPollLink').value;
+
+        // Get the Div by ID
         var elem = document.getElementById('urlLink');
-       
+
+        // Change the Visibility to Visible
         elem.style.visibility = 'visible';
         elem.style.display = 'block';
 
+         // Debugging - View in Browser (Inspect)
         console.log(elem);
+
+        // Copy Text to Clipboard : Memory of User Machine
+        navigator.clipboard.writeText(urlPoll)
+
+        // Alert User
+        alert("Url Copied: " + urlPoll);
     }
 
     /// Function to Extract the OpinionNames and Votes including total numbers of Votes from Json Object
