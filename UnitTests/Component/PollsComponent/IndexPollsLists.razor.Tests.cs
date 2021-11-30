@@ -42,7 +42,7 @@ namespace UnitTests.Component.PollsComponent
 
             // Page Component Rendering
             var page = RenderComponent<IndexPollsList>();
-            // Get the Cards retrned
+            // Render Cards
             var result = page.Markup;
 
             // Assert
@@ -68,7 +68,9 @@ namespace UnitTests.Component.PollsComponent
 
             // Page Component Rendering
             var page = RenderComponent<IndexPollsList>();
-            // Get all inputs from html
+
+            
+            // Get all inputs from HTML
             var inputList = page.FindAll("input");
 
             // Initialize Id 
@@ -201,7 +203,7 @@ namespace UnitTests.Component.PollsComponent
             var page = RenderComponent<IndexPollsList>();
 
             // Modal Button 
-            // Get all buttons from html
+            // Get all buttons from HTML
             var buttonsList = page.FindAll("button");
 
             // Find one that matches the "voteBtn"
@@ -211,8 +213,8 @@ namespace UnitTests.Component.PollsComponent
             button.Click();
 
 
-            // Submiting Opinions
-            // Get all buttons from html
+            // Submit Opinions
+            // Get all buttons from HTML
             buttonsList = page.FindAll("button");
 
             // find button
@@ -251,7 +253,7 @@ namespace UnitTests.Component.PollsComponent
             var page = RenderComponent<IndexPollsList>();
 
             // Modal Button 
-            // Get all buttons from html
+            // Get all buttons from HTML
             var buttonsList = page.FindAll("button");
 
             // Find one that matches the "voteBtn"
@@ -276,8 +278,8 @@ namespace UnitTests.Component.PollsComponent
             input.Change("Sample");
             inputTwo.Change("Sample2");
 
-            // Submiting Opinions
-            // Get all buttons from html
+            // Submit Opinions
+            // Get all buttons from HTML
             buttonsList = page.FindAll("button");
 
             // find button
