@@ -57,7 +57,7 @@ namespace UnitTests.Component.PollsComponent
         /// Test for Radio Button Selection
         /// </summary>
         [Test]
-        public void UpdateOpinionInput_Valid_Name_Valid_Id_Should_Update_Values()
+        public void UpdateOpinionInput_Valid_Name_Valid_Id_Valid_Should_Update_Values()
         {
             // Arrange
 
@@ -103,7 +103,7 @@ namespace UnitTests.Component.PollsComponent
         /// Test for Poll submission with InValid Poll Id and Valid OpinionName
         /// </summary>
         [Test]
-        public void SubmitVote_Valid_OpinionName_InValid_PollId_Should_Return_False()
+        public void SubmitVote_Invalid_OpinionName_Valid_PollId_Invalid_Should_Return_False()
         {
             // Arrange
 
@@ -115,7 +115,7 @@ namespace UnitTests.Component.PollsComponent
             // Page Component Rendering
             var page = RenderComponent<IndexPollsList>();
 
-            // Get all buttons from html
+            // Get all buttons from HTML
             var buttonsList = page.FindAll("button");
 
             // Find one that matches the "voteBtn"
@@ -141,7 +141,7 @@ namespace UnitTests.Component.PollsComponent
         /// Test for Poll Submission with Valid PollID and Valid OpinionName
         /// </summary>
         [Test]
-        public void SubmitVote_Valid_OpinionName_Valid_PollId_Should_Count_Vote()
+        public void SubmitVote_Valid_OpinionName_Valid_PollId_Vaild_Should_Count_Vote()
         {
             // Arrange
             // Poll Service Singleton Initiation
@@ -152,13 +152,13 @@ namespace UnitTests.Component.PollsComponent
             // Page Component Rendering
             var page = RenderComponent<IndexPollsList>();
 
-            // Get all buttons from html
+            // Get all buttons from HTML
             var buttonsList = page.FindAll("button");
 
             // Find one that matches the "voteBtn"
             var button = buttonsList.First(x => x.Id.Contains("voteBtn"));
 
-            // Get all inputs from html
+            // Get all inputs from HTML
             var inputList = page.FindAll("input");
 
             // Initialize Id 
@@ -191,7 +191,7 @@ namespace UnitTests.Component.PollsComponent
         #region AddPoll
         
         [Test]
-        public void AddPolls_InValidOpinions_Valid_PollId_Should_Return_Error_Message()
+        public void AddPolls_InValid_Opinions_Invalid_PollId_Valid_Should_Return_Error_Message()
         {
             // Arrange
 
@@ -241,7 +241,7 @@ namespace UnitTests.Component.PollsComponent
         /// Unit for Adding a Opinion to a Poll
         /// </summary>
         [Test]
-        public void AddPoll_ValidOpinions_Valid_PollId_Should_Return_Add_Opinions()
+        public void AddPoll_Valid_Opinions_Valid_PollId_Valid_Should_Return_Add_Opinions()
         {
             // Arrange
 
