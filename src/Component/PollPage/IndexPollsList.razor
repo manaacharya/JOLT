@@ -12,8 +12,10 @@
 
 <div>
     <div class=" row">
-        <div class="col">
-            <input type ="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString"/>
+        <div class="col-auto">
+            <input type="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString" />
+            <button @onclick="(e=>EnableFilterData())" class="btn btn-success">Filter</button>
+            <button @onclick="(e=>ClearFilterData())" class="btn btn-danger">Clear</button>
         </div>
     </div>
 </div>
@@ -21,8 +23,11 @@
 <div class="container">
     <div class="row">
         @{
+            /* Filter Poll Items*/
+
             var pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
-            @* render all polls *@
+
+            /* render all polls */
             foreach (PollModel poll in pollList)
             {
                 int opinionVoteCount = PollService.GetTotalVotes(poll);
@@ -81,7 +86,25 @@
                             <hr />
 
 
-                            @*Submit Vote for a particular opinion*@
+             
+             *                @*Submit
+             
+             
+             
+             
+             
+              V
+             * 
+             * o
+             * te for a par
+             
+             ti
+             
+             
+             
+             
+             
+             cular opinion*@
                             <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
 
                             @*Select the Poll and Pops up poll edit modal*@
@@ -223,7 +246,7 @@
             PrintMessage = "Error With Addition of Opinions Try Again";
             return;
         }
-        result = "";
+        PrintMessage = "";
     }
 
     // Data to Filter with 
@@ -236,7 +259,7 @@
     /// Update Filter Data String
     /// </summary>
     /// <param name="text"></param>
-    void UpdateFilterData(string text)
+    void UpdateFilterText(string text)
     {
         FilterDataString = text;
     }
@@ -252,7 +275,7 @@
     /// <summary>
     /// Set the filter flag to false
     /// </summary>
-    void clearFilterData()
+    void ClearFilterData()
     {
         FilterData = false;
     }
