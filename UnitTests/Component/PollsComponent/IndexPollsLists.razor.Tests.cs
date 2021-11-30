@@ -35,6 +35,7 @@ namespace UnitTests.Component.PollsComponent
 
             // Poll Service Singleton Initiation
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
+
             // User Service Singleton Initiation
             Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
 
@@ -190,6 +191,9 @@ namespace UnitTests.Component.PollsComponent
 
         #region AddPoll
         
+        /// <summary>
+        /// Invalid Opinion Test
+        /// </summary>
         [Test]
         public void AddPolls_InValid_Opinions_Invalid_PollId_Valid_Should_Return_Error_Message()
         {
@@ -238,7 +242,7 @@ namespace UnitTests.Component.PollsComponent
 
 
         /// <summary>
-        /// Unit for Adding a Opinion to a Poll
+        /// Default Test for Adding a Opinion to a Poll
         /// </summary>
         [Test]
         public void AddPoll_Valid_Opinions_Valid_PollId_Valid_Should_Return_Add_Opinions()
@@ -268,15 +272,21 @@ namespace UnitTests.Component.PollsComponent
             var inputList = page.FindAll("input");
 
             // Add Values to Input
-            var inputidOne = "OpinionOneInput";
-            var inputidTwo = "OpinonTwoInput";
+            // var inputidOne = "OpinionOneInput";
+            // var inputidTwo = "OpinonTwoInput";
 
             // Find one that matches the Id
-            var input = inputList.First(m => m.Id.Contains(inputidOne));
-            var inputTwo = inputList.First(m => m.Id.Contains(inputidTwo));
+            var inputListLen = inputList.Count;
+            var inputOneIndex = inputListLen - 2;
+            var inputTwoIndex = inputListLen - 1;
+
+            // var inputOne = inputList.First(m => m.Id.Contains(inputidOne));
+            var inputOne = inputList.ElementAt(inputOneIndex);
+            // var inputTwo = inputList.First(m => m.Id.Contains(inputidTwo));
+            var inputTwo = inputList.ElementAt(inputTwoIndex);
 
             // Add Values to INputs
-            input.Change("Sample");
+            inputOne.Change("Sample");
             inputTwo.Change("Sample2");
 
             // Submit Opinions
@@ -284,12 +294,12 @@ namespace UnitTests.Component.PollsComponent
             buttonsList = page.FindAll("button");
 
             // find button
-            var getButton = buttonsList.First(x => x.Id.Equals("submitOpinionsBtn"));
+            var submitOpinionsButton = buttonsList.First(x => x.Id.Equals("submitOpinionsBtn"));
 
             // Act
 
             // trigger button
-            getButton.Click();
+            submitOpinionsButton.Click();
 
             // Just some Page MarkUps
             var pageMarkup = page.Markup;
@@ -301,6 +311,23 @@ namespace UnitTests.Component.PollsComponent
         }
 
         #endregion AddPoll
+
+        #region FilterPoll
+
+        public void FilterPoll_Valid_FilterData_Valid_Should_Return_Filtered_Polls()
+        {
+            // Arrange
+
+            // Poll Service Singleton Initiation
+            Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
+
+            // Act
+
+            // Reset
+
+            // Assert
+        }
+        #endregion FilterRoll
 
     }
 }
