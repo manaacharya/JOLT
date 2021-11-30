@@ -42,7 +42,8 @@
                 var second = pollList.Where(m => m.Description.Contains(FilterDataString, StringComparison.OrdinalIgnoreCase));
 
                 // Union two lists
-                pollList = (first ?? Enumerable.Empty<PollModel>()).Union(second ?? Enumerable.Empty<PollModel>());
+                // pollList = (first ?? Enumerable.Empty<PollModel>()).Union(second ?? Enumerable.Empty<PollModel>());
+                pollList = first.Union(second);
             }
 
             if (pollList.Any())
