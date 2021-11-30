@@ -15,14 +15,15 @@
                         <!-- table head-->
                         <thead>
                             <!--table row -->
-                            <tr>
-                                <!-- table header cell element-->
-                                <th>#</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Location</th>
+                                        <tr>
+                                            <!-- table header cell element-->
+                                            <th>#</th>
+                                            <th>Username</th>
+                                            @*<th>Email</th>*@
+                                            @*<th>Location</th>*@
 
-                            </tr>
+
+                                        </tr>
                         </thead>
                         <!--table body -->
                         <tbody>
@@ -31,12 +32,13 @@
                                 var i = 1;
                                 foreach (UserModel user in UserService.GetUsers())
                                 {
-                                    <tr data-toggle="modal" data-target="#exampleModalCenter-@i">
-                                        <td id="rowId">@i</td>
-                                        <td>@user.Username</td>
-                                        <td>@user.Email</td>
-                                        <td>@user.Location</td>
-                                    </tr>
+                                                        <tr data-toggle="modal" data-target="#exampleModalCenter-@i">
+                                                            <td id="rowId">@i</td>
+                                                            <td>@user.Username</td>
+                                                            @*<td>@user.Email</td>*@
+                                                            @*<td>@user.Location</td>*@
+
+                                                        </tr>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModalCenter-@i" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
