@@ -392,6 +392,7 @@ namespace UnitTests.Component.PollsComponent
 
             // Filter Text
             var filterTextInputIndex = 0;
+
             var filterTextInput = inputList.ElementAt(filterTextInputIndex);
 
             // Act
@@ -415,6 +416,57 @@ namespace UnitTests.Component.PollsComponent
             // Component Checklist
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
             Assert.AreEqual(true, pageMarkup.Contains("Telekinesis"));
+        }
+
+        [Test]
+        public void EnableFilter_Invalid_FilterData_Invalid_Should_Return_No_Polls()
+        {
+            // Arrange
+
+            // Poll Service Singleton Initiation
+            Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
+
+            // User Service Singleton Initiation
+            Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
+
+            // Page Component Rendering
+            var page = RenderComponent<IndexPollsList>();
+
+            // Modal Button 
+            // Get all buttons from HTML
+            var buttonsList = page.FindAll("button");
+
+            // Find one that matches the "enableFilterBtn"
+            var enableFilterButton = buttonsList.First(x => x.Id.Contains("enableFilterBtn"));
+
+            // Find one that matches the "disableFilterBtn"
+            var disableFilterButton = buttonsList.First(x => x.Id.Contains("disableFilterBtn"));
+
+            // Input tag
+            var inputList = page.FindAll("input");
+
+            // Filter Text
+            var filterTextInputIndex = 0;
+            var filterTextInput = inputList.ElementAt(filterTextInputIndex);
+
+            // Act
+
+            // Type in key word for filter
+            filterTextInput.Change("Jason");
+
+            // Click on "Filter" (Trigger Button)
+            enableFilterButton.Click();
+
+            // Just some Page MarkUps
+            var pageMarkup = page.Markup;
+
+            // Reset 
+
+            // Assert
+
+            // Component Checklist
+            Assert.AreEqual(false, pageMarkup.Contains("Aerospace company"));
+            Assert.AreEqual(false, pageMarkup.Contains("Telekinesis"));
         }
         #endregion FilterRoll
 
