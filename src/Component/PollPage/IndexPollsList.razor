@@ -22,16 +22,30 @@
 
 <div class="container">
     <div class="row">
-        @{
-            /* Filter Poll Items*/
+        @{  
+            // pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
 
-            var pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
+            // Obtain the poll list
+            var pollList = PollService.GetPolls().ToList().Where(m => m.Title != String.Empty);
 
-            /* render all polls */
-            foreach (PollModel poll in pollList)
+            // order the list alphabetically
+            pollList = pollList.OrderBy(x => x.PollID);
+
+            // Filter Poll Items
+            if (FilterData)
             {
-                int opinionVoteCount = PollService.GetTotalVotes(poll);
-                
+                var first = pollList.Where(m => m.Title.Contains(FilterDataString));
+                var second = pollList.Where(m => m.Description.Contains(FilterDataString));
+                pollList = (first.Any()? first: Enumerable.Empty<PollModel>()).Union(second ?? Enumerable.Empty<PollModel>());
+            }
+
+            if (pollList.Any())
+            {
+                /* render all polls */
+                foreach (PollModel poll in pollList)
+                {
+                    int opinionVoteCount = PollService.GetTotalVotes(poll);
+
                 <div class="col-sm-6">
                     <div class="card text-white bg-dark mb-3" style="width: 30rem;">
                         <div class="card-body">
@@ -64,7 +78,7 @@
                                                 <label>Votes : @item.NumCounts</label>
                                         }
                                     </div>
-                                }
+                                            }
                             </div>
 
                             @* show poller's info if the poller exist in database'*@
@@ -85,26 +99,6 @@
                             }
                             <hr />
 
-
-             
-             *                @*Submit
-             
-             
-             
-             
-             
-              V
-             * 
-             * o
-             * te for a par
-             
-             ti
-             
-             
-             
-             
-             
-             cular opinion*@
                             <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
 
                             @*Select the Poll and Pops up poll edit modal*@
@@ -121,8 +115,8 @@
                 </div>
 
 
-            }
-
+                                    }
+                                }
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
