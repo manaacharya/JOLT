@@ -8,21 +8,21 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
       <div class="row poll-row">*@
 
-@PrintMessage
-
 <div>
     <div class=" row">
         <div class="col-auto">
             <input type="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString" />
-            <button @onclick="(e=>EnableFilterData())" class="btn btn-success">Filter</button>
-            <button @onclick="(e=>ClearFilterData())" class="btn btn-danger">Clear</button>
+            <button @onclick="(e=>EnableFilterData())" class="btn btn-success" id="enableFilterBtn" name="enableFilterBtn">Filter</button>
+            <button @onclick="(e=>ClearFilterData())" class="btn btn-danger" id="disableFilterBtn" name="disableFilterBtn">Clear</button>
         </div>
     </div>
 </div>
 
+@PrintMessage
+
 <div class="container">
     <div class="row">
-        @{  
+        @{
             // pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
 
             // Obtain the poll list
@@ -33,10 +33,15 @@
 
             // Filter Poll Items
             if (FilterData)
-            {
-                var first = pollList.Where(m => m.Title.Contains(FilterDataString));
-                var second = pollList.Where(m => m.Description.Contains(FilterDataString));
-                pollList = (first.Any()? first: Enumerable.Empty<PollModel>()).Union(second ?? Enumerable.Empty<PollModel>());
+            {   
+                // filter title
+                var first = pollList.Where(m => m.Title.Contains(FilterDataString, StringComparison.OrdinalIgnoreCase));
+
+                // filter description
+                var second = pollList.Where(m => m.Description.Contains(FilterDataString, StringComparison.OrdinalIgnoreCase));
+
+                // Union two lists
+                pollList = (first ?? Enumerable.Empty<PollModel>()).Union(second ?? Enumerable.Empty<PollModel>());
             }
 
             if (pollList.Any())
@@ -46,77 +51,76 @@
                 {
                     int opinionVoteCount = PollService.GetTotalVotes(poll);
 
-                <div class="col-sm-6">
-                    <div class="card text-white bg-dark mb-3" style="width: 30rem;">
-                        <div class="card-body">
-                            <h2 class="card-title"> @poll.Title</h2> <hr />
-                            <p class="card-subtitle">  @poll.Description </p>
+                    <div class="col-sm-6">
+                        <div class="card text-white bg-dark mb-3" style="width: 30rem;">
                             <div class="card-body">
-                                @* render each opinion*@
-                                @foreach (OpinionItem item in poll.OpinionItems)
-                                {
-                                    @* handle selection of each opinion *@
-                                    <div class="col-auto">
-                                        <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
-                                               class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
-                                        <label>@item.OpinionName</label>
-                                    </div>
+                                <h2 class="card-title"> @poll.Title</h2> <hr />
+                                <p class="card-subtitle">  @poll.Description </p>
+                                <div class="card-body">
+                                    @* render each opinion*@
+                                    @foreach (OpinionItem item in poll.OpinionItems)
+                                    {
+                                        @* handle selection of each opinion *@
+                                        <div class="col-auto">
+                                            <input @onchange="(e) => SelectOpinionItem(item.OpinionName, poll.PollID)"
+                                                   class="form-check-input" type="radio" name="itemButtons" id="@item.OpinionName" value="@item.OpinionName">
+                                            <label>@item.OpinionName</label>
+                                        </div>
 
-                                    @* show percentages of each opinion*@
-                                    <div class="col-auto">
-                                        @{
-                                            double percentage = 0;
-                                            if (opinionVoteCount != 0)
-                                            {
-                                                percentage = (item.NumCounts * 100) / opinionVoteCount;
+                                        @* show percentages of each opinion*@
+                                        <div class="col-auto">
+                                            @{
+                                                double percentage = 0;
+                                                if (opinionVoteCount != 0)
+                                                {
+                                                    percentage = (item.NumCounts * 100) / opinionVoteCount;
+                                                }
+
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%"
+                                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
+                                                    </div>
+                                                    <label>Votes : @item.NumCounts</label>
                                             }
+                                        </div>
+                                    }
+                                </div>
 
-                                            <div class="progress">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: @percentage%"
-                                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@percentage%</div>
-                                                </div>
-                                                <label>Votes : @item.NumCounts</label>
-                                        }
-                                    </div>
-                                            }
-                            </div>
+                                @* show poller's info if the poller exist in database'*@
+                                @{
+                                    var getAuthor = UserService.GetUser(poll.UserID);
 
-                            @* show poller's info if the poller exist in database'*@
-                            @{
-                                var getAuthor = UserService.GetUser(poll.UserID);
+                                    // if Author No Longer Exists(Account Was Deleted), does not show author info
+                                    if (getAuthor != null)
+                                    {
+                                        <div class="col-auto">
+                                            <label>Poller Name: @getAuthor.Username</label>
+                                        </div>
 
-                                // if Author No Longer Exists(Account Was Deleted), does not show author info
-                                if (getAuthor != null)
-                                {
-                                    <div class="col-auto">
-                                        <label>Poller Name: @getAuthor.Username</label>
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <label>Poller Location: @getAuthor.Location</label>
-                                    </div>
-                                }
-                            }
-                            <hr />
-
-                            <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
-
-                            @*Select the Poll and Pops up poll edit modal*@
-                            <button @onclick="(e => SelectPoll(poll.PollID, poll.Title))"
-                                    name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Add Opinions
-                            </button>
-                            <br /><br />
-
-                            @*Show visualization of a poll's opinion distribution*@
-                            <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
-                        </div>
-                    </div>
-                </div>
-
-
+                                        <div class="col-auto">
+                                            <label>Poller Location: @getAuthor.Location</label>
+                                        </div>
                                     }
                                 }
+                                <hr />
+
+                                <button @onclick="(e => SubmitVote(PollID, Opinion))" name="voteBtn" id="voteBtn" class="btn btn-outline-success">Vote</button>
+
+                                @*Select the Poll and Pops up poll edit modal*@
+                                <button @onclick="(e => SelectPoll(poll.PollID, poll.Title))"
+                                        name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Add Opinions
+                                </button>
+                                <br /><br />
+
+                                @*Show visualization of a poll's opinion distribution*@
+                                <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -243,7 +247,7 @@
         PrintMessage = "";
     }
 
-    // Data to Filter with 
+    // Data to Filter with
     string FilterDataString = "";
 
     // Filter flag
