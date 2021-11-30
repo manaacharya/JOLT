@@ -76,8 +76,8 @@ namespace UnitTests.Component.PollsComponent
             // Initialize Id 
             var id = "Boeing";
             // Find one that matches the Id
-            var radios = inputList.First(m => m.Id.Contains(id));
-
+            // var radios = inputList.First(m => m.Id.Contains(id));
+            var radios = inputList.ElementAt(1); // hard-coded
             // Act
 
             // Radio Button Event Action
@@ -164,7 +164,8 @@ namespace UnitTests.Component.PollsComponent
             // Initialize Id 
             var id = "Boeing";
             // Find one that matches the Id
-            var radios = inputList.First(m => m.Id.Contains(id));
+            // var radios = inputList.First(m => m.Id.Contains(id));
+            var radios = inputList.ElementAt(1);
 
             // Radio Button Event Action
             radios.Change(id);

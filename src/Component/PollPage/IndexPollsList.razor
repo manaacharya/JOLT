@@ -26,6 +26,7 @@
             // pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
 
             // Obtain the poll list
+            // var pollList = PollService.GetPolls().ToList();
             var pollList = PollService.GetPolls().ToList().Where(m => m.Title != String.Empty);
 
             // order the list alphabetically
@@ -33,7 +34,7 @@
 
             // Filter Poll Items
             if (FilterData)
-            {   
+            {
                 // filter title
                 var first = pollList.Where(m => m.Title.Contains(FilterDataString, StringComparison.OrdinalIgnoreCase));
 
