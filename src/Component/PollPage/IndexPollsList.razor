@@ -10,6 +10,14 @@
 
 @PrintMessage
 
+<div>
+    <div class=" row">
+        <div class="col">
+            <input type ="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString"/>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         @{
@@ -143,12 +151,6 @@
     //title of poll
     string PollTitle = "";
 
-    string PrintMessage = "";
-
-    // comment
-    // bool showAddOpinionPrompt = false;
-    //Dictionary<int, bool> showAddOpinionPrompt = new Dictionary<int, bool>();
-
     /// <summary>
     /// method to capture current poll that is being examined by user
     /// </summary>
@@ -195,6 +197,9 @@
         return PollService.UpdateOpinionVote(pollidInput, opinionInput);
     }
 
+    // Prompt user if Add Poll fails
+    string PrintMessage = "";
+
     /// <summary>
     /// Submit New Opinions To be Added
     /// </summary>
@@ -213,12 +218,42 @@
 
         OpinionTwo = String.Empty; //reset opinion two
 
-        if(result == false)
+        if (result == false)
         {
             PrintMessage = "Error With Addition of Opinions Try Again";
+            return;
         }
-
+        result = "";
     }
 
+    // Data to Filter with 
+    string FilterDataString = "";
 
+    // Filter flag
+    bool FilterData = false;
+
+    /// <summary>
+    /// Update Filter Data String
+    /// </summary>
+    /// <param name="text"></param>
+    void UpdateFilterData(string text)
+    {
+        FilterDataString = text;
+    }
+
+    /// <summary>
+    /// Set the filter flag to true
+    /// </summary>
+    void EnableFilterData()
+    {
+        FilterData = true;
+    }
+
+    /// <summary>
+    /// Set the filter flag to false
+    /// </summary>
+    void clearFilterData()
+    {
+        FilterData = false;
+    }
 }
