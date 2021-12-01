@@ -16,6 +16,8 @@
         if(getMessage == "removeCookie")
         {
             HttpContext.Response.Cookies.Delete("nameCookie");
+
+            <input id="refreshPage" value="removeCookie"  hidden />
         }
     }
 
@@ -69,7 +71,15 @@
 </div>
 
 
+<script>
+    // Get Input Variable
+    var pageRefresh = document.getElementById('refreshPage').value;
 
+    if (pageRefresh == 'removeCookie') {
+        // Refresh Page
+        window.location = window.location.href.split("?")[0];
+    }
+</script>
 
 
 
