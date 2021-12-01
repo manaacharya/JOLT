@@ -3,20 +3,27 @@
 @using Microsoft.AspNetCore.Components.Web
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
-
 @*Comment out Sections : Delete Before Submission
     <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
       <div class="row poll-row">*@
 
 <div>
     <div class=" row">
-        <div class="col-auto">
-            <input type="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString" />
-            <button @onclick="(e=>EnableFilterData())" class="btn btn-success" id="enableFilterBtn" name="enableFilterBtn">Filter</button>
-            <button @onclick="(e=>ClearFilterData())" class="btn btn-danger" id="disableFilterBtn" name="disableFilterBtn">Clear</button>
+        <div class="col-lg-6">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Filter Polls" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@FilterDataString">
+                <div class="input-group-append">
+                    <button @onclick="(e=>EnableFilterData())" class="btn btn-success" id="enableFilterBtn" name="enableFilterBtn">Filter</button>
+                    <button @onclick="(e=>ClearFilterData())" class="btn btn-danger" id="disableFilterBtn" name="disableFilterBtn">Clear</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+<hr />
 
 @PrintMessage
 
@@ -113,7 +120,7 @@
                                         name="AddOpinionsBtn" id="AddOpinionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     Add Opinions
                                 </button>
-                                <br /><br />
+                                @* <br /><br />*@
 
                                 @*Show visualization of a poll's opinion distribution*@
                                 <a class="btn btn-outline-success" href="/PollsPages/ReadPollPage?id=@poll.PollID">See Analysis</a>
