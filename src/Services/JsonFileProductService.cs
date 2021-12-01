@@ -55,7 +55,6 @@ namespace ContosoCrafts.WebSite.Services
 
         /// <summary>
         /// Add Rating
-        /// 
         /// Take in the product ID and the rating
         /// If the rating does not exist, add it
         /// Save the update
