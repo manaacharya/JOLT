@@ -47,6 +47,7 @@ namespace ContosoCrafts.WebSite.Services
             //create file reader for JSON file 
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
+              //create deserialized usermodel   
               return JsonSerializer.Deserialize<UserModel[]>
                     (jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
@@ -63,6 +64,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="users"></param>
         private void SaveData(IEnumerable<UserModel> users)
         {
+            //create output stream for JSON File 
             using (var outputStream = File.Create(JsonFileName))
             {
                 // Serialize Collection to JSON
@@ -88,6 +90,7 @@ namespace ContosoCrafts.WebSite.Services
         /// <param name="updateuser"></param>
         public UserModel UpdateProfile(UpdateUserModel updateUser)
         {
+            //create new usermodel 
             UserModel userModel = GetUser(updateUser.UpdateID);
 
             //ensure user model is not null
@@ -180,6 +183,7 @@ namespace ContosoCrafts.WebSite.Services
         /// </returns>
         public string GetPassWord(string userName)
         {
+            //get user 
             var getUser = GetUser(userName);
 
             // Condition For User Existence
@@ -205,8 +209,6 @@ namespace ContosoCrafts.WebSite.Services
         /// </returns>
         public bool IsCorrectPassword(string userName, string userPassword)
         {
-            // try
-            //{
             // Fetch User
             var getUser = GetUser(userName);
 
@@ -246,12 +248,16 @@ namespace ContosoCrafts.WebSite.Services
                 // generate a random number between 1 and 999999 to be 6 digits
                 UserID = rnD.Next(1, 999999),
 
+                //username
                 Username = user.Username,
 
+                //password
                 Password = user.Password,
 
+                //email
                 Email = user.Email,
 
+                //location 
                 Location = user.Location,
             };
 
