@@ -229,9 +229,16 @@ namespace UnitTests.Services
             // Instance of CreatePollModel created
             CreatePollModel createPoll = new CreatePollModel()
             {
+                //title
                 CreateTitle = "Atoms Chemistry Valid Unit Test",
+
+                //description
                 CreateDescription = "What is your favorite Atom",
+
+                //opinion 1
                 CreateOpinionOne = "Hydrogen",
+
+                //opinion 2
                 CreateOpinionTwo = "Holmium"
             };
 
