@@ -48,8 +48,10 @@ namespace UnitTests.Pages.Error
         public void OnGet_Valid_Activity_Set_Should_Return_RequestId()
         {
             // Arrange
-
+            //create new activity 
             Activity activity = new Activity("activity");
+
+            //start activity 
             activity.Start();
 
             // Act
