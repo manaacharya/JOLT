@@ -114,7 +114,7 @@ namespace ContosoCrafts.WebSite.Pages
             Message = $"User deleted.";
 
             //return to page
-            return Redirect("/UserPages/LoginFolder/login"); 
+            return RedirectToPage("/Index", "removeCookie"); 
         }
     }
 }
