@@ -32,7 +32,6 @@ namespace UnitTests.Pages.Polls
             {
                 // Set the Page Context
                 PageContext = TestHelper.PageContext
-            
             };
         }
 
