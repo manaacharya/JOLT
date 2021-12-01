@@ -52,12 +52,6 @@ namespace ContosoCrafts.WebSite.Pages
         /// </summary>
         public void OnGet()
         {
-
-            //cookie user name 
-            //var cookieValue = UserServices.GetCookieValue("nameCookie"); //Request.Cookies["nameCookie"];
- 
-            //userModel object of cookie user name stored 
-            //UserModel = UserServices.GetUser(cookieValue.ToString());
         }
         
         /// <summary>
