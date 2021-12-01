@@ -22,6 +22,7 @@ namespace UnitTests.Pages.Product.Update
         [SetUp]
         public void TestInitialize()
         {
+            //create new updatemodel 
             pageModel = new UpdateModel(TestHelper.ProductService)
             {
             };
