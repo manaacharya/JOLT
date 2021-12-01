@@ -5,8 +5,24 @@
 @{
     ViewData["Title"] = "Home page";
 
+
+    // Get the Query String
+    var sample = Request.QueryString.Value;
+
+    if (sample != "")
+    {
+        // Extract Query with UserName
+        string getMessage = sample.Substring(9, (sample.Length - 9));
+        if(getMessage == "removeCookie")
+        {
+            HttpContext.Response.Cookies.Delete("nameCookie");
+        }
+    }
+
     // Get Cookie Value
-    string getCookieValue = HttpContext.Request.Cookies["nameCookie"];
+    var getCookieValue = HttpContext.Request.Cookies["nameCookie"];
+
+
 }
 
 
