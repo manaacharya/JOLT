@@ -172,7 +172,6 @@ namespace UnitTests.Component.PollsComponent
             radios.Change(id);
 
             // Act
-
             // Button Click Event Action
             button.Click();
 
@@ -201,6 +200,7 @@ namespace UnitTests.Component.PollsComponent
 
             // Poll Service Singleton Initiation
             Services.AddSingleton<JsonFilePollService>(TestHelper.PollService);
+
             // User Service Singleton Initiation
             Services.AddSingleton<JsonFileUserService>(TestHelper.UserService);
 
@@ -216,7 +216,6 @@ namespace UnitTests.Component.PollsComponent
 
             // trigger button
             button.Click();
-
 
             // Submit Opinions
             // Get all buttons from HTML
@@ -236,7 +235,7 @@ namespace UnitTests.Component.PollsComponent
             var pageMarkup = page.Markup;
 
             // Assert
-
+            // page returns correct poll
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
         }
 
@@ -267,21 +266,21 @@ namespace UnitTests.Component.PollsComponent
             // trigger button
             button.Click();
 
-
             // Input tag
             var inputList = page.FindAll("input");
 
-            // Add Values to Input
-            // var inputidOne = "OpinionOneInput";
-            // var inputidTwo = "OpinonTwoInput";
-
             // Find one that matches the Id
             var inputListLen = inputList.Count;
+
+            //index Id
             var inputOneIndex = inputListLen - 2;
+
+            //index Id 
             var inputTwoIndex = inputListLen - 1;
 
             // var inputOne = inputList.First(m => m.Id.Contains(inputidOne));
             var inputOne = inputList.ElementAt(inputOneIndex);
+
             // var inputTwo = inputList.First(m => m.Id.Contains(inputidTwo));
             var inputTwo = inputList.ElementAt(inputTwoIndex);
 
@@ -314,6 +313,9 @@ namespace UnitTests.Component.PollsComponent
 
         #region FilterPoll
 
+        /// <summary>
+        /// Check filtering poll works when everything is valid 
+        /// </summary>
         [Test]
         public void FilterPoll_Valid_FilterData_Valid_Should_Return_Filtered_Polls()
         {
@@ -338,8 +340,10 @@ namespace UnitTests.Component.PollsComponent
             // Input tag
             var inputList = page.FindAll("input");
 
-            // Filter Text
+            // Filter Text starting index
             var filterTextInputIndex = 0;
+
+            //filter text 
             var filterTextInput = inputList.ElementAt(filterTextInputIndex);
 
             // Act
@@ -360,9 +364,13 @@ namespace UnitTests.Component.PollsComponent
 
             // Component Checklist
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
+            //second check 
             Assert.AreEqual(false, pageMarkup.Contains("Telekinesis"));
         }
 
+        /// <summary>
+        /// Once filter has been cleared, all polls should be displayed
+        /// </summary>
         [Test]
         public void DisableFilter_Valid_FilterData_Valid_Should_Return_All_Polls()
         {
@@ -390,9 +398,10 @@ namespace UnitTests.Component.PollsComponent
             // Input tag
             var inputList = page.FindAll("input");
 
-            // Filter Text
+            // Filter Text index 
             var filterTextInputIndex = 0;
 
+            //filter text 
             var filterTextInput = inputList.ElementAt(filterTextInputIndex);
 
             // Act
@@ -415,9 +424,13 @@ namespace UnitTests.Component.PollsComponent
 
             // Component Checklist
             Assert.AreEqual(true, pageMarkup.Contains("Aerospace company"));
+            //second check 
             Assert.AreEqual(true, pageMarkup.Contains("Telekinesis"));
         }
 
+        /// <summary>
+        /// Check that invalid data should return no polls 
+        /// </summary>
         [Test]
         public void EnableFilter_Invalid_FilterData_Invalid_Should_Return_No_Polls()
         {
@@ -445,8 +458,10 @@ namespace UnitTests.Component.PollsComponent
             // Input tag
             var inputList = page.FindAll("input");
 
-            // Filter Text
+            // Filter Text index 
             var filterTextInputIndex = 0;
+
+            //filter text 
             var filterTextInput = inputList.ElementAt(filterTextInputIndex);
 
             // Act
@@ -466,6 +481,8 @@ namespace UnitTests.Component.PollsComponent
 
             // Component Checklist
             Assert.AreEqual(false, pageMarkup.Contains("Aerospace company"));
+
+            //second check
             Assert.AreEqual(false, pageMarkup.Contains("Telekinesis"));
         }
         #endregion FilterRoll
