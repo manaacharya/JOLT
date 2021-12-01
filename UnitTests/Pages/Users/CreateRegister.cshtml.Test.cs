@@ -100,9 +100,16 @@ namespace UnitTests.Pages.Users
             PageModel.BindUser = new UserModel()
             {
                 // A User with this Username Already Exists in User Database/Dataset
+                //username
                 Username = "edwin",
+
+                //password
                 Password = "DuplicatePassword",
+
+                //email
                 Email = "email@gmail.com",
+
+                //location 
                 Location = "USA"
             };
 
@@ -114,7 +121,10 @@ namespace UnitTests.Pages.Users
             // Reset
 
             // Assert
+            //page model is valid
             Assert.AreEqual(true, PageModel.ModelState.IsValid);
+
+            //message is correct 
             Assert.AreEqual("Username Already Exist, Log in with your username?", message);           
         }
 
@@ -210,6 +220,7 @@ namespace UnitTests.Pages.Users
             //Assert
             // Confirm that no new recorded was added
             var currentCount = TestHelper.UserService.GetUsers().Count();
+            //check old count to new count 
             Assert.AreEqual(oldCount, currentCount);
         }
 
@@ -220,7 +231,7 @@ namespace UnitTests.Pages.Users
         public void OnPost__Length_Less_Than_6_Password_Should_Not_Add_New_Record()
         {
             //Arrange
-
+            //count number of users in user database
             var oldCount = TestHelper.UserService.GetUsers().Count();
 
             // Random object instance creation
@@ -257,6 +268,8 @@ namespace UnitTests.Pages.Users
             //Assert
             // Confirm that no new recorded was added
             var currentCount = TestHelper.UserService.GetUsers().Count();
+
+            //check old count and new count are equal 
             Assert.AreEqual(oldCount, currentCount);
         }
 
