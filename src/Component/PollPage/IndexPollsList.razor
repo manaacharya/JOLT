@@ -3,9 +3,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @inject JsonFilePollService PollService
 @inject JsonFileUserService UserService
-@*Comment out Sections : Delete Before Submission
-    <div class="card text-white bg-dark mb-3" style="max-width: 25rem;">
-      <div class="row poll-row">*@
+
 
 <div>
     <div class=" row">
@@ -30,8 +28,7 @@
 <div class="container">
     <div class="row">
         @{
-            // pollList = PollService.GetPolls().ToList().OrderBy(x => x.PollID);
-
+            
             // Obtain the poll list
             // var pollList = PollService.GetPolls().ToList();
             var pollList = PollService.GetPolls().ToList().Where(m => m.Title != String.Empty);
