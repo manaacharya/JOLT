@@ -27,6 +27,7 @@ namespace UnitTests.Pages.Product.Index
         [SetUp]
         public void TestInitialize()
         {
+            //create new indexmodel 
             pageModel = new IndexModel(TestHelper.ProductService)
             {
             };
