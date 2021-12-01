@@ -114,6 +114,7 @@ namespace ContosoCrafts.WebSite.Pages
             // Check whether User Already Exists
             var getUser = UserService.GetUser(BindUser.Username);
 
+            //if user doesn't exist 
             if(getUser != null)
             {
                 ShowLoginLink = true;
@@ -138,6 +139,7 @@ namespace ContosoCrafts.WebSite.Pages
         /// <returns></returns>
         public string GeneratePrompt(bool ShowLink)
         {
+            //if no showlink return prompt 
             if (!ShowLink) return "";
             return "Username Already Exist, Log in with your username?";
         }
